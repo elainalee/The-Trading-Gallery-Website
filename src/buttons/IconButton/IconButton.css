@@ -1,0 +1,61 @@
+:root {
+    --primary-color: #5c5959;
+    --primary-pink: #f1a9aa;
+    --primary-orange: #fcc7a7;
+    --primary-blue: #88c0db;
+    --primary-purple: #b09cb9;
+    --primary-magenta: #cd99b0;
+    --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
+  }
+
+.icon-btn {
+    padding: 8px 20px;
+    border-radius: 4pm;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.icon-btn:hover {
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease-out;
+    transition: 250ms;
+    background: var(--primary-color);
+    background-blend-mode: normal;
+}
+
+.icon-btn--small  {
+    background-color: transparent;
+}
+
+.icon-btn--medium {
+    font-size: 25px;
+} 
+
+.icon-btn--medium:hover {
+    font-size: 25px;
+}
+
+.icon-btn--large {
+    padding: 12px 26px;
+}
+
+.user-profile-btn {
+    padding: 8px 20px;
+    color: white
+}
+
+.user-profile-btn:hover {
+    padding: 8px 20px;
+    color: white
+}
+
+.failed-loading-btn {
+    color: white
+}
+
+.failed-loading-btn:hover {
+    color: white
+}
