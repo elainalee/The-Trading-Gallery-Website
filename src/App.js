@@ -1,13 +1,16 @@
 import logo from './logo.svg';
+import NavBar from "./components/NavBar/NavBar"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <NavBar/>
+      PlaceHolder
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload. Let's try.?..?
         </p>
         <a
           className="App-link"
@@ -17,7 +20,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
