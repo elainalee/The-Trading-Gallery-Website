@@ -2,15 +2,17 @@ import React, { useRef, useState } from 'react';
 import {
  Form, Button, Card, Alert,
 } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { signup } = useAuth();
+    const { signUp } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
@@ -23,7 +25,8 @@ export default function SignUp() {
         try {
             setError('');
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value);
+            await signUp(emailRef.current.value, passwordRef.current.value);
+            history.push('/');
         } catch {
             setError('Failed to create an account');
         }
@@ -54,7 +57,9 @@ export default function SignUp() {
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
-              Already have an account? Log In
+              Already have an account?
+              {' '}
+              <Link to="/logIn">Log In</Link>
           </div>
         </>
     );

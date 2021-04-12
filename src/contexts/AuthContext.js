@@ -11,8 +11,12 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
 
-    function signup(email, password) {
+    function signUp(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    function logIn(email, password) {
+        return auth.signInWithEmailAndPassword(email, password);
     }
 
     useEffect(() => {
@@ -26,7 +30,8 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
-        signup,
+        signUp,
+        logIn,
     };
 
     return (
