@@ -6,9 +6,9 @@
     --primary-purple: #b09cb9;
     --primary-magenta: #cd99b0;
     --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
-  }
+}
 
-.btn {
+.btn--primary {
     padding: 8px 20px;
     border-radius: 4pm;
     outline: none;
@@ -17,17 +17,13 @@
     color: white;
 }
 
-.btn:hover {
+.btn--primary:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
     transition: 250ms;
     background: var(--primary-color);
     background-blend-mode: normal;
     color: white;
-}
-
-.btn--primary {
-    background-color: transparent;
 }
 
 .btn--outline {

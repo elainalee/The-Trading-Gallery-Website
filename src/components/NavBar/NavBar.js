@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { MenuItems } from "./MenuItems";
-import './NavBar.css'
 import { Button } from "../../buttons/Button"
 import { IconButton } from "../../buttons/IconButton/IconButton"
 import logo_image from '../../callisto_logo_woLetters.png';
+import './NavBar.css'
 
 class NavBar extends Component {
     state = { 
