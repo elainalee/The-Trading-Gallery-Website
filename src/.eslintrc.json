@@ -26,6 +26,7 @@
         "jsx-a11y/no-static-element-interactions": "off",
         "react/destructuring-assignment": "off",
         "react/button-has-type": "off",
+        "react/jsx-props-no-spreading": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "react/state-in-constructor": [1, "never"]
     }
