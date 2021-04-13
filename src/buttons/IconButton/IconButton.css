@@ -9,7 +9,7 @@
   }
 
 .icon-btn {
-    padding: 8px 20px;
+    padding: 0px 20px;
     border-radius: 4pm;
     outline: none;
     border: none;
@@ -17,45 +17,24 @@
     background: transparent;
 }
 
-.icon-btn:hover {
-    padding: 8px 20px;
-    border-radius: 4px;
-    transition: all 0.3s ease-out;
-    transition: 250ms;
-    background: var(--primary-color);
-    background-blend-mode: normal;
-}
-
 .icon-btn--small  {
-    background-color: transparent;
+    font-size: 20px;
 }
 
 .icon-btn--medium {
     font-size: 25px;
 } 
 
-.icon-btn--medium:hover {
-    font-size: 25px;
-}
 
 .icon-btn--large {
-    padding: 12px 26px;
+    font-size: 30px;
 }
 
-.user-profile-btn {
-    padding: 8px 20px;
-    color: white
+.icon-btn--navbar {
+    padding: 9px 20px;
+    font-size: 18px;
 }
 
-.user-profile-btn:hover {
-    padding: 8px 20px;
-    color: white
-}
-
-.failed-loading-btn {
-    color: white
-}
-
-.failed-loading-btn:hover {
-    color: white
+.hidden {
+    display: none;
 }

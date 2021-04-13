@@ -9,6 +9,11 @@ const STYLES = [
 const SIZES = [
     'btn--medium',
     'btn--large',
+    'btn--navbar',
+];
+
+const COLORS = [
+    'black',
 ];
 
 export const Button = ({
@@ -17,16 +22,21 @@ export const Button = ({
     onClick,
     buttonStyle,
     buttonSize,
+    color,
+    marginLeft,
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
+    const thisColorName = COLORS.includes(color) ? color : COLORS[0];
+
     return (
         <button
-          className={`btn--primary ${checkButtonStyle} ${checkButtonSize}`}
+          className={`btn--primary ${checkButtonStyle} ${checkButtonSize} ${thisColorName}`}
           onClick={onClick}
           type={type}
+          style={({ marginLeft })}
         >
             {children}
         </button>

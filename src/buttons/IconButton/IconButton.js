@@ -4,12 +4,17 @@ import './IconButton.css';
 const ICONS = {
     'failed-loading-btn': 'fas fa-spinner',
     'user-profile-btn': 'fas fa-user',
+    'carts-btn': 'fas fa-shopping-cart',
+    'search-btn': 'fas fa-search',
+    'menu-btn': 'fas fa-bars',
+    'cancel-btn': 'fas fa-times',
 };
 
 const SIZES = [
     'icon-btn--small',
     'icon-btn--medium',
     'icon-btn--large',
+    'icon-btn--navbar',
 ];
 
 export const IconButton = ({
@@ -18,7 +23,12 @@ export const IconButton = ({
     onClick,
     buttonIcon,
     buttonSize,
+    color,
 }) => {
+    if (buttonIcon === 'hidden') {
+        return (<></>);
+    }
+
     const thisIconName = buttonIcon in ICONS ? buttonIcon : 'failed-loading-btn';
 
     const thisIconNameClass = ICONS[thisIconName];
@@ -26,12 +36,8 @@ export const IconButton = ({
     const thisButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[1];
 
     return (
-        <button
-          className={`icon-btn ${thisIconNameClass} ${thisIconName} ${thisButtonSize}`}
-          onClick={onClick}
-          type={type}
-        >
+        <i className={`icon-btn ${thisIconNameClass} ${thisIconName} ${thisButtonSize} `} onClick={onClick} type={type} style={({ color })}>
             {children}
-        </button>
+        </i>
     );
 };
