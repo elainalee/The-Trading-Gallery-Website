@@ -4,7 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function DashBoard() {
-    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState('');
     const { currentUser, logOut } = useAuth();
     const history = useHistory();

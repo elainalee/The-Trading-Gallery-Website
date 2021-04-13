@@ -1,22 +1,22 @@
-export const MenuItemsBottom = [
+export const MenuItems = [
     {
         title: 'Bread/Cake',
-        url: '/dashboard',
+        url: '/breadAndCake',
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'Pastries',
-        url: '/',
+        url: '/pastries',
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'Drinks',
-        url: '#',
+        url: '/drinks',
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'Other',
-        url: '#',
+        url: '/other',
         cName: 'nav-bottom-menu-item',
     },
 ];

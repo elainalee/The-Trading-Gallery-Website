@@ -13,7 +13,6 @@ export default function LogIn() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
         e.preventDefault();
 
