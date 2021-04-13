@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import './CustomButton.css';
 
 const STYLES = [
     'btn--primary',
@@ -16,7 +16,7 @@ const COLORS = [
     'black',
 ];
 
-export const Button = ({
+export const CustomButton = ({
     children,
     type,
     onClick,

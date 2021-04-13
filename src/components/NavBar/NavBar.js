@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
-import UserButton from './UserButton';
+import UserButton from '../../buttons/UserButton';
 import { IconButton } from '../../buttons/IconButton/IconButton';
 import logoName from '../../callisto_font_black.png';
 import logoImage from '../../callisto_logo_woLetters.png';

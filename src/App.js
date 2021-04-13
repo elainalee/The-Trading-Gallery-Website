@@ -9,8 +9,9 @@ import UpdateProfile from './components/UserPages/UpdateProfile';
 import CartsPage from './components/UserPages/CartsPage';
 import { AuthProvider } from './contexts/AuthContext';
 import NavBar from './components/NavBar/NavBar';
-import DashBoard from './components/DashBoard';
-import PrivateRoute from './components/PrivateRoute';
+import DashBoard from './components/UserPages/DashBoard';
+import EnsureLogInRoute from './components/RoutesManager/EnsureLogInRoute';
+import EnsureLogOutRoute from './components/RoutesManager/EnsureLogOutRoute';
 import BreadCakePage from './components/MenuPages/BreadCakePage';
 import PastriesPage from './components/MenuPages/PastriesPage';
 import DrinksPage from './components/MenuPages/DrinksPage';
@@ -28,12 +29,13 @@ function App() {
             >
               <div className="w-100" style={{ maxWidth: '400px' }}>
                 <Switch>
-                  <PrivateRoute exact path="/" component={DashBoard} />
-                  <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                  <PrivateRoute path="/carts" component={CartsPage} />
-                  <Route path="/signUp" component={SignUp} />
-                  <Route path="/logIn" component={LogIn} />
-                  <Route path="/password-reset" component={PasswordReset} />
+                  <EnsureLogInRoute exact path="/" component={DashBoard} />
+                  <EnsureLogInRoute path="/dashboard" component={DashBoard} />
+                  <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
+                  <EnsureLogInRoute path="/carts" component={CartsPage} />
+                  <EnsureLogOutRoute path="/signUp" component={SignUp} />
+                  <EnsureLogOutRoute path="/logIn" component={LogIn} />
+                  <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
                   <Route path="/breadAndCake" component={BreadCakePage} />
                   <Route path="/pastries" component={PastriesPage} />
                   <Route path="/drinks" component={DrinksPage} />
