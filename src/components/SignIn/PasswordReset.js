@@ -12,7 +12,6 @@ export default function PasswordReset() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
 
-    // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
         e.preventDefault();
 

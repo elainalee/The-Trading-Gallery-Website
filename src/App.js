@@ -14,26 +14,25 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <>
-      <NavBar />
-      <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: '100vh' }}
-      >
-          <div className="w-100" style={{ maxWidth: '400px' }}>
-            <Router>
-              <AuthProvider>
+        <Router>
+          <AuthProvider>
+            <NavBar />
+            <Container
+              className="d-flex align-items-center justify-content-center"
+              style={{ minHeight: '100vh' }}
+            >
+              <div className="w-100" style={{ maxWidth: '400px' }}>
                 <Switch>
                   <PrivateRoute exact path="/" component={DashBoard} />
                   <PrivateRoute path="/update-profile" component={UpdateProfile} />
                   <Route path="/signUp" component={SignUp} />
                   <Route path="/logIn" component={LogIn} />
                   <Route path="/password-reset" component={PasswordReset} />
-
                 </Switch>
-              </AuthProvider>
-            </Router>
-          </div>
-      </Container>
+              </div>
+            </Container>
+          </AuthProvider>
+        </Router>
     </>
   );
 }

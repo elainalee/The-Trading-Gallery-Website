@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import { Button } from '../../buttons/Button';
 import { IconButton } from '../../buttons/IconButton/IconButton';
+import logoName from '../../callisto_font_white.png';
 import logoImage from '../../callisto_logo_woLetters.png';
 import './NavBar.css';
 
 class NavBar extends Component {
     state = {
-        clicked: false,
+        menuClicked: false,
         loggedIn: false,
     };
 
-    handledClick = () => {
-        this.setState((prevState) => ({ clicked: !prevState.clicked }));
+    handleMenuClick = () => {
+        this.setState((prevState) => ({ menuClicked: !prevState.menuClicked }));
+    }
+
+    handleLogoClick = () => {
+        window.location.href = '/';
     }
 
     render() {
         return (
             <nav className="NavBarItems">
-                <h1 className="navBar-logo-name">Callisto</h1>
-                <img src={logoImage} className="navBar-logo-image" alt="logo" />
-
-                <div className="menu-icon" onClick={this.handledClick}>
-                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'} />
+                <div className="navBar-logo" onClick={this.handleLogoClick}>
+                    <img src={logoName} className="navBar-logo-name" alt="logo-name" />
+                    <img src={logoImage} className="navBar-logo-image" alt="logo-img" />
+                </div>
+                <div className="menu-icon" onClick={this.handleMenuClick}>
+                    <i className={this.state.menuClicked ? 'fas fa-times' : 'fas fa-bars'} />
                 </div>
 
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+                <ul className={this.state.menuClicked ? 'nav-mobile-menu active' : 'nav-mobile-menu'}>
                     {MenuItems.map((item) => (
                             <li key={item.id}>
                                 <a className={item.cName} href={item.url}>
@@ -45,4 +52,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
