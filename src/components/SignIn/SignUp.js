@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import {
- Form, Button, Card, Alert,
+ Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 
@@ -28,8 +29,8 @@ export default function SignUp() {
             setLoading(true);
             await signUp(emailRef.current.value, passwordRef.current.value);
             history.push('/');
-        } catch {
-            setError('Failed to create an account');
+        } catch (msg) {
+            setError(`${msg}`);
         }
         setLoading(false);
     }
@@ -53,7 +54,7 @@ export default function SignUp() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} required />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100 mt-3" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Sign Up</Button>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="signup" marginTop="4px">Sign Up</CustomButton>
                   </Form>
               </Card.Body>
           </Card>

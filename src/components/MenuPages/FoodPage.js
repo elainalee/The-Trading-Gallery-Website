@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function PastriesPage() {
+export default function FoodPage() {
     return (
         <div>
-            Pastries Page Placeholder
+            FoodPage page Placeholder
         </div>
     );
 }

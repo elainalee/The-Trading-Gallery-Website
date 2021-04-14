@@ -8,7 +8,7 @@
   }
 
 .NavBar-Bottom {
-    background: var(--primary-color);
+    background: white;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -19,24 +19,24 @@
 .nav-bottom-menu-items {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 12px;
+    grid-gap: 50px;
     list-style: none;
     text-align: list;
     width: 70vw;
-    justify-content: end;
+    justify-content: start;
     margin-right: 0rem;
     margin-top: 0.8rem;
+    margin-left: -13rem;
 }
 
 .nav-bottom-menu-item {
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
 .nav-bottom-menu-item:hover {
-    color: black;
-    text-decoration: none;
+    color: var(--primary-color);
     padding: 0.5rem 1rem;
 }
 
@@ -60,6 +60,7 @@
         left: -100%;
         opacity: 1;
         transition: all 0.5s ease;
+        margin-left: 0rem;
     }
 
     .nav-bottom-menu-items.expanded {

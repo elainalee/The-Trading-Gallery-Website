@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import {
- Form, Button, Card, Alert,
+ Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 
@@ -21,8 +22,8 @@ export default function PasswordReset() {
             setLoading(true);
             await resetPassword(emailRef.current.value);
             setMessage('Check your inbox for further instructions');
-        } catch {
-            setError('Failed to reset password');
+        } catch (msg) {
+            setError(`${msg}`);
         }
         setLoading(false);
     }
@@ -39,7 +40,7 @@ export default function PasswordReset() {
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Reset Password</Button>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="resetpw" marginTop="4px">Reset Password</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
                       <Link to="/logIn" className="links">Log in</Link>

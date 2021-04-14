@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
-    Button, Form, Card, Alert,
+    Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { CustomButton } from '../../buttons/CustomButton/CustomButton';
@@ -23,8 +23,8 @@ export default function LogIn() {
             setLoading(true);
             await logIn(emailRef.current.value, passwordRef.current.value);
             history.push('/');
-        } catch {
-            setError('Failed to sign in');
+        } catch (msg) {
+            setError(`${msg}`);
         }
         setLoading(false);
     }
@@ -44,8 +44,7 @@ export default function LogIn() {
                           <Form.Label>Password</Form.Label>
                           <Form.Control type="password" ref={passwordRef} required />
                       </Form.Group>
-                    <CustomButton>Log In</CustomButton>
-                    <Button disabled={loading} type="submit" className="w-100 mt-3" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Log In</Button>
+                    <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="login" marginTop="4px">Log In</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
                       <Link to="/password-reset" className="links">Forgot password?</Link>

@@ -9,12 +9,13 @@ import UpdateProfile from './components/UserPages/UpdateProfile';
 import CartsPage from './components/UserPages/CartsPage';
 import { AuthProvider } from './contexts/AuthContext';
 import NavBar from './components/NavBar/NavBar';
-import DashBoard from './components/UserPages/DashBoard';
+import UserProfilePage from './components/UserPages/UserProfilePage';
+import MainPage from './components/MainPage/MainPage';
 import EnsureLogInRoute from './components/RoutesManager/EnsureLogInRoute';
 import EnsureLogOutRoute from './components/RoutesManager/EnsureLogOutRoute';
-import BreadCakePage from './components/MenuPages/BreadCakePage';
-import PastriesPage from './components/MenuPages/PastriesPage';
-import DrinksPage from './components/MenuPages/DrinksPage';
+import DessertsPage from './components/MenuPages/DessertsPage';
+import TextilesPage from './components/MenuPages/Textiles';
+import FoodPage from './components/MenuPages/FoodPage';
 import OtherPage from './components/MenuPages/OtherPage';
 
 function App() {
@@ -29,16 +30,16 @@ function App() {
             >
               <div className="w-100" style={{ maxWidth: '400px' }}>
                 <Switch>
-                  <EnsureLogInRoute exact path="/" component={DashBoard} />
-                  <EnsureLogInRoute path="/dashboard" component={DashBoard} />
+                  <Route exact path="/" component={MainPage} />
+                  <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
                   <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
                   <EnsureLogInRoute path="/carts" component={CartsPage} />
                   <EnsureLogOutRoute path="/signUp" component={SignUp} />
                   <EnsureLogOutRoute path="/logIn" component={LogIn} />
                   <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
-                  <Route path="/breadAndCake" component={BreadCakePage} />
-                  <Route path="/pastries" component={PastriesPage} />
-                  <Route path="/drinks" component={DrinksPage} />
+                  <Route path="/desserts" component={DessertsPage} />
+                  <Route path="/textiles" component={TextilesPage} />
+                  <Route path="/foods" component={FoodPage} />
                   <Route path="/other" component={OtherPage} />
                 </Switch>
               </div>

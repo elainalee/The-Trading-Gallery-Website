@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Card, Button, Alert } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Card, Alert } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 
-export default function DashBoard() {
+export default function UserProfilePage() {
     const [error, setError] = useState('');
     const { currentUser, logOut } = useAuth();
     const history = useHistory();
 
     async function handleLogOut() {
         setError('');
-
         try {
             await logOut();
             history.pushState('/logIn');
         } catch {
             setError('Failed to log out');
         }
+    }
+
+    function goToUpdateProfile() {
+        history.push('/update-profile');
     }
 
     return (
@@ -28,13 +32,11 @@ export default function DashBoard() {
                     {error && <Alert variant="danger">{error}</Alert>}
                     <strong>Email: </strong>
                     {currentUser.email}
-                    <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-                        Update Profile
-                    </Link>
+                    <CustomButton buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="userprofile" marginTop="10px" onClick={goToUpdateProfile}>Update Profile</CustomButton>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2 links">
-                <Button variant="link" onClick={handleLogOut} style={{ color: '#5c5959' }}>Log Out</Button>
+                <CustomButton buttonStyle="btn--link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
             </div>
         </>
     );

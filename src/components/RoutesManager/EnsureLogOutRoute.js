@@ -10,7 +10,7 @@ export default function EnsureLogInRoute({ component: Component, ...rest }) {
           {...rest}
           render={(props) => (!currentUser
                 ? <Component {...props} />
-                : <Redirect to="/dashboard" />)}
+                : <Redirect to="/profile-page" />)}
         />
     );
 }

@@ -4,7 +4,9 @@ import {
  Form, Button, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
+import './SignIn.css';
 
 export default function UpdateProfile() {
     const emailRef = useRef();
@@ -34,19 +36,15 @@ export default function UpdateProfile() {
         }
         Promise.all(promises).then(() => {
             history.push('/');
-        }).catch(() => {
-            setError('Failed to update account');
+        }).catch((msg) => {
+            setError(`${msg}`);
         }).finally(() => {
             setLoading(false);
         });
+    }
 
-        // try {
-        //     // await signUp(emailRef.current.value, passwordRef.current.value);
-        //     history.push('/');
-        // } catch {
-        //     setError('Failed to create an account');
-        // }
-        // setLoading(false);
+    function goToUserProfile() {
+        history.push('/profile-page');
     }
 
     return (
@@ -68,12 +66,12 @@ export default function UpdateProfile() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100">Update</Button>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="updateprofile" marginTop="4px">Update</CustomButton>
                   </Form>
               </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
-              <Link to="/">Cancel</Link>
+          <div className="w-100 text-center mt-2 links">
+              <CustomButton buttonStyle="btn--link" onClick={goToUserProfile} marginTop="10px">Cancel</CustomButton>
           </div>
         </>
     );

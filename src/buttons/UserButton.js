@@ -12,14 +12,14 @@ export default function UserButton() {
         history.push('/logIn');
     }
 
-    function goToUpdateProfile() {
-        history.push('/dashboard');
+    function goToUserProfile() {
+        history.push('/profile-page');
     }
 
     return (
         <div className="user-icon">
             {currentUser
-                ? <IconButton buttonIcon="user-profile-btn" buttonSize="icon-btn--navbar" onClick={goToUpdateProfile} />
+                ? <IconButton buttonIcon="user-profile-btn" buttonSize="icon-btn--navbar" onClick={goToUserProfile} />
                 : <CustomButton className="nav-top-menu-item-name" buttonStyle="btn--outline" buttonSize="btn--navbar" marginLeft="1rem" color="black" onClick={goToLogIn}>Sign In</CustomButton>}
         </div>
     );
