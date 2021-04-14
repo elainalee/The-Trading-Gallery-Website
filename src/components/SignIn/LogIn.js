@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import {
- Form, Button, Card, Alert,
+    Button, Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
+import './SignIn.css';
 
 export default function LogIn() {
     const emailRef = useRef();
@@ -42,17 +44,18 @@ export default function LogIn() {
                           <Form.Label>Password</Form.Label>
                           <Form.Control type="password" ref={passwordRef} required />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100">Log In</Button>
+                    <CustomButton>Log In</CustomButton>
+                    <Button disabled={loading} type="submit" className="w-100 mt-3" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Log In</Button>
                   </Form>
-                  <div className="w-100 text-center mt-3">
-                      <Link to="/password-reset">Forgot password?</Link>
+                  <div className="w-100 text-center mt-4">
+                      <Link to="/password-reset" className="links">Forgot password?</Link>
                   </div>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
               Need an account?
               {' '}
-              <Link to="/signUp">Sign Up</Link>
+              <Link to="/signUp" className="links">Sign Up</Link>
           </div>
         </>
     );

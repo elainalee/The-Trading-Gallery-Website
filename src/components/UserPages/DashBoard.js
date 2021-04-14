@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import './SignIn.css';
 
 export default function DashBoard() {
     const [error, setError] = useState('');
@@ -32,8 +33,8 @@ export default function DashBoard() {
                     </Link>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                <Button variant="link" onClick={handleLogOut}>Log Out</Button>
+            <div className="w-100 text-center mt-2 links">
+                <Button variant="link" onClick={handleLogOut} style={{ color: '#5c5959' }}>Log Out</Button>
             </div>
         </>
     );

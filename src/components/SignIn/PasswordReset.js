@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import './SignIn.css';
 
 export default function PasswordReset() {
     const emailRef = useRef();
@@ -38,17 +39,17 @@ export default function PasswordReset() {
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100">Reset Password</Button>
+                      <Button disabled={loading} type="submit" className="w-100" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Reset Password</Button>
                   </Form>
-                  <div className="w-100 text-center mt-3">
-                      <Link to="/logIn">Log in</Link>
+                  <div className="w-100 text-center mt-4">
+                      <Link to="/logIn" className="links">Log in</Link>
                   </div>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
               Need an account?
               {' '}
-              <Link to="/signUp">Sign Up</Link>
+              <Link to="/signUp" className="links">Sign Up</Link>
           </div>
         </>
     );

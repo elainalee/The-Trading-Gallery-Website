@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import './SignIn.css';
 
 export default function SignUp() {
     const emailRef = useRef();
@@ -52,14 +53,14 @@ export default function SignUp() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} required />
                       </Form.Group>
-                      <Button disabled={loading} type="submit" className="w-100">Sign Up</Button>
+                      <Button disabled={loading} type="submit" className="w-100 mt-3" style={{ backgroundColor: 'white', color: 'black', border: '1px solid #5c5959' }}>Sign Up</Button>
                   </Form>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
               Already have an account?
               {' '}
-              <Link to="/logIn">Log In</Link>
+              <Link to="/logIn" className="links">Log In</Link>
           </div>
         </>
     );

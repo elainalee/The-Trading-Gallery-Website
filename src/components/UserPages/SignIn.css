@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #5c5959;
+    --primary-pink: #f1a9aa;
+    --primary-orange: #fcc7a7;
+    --primary-blue: #88c0db;
+    --primary-purple: #b09cb9;
+    --primary-magenta: #cd99b0;
+    --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
+}
+
+.links {
+    color: var(--primary-color);
+}
+
+.links:hover {
+    color: #000000;
+}
