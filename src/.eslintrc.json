@@ -27,6 +27,7 @@
         "react/destructuring-assignment": "off",
         "react/button-has-type": "off",
         "react/jsx-props-no-spreading": "off",
+        "import/extensions": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "react/state-in-constructor": [1, "never"]
     }
