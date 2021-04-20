@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import axios from 'axios';
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { commerce } from './components/Commerce/Commerce';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignUp from './components/SignIn/SignUp';
 import LogIn from './components/SignIn/LogIn';
 import PasswordReset from './components/SignIn/PasswordReset';
@@ -19,36 +17,13 @@ import DessertsPage from './components/MenuPages/DessertsPage';
 import TextilesPage from './components/MenuPages/Textiles';
 import FoodPage from './components/MenuPages/FoodPage';
 import OtherPage from './components/MenuPages/OtherPage';
-import Product from './components/Products/Product/Product';
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    // const { data } = await commerce.products.list();
-    const { data } = await axios.get('/api/products');
-
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  console.log(products);
-
   return (
     <>
         <Router>
           <AuthProvider>
             <NavBar />
-            <div className="row center">
-              {products.map((product) => (
-                <Product key={product.id} product={product} />
-              ))}
-
-            </div>
-                <Switch>
                 <Container
                   className="d-flex align-items-center justify-content-center"
                   // style={{ minHeight: '100vh' }}
@@ -67,7 +42,6 @@ function App() {
                   <Route path="/other" component={OtherPage} />
                   </div>
                 </Container>
-                </Switch>
           </AuthProvider>
         </Router>
 

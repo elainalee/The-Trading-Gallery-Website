@@ -47,7 +47,7 @@ class NavBar extends Component {
             <nav className="NavBar-Bottom">
                 <ul className={this.state.menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
-                            <li key={item.id}>
+                            <li key={item.title}>
                                 <a className={item.cName} href={item.url}>
                                     {item.title}
                                 </a>
