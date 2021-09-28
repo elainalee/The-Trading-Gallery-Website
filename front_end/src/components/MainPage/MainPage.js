@@ -24,7 +24,6 @@ export default function MainPage() {
             if (res != SUCCESS) {
                 setError(res);
             }
-            
         });
     }, []);
     
