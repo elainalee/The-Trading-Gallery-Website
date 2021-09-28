@@ -13,7 +13,7 @@ export default function MainPage() {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const { data } = await axios.get('/api/products');
+                const { data } = await axios.get('/api/products/getProducts');
                 setLoading(false);
                 setProducts(data);
             } catch (err) {
