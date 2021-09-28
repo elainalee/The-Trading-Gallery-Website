@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from "react-redux";
+
 import { Card, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { CustomButton } from '../../buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
+import { getUser } from '../../reducers/userReducer';
 
 export default function UserProfilePage() {
+    const dispatch = useDispatch();
+    
     const [error, setError] = useState('');
     const { currentUser, logOut } = useAuth();
     const history = useHistory();
 
     async function handleLogOut() {
+
         setError('');
         try {
             await logOut();

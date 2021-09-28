@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { initializeApp } from 'firebase/app';
-import 'firebase/auth';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 const app = initializeApp({
@@ -21,7 +21,7 @@ const app = initializeApp({
 //     appId: process.env.REACT_APP_FIREBASE_APP_ID,
 // });
 
-// export const auth = app.auth();
+export const auth = getAuth(app);
 export const firebaseDB = getFirestore(app);
 
 export default app;

@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import axios from 'axios';
-import Products from '../Products/Products';
-import LoadingBox from '../Utils/LoadingBox';
-import MessageBox from '../Utils/MessageBox';
+import Products from '../../components/Products/Products';
+import LoadingBox from '../../components/Utils/LoadingBox';
+import MessageBox from '../../components/Utils/MessageBox';
 import { getProducts } from '../../reducers/productsReducer';
 import BASE_URL from '../../Axios/BASE_URL';
 import { SUCCESS } from '../../utils/constants';
+import { getProducts2, getUser } from '../../reducers/userReducer';
 
 export default function MainPage() {
     const dispatch = useDispatch();
@@ -25,6 +26,8 @@ export default function MainPage() {
                 setError(res);
             }
         });
+
+        // dispatch(getUser());
     }, []);
     
     return (

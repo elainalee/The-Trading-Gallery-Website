@@ -47,4 +47,5 @@ export const getProducts = () => async (
     }
   };
 
+
 export default productsReducer;
