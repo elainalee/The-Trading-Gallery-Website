@@ -12,7 +12,7 @@ export default function UpdateProfile() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { currentUser, updateEmail, updatePassword } = useAuth();
+    const { currentUser, currentUserUID, updateEmail, updatePassword } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
@@ -24,6 +24,7 @@ export default function UpdateProfile() {
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError('Passwords do not match');
         }
+        // console.log(currentUserUID());
 
         const promises = [];
         setLoading(true);

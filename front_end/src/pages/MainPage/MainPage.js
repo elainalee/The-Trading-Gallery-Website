@@ -27,7 +27,6 @@ export default function MainPage() {
             }
         });
 
-        // dispatch(getUser());
     }, []);
     
     return (

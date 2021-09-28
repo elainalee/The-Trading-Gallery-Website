@@ -7,8 +7,6 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 const router = express.Router();
 const productsCollection = collection(firebaseDB, 'products');
 
-import { auth } from '../utils/auth.js';
-
 // interface Product {
 //      ...
 // }
@@ -27,6 +25,7 @@ router.get("/getItems", async (req, res) => {
         res.status(400).json({ error: err });
     }
 });
+
 
 
 export default router;

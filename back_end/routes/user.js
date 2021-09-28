@@ -24,9 +24,15 @@ const router = express.Router();
 router.get("/getUser", async (req, res) => {
 
     try {
-        console.log('---');
-        console.log("----", auth);
+        res.status(200).json(auth);
+    } catch (err) {
+        res.status(400).json({ error: err });
+    }
+});
 
+router.get("/logIn", async (req, res) => {
+
+    try {
         res.send({"productsList": "ex"});
     } catch (err) {
         res.status(400).json({ error: err });
