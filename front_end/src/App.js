@@ -17,32 +17,41 @@ import DessertsPage from './components/MenuPages/DessertsPage';
 import TextilesPage from './components/MenuPages/Textiles';
 import FoodPage from './components/MenuPages/FoodPage';
 import OtherPage from './components/MenuPages/OtherPage';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunkMiddleware from "redux-thunk";
+import rootReducer from './reducers/rootReducer';
 
 function App() {
+  const middleWare = applyMiddleware(thunkMiddleware);
+  const store = createStore(rootReducer, middleWare);
+
   return (
     <>
         <Router>
-          <AuthProvider>
-            <NavBar />
-                <Container
-                  className="d-flex align-items-center justify-content-center"
-                  // style={{ minHeight: '100vh' }}
-                >
-                  <div className="w-100" style={{ maxWidth: '400px' }}>
-                  <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
-                  <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
-                  <EnsureLogOutRoute path="/signUp" component={SignUp} />
-                  <EnsureLogOutRoute path="/logIn" component={LogIn} />
-                  <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
-                  <Route exact path="/" component={MainPage} />
-                  <EnsureLogInRoute path="/carts" component={CartsPage} />
-                  <Route path="/desserts" component={DessertsPage} />
-                  <Route path="/textiles" component={TextilesPage} />
-                  <Route path="/foods" component={FoodPage} />
-                  <Route path="/other" component={OtherPage} />
-                  </div>
-                </Container>
-          </AuthProvider>
+          <Provider store={store}>
+            <AuthProvider>
+              <NavBar />
+                  <Container
+                    className="d-flex align-items-center justify-content-center"
+                    // style={{ minHeight: '100vh' }}
+                  >
+                    <div className="w-100" style={{ maxWidth: '400px' }}>
+                    <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
+                    <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
+                    <EnsureLogOutRoute path="/signUp" component={SignUp} />
+                    <EnsureLogOutRoute path="/logIn" component={LogIn} />
+                    <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
+                    <Route exact path="/" component={MainPage} />
+                    <EnsureLogInRoute path="/carts" component={CartsPage} />
+                    <Route path="/desserts" component={DessertsPage} />
+                    <Route path="/textiles" component={TextilesPage} />
+                    <Route path="/foods" component={FoodPage} />
+                    <Route path="/other" component={OtherPage} />
+                    </div>
+                  </Container>
+            </AuthProvider>
+          </Provider>
         </Router>
 
         

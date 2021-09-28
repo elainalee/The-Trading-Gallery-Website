@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from 'react';
+
+import { useDispatch, useSelector } from "react-redux";
+
 import axios from 'axios';
 import Products from '../Products/Products';
 import LoadingBox from '../Utils/LoadingBox';
 import MessageBox from '../Utils/MessageBox';
+import { getProducts } from '../../reducers/productsReducer';
+import BASE_URL from '../../Axios/BASE_URL';
+import { SUCCESS } from '../../utils/constants';
 
 export default function MainPage() {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+
+    const { products } = useSelector((state) => state);
+
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                const { data } = await axios.get('/api/products/getProducts');
-                setLoading(false);
-                setProducts(data);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
+        dispatch(getProducts()).then((res) => {
+            setLoading(false);
+            if (res != SUCCESS) {
+                setError(res);
             }
-        };
-        fetchProducts();
+            
+        });
     }, []);
-
-  console.log(products);
     
     return (
         <div>
             {loading
-                ? <LoadingBox></LoadingBox>
+                ? <LoadingBox />
                 : error
                     ? <MessageBox>{error}</MessageBox>
-                    : <Products products = {products} />}
+                    : <Products products = {products.items} />
+            }
         </div>
     );
 }

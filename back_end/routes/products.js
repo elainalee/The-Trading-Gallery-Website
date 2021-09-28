@@ -9,7 +9,7 @@ const router = express.Router();
 // }
 
 
-router.get("/getProducts", async (req, res) => {
+router.get("/getItems", async (req, res) => {
     console.log("get products on backend called!");
     try {
         res.send(data.products);
