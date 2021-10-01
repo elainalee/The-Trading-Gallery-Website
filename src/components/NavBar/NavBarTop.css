@@ -23,10 +23,9 @@
 }
 
 .navBar-logo-name {
-    height: 50px;
+    height: 30px;
     justify-self: start;
     margin-bottom: 3px;
-    
 }
 
 .navBar-logo-image {

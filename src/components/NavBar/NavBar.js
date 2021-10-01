@@ -9,43 +9,43 @@ import './NavBarBottom.css';
 import './NavBarTop.css';
 
 class NavBar extends Component {
-    state = {
-        menuClicked: false,
-    };
-
-    handleMenuClick = () => {
-        this.setState((prevState) => ({ menuClicked: !prevState.menuClicked }));
-    }
-
-    handleLogoClick = () => {
-        window.location.href = '/';
-    }
-
-    handleCartsClick = () => {
-        this.props.history.push('/carts');
-    }
-
     render() {
+        const state = {
+            menuClicked: false,
+        };
+    
+        const handleMenuClick = () => {
+            this.setState((prevState) => ({ menuClicked: !prevState.menuClicked }));
+        }
+    
+        const handleLogoClick = () => {
+            window.location.href = '/';
+        }
+    
+        const handleCartsClick = () => {
+            this.props.history.push('/carts');
+        }
+
         return (
             <>
             <nav className="NavBar-Top">
-                <div className="navBar-logo" onClick={this.handleLogoClick}>
+                <div className="navBar-logo" onClick={handleLogoClick}>
                     <img src={logoName} className="navBar-logo-name" alt="logo-name" />
-                    <img src={logoImage} className="navBar-logo-image" alt="logo-img" />
+                    {/* <img src={logoImage} className="navBar-logo-image" alt="logo-img" /> */}
                 </div>
 
                 <div className="nav-top-menu-items">
-                    <IconButton buttonIcon={this.state.menuClicked ? 'hidden' : 'search-btn'} buttonSize="icon-btn--navbar" color="black" />
-                    <IconButton buttonIcon={this.state.menuClicked ? 'hidden' : 'carts-btn'} buttonSize="icon-btn--navbar" color="black" onClick={this.handleCartsClick} />
+                    <IconButton buttonIcon={state.menuClicked ? 'hidden' : 'search-btn'} buttonSize="icon-btn--navbar" color="black" />
+                    <IconButton buttonIcon={state.menuClicked ? 'hidden' : 'carts-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleCartsClick} />
                     <UserButton />
                     <div className="menu-icon">
-                        <IconButton buttonIcon={this.state.menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="icon-btn--navbar" color="black" onClick={this.handleMenuClick} />
+                        <IconButton buttonIcon={state.menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleMenuClick} />
                     </div>
                 </div>
             </nav>
 
             <nav className="NavBar-Bottom">
-                <ul className={this.state.menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
+                <ul className={state.menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
                             <li key={item.title}>
                                 <a className={item.cName} href={item.url}>

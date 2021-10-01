@@ -9,11 +9,11 @@ export default function Product({ product }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={product.image} title={product.name} />
+            <CardMedia className={classes.media} image={product.mainImage} title={product.title} />
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography variant="h5" gutterBottom>
-                        {product.name}
+                        {product.title}
                     </Typography>
                     <Typography variant="h5">
                         {product.price}
