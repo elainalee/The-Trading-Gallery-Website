@@ -7,6 +7,7 @@ import LoadingBox from '../../components/Utils/LoadingBox';
 import MessageBox from '../../components/Utils/MessageBox';
 import { getProducts } from '../../reducers/productsReducer';
 import { SUCCESS } from '../../utils/constants';
+import { getUser } from '../../reducers/userReducer';
 
 export default function MainPage() {
     const dispatch = useDispatch();
@@ -23,7 +24,6 @@ export default function MainPage() {
                 setError(res);
             }
         });
-
     }, []);
     
     return (

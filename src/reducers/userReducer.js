@@ -1,7 +1,6 @@
 import axios from "axios";
 import BASE_URL from "../Axios/BASE_URL";
 
-import client from "../Axios/auth";
 import { SUCCESS } from "../utils/constants";
 
 const initialState = {
@@ -26,7 +25,7 @@ const userReducer = (state = initialState, action) => {
 //     getState
 //   ) => {
 //     try {
-//       const url = "/api/users/getUser";
+//       const url = BASE_URL + "/users/getUser";
 //       const res = await axios.get(url);
 //       const data = res.data;
   
