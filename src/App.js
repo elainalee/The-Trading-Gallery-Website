@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignUp from './components/SignIn/SignUp';
-import LogIn from './components/SignIn/LogIn';
-import PasswordReset from './components/SignIn/PasswordReset';
+import SignUpCard from './components/Cards/SignIn/SignUpCard';
+import LogInCard from './components/Cards/SignIn/LogInCard';
+import PasswordResetCard from './components/Cards/SignIn/PasswordResetCard';
 import UpdateProfile from './pages/UserPages/UpdateProfile';
 import CartsPage from './pages/UserPages/CartsPage';
 import { AuthProvider } from './contexts/AuthContext';
@@ -39,9 +39,9 @@ function App() {
                     <div className="w-100" style={{ maxWidth: '400px' }}>
                       <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
                       <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
-                      <EnsureLogOutRoute path="/signUp" component={SignUp} />
-                      <EnsureLogOutRoute path="/logIn" component={LogIn} />
-                      <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
+                      <EnsureLogOutRoute path="/signUp" component={SignUpCard} />
+                      <EnsureLogOutRoute path="/logIn" component={LogInCard} />
+                      <EnsureLogOutRoute path="/password-reset" component={PasswordResetCard} />
                     </div>
                     <Route exact path="/" component={MainPage} />
                     <EnsureLogInRoute path="/carts" component={CartsPage} />

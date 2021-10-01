@@ -3,11 +3,11 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { CustomButton } from '../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../contexts/AuthContext';
+import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
+import { useAuth } from '../../../contexts/AuthContext';
 import './SignIn.css';
 
-export default function PasswordReset() {
+export default function PasswordResetCard() {
     const emailRef = useRef();
     const { resetPassword } = useAuth();
     const [error, setError] = useState('');

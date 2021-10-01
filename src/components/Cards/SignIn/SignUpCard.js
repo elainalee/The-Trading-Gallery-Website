@@ -3,11 +3,11 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../contexts/AuthContext';
+import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
+import { useAuth } from '../../../contexts/AuthContext';
 import './SignIn.css';
 
-export default function SignUp() {
+export default function SignUpCard() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
