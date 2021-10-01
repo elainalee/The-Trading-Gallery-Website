@@ -28,7 +28,8 @@ export const getProducts = () => async (
   ) => {
     try {
 
-      const url = "/api/products/getItems";
+      // const url = "/api/products/getItems";
+      const url = "/.netlify/functions/api/products/getItems";
       const res = await axios.get(url);
       const data = res.data;
   
