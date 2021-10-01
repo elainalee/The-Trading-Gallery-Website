@@ -28,8 +28,9 @@ export const getProducts = () => async (
   ) => {
     try {
 
+      const BASE_URL = "https://callisto-server.netlify.app/";
       // const url = "/api/products/getItems";
-      const url = "/.netlify/functions/api/products/getItems";
+      const url = "https://callisto-server.netlify.app" + "/.netlify/functions/api/products/getItems";
       const res = await axios.get(url);
       const data = res.data;
   

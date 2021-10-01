@@ -1,6 +1,5 @@
 {
   "name": "front_end",
-  "proxy": "http://callisto-server.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
