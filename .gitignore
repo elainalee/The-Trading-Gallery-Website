@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-front_end/node_modules
 /.pnp
 /front_end/.pnp
 .pnp.js
@@ -17,7 +16,6 @@ front_end/node_modules
 # misc
 .DS_Store
 .env.local
-front_end/.env.local
 .env.development.local
 .env.test.local
 .env.production.local
