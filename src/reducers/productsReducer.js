@@ -11,7 +11,6 @@ const productsReducer = (state = initialState, action) => {
   
     switch (action.type) {
         case "PRODUCTS/SETITEMS":
-            console.log("insdie reducer", action.payload.items);
             return {
                 ...state,
                 items: action.payload.items,
@@ -27,10 +26,7 @@ export const getProducts = () => async (
     getState
   ) => {
     try {
-
-      const BASE_URL = "https://callisto-server.netlify.app/";
-      // const url = "/api/products/getItems";
-      const url = "https://callisto-server.netlify.app" + "/.netlify/functions/api/products/getItems";
+      const url = BASE_URL + "/products/getItems";
       const res = await axios.get(url);
       const data = res.data;
   

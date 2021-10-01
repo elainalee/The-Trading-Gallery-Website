@@ -1,5 +1,7 @@
-// const BASE_URL = "https://.....";
+const NETLIFY_FUNCTIONS = ".netlify/functions/api";
 
-const BASE_URL = "http://192.168.1.66:3000";
+const BASE_URL = "https://callisto-server.netlify.app/" + NETLIFY_FUNCTIONS;
+
+// const BASE_URL = "http://192.168.1.66:3000" + NETLIFY_FUNCTIONS;
 
  export default BASE_URL;
