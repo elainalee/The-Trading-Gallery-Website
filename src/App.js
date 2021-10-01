@@ -11,8 +11,8 @@ import { AuthProvider } from './contexts/AuthContext';
 import NavBar from './components/NavBar/NavBar';
 import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
-import EnsureLogInRoute from './components/RoutesManager/EnsureLogInRoute';
-import EnsureLogOutRoute from './components/RoutesManager/EnsureLogOutRoute';
+import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
+import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
 import DessertsPage from './pages/MenuPages/DessertsPage';
 import TextilesPage from './pages/MenuPages/Textiles';
 import FoodPage from './pages/MenuPages/FoodPage';
@@ -37,18 +37,19 @@ function App() {
                     // style={{ minHeight: '100vh' }}
                   >
                     <div className="w-100" style={{ maxWidth: '400px' }}>
-                    <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
-                    <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
-                    <EnsureLogOutRoute path="/signUp" component={SignUp} />
-                    <EnsureLogOutRoute path="/logIn" component={LogIn} />
-                    <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
+                      <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
+                      <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
+                      <EnsureLogOutRoute path="/signUp" component={SignUp} />
+                      <EnsureLogOutRoute path="/logIn" component={LogIn} />
+                      <EnsureLogOutRoute path="/password-reset" component={PasswordReset} />
+                    </div>
                     <Route exact path="/" component={MainPage} />
                     <EnsureLogInRoute path="/carts" component={CartsPage} />
                     <Route path="/desserts" component={DessertsPage} />
                     <Route path="/textiles" component={TextilesPage} />
                     <Route path="/foods" component={FoodPage} />
                     <Route path="/other" component={OtherPage} />
-                    </div>
+                    
                   </Container>
             </AuthProvider>
           </Provider>

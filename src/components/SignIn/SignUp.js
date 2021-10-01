@@ -3,7 +3,7 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../buttons/CustomButton/CustomButton';
+import { CustomButton } from '../Buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 

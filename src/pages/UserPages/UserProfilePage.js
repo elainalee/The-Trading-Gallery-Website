@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Card, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { CustomButton } from '../../buttons/CustomButton/CustomButton';
+import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 import { getUser } from '../../reducers/userReducer';

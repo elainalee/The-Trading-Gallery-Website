@@ -4,7 +4,7 @@ import {
  Form, Button, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../buttons/CustomButton/CustomButton';
+import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 
