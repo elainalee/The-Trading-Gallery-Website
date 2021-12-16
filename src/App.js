@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignUpCard from './components/Cards/SignIn/SignUpCard';
-import LogInCard from './components/Cards/SignIn/LogInCard';
-import PasswordResetCard from './components/Cards/SignIn/PasswordResetCard';
+import SignUpPage from './pages/SignInPages/SignUpPage';
+import LogInPage from './pages/SignInPages/LogInPage';
+import PasswordResetPage from './pages/SignInPages/PasswordResetPage';
 import UpdateProfile from './pages/UserPages/UpdateProfile';
 import CartsPage from './pages/UserPages/CartsPage';
 import NavBar from './components/NavBar/NavBar';
@@ -54,9 +54,9 @@ function NavPages(props) {
         <div className="w-100" style={{ maxWidth: '400px' }}>
           <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
           <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
-          <EnsureLogOutRoute path="/signUp" component={SignUpCard} />
-          <EnsureLogOutRoute path="/logIn" component={LogInCard} />
-          <EnsureLogOutRoute path="/password-reset" component={PasswordResetCard} />
+          <EnsureLogOutRoute path="/signUp" component={SignUpPage} />
+          <EnsureLogOutRoute path="/logIn" component={LogInPage} />
+          <EnsureLogOutRoute path="/password-reset" component={PasswordResetPage} />
         </div>
         <Route exact path="/" component={MainPage} />
         <EnsureLogInRoute path="/carts" component={CartsPage} />

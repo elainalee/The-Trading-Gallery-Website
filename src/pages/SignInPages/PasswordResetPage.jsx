@@ -3,10 +3,11 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import './SignIn.css';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 
-export default function PasswordResetCard() {
+import '../../utils/globalStyles.css';
+
+export default function PasswordResetPage() {
     const emailRef = useRef();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);

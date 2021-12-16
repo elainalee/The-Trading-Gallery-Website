@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-import { IconButton } from '../Buttons/IconButton/IconButton';
+import { IconButton } from '../Buttons/IconButton';
 
 import './ProductCard.css';
 

@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react';
 import {
-    Form, Card, Alert, Button
+    Form, Card, Alert
 } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import './SignIn.css';
+import { Link } from 'react-router-dom';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { ERROR, SUCCESS } from '../../../utils/constants';
-import { logIn } from '../../../reducers/authReducer';
+import { SUCCESS } from '../../utils/constants';
+import { logIn } from '../../reducers/authReducer';
+
+import '../../utils/globalStyles.css';
 
 
-export default function LogInCard() {
+export default function LogInPage() {
     const state = useSelector((state) => state);
     const user = state.user;
 

@@ -3,13 +3,14 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import './SignIn.css';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 import { useDispatch } from 'react-redux';
-import { signUp } from '../../../reducers/authReducer';
-import { SUCCESS } from '../../../utils/constants';
+import { signUp } from '../../reducers/authReducer';
+import { SUCCESS } from '../../utils/constants';
 
-export default function SignUpCard() {
+import '../../utils/globalStyles.css';
+
+export default function SignUpPage() {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();

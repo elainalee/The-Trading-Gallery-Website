@@ -5,10 +5,11 @@ import {
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
-import './SignIn.css';
+
+import '../../utils/globalStyles.css';
 
 export default function UpdateProfile() {
     const emailRef = useRef();

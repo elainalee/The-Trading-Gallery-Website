@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Card, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
-import './SignIn.css';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 import { getUser } from '../../reducers/userReducer';
 import { logOut } from '../../reducers/authReducer';
+
+import '../../utils/globalStyles.css';
 
 export default function UserProfilePage() {
 

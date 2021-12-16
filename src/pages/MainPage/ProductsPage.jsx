@@ -4,7 +4,7 @@ import ProductCard from '../../components/Cards/ProductCard';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import './ProductsPage.css';
+import '../../utils/globalStyles.css';
 
 export default function ProductsPage({ products }) {
     return (

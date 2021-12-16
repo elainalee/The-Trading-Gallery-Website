@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { CustomButton } from './CustomButton/CustomButton';
-import { IconButton } from './IconButton/IconButton';
+import { CustomButton } from './CustomButton';
+import { IconButton } from './IconButton';
 
 export default function UserButton() {
     const state = useSelector((state) => state);
