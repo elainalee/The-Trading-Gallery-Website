@@ -6,7 +6,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../contexts/AuthContext';
 import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
 import './SignIn.css';
@@ -17,7 +16,6 @@ export default function UpdateProfile() {
     const lastNameRef = useRef();
     // const passwordRef = useRef();
     // const passwordConfirmRef = useRef();
-    // const { currentUser, currentUserUID, updateEmail, updatePassword } = useAuth();
 
 
     const state = useSelector((state) => state);

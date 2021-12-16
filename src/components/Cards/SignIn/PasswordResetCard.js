@@ -4,12 +4,10 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../../contexts/AuthContext';
 import './SignIn.css';
 
 export default function PasswordResetCard() {
     const emailRef = useRef();
-    const { resetPassword } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
@@ -20,8 +18,9 @@ export default function PasswordResetCard() {
         try {
             setError('');
             setLoading(true);
-            await resetPassword(emailRef.current.value);
-            setMessage('Check your inbox for further instructions');
+            // await resetPassword(emailRef.current.value);
+            // setMessage('Check your inbox for further instructions');
+            setMessage('This feature is not yet there. Please create an alternative account for further use.');
         } catch (msg) {
             setError(`${msg}`);
         }

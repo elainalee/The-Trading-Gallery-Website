@@ -4,7 +4,6 @@ import {
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../../contexts/AuthContext';
 import './SignIn.css';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../../reducers/authReducer';

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 import { getUser } from '../../reducers/userReducer';
 import { logOut } from '../../reducers/authReducer';
@@ -20,7 +19,6 @@ export default function UserProfilePage() {
     
     
     const [error, setError] = useState('');
-    // const { currentUser, logOut } = useAuth();
     const history = useHistory();
 
     async function handleLogOut() {

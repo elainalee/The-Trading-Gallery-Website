@@ -7,7 +7,6 @@ import LogInCard from './components/Cards/SignIn/LogInCard';
 import PasswordResetCard from './components/Cards/SignIn/PasswordResetCard';
 import UpdateProfile from './pages/UserPages/UpdateProfile';
 import CartsPage from './pages/UserPages/CartsPage';
-import { AuthProvider } from './contexts/AuthContext';
 import NavBar from './components/NavBar/NavBar';
 import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
@@ -46,7 +45,7 @@ function NavPages(props) {
   }, [])
 
   return (
-    <AuthProvider>
+    <div>
       <NavBar />
       <Container
         className="d-flex align-items-center justify-content-center"
@@ -67,7 +66,7 @@ function NavPages(props) {
         <Route path="/other" component={OtherPage} />
         
       </Container>
-    </AuthProvider>
+    </div>
   );
 }
 

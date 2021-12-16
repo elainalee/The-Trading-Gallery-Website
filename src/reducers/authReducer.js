@@ -75,8 +75,10 @@ export const logIn = (email, password) => async (dispatch, getState) => {
 }
 
 export const logOut = () => async (dispatch, getState) => {
-    // TODO: need to remove jwt
-    dispatch({ type: "HOME/LOGOUT" });
+    AsyncStorage.removeItem("jwt")
+        .then((status) => {
+            dispatch({ type: "HOME/LOGOUT" });
+        });
     
     return SUCCESS;
 }

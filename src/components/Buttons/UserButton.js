@@ -1,12 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
 import { CustomButton } from './CustomButton/CustomButton';
 import { IconButton } from './IconButton/IconButton';
 
 export default function UserButton() {
-    // const { currentUser } = useAuth();
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
 
