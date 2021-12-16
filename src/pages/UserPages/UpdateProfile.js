@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import {
  Form, Button, Card, Alert,
 } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton';
 import { useAuth } from '../../contexts/AuthContext';
@@ -12,36 +13,41 @@ export default function UpdateProfile() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { currentUser, currentUserUID, updateEmail, updatePassword } = useAuth();
+    // const { currentUser, currentUserUID, updateEmail, updatePassword } = useAuth();
+
+
+    const state = useSelector((state) => state);
+    const currentUser = state.user;
+
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
     // eslint-disable-next-line consistent-return
     function handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError('Passwords do not match');
-        }
-        // console.log(currentUserUID());
+        // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+        //     return setError('Passwords do not match');
+        // }
+        // // console.log(currentUserUID());
 
-        const promises = [];
-        setLoading(true);
-        setError('');
-        if (emailRef.current.value !== currentUser.email) {
-            promises.push(updateEmail(emailRef.current.value));
-        }
-        if (passwordRef.current.value) {
-            promises.push(updatePassword(passwordRef.current.value));
-        }
-        Promise.all(promises).then(() => {
-            history.push('/');
-        }).catch((msg) => {
-            setError(`${msg}`);
-        }).finally(() => {
-            setLoading(false);
-        });
+        // const promises = [];
+        // setLoading(true);
+        // setError('');
+        // if (emailRef.current.value !== currentUser.email) {
+        //     promises.push(updateEmail(emailRef.current.value));
+        // }
+        // if (passwordRef.current.value) {
+        //     promises.push(updatePassword(passwordRef.current.value));
+        // }
+        // Promise.all(promises).then(() => {
+        //     history.push('/');
+        // }).catch((msg) => {
+        //     setError(`${msg}`);
+        // }).finally(() => {
+        //     setLoading(false);
+        // });
     }
 
     function goToUserProfile() {

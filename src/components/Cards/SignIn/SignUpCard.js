@@ -11,28 +11,28 @@ export default function SignUpCard() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { signUp } = useAuth();
+    // const { signUp } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
     // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError('Passwords do not match');
-        }
+        // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+        //     return setError('Passwords do not match');
+        // }
 
-        try {
-            setError('');
-            setLoading(true);
-            await signUp(emailRef.current.value, passwordRef.current.value);
-            history.push('/');
-        } catch (msg) {
-            setError(`${msg}`);
-        }
-        setLoading(false);
+        // try {
+        //     setError('');
+        //     setLoading(true);
+        //     await signUp(emailRef.current.value, passwordRef.current.value);
+        //     history.push('/');
+        // } catch (msg) {
+        //     setError(`${msg}`);
+        // }
+        // setLoading(false);
     }
 
     return (

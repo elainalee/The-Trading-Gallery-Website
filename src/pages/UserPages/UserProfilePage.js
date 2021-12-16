@@ -8,28 +8,39 @@ import { CustomButton } from '../../components/Buttons/CustomButton/CustomButton
 import { useAuth } from '../../contexts/AuthContext';
 import './SignIn.css';
 import { getUser } from '../../reducers/userReducer';
+import { logOut } from '../../reducers/authReducer';
 
 export default function UserProfilePage() {
+
     const dispatch = useDispatch();
+
+    const state = useSelector((state) => state);
+    const currentUser = state.user.user;
+    console.log('--in UserProfilePage: ', currentUser);
+    
     
     const [error, setError] = useState('');
-    const { currentUser, logOut } = useAuth();
+    // const { currentUser, logOut } = useAuth();
     const history = useHistory();
 
     async function handleLogOut() {
 
         setError('');
-        try {
-            await logOut();
-            history.pushState('/logIn');
-        } catch {
-            setError('Failed to log out');
-        }
+        dispatch(logOut()).then((res) => {
+            history.push('/logIn');
+        })
+        // try {
+        //     await logOut();
+        //     history.pushState('/logIn');
+        // } catch {
+        //     setError('Failed to log out');
+        // }
     }
 
     function goToUpdateProfile() {
         history.push('/update-profile');
     }
+    
 
     return (
         <>

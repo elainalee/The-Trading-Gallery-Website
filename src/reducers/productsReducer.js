@@ -4,7 +4,7 @@ import { SUCCESS } from "../utils/constants"
 
 
 const initialState = {
-  items: null,
+  items: undefined,
 }
 
 const productsReducer = (state = initialState, action) => {

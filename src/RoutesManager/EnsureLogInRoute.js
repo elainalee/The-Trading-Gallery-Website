@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { getUser } from '../reducers/userReducer';
 
 export default function EnsureLogInRoute({ component: Component, ...rest }) {
-    const { currentUser } = useAuth();
+    // const { currentUser } = useAuth();
+    const state = useSelector((state) => state);
+    const currentUser = state.user.user;
+    console.log("=====in EnsureLogInroute: ", currentUser);
+    
 
     return (
         <Route
