@@ -10,8 +10,8 @@ export default function ProductsPage({ products }) {
     return (
         <main>
             <Row xs={1} md={2} lg={4} className="g-4">
-                {products?.map((product) => (
-                    <Col key={product.id}>
+                {products?.map((product, index) => (
+                    <Col key={index}>
                         <ProductCard product={product} />
                     </Col>
                 ))}

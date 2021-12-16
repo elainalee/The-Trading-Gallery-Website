@@ -48,8 +48,14 @@ export default function UserProfilePage() {
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <strong>Email: </strong>
-                    {currentUser.email}
+                    <div>
+                        <strong>Name: </strong>
+                        {currentUser.firstName + " " + currentUser.lastName}
+                    </div>
+                    <div>
+                        <strong>Email: </strong>
+                        {currentUser.email}
+                    </div>
                     <CustomButton buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="userprofile" marginTop="10px" onClick={goToUpdateProfile}>Update Profile</CustomButton>
                 </Card.Body>
             </Card>

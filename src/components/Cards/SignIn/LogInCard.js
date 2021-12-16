@@ -22,34 +22,9 @@ export default function LogInCard() {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { logInFB } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
 
-    // async function handleSubmit(e) {
-    //     e.preventDefault();
-
-    //     try {
-    //         setError('');
-    //         setLoading(true);
-    //         await logInFB(emailRef.current.value, passwordRef.current.value);
-    //         history.push('/');
-    //     } catch (msg) {
-    //         setError(`${msg}`);
-    //     }
-    //     setLoading(false);
-    // }
-
-    async function thisExample() {
-        console.log("clicked");
-        dispatch(logIn("ex1", "1111")).then((res) => {
-            if (res === ERROR) {
-                console.log("error logging in.")
-            }
-        });
-
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -61,7 +36,7 @@ export default function LogInCard() {
             .then((res) => {
             if (res === SUCCESS) {
                 console.log("signed in");
-                history.push('/');
+                window.location.href = '/';
             } else {
                 console.log("error logging in.")
             }
@@ -71,10 +46,6 @@ export default function LogInCard() {
 
     return (
         <>
-        <div>{user.email}</div>
-        <button onClick={thisExample}>
-            BUTTTTTTTTON
-        </button>
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Log In</h2>

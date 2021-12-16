@@ -84,8 +84,11 @@ export const logOut = () => async (dispatch, getState) => {
 export const signUp = (userInfo) => async (dispatch, getState) => {
     try {
         // TODO: backend ready, needs to verify connection
-        const url = BASE_URL + "home/signup";
-        const payload = userInfo;
+        const url = BASE_URL + "/home/signup";
+
+        const payload = {
+            ...userInfo
+        }
 
         await AsyncStorage.setItem("email", userInfo.email);
 

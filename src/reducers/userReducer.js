@@ -46,7 +46,41 @@ export const getUser = () => async (
       console.log("getUser err :>> ", err.message);
       return err.message;
     }
-  };
+};
+
+export const updateUser = (userInfo) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    console.log("==== in updateUser");
+    const url = BASE_URL + "/users/updateUser";
+
+    const payload = {
+      ...userInfo
+    };
+
+    console.log("payload ", payload);
+
+    const res = await client.post(url, payload);
+    const data = res.data;
+
+    console.log("==== in updateUser, data is: ", data);
+
+    dispatch({
+      type: "USER/SETUSER",
+      payload: {
+        user: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("updateUser err :>> ", err.message);
+    return err.message;
+  }
+};
 
 
 
