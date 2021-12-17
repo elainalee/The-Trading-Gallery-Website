@@ -57,6 +57,31 @@ export default function MainPage() {
                 }
             </div>
 
+            <div className="discoverMakeup">
+                <div className="discover">
+                    <div className="left">
+                        <p className="title">Discover your softest skin yet.</p>
+                        <p className="description">Our cream is packed with aloe vera and hyaluronic acid to get your skin softer than you ever thought possible.</p>
+                    </div>
+                    <div className="right">
+                        <img className="cream-image" src={creamImage} />
+                    </div>
+
+                </div>
+
+                <div className="makeup">
+                    <div className="left">
+                        <img className="makeup-image" src={makeupsImage} />
+                    </div>
+                    <div className="right">
+                        <p className="title">K-beauty with a purpose.</p>
+                        <p className="description">Natural and harsh-free ingredients to create the clear, glowy, and natural-looking skin</p>
+
+                    </div>
+
+                </div>
+            </div>
+
             <div className="moreAbout">
                 <div className="title">A Little About Our Products</div>
 
