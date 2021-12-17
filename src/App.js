@@ -11,10 +11,9 @@ import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
-import DessertsPage from './pages/MenuPages/DessertsPage';
-import TextilesPage from './pages/MenuPages/Textiles';
-import FoodPage from './pages/MenuPages/FoodPage';
-import OtherPage from './pages/MenuPages/OtherPage';
+import ShopPage from './pages/MenuPages/ShopPage';
+import BlogPage from './pages/MenuPages/ContactPage';
+import FoodPage from './pages/MenuPages/AboutPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
@@ -23,6 +22,8 @@ import { getUser } from './reducers/userReducer';
 
 import './App.css';
 import "./utils/globalStyles.css";
+import AboutPage from './pages/MenuPages/AboutPage';
+import ContactPage from './pages/MenuPages/ContactPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -47,7 +48,7 @@ function NavPages(props) {
   }, [])
 
   return (
-    <div>
+    <div className="largePage">
       <NavBar />
       {/* <Container
         className="d-flex align-items-center justify-content-center"
@@ -62,10 +63,10 @@ function NavPages(props) {
         </div>
         <Route exact path="/" component={MainPage} />
         <EnsureLogInRoute path="/carts" component={CartsPage} />
-        <Route path="/desserts" component={DessertsPage} />
-        <Route path="/textiles" component={TextilesPage} />
-        <Route path="/foods" component={FoodPage} />
-        <Route path="/other" component={OtherPage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route path="/blog" component={BlogPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/contact" component={ContactPage} />
         
       {/* </Container> */}
     </div>

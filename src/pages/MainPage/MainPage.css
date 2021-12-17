@@ -10,10 +10,6 @@
     aspect-ratio: 6720 / 4480;
 }
 
-.largePage .marginLeft {
-    margin-left: 80px;
-}
-
 .largePage .mainImage .title {
     font-style: normal;
     font-weight: normal;

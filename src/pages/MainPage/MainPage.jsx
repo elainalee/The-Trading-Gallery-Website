@@ -37,7 +37,7 @@ export default function MainPage() {
     }, []);
 
     return (
-        <div className="largePage">
+        <div className="mainPage">
             <div className="mainImage">
                 <div className="marginLeft">
                     <div className="title">Nutrient-rich formulas for every skin type</div>

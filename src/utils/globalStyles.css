@@ -17,3 +17,7 @@
 .links:hover {
     color: #000000;
 }
+
+.largePage .marginLeft {
+    margin-left: 80px;
+}
