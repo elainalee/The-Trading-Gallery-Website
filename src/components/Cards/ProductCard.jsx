@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 import { IconButton } from '../Buttons/IconButton';
 
-import './ProductCard.css';
+import '../../utils/globalStyles.css';
 
 export default function ProductCard({ product }) {
 

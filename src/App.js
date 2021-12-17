@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignUpPage from './pages/SignInPages/SignUpPage';
@@ -21,6 +20,9 @@ import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
 import rootReducer from './reducers/rootReducer';
 import { getUser } from './reducers/userReducer';
+
+import './App.css';
+import "./utils/globalStyles.css";
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -47,10 +49,10 @@ function NavPages(props) {
   return (
     <div>
       <NavBar />
-      <Container
+      {/* <Container
         className="d-flex align-items-center justify-content-center"
-        // style={{ minHeight: '100vh' }}
-      >
+        style={{ minHeight: '100vh' }}
+      > */}
         <div className="w-100" style={{ maxWidth: '400px' }}>
           <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
           <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
@@ -65,7 +67,7 @@ function NavPages(props) {
         <Route path="/foods" component={FoodPage} />
         <Route path="/other" component={OtherPage} />
         
-      </Container>
+      {/* </Container> */}
     </div>
   );
 }
