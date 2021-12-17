@@ -1,19 +1,17 @@
 import React, { useRef, useState } from 'react';
 import {
-    Form, Card, Alert,
+ Form, Card, Alert,
 } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../../contexts/AuthContext';
-import './SignIn.css';
+import { Link } from 'react-router-dom';
+import { CustomButton } from '../../components/Buttons/CustomButton';
 
-export default function LogInCard() {
+import '../../utils/globalStyles.css';
+
+export default function PasswordResetPage() {
     const emailRef = useRef();
-    const passwordRef = useRef();
-    const { logIn } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
+    const [message, setMessage] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -21,8 +19,9 @@ export default function LogInCard() {
         try {
             setError('');
             setLoading(true);
-            await logIn(emailRef.current.value, passwordRef.current.value);
-            history.push('/');
+            // await resetPassword(emailRef.current.value);
+            // setMessage('Check your inbox for further instructions');
+            setMessage('This feature is not yet there. Please create an alternative account for further use.');
         } catch (msg) {
             setError(`${msg}`);
         }
@@ -33,21 +32,18 @@ export default function LogInCard() {
         <>
           <Card>
               <Card.Body>
-                  <h2 className="text-center mb-4">Log In</h2>
+                  <h2 className="text-center mb-4">Password Reset</h2>
                   {error && <Alert variant="danger">{error}</Alert>}
+                  {message && <Alert variant="success">{message}</Alert>}
                   <Form onSubmit={handleSubmit}>
                       <Form.Group id="email">
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />
                       </Form.Group>
-                      <Form.Group id="password">
-                          <Form.Label>Password</Form.Label>
-                          <Form.Control type="password" ref={passwordRef} required />
-                      </Form.Group>
-                    <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="login" marginTop="4px">Log In</CustomButton>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="resetpw" marginTop="4px">Reset Password</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
-                      <Link to="/password-reset" className="links">Forgot password?</Link>
+                      <Link to="/logIn" className="links">Log in</Link>
                   </div>
               </Card.Body>
           </Card>

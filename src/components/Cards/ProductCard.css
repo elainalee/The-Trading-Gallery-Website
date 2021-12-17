@@ -1,9 +1,4 @@
-:root {
-    --primary-color: #5c5959;
-    --primary-pink: #f1a9aa;
-    --primary-orange: #fcc7a7;
-    --primary-blue: #88c0db;
-    --primary-purple: #b09cb9;
-    --primary-magenta: #cd99b0;
-  }
-
+.product-card .image {
+    height: 200px;
+    width: 100px;
+}

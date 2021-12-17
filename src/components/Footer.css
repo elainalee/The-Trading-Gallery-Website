@@ -1,0 +1,43 @@
+.footer {
+    background-color: var(--primary-dark);
+    color: white;
+    font-size: 16px;
+}
+
+.largePage .footer {
+    padding: 45px;
+    height: 350px;
+}
+
+.largePage .footer .title {
+    font-weight: bold;
+}
+
+.largePage .footer .link {
+    text-decoration: underline;
+}
+
+.largePage .footer .companyDescription {
+    width: 50%;
+    float: left;
+}
+
+.largePage .footer .footerAbout {
+    width: 50%;
+    float: right;
+
+    display: flex;
+    flex-direction:row;
+}
+
+.footerAbout .eolma {
+    flex: 1;
+}
+
+.footerAbout .info {
+    flex: 1;
+}
+
+.footerAbout .social {
+    flex: 1;
+}

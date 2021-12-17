@@ -3,18 +3,25 @@ import {
  Form, Card, Alert,
 } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import { CustomButton } from '../../Buttons/CustomButton/CustomButton';
-import { useAuth } from '../../../contexts/AuthContext';
-import './SignIn.css';
+import { CustomButton } from '../../components/Buttons/CustomButton';
+import { useDispatch } from 'react-redux';
+import { signUp } from '../../reducers/authReducer';
+import { SUCCESS } from '../../utils/constants';
 
-export default function SignUpCard() {
+import '../../utils/globalStyles.css';
+
+export default function SignUpPage() {
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { signUp } = useAuth();
+
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
+
+    const dispatch = useDispatch();
 
     // eslint-disable-next-line consistent-return
     async function handleSubmit(e) {
@@ -24,15 +31,38 @@ export default function SignUpCard() {
             return setError('Passwords do not match');
         }
 
-        try {
-            setError('');
-            setLoading(true);
-            await signUp(emailRef.current.value, passwordRef.current.value);
-            history.push('/');
-        } catch (msg) {
-            setError(`${msg}`);
+        setError('');
+        setLoading(true);
+
+        const userInfo = {
+            firstName: firstNameRef.current.value,
+            lastName: lastNameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
         }
-        setLoading(false);
+
+        dispatch(signUp(userInfo))
+            .then((res) => {
+                if (res === SUCCESS) {
+                    console.log("registered user");
+                    history.push('/');
+                } else {
+                    console.log("error logging in.")
+                }
+                setLoading(false);
+            });
+
+
+
+        // try {
+        //     setError('');
+        //     setLoading(true);
+        //     await signUp(emailRef.current.value, passwordRef.current.value);
+        //     history.push('/');
+        // } catch (msg) {
+        //     setError(`${msg}`);
+        // }
+        // setLoading(false);
     }
 
     return (
@@ -42,6 +72,14 @@ export default function SignUpCard() {
                   <h2 className="text-center mb-4">Sign Up</h2>
                   {error && <Alert variant="danger">{error}</Alert>}
                   <Form onSubmit={handleSubmit}>
+                      <Form.Group id="first-name">
+                          <Form.Label>First Name</Form.Label>
+                          <Form.Control type="text" ref={firstNameRef} required />
+                      </Form.Group>
+                      <Form.Group id="last-name">
+                          <Form.Label>Last Name</Form.Label>
+                          <Form.Control type="text" ref={lastNameRef} required />
+                      </Form.Group>
                       <Form.Group id="email">
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />

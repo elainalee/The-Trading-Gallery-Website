@@ -1,5 +1,7 @@
 :root {
     --primary-color: #5c5959;
+    --primary-light: #00000020;
+    --primary-dark: #5c5959;
     --primary-pink: #f1a9aa;
     --primary-orange: #fcc7a7;
     --primary-blue: #88c0db;
@@ -14,4 +16,8 @@
 
 .links:hover {
     color: #000000;
+}
+
+.largePage .marginLeft {
+    margin-left: 80px;
 }
