@@ -10,6 +10,7 @@ import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import '../../utils/globalStyles.css';
+import { ProfileRoute } from '../../utils/routes';
 
 export default function UpdateProfile() {
     const emailRef = useRef();
@@ -53,32 +54,14 @@ export default function UpdateProfile() {
                     setError(res);
                 }
             });
-        
-
-        // const promises = [];
-        // setLoading(true);
-        // setError('');
-        // if (emailRef.current.value !== currentUser.email) {
-        //     promises.push(updateEmail(emailRef.current.value));
-        // }
-        // if (passwordRef.current.value) {
-        //     promises.push(updatePassword(passwordRef.current.value));
-        // }
-        // Promise.all(promises).then(() => {
-        //     history.push('/');
-        // }).catch((msg) => {
-        //     setError(`${msg}`);
-        // }).finally(() => {
-        //     setLoading(false);
-        // });
     }
 
     function goToUserProfile() {
-        history.push('/profile-page');
+        history.push(ProfileRoute);
     }
 
     return (
-        <>
+        <div className="userPages">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Update Profile</h2>
@@ -111,6 +94,6 @@ export default function UpdateProfile() {
           <div className="w-100 text-center mt-2 links">
               <CustomButton buttonStyle="btn--link" onClick={goToUserProfile} marginTop="10px">Cancel</CustomButton>
           </div>
-        </>
+        </div>
     );
 }

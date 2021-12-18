@@ -40,6 +40,8 @@ export const getUser = () => async (
         },
       });
 
+      dispatch({ type: "AUTH/LOGIN" });
+
       return SUCCESS;
   
     } catch (err) {

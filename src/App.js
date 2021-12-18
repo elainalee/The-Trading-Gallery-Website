@@ -11,9 +11,9 @@ import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
-import ShopPage from './pages/MenuPages/ShopPage';
-import BlogPage from './pages/MenuPages/ContactPage';
-import FoodPage from './pages/MenuPages/AboutPage';
+import ShopPage from './pages/UlmaPages/ShopPage';
+import BlogPage from './pages/UlmaPages/ContactPage';
+import FoodPage from './pages/UlmaPages/AboutPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
@@ -22,8 +22,12 @@ import { getUser } from './reducers/userReducer';
 
 import './App.css';
 import "./utils/globalStyles.css";
-import AboutPage from './pages/MenuPages/AboutPage';
-import ContactPage from './pages/MenuPages/ContactPage';
+import AboutPage from './pages/UlmaPages/AboutPage';
+import ContactPage from './pages/UlmaPages/ContactPage';
+import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
+import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
+import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
+import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -45,30 +49,39 @@ function NavPages(props) {
 
   useEffect(() => {
       dispatch(getUser());
-  }, [])
+  }, []);
 
   return (
     <div className="largePage">
       <NavBar />
-      {/* <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: '100vh' }}
-      > */}
+      <Route exact path={MainPageRoute} component={MainPage} />
+      <EnsureLogInRoute path={CartsPageRoute} component={CartsPage} />
+
+      {/* User Pages */}
+      <Container
+        className="d-flex justify-content-center"
+        // style={{ minHeight: '100vh' }}
+      >
         <div className="w-100" style={{ maxWidth: '400px' }}>
-          <EnsureLogInRoute path="/profile-page" component={UserProfilePage} />
-          <EnsureLogInRoute path="/update-profile" component={UpdateProfile} />
-          <EnsureLogOutRoute path="/signUp" component={SignUpPage} />
-          <EnsureLogOutRoute path="/logIn" component={LogInPage} />
-          <EnsureLogOutRoute path="/password-reset" component={PasswordResetPage} />
+          <EnsureLogInRoute path={ProfileRoute} component={UserProfilePage} />
+          <EnsureLogInRoute path={UpdateProfileRoute} component={UpdateProfile} />
+          <EnsureLogOutRoute path={SignUpRoute} component={SignUpPage} />
+          <EnsureLogOutRoute path={LogInRoute} component={LogInPage} />
+          <EnsureLogOutRoute path={PasswordResetRoute} component={PasswordResetPage} />
         </div>
-        <Route exact path="/" component={MainPage} />
-        <EnsureLogInRoute path="/carts" component={CartsPage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route path="/blog" component={BlogPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/contact" component={ContactPage} />
+      </Container>
         
-      {/* </Container> */}
+      {/* Ulma Pages */}
+      <Route path={ShopPageRoute} component={ShopPage} />
+      <Route path={BlogPageRoute} component={BlogPage} />
+      <Route path={AboutPageRoute} component={AboutPage} />
+      <Route path={ContactPageRoute} component={ContactPage} />
+
+      {/* Info Pages */}
+      <Route path={ShippingReturnPageRoute} component={ShippingReturnPage} />
+      <Route path={TermsOfUsePageRoute} component={TermsOfUsePage} />
+      <Route path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
+      
     </div>
   );
 }

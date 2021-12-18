@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { LogInRoute, ProfileRoute } from '../../utils/routes';
 import { CustomButton } from './CustomButton';
 import { IconButton } from './IconButton';
 
@@ -11,11 +12,11 @@ export default function UserButton() {
     const history = useHistory();
 
     function goToLogIn() {
-        history.push('/logIn');
+        history.push(LogInRoute);
     }
 
     function goToUserProfile() {
-        history.push('/profile-page');
+        history.push(ProfileRoute);
     }
 
     return (

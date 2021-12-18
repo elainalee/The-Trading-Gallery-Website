@@ -21,3 +21,23 @@
 .largePage .marginLeft {
     margin-left: 80px;
 }
+
+.largePage .marginHorizontal {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.largePage .marginTop {
+    margin-top: 35px;
+}
+
+.userPages {
+    /* d-flex  */
+    /* align-items: center;
+    align-self: center;
+    align-content: center;
+    justify-self: center;
+    justify-content: center;*/
+    min-height: '100vh';
+    margin-top: 35px;
+}

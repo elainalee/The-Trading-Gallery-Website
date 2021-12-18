@@ -9,6 +9,7 @@ import { signUp } from '../../reducers/authReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import '../../utils/globalStyles.css';
+import { LogInRoute } from '../../utils/routes';
 
 export default function SignUpPage() {
     const firstNameRef = useRef();
@@ -66,7 +67,7 @@ export default function SignUpPage() {
     }
 
     return (
-        <>
+        <div className="userPages">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Sign Up</h2>
@@ -99,8 +100,8 @@ export default function SignUpPage() {
           <div className="w-100 text-center mt-2">
               Already have an account?
               {' '}
-              <Link to="/logIn" className="links">Log In</Link>
+              <Link to={LogInRoute}className="links">Log In</Link>
           </div>
-        </>
+        </div>
     );
 }

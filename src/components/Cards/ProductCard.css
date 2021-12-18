@@ -1,4 +1,8 @@
-.product-card .image {
-    height: 200px;
-    width: 100px;
+.productCard .image {
+    height: 10%;
+    aspect-ratio: 5000 / 6000;
+}
+
+.productCard .cardDescription {
+    height: 130px;
 }

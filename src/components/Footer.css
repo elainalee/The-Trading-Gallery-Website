@@ -4,6 +4,10 @@
     font-size: 16px;
 }
 
+.footer .link {
+    color: white;
+}
+
 .largePage .footer {
     padding: 45px;
     height: 350px;

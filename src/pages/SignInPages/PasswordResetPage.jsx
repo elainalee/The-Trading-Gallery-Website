@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton';
 
 import '../../utils/globalStyles.css';
+import { LogInRoute, SignUpRoute } from '../../utils/routes';
 
 export default function PasswordResetPage() {
     const emailRef = useRef();
@@ -29,7 +30,7 @@ export default function PasswordResetPage() {
     }
 
     return (
-        <>
+        <div className="userPages">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Password Reset</h2>
@@ -43,15 +44,15 @@ export default function PasswordResetPage() {
                       <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="resetpw" marginTop="4px">Reset Password</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
-                      <Link to="/logIn" className="links">Log in</Link>
+                      <Link to={LogInRoute} className="links">Log in</Link>
                   </div>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
               Need an account?
               {' '}
-              <Link to="/signUp" className="links">Sign Up</Link>
+              <Link to={SignUpRoute} className="links">Sign Up</Link>
           </div>
-        </>
+        </div>
     );
 }

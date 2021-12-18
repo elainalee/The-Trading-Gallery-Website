@@ -1,22 +1,24 @@
+import { AboutPageRoute, BlogPageRoute, ContactPageRoute, ShopPageRoute } from "../../utils/routes";
+
 export const MenuItems = [
     {
         title: 'Shop',
-        url: '/shop',
+        url: ShopPageRoute,
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'Blog',
-        url: '/blog',
+        url: BlogPageRoute,
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'About',
-        url: '/about',
+        url: AboutPageRoute,
         cName: 'nav-bottom-menu-item',
     },
     {
         title: 'Contact',
-        url: '/contact',
+        url: ContactPageRoute,
         cName: 'nav-bottom-menu-item',
     },
 ];

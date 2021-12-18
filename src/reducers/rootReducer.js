@@ -13,6 +13,7 @@ const rootReducer = (state, action) => {
     if (action.type === "HOME/LOGOUT") {
         state.auth = undefined;
         state.user = undefined;
+
     }
 
     return appReducer(state, action);

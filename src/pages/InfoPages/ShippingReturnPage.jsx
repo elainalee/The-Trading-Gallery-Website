@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function ShopPage() {
+export default function ShippingReturnPage() {
     return (
         <div className="marginLeft">
-            ShopPage Placeholder
+            ShippingReturnPage page Placeholder
         </div>
     );
 }

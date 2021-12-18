@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { Card, Alert } from 'react-bootstrap';
+import { Card, Container, Alert } from 'react-bootstrap';
+
+// import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton';
 import { getUser } from '../../reducers/userReducer';
 import { logOut } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
+import { LogInRoute, UpdateProfileRoute } from '../../utils/routes';
 
 export default function UserProfilePage() {
 
@@ -16,7 +19,7 @@ export default function UserProfilePage() {
 
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
-    console.log('--in UserProfilePage: ', currentUser);
+    // console.log('--in UserProfilePage: ', currentUser);
     
     
     const [error, setError] = useState('');
@@ -26,7 +29,7 @@ export default function UserProfilePage() {
 
         setError('');
         dispatch(logOut()).then((res) => {
-            history.push('/logIn');
+            history.push(LogInRoute);
         })
         // try {
         //     await logOut();
@@ -37,12 +40,12 @@ export default function UserProfilePage() {
     }
 
     function goToUpdateProfile() {
-        history.push('/update-profile');
+        history.push(UpdateProfileRoute);
     }
     
 
     return (
-        <>
+        <div className="userPages">
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
@@ -61,6 +64,6 @@ export default function UserProfilePage() {
             <div className="w-100 text-center mt-2 links">
                 <CustomButton buttonStyle="btn--link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
             </div>
-        </>
+        </div>
     );
 }

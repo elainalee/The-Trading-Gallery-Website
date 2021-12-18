@@ -4,7 +4,7 @@ import '../../utils/globalStyles.css';
 
 export default function CartsPage() {
     return (
-        <div>
+        <div className="marginHorizontal marginTop">
             Carts Page
         </div>
     );

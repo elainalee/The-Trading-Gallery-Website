@@ -12,12 +12,21 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
+    console.log("before swtich statement");
+    console.log(action.type);
     switch (action.type) {
         case "AUTH/LOGIN":
+            console.log("in logIN switch case");
             return {
                 ...state,
                 loggedIn: true,
-            }
+        }
+
+        case "AUTH/LOGOUT":
+            return {
+                ...state,
+                loggedIn: false,
+        }
 
         default:
             return state;
@@ -63,6 +72,8 @@ export const logIn = (email, password) => async (dispatch, getState) => {
 
         await AsyncStorage.setItem("jwt", data.jwt);
         await AsyncStorage.setItem("email", email);
+
+        console.log("in logIn----- before doing dispatch");
 
 
         dispatch({ type: "AUTH/LOGIN" });

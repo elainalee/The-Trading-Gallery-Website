@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
-import ProductsPage from './ProductsPage';
 import LoadingBox from '../../components/Utils/LoadingBox';
 import MessageBox from '../../components/Utils/MessageBox';
 import { getBestSellers } from '../../reducers/productsReducer';
@@ -15,6 +14,7 @@ import makeupsImage from "../../assets/makeups.jpg";
 import "./MainPage.css"
 import "../../utils/globalStyles.css";
 import Footer from '../../components/Footer';
+import ProductsRow from '../../components/Rows/ProductsRow';
 
 
 export default function MainPage() {
@@ -53,7 +53,7 @@ export default function MainPage() {
                     ? <LoadingBox />
                     : error
                         ? <MessageBox>{error}</MessageBox>
-                        : <ProductsPage products = {bestSellers} />
+                        : <ProductsRow products = {bestSellers} />
                 }
             </div>
 
@@ -75,7 +75,7 @@ export default function MainPage() {
                     </div>
                     <div className="right">
                         <p className="title">K-beauty with a purpose.</p>
-                        <p className="description">Natural and harsh-free ingredients to create the clear, glowy, and natural-looking skin</p>
+                        <p className="description">Natural and harsh-free ingredients to create the clear, glowy, and natural-looking skin.</p>
 
                     </div>
 
@@ -88,17 +88,17 @@ export default function MainPage() {
                 <div className="explanations">
                     <div className="first">
                         <p className="subTitle">Safe Formulas</p>
-                        <p className="description">We make sure everything we sell is ...</p>
+                        <p className="description">We make sure everything we sell is high quality and gentle on the skin.</p>
                     </div>
 
                     <div className="second">
                         <p className="subTitle">Highly Effective</p>
-                        <p className="description">Our skin care products have been created and tested by us to get you noticeable results ...</p>
+                        <p className="description">Our skin care products have been created and tested by us to get you noticeable results.</p>
                     </div>
 
                     <div className="third">
                         <p className="subTitle">Ethically Sourced</p>
-                        <p className="description">You can sleep easy knowing we only use ethically sourced natural raw materials</p>
+                        <p className="description">You can sleep easy knowing we only use ethically sourced natural raw materials.</p>
                         
                     </div>
                 </div>

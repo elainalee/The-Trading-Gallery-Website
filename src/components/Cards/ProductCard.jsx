@@ -8,12 +8,6 @@ import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
 
-    // return (
-    //     <div className="product-card">
-    //         <img className="image" src={product.mainImage} alt="product-image" />
-    //     </div>
-    // )
-
     return (
         <Card className="productCard">
             <Card.Img 
@@ -21,7 +15,7 @@ export default function ProductCard({ product }) {
                 variant="top" 
                 src={product.mainImage} 
                 alt="product-image" />
-            <Card.Body>
+            <Card.Body className="cardDescription">
                 <Card.Title>{product.title}</Card.Title>
                 <Card.Subtitle>{product.description}</Card.Subtitle>
                 <Card.Text>{"$" + product.price}</Card.Text>

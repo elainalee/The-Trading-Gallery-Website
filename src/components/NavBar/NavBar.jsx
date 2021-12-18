@@ -1,13 +1,21 @@
-import React, { Component, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component, useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import { IconButton } from '../Buttons/IconButton';
 import logoName from '../../callisto_font_black.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
+import { useDispatch } from 'react-redux';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { getUser } from '../../reducers/userReducer';
+import { CartsPageRoute, MainPageRoute } from '../../utils/routes';
+
 
 function NavBar() {
+    const history = useHistory();
+    
     const [menuClicked, setMenuClicked] = useState(false);
 
     const handleMenuClick = () => {
@@ -15,15 +23,15 @@ function NavBar() {
     }
 
     const handleLogoClick = () => {
-        window.location.href = '/';
+        window.location.href = MainPageRoute;
     }
 
     const handleCartsClick = () => {
-        this.props.history.push('/carts');
+        history.push(CartsPageRoute);
     }
 
     return (
-        <>
+        <div>
             <nav className="NavBar-Top">
                 <div className="navBar-logo" onClick={handleLogoClick}>
                     <img src={logoName} className="navBar-logo-name" alt="logo-name" />
@@ -50,7 +58,7 @@ function NavBar() {
                         ))}
                 </ul>
             </nav>
-        </>
+        </div>
     );
 }
 

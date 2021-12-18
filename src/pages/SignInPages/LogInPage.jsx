@@ -9,6 +9,7 @@ import { SUCCESS } from '../../utils/constants';
 import { logIn } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
+import { PasswordResetRoute, SignUpRoute } from '../../utils/routes';
 
 
 export default function LogInPage() {
@@ -45,7 +46,7 @@ export default function LogInPage() {
     }
 
     return (
-        <>
+        <div className="userPages">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Log In</h2>
@@ -62,15 +63,15 @@ export default function LogInPage() {
                     <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="loginFB" marginTop="4px">Log In</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
-                      <Link to="/password-reset" className="links">Forgot password?</Link>
+                      <Link to={PasswordResetRoute} className="links">Forgot password?</Link>
                   </div>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
               Need an account?
               {' '}
-              <Link to="/signUp" className="links">Sign Up</Link>
+              <Link to={SignUpRoute} className="links">Sign Up</Link>
           </div>
-        </>
+        </div>
     );
 }
