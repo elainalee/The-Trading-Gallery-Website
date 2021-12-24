@@ -46,7 +46,7 @@ export default function MainPage() {
                 </div>
             </div>
 
-            <div className="bestSeller">
+            <div className="bestSeller marginHorizontal">
                 <div className="title">Shop Our Best Sellers</div>
 
                 {loading

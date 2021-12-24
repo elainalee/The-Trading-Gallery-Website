@@ -1,6 +1,6 @@
 /* mainImage section */
 
-.largePage .mainImage {
+.mainImage {
     background: url(/src/assets/homepage.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -10,7 +10,7 @@
     aspect-ratio: 6720 / 4480;
 }
 
-.largePage .mainImage .title {
+.mainImage .title {
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -20,7 +20,7 @@
     color: black;
 }
 
-.largePage .mainImage .subTitle {
+.mainImage .subTitle {
     font-family: Verdana;
     font-style: normal;
     font-weight: normal;
@@ -33,9 +33,8 @@
 
 /* bestSeller section */
 
-.largePage .bestSeller {
+.bestSeller {
     background-color: white;
-    margin: 0px 80px 0px 80px;
 }
 
 .bestSeller .title {
@@ -49,17 +48,17 @@
 
 /* discoverMakeup section */
 
-.largePage .discoverMakeup {
+.discoverMakeup {
     width: 100%
 }
 
-.largePage .discoverMakeup .title {
+.discoverMakeup .title {
     font-size: 35px;
     line-height: 47px;
     font-weight: bold;
 }
 
-.largePage .discoverMakeup .description {
+.discoverMakeup .description {
     font-size: 18px;
     line-height: 30px;
 }
@@ -67,7 +66,7 @@
 
 /* discover section */
 
-.largePage .discover {
+.discover {
     height: 400px;
 
     padding-left: 25%;
@@ -75,26 +74,30 @@
     margin-top: 12%;
 }
 
-.largePage .discover .left {
+.discover .left {
     float: left;
     width: 50%;
+
+    /* background-color: pink; */
 }
 
-.largePage .discover .left .title {
+.discover .left .title {
     width: 70%;
 }
 
-.largePage .discover .left .description {
+.discover .left .description {
     width: 70%;
     margin-top: 20px;
 }
 
-.largePage .discover .right{
+.discover .right{
     float: right;
     width: 50%;
+
+    /* background-color: aquamarine; */
 }
 
-.largePage .discover .cream-image {
+.discover .cream-image {
     width: 350px;
     height: 320px;
 }
@@ -102,7 +105,7 @@
 
 /* makeup section */
 
-.largePage .makeup {
+.makeup {
     height: 400px;
 
     padding-left: 10%;
@@ -110,33 +113,33 @@
     margin-top: 10%;
 }
 
-.largePage .makeup .left {
+.makeup .left {
     float: left;
     width: 50%;
 }
 
-.largePage .makeup .makeup-image {
+.makeup .makeup-image {
     width: 450px;
     height: 350px;
 }
 
-.largePage .makeup .right{
+.makeup .right{
     float: right;
     width: 50%;
 }
 
-.largePage .makeup .right .title {
+.makeup .right .title {
     width: 50%;
 }
 
-.largePage .makeup .right .description {
+.makeup .right .description {
     margin-top: 14px;
     width: 50%;
 }
 
 /* moreAbout section */
 
-.largePage .moreAbout {
+.moreAbout {
     background-color: var(--primary-light);
 
     margin-top: 10%;
@@ -183,7 +186,7 @@
 
 /* exclusive section */
 
-.largePage .exclusive {
+.exclusive {
     margin: 5%;
 
     padding: 50px;
@@ -198,7 +201,7 @@
 }
 
 
-.largePage .exclusive .title {
+.exclusive .title {
     width: 30%;
     font-size: 35px;
     font-weight: bold;

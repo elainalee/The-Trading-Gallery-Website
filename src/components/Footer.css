@@ -8,25 +8,25 @@
     color: white;
 }
 
-.largePage .footer {
+.footer {
     padding: 45px;
     height: 350px;
 }
 
-.largePage .footer .title {
+.footer .title {
     font-weight: bold;
 }
 
-.largePage .footer .link {
+.footer .link {
     text-decoration: underline;
 }
 
-.largePage .footer .companyDescription {
+.footer .companyDescription {
     width: 50%;
     float: left;
 }
 
-.largePage .footer .footerAbout {
+.footer .footerAbout {
     width: 50%;
     float: right;
 

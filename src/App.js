@@ -52,7 +52,7 @@ function NavPages(props) {
   }, []);
 
   return (
-    <div className="largePage">
+    <div>
       <NavBar />
       <Route exact path={MainPageRoute} component={MainPage} />
       <EnsureLogInRoute path={CartsPageRoute} component={CartsPage} />
