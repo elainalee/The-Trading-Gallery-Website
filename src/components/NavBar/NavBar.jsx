@@ -3,13 +3,10 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../callisto_font_black.png';
+import logoName from '../../ulma_black.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
-import { useDispatch } from 'react-redux';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { getUser } from '../../reducers/userReducer';
 import { CartsPageRoute, MainPageRoute } from '../../utils/routes';
 
 
@@ -34,7 +31,7 @@ function NavBar() {
         <div>
             <nav className="NavBar-Top">
                 <div className="navBar-logo" onClick={handleLogoClick}>
-                    <img src={logoName} className="navBar-logo-name" alt="logo-name" />
+                    <img src={logoName} className="navBar-logo-symbol" alt="logo-name" />
                 </div>
 
                 <div className="nav-top-menu-items">
