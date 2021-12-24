@@ -12,7 +12,7 @@ import MainPage from './pages/MainPage/MainPage';
 import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
 import ShopPage from './pages/UlmaPages/ShopPage';
-import BlogPage from './pages/UlmaPages/ContactPage';
+import BlogPage from './pages/UlmaPages/BlogPage';
 import FoodPage from './pages/UlmaPages/AboutPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
