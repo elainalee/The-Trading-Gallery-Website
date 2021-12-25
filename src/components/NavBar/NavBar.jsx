@@ -35,11 +35,11 @@ function NavBar() {
                 </div>
 
                 <div className="nav-top-menu-items">
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="icon-btn--navbar" color="black" />
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleCartsClick} />
+                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" />
+                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />
                     <UserButton />
                     <div className="menu-icon">
-                        <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleMenuClick} />
+                        <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
                     </div>
                 </div>
             </nav>

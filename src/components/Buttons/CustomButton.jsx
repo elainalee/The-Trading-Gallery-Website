@@ -2,16 +2,16 @@ import React from 'react';
 import './CustomButton.css';
 
 const STYLES = [
-    'btn--primary',
-    'btn--outline',
-    'btn--link',
+    'primary',
+    'outline',
+    'link',
 ];
 
 const SIZES = [
-    'btn--medium',
-    'btn--large',
-    'btn--navbar',
-    'btn--signin',
+    'medium',
+    'large',
+    'navbar',
+    'signin',
 ];
 
 const BUTTON_DETAILS = [
@@ -40,7 +40,7 @@ export const CustomButton = ({
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
 
-    if (checkButtonStyle === 'btn--link') {
+    if (checkButtonStyle === 'link') {
         return (
             <button
               className={checkButtonStyle}
@@ -64,7 +64,7 @@ export const CustomButton = ({
 
     return (
         <button
-          className={`btn--primary ${checkButtonStyle} ${checkButtonSize} ${checkButtonDetailedSize} ${thisColorName} ${checkDisabled}`}
+          className={`customButton ${checkButtonStyle} ${checkButtonSize} ${checkButtonDetailedSize} ${thisColorName} ${checkDisabled}`}
           onClick={onClick}
           disabled={disabled}
           type={type}

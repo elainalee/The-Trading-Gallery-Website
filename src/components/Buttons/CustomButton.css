@@ -1,16 +1,6 @@
-:root {
-    --primary-color: #5c5959;
-    --primary-pink: #f1a9aa;
-    --primary-orange: #fcc7a7;
-    --primary-blue: #88c0db;
-    --primary-purple: #b09cb9;
-    --primary-magenta: #cd99b0;
-    --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
-}
-
 /* Button Styles */
 
-.btn--primary {
+.customButton {
     display: inline-block;
     padding: 8px 20px;
     border-radius: 4pm;
@@ -20,7 +10,7 @@
     color: white;
 }
 
-.btn--primary:hover {
+.customButton:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
     transition: 250ms;
@@ -29,21 +19,21 @@
     color: white;
 }
 
-.btn--outline {
+.outline {
     background-color: transparent;
     border-radius: 4px;
     border: 1px solid white;
     transition: all 0.3s ease-out;
 }
 
-.btn--link {
+.link {
     display: inline-block;
     background-color: transparent;
     border: 0px;
     color: black;
 }
 
-.btn--link:hover {
+.link:hover {
     background-color: transparent;
     border: 0px;
     color: var(--primary-color);
@@ -51,33 +41,33 @@
 
 /* Button Sizes */
 
-.btn--medium {
+.medium {
     padding: 8px 20px;
     border-radius: 4px;
     font-size: 18px;
 }
 
-.btn--large {
+.large {
     padding: 12px 26px;
     border-radius: 4px;
     font-size: 20px;
 }
 
-.btn--navbar {
+.navbar {
     padding: 7px 20px;
     font-size: 18px;
 }
 
-.btn--navbar:hover {
+.navbar:hover {
     padding: 7px 20px;
     font-size: 18px;
 }
 
-.btn--signin {
+.signin {
     font-size: 16px;
 }
 
-.btn--signin:hover {
+.signin:hover {
     font-size: 16px;
 }
 

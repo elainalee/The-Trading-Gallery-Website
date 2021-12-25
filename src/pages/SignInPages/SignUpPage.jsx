@@ -81,7 +81,7 @@ export default function SignUpPage() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} required />
                       </Form.Group>
-                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="signup" marginTop="4px">Sign Up</CustomButton>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonSize="signin" buttonDetail="signup" marginTop="4px">Sign Up</CustomButton>
                   </Form>
               </Card.Body>
           </Card>

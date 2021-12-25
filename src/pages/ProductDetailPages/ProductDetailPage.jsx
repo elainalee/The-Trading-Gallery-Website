@@ -60,8 +60,8 @@ export default function ProductDetailPage(props) {
 
                     <CustomButton
                         className="nav-top-menu-item-name" 
-                        buttonStyle="btn--outline" 
-                        buttonSize="btn--navbar" 
+                        buttonStyle="outline" 
+                        buttonSize="navbar" 
                         marginLeft="1rem" 
                         color="black" 
                         onClick={handleAddCart}>Add To Cart</CustomButton>

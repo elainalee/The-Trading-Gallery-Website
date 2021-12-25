@@ -11,10 +11,10 @@ const ICONS = {
 };
 
 const SIZES = [
-    'icon-btn--small',
-    'icon-btn--medium',
-    'icon-btn--large',
-    'icon-btn--navbar',
+    'small',
+    'medium',
+    'large',
+    'navbar',
 ];
 
 export const IconButton = ({

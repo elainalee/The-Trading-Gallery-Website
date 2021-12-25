@@ -22,8 +22,8 @@ export default function UserButton() {
     return (
         <div className="user-icon">
             {currentUser
-                ? <IconButton buttonIcon="user-profile-btn" buttonSize="icon-btn--navbar" onClick={goToUserProfile} />
-                : <CustomButton className="nav-top-menu-item-name" buttonStyle="btn--outline" buttonSize="btn--navbar" marginLeft="1rem" color="black" onClick={goToLogIn}>Sign In</CustomButton>}
+                ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={goToUserProfile} />
+                : <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonSize="navbar" marginLeft="1rem" color="black" onClick={goToLogIn}>Sign In</CustomButton>}
         </div>
     );
 }
