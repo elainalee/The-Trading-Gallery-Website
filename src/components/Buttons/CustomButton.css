@@ -3,27 +3,32 @@
 .customButton {
     display: inline-block;
     padding: 8px 20px;
-    border-radius: 4pm;
+    border-radius: 4px;
     outline: none;
     border: none;
     cursor: pointer;
     color: white;
+    font-size: 18px;
+    background: var(--primary-color);
 }
 
 .customButton:hover {
-    padding: 8px 20px;
     transition: all 0.3s ease-out;
     transition: 250ms;
-    background: var(--primary-color);
     background-blend-mode: normal;
-    color: white;
 }
 
 .outline {
     background-color: transparent;
     border-radius: 4px;
-    border: 1px solid white;
+    border: 1px solid black;
+    color: black;
     transition: all 0.3s ease-out;
+}
+
+.outline:hover {
+    color: white;
+    background: var(--primary-color);
 }
 
 .link {
@@ -34,50 +39,26 @@
 }
 
 .link:hover {
-    background-color: transparent;
-    border: 0px;
     color: var(--primary-color);
 }
 
-/* Button Sizes */
 
-.medium {
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-size: 18px;
+/* Button Details */
+
+.userpages {
+    font-size: 16px;
+    margin-top: 15px;
 }
 
-.large {
-    padding: 12px 26px;
-    border-radius: 4px;
-    font-size: 20px;
+.productDetail {
+    padding: 11px 170px;
 }
 
 .navbar {
     padding: 7px 20px;
-    font-size: 18px;
 }
-
-.navbar:hover {
-    padding: 7px 20px;
-    font-size: 18px;
-}
-
-.signin {
-    font-size: 16px;
-}
-
-.signin:hover {
-    font-size: 16px;
-}
-
-/* Button Details */
 
 .login {
-    padding: 6px 155px;
-}
-
-.login:hover {
     padding: 6px 155px;
 }
 
@@ -85,15 +66,7 @@
     padding: 6px 149.4px;
 }
 
-.signup:hover {
-    padding: 6px 149.4px;
-}
-
 .resetpw {
-    padding: 6px 119.2px;
-}
-
-.resetpw:hover {
     padding: 6px 119.2px;
 }
 
@@ -101,15 +74,7 @@
     padding: 6px 124.3px;
 }
 
-.userprofile:hover {
-    padding: 6px 124.3px;
-}
-
 .updateprofile {
-    padding: 6px 150.5px;
-}
-
-.updateprofile:hover {
     padding: 6px 150.5px;
 }
 
@@ -121,12 +86,6 @@
 /* Button Disabled */
 
 .disabled {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background-color: transparent;
-}
-
-.disabled:hover {
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
     background-color: transparent;

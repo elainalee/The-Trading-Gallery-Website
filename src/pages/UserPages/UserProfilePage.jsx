@@ -58,7 +58,7 @@ export default function UserProfilePage() {
                         <strong>Email: </strong>
                         {currentUser.email}
                     </div>
-                    <CustomButton buttonStyle="outline" buttonSize="signin" buttonDetail="userprofile" marginTop="10px" onClick={goToUpdateProfile}>Update Profile</CustomButton>
+                    <CustomButton buttonStyle="outline" buttonDetail="userpages userprofile" onClick={goToUpdateProfile}>Update Profile</CustomButton>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2 links">

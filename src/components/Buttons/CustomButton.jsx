@@ -7,24 +7,6 @@ const STYLES = [
     'link',
 ];
 
-const SIZES = [
-    'medium',
-    'large',
-    'navbar',
-    'signin',
-];
-
-const BUTTON_DETAILS = [
-    'login',
-    'signup',
-    'resetpw',
-    'userprofile',
-    'updateprofile',
-];
-
-const COLORS = [
-    'black',
-];
 
 export const CustomButton = ({
     children,
@@ -37,6 +19,7 @@ export const CustomButton = ({
     color,
     marginLeft,
     marginTop,
+    fontSize,
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
 
@@ -47,24 +30,18 @@ export const CustomButton = ({
               onClick={onClick}
               disabled={disabled}
               type={type}
-              style={({ marginTop, marginLeft })}
+              style={({ marginTop, marginLeft, fontSize })}
             >
                 {children}
             </button>
         );
     }
 
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
-
-    const checkButtonDetailedSize = BUTTON_DETAILS.includes(buttonDetail) ? buttonDetail : '';
-
     const checkDisabled = disabled ? 'disabled' : '';
-
-    const thisColorName = COLORS.includes(color) ? color : COLORS[0];
 
     return (
         <button
-          className={`customButton ${checkButtonStyle} ${checkButtonSize} ${checkButtonDetailedSize} ${thisColorName} ${checkDisabled}`}
+          className={`customButton ${checkButtonStyle} ${buttonSize} ${buttonDetail} ${color} ${checkDisabled}`}
           onClick={onClick}
           disabled={disabled}
           type={type}

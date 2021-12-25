@@ -1,4 +1,4 @@
-.productDetailPage {
+.productDetailPage main {
     /* height: 400px;
 
     padding-left: 25%;
@@ -8,46 +8,46 @@
     float: left;
 }
 
-.productDetailPage .left {
+.productDetailPage .productShowing .left {
     float: left;
     width: 50%;
 }
 
-.productDetailPage .left .image {
+.productDetailPage .productShowing .left .image {
     width: 90%;
 }
 
-.productDetailPage .right {
+.productDetailPage .productShowing .right {
     float: right;
     width: 50%;
 }
 
-.productDetailPage .right .brand {
+.productDetailPage .productShowing .right .brand {
     font-size: 18px;
 
 }
 
-.productDetailPage .right .title {
+.productDetailPage .productShowing .right .title {
     font-size: 35px;
     line-height: 47px;
     font-weight: bold;
 
 }
 
-.productDetailPage .right .price {
+.productDetailPage .productShowing .right .price {
     margin-top: 15px;
     font-size: 24px;
     font-weight: bold;
 
 }
 
-.productDetailPage .right .description {
+.productDetailPage .productShowing .right .description {
     margin-top: 15px;
     font-size: 18px;
 
 }
 
-.productDetailPage .right .quantity {
+.productDetailPage .productShowing .right .quantity {
     margin-top: 15px;
     margin-bottom: 15px;
 

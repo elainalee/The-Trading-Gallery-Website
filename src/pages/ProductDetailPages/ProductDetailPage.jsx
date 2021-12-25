@@ -6,6 +6,8 @@ import QuantityBox from '../../components/Utils/QuantityBox';
 import CustomButton from "../../components/Buttons/CustomButton";
 import { getProductInfo } from '../../reducers/productsReducer';
 
+import Footer from '../../components/Footer';
+
 import "./ProductDetailPage.css";
         
 
@@ -31,8 +33,8 @@ export default function ProductDetailPage(props) {
 
 
     return (
-        <div className="marginTop marginHorizontal">
-            <div className="productDetailPage">
+        <div className="marginTop productDetailPage" >
+            <div className="productShowing marginHorizontal">
                 <div className="left">
                     <img className="image" src={productInfo.mainImage} />
                 </div>
@@ -59,17 +61,24 @@ export default function ProductDetailPage(props) {
                     </div>
 
                     <CustomButton
-                        className="nav-top-menu-item-name" 
-                        buttonStyle="outline" 
-                        buttonSize="navbar" 
-                        marginLeft="1rem" 
-                        color="black" 
+                        marginTop="15px"
+                        buttonDetail="productDetail"
                         onClick={handleAddCart}>Add To Cart</CustomButton>
 
-                    
-                    
                 </div>
             </div>
+
+            <div className="keyIngredients marginHorizontal">
+                key ingredients placeholder
+            </div>
+
+            <div className="howToUse marginHorizontal">
+                how to use placeholder
+
+            </div>
+
+            <Footer />
+            
         </div>
     );
 }
