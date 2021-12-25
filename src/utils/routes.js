@@ -13,6 +13,10 @@ export const SignUpRoute = "/signUp";
 export const LogInRoute = "/logIn" ;
 export const PasswordResetRoute = "/password-reset" ;
 
+// Product Detail Pages
+export const ProductDetailPageGeneralRoute = "/product";
+export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";
+
 // Ulma Pages
 export const ShopPageRoute = "/shop";
 export const BlogPageRoute = "/blog";

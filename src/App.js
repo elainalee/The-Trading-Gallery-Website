@@ -27,7 +27,8 @@ import ContactPage from './pages/UlmaPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import ProductDetailPage from './pages/ProductDetailPages/ProductDetailPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -58,10 +59,7 @@ function NavPages(props) {
       <EnsureLogInRoute path={CartsPageRoute} component={CartsPage} />
 
       {/* User Pages */}
-      <Container
-        className="d-flex justify-content-center"
-        // style={{ minHeight: '100vh' }}
-      >
+      <Container className="d-flex justify-content-center" /* style={{ minHeight: '100vh' } }*/>
         <div className="w-100" style={{ maxWidth: '400px' }}>
           <EnsureLogInRoute path={ProfileRoute} component={UserProfilePage} />
           <EnsureLogInRoute path={UpdateProfileRoute} component={UpdateProfile} />
@@ -70,6 +68,9 @@ function NavPages(props) {
           <EnsureLogOutRoute path={PasswordResetRoute} component={PasswordResetPage} />
         </div>
       </Container>
+
+      {/* Product Detail Pages */}
+      <Route path={"/product/:productId"} component={ProductDetailPage} />
         
       {/* Ulma Pages */}
       <Route path={ShopPageRoute} component={ShopPage} />

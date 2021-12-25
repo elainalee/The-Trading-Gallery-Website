@@ -11,11 +11,11 @@
 }
 
 .links {
-    color: var(--primary-color);
+    color: black;
 }
 
 .links:hover {
-    color: #000000;
+    color: var(--primary-color);
 }
 
 .marginLeft {

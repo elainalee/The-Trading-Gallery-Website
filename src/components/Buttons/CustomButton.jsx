@@ -74,3 +74,5 @@ export const CustomButton = ({
         </button>
     );
 };
+
+export default CustomButton;

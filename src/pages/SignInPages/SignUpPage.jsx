@@ -52,18 +52,6 @@ export default function SignUpPage() {
                 }
                 setLoading(false);
             });
-
-
-
-        // try {
-        //     setError('');
-        //     setLoading(true);
-        //     await signUp(emailRef.current.value, passwordRef.current.value);
-        //     history.push('/');
-        // } catch (msg) {
-        //     setError(`${msg}`);
-        // }
-        // setLoading(false);
     }
 
     return (
@@ -100,7 +88,7 @@ export default function SignUpPage() {
           <div className="w-100 text-center mt-2">
               Already have an account?
               {' '}
-              <Link to={LogInRoute}className="links">Log In</Link>
+              <Link to={LogInRoute} className="links">Log In</Link>
           </div>
         </div>
     );
