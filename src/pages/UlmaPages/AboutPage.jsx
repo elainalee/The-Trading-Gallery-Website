@@ -8,9 +8,6 @@ import handImage from "../../assets/about-hand.jpg";
 import "./UlmaPages.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { getBestSellers } from '../../reducers/productsReducer';
-import { SUCCESS } from '../../utils/constants';
-import LoadingBox from '../../components/Utils/LoadingBox';
-import MessageBox from '../../components/Utils/MessageBox';
 import ProductsRow from '../../components/Rows/ProductsRow';
 import Footer from '../../components/Footer';
 
@@ -19,18 +16,10 @@ export default function AboutPage() {
 
     const { products } = useSelector((state) => state);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
     const bestSellers = products.bestSellers;
 
     useEffect(() => {
-        dispatch(getBestSellers()).then((res) => {
-            setLoading(false);
-            if (res != SUCCESS) {
-                setError(res);
-            }
-        });
+        dispatch(getBestSellers());
     }, []);
 
     return (
@@ -63,12 +52,7 @@ export default function AboutPage() {
 
             <div className="bestSeller marginHorizontal">
                 <div className="title">Shop Now</div>
-                {loading
-                    ? <LoadingBox />
-                    : error
-                        ? <MessageBox>{error}</MessageBox>
-                        : <ProductsRow products = {bestSellers} />
-                }
+                <ProductsRow products={bestSellers} />
             </div>    
 
             <Footer />

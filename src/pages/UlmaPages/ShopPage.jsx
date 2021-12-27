@@ -14,30 +14,17 @@ export default function ShopPage() {
 
     const { products } = useSelector((state) => state);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
     const items = products.items;
 
     useEffect(() => {
-        dispatch(getProducts()).then((res) => {
-            setLoading(false);
-            if (res != SUCCESS) {
-                setError(res);
-            }
-        });
+        dispatch(getProducts());
     }, []);
 
 
     return (
         <div className="marginTop">
             <div className="marginHorizontal">
-                {loading
-                        ? <LoadingBox />
-                        : error
-                            ? <MessageBox>{error}</MessageBox>
-                            : <ProductsRow products = {items} />
-                    }
+                <ProductsRow products={items} placeholderNumbers={8}/>
             </div>
 
             <Footer />

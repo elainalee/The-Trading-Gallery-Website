@@ -18,6 +18,10 @@
     color: var(--primary-color);
 }
 
+.disabledCursor { 
+    cursor: default;
+  }
+
 .marginLeft {
     margin-left: 80px;
 }

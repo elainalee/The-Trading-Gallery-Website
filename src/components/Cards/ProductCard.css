@@ -3,6 +3,17 @@
     aspect-ratio: 5000 / 6000;
 }
 
+.productCard .placeholder {
+    height: 10%;
+    aspect-ratio: 5000 / 6000;
+
+    background-color: var(--primary-light);
+}
+
 .productCard .cardDescription {
     height: 130px;
+}
+
+.productCard {
+    background-color: black;
 }
