@@ -1,3 +1,5 @@
+/* aboutPage */
+
 .aboutPage main {
     padding-left: 20%;
     padding-right: 20%;
@@ -19,6 +21,7 @@
 .aboutPage .mainImage {
     width: 700px;
     margin-top: 75px;
+    background-color: var(--primary-light);
 }
 
 .aboutPage .description {
@@ -59,3 +62,19 @@
     width: 260px;
 }
 
+
+/* contactPage */
+
+.contactPage .left {
+    float: left;
+    width: 50%;
+}
+
+.contactPage .right {
+    float: right;
+    width: 50%;
+}
+
+.contactPage main {
+    height: 800px;
+}

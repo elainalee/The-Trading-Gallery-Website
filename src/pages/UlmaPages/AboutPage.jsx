@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-
 import aboutMainImage from "../../assets/aboutMainImage.jpg";
 import productImage from "../../assets/about-product.jpg";
 import handImage from "../../assets/about-hand.jpg";
 
-import "./UlmaPages.css";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getBestSellers } from '../../reducers/productsReducer';
 import ProductsRow from '../../components/Rows/ProductsRow';
 import Footer from '../../components/Footer';
+
+import "./UlmaPages.css";
 
 export default function AboutPage() {
     const dispatch = useDispatch();

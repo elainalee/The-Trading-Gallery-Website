@@ -16,9 +16,6 @@ export default function LogInPage() {
     const state = useSelector((state) => state);
     const user = state.user;
 
-    console.log("in login: ", user);
-    // console.log("in login: ", user.user.email);
-
     const dispatch = useDispatch();
 
     const emailRef = useRef();

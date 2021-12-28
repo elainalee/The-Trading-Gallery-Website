@@ -14,6 +14,10 @@
     color: black;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .links:hover {
     color: var(--primary-color);
 }

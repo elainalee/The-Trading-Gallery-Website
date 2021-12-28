@@ -34,48 +34,51 @@ export default function ProductDetailPage(props) {
 
     return (
         <div className="marginTop productDetailPage" >
-            <div className="productShowing marginHorizontal">
-                <div className="left">
-                    <img className="image" src={productInfo.mainImage} />
+            <main>
+                <div className="productShowing marginHorizontal">
+                    <div className="left">
+                        <img className="image" src={productInfo.mainImage} />
+                    </div>
+                    <div className="right">
+                        <div className="brand">
+                            {productInfo.brand}
+                        </div>
+
+                        <div className="title">
+                            {productInfo.title}
+                        </div>
+
+                        <div className="price">
+                            {"$" + productInfo.price}
+                        </div>
+
+                        <div className="description">
+                            {productInfo.description}
+                        </div>
+
+                        <div className="quantity">
+                            <h6>Quantity: </h6>
+                            <QuantityBox quantity="1" />
+                        </div>
+
+                        <CustomButton
+                            marginTop="15px"
+                            buttonDetail="productDetail"
+                            onClick={handleAddCart}>Add To Cart</CustomButton>
+
+                    </div>
                 </div>
-                <div className="right">
-                    <div className="brand">
-                        {productInfo.brand}
-                    </div>
 
-                    <div className="title">
-                        {productInfo.title}
-                    </div>
+                <div className="keyIngredients marginHorizontal">
+                    {/* key ingredients placeholder */}
+                </div>
 
-                    <div className="price">
-                        {"$" + productInfo.price}
-                    </div>
-
-                    <div className="description">
-                        {productInfo.description}
-                    </div>
-
-                    <div className="quantity">
-                        <h6>Quantity: </h6>
-                        <QuantityBox quantity="1" />
-                    </div>
-
-                    <CustomButton
-                        marginTop="15px"
-                        buttonDetail="productDetail"
-                        onClick={handleAddCart}>Add To Cart</CustomButton>
+                <div className="howToUse marginHorizontal">
+                    {/* how to use placeholder */}
 
                 </div>
-            </div>
-
-            <div className="keyIngredients marginHorizontal">
-                key ingredients placeholder
-            </div>
-
-            <div className="howToUse marginHorizontal">
-                how to use placeholder
-
-            </div>
+            </main>
+            
 
             <Footer />
             
