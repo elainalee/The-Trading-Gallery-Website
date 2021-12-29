@@ -13,12 +13,13 @@ import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
 import ShopPage from './pages/UlmaPages/ShopPage';
 import BlogPage from './pages/UlmaPages/BlogPage';
-import FoodPage from './pages/UlmaPages/AboutPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
 import rootReducer from './reducers/rootReducer';
 import { getUser } from './reducers/userReducer';
+
+import ListingsPage from './pages/SellerPages/ListingsPage';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -27,8 +28,9 @@ import ContactPage from './pages/UlmaPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
 import ProductDetailPage from './pages/ProductDetailPages/ProductDetailPage';
+import { getSeller } from './reducers/sellerReducer';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -48,9 +50,14 @@ function NavPages(props) {
 
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //     dispatch(getUser());
+  // }, []);
+
   useEffect(() => {
-      dispatch(getUser());
+    dispatch(getSeller());
   }, []);
+
 
   return (
     <div>
@@ -68,6 +75,8 @@ function NavPages(props) {
           <EnsureLogOutRoute path={PasswordResetRoute} component={PasswordResetPage} />
         </div>
       </Container>
+
+      <Route path={ListingsPageRoute} component={ListingsPage} />
 
       {/* Product Detail Pages */}
       <Route path={"/product/:productId"} component={ProductDetailPage} />

@@ -13,6 +13,9 @@ export const SignUpRoute = "/signUp";
 export const LogInRoute = "/logIn" ;
 export const PasswordResetRoute = "/password-reset" ;
 
+// Seller Pages
+export const ListingsPageRoute = "/listings";
+
 // Product Detail Pages
 export const ProductDetailPageGeneralRoute = "/product";
 export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";

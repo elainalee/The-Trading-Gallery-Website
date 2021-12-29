@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { SUCCESS } from '../../utils/constants';
-import { logIn } from '../../reducers/authReducer';
+import { logIn, logInSeller } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
 import { PasswordResetRoute, SignUpRoute } from '../../utils/routes';
@@ -23,14 +23,28 @@ export default function LogInPage() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const isSellerEmail = (email) => {
+        return email.split("@")?.[1] === "seller";
+    }
+
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         setError('');
         setLoading(true);
-        console.log("clicked");
-        dispatch(logIn(emailRef.current.value, passwordRef.current.value))
+        if (isSellerEmail(emailRef.current.value)) {
+            dispatch(logInSeller(emailRef.current.value, passwordRef.current.value))
+            .then((res) => {
+            if (res === SUCCESS) {
+                window.location.href = '/';
+            } else {
+                console.log("error logging in.")
+            }
+            setLoading(false);
+            });
+        } else {
+            dispatch(logIn(emailRef.current.value, passwordRef.current.value))
             .then((res) => {
             if (res === SUCCESS) {
                 console.log("signed in");
@@ -39,7 +53,9 @@ export default function LogInPage() {
                 console.log("error logging in.")
             }
             setLoading(false);
-        });
+            });
+        }
+        
     }
 
     return (
