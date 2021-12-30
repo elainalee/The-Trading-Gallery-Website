@@ -6,6 +6,7 @@ const ICONS = {
     'user-profile-btn': 'fas fa-user',
     'carts-btn': 'fas fa-shopping-cart',
     'search-btn': 'fas fa-search',
+    'listings-btn': 'fas fa-box',
     'menu-btn': 'fas fa-bars',
     'cancel-btn': 'fas fa-times',
 };

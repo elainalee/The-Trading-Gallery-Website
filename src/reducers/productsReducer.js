@@ -94,5 +94,4 @@ export const getProductInfo = (productId) => async (
   }
 };
 
-
 export default productsReducer;

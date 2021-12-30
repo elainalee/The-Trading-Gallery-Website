@@ -6,6 +6,7 @@ import { SUCCESS } from "../utils/constants";
 
 const initialState = {
     seller: undefined,
+    products: undefined,
 }
 
 const sellerReducer = (state = initialState, action) => {
@@ -15,6 +16,12 @@ const sellerReducer = (state = initialState, action) => {
                 ...state,
                 seller: action.payload.seller,
             }
+
+        case "SELLER/SETPRODUCTS":
+          return {
+              ...state,
+              products: action.payload.products,
+          }
 
         default:
             return state;
@@ -48,6 +55,36 @@ export const getSeller = () => async (
       console.log("getSeller err :>> ", err.message);
       return err.message;
     }
+};
+
+export const getSellerProducts = () => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    console.log(state);
+
+    const url = BASE_URL + "/products/getSellerItems/" + state.seller.seller._id;
+
+    console.log("getSellerProducts url : ", url);
+
+    const res = await axios.get(url);
+    const data = res.data;
+
+    dispatch({
+      type: "SELLER/SETPRODUCTS",
+      payload: {
+        products: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("getSellerProducts err :>> ", err.message);
+    return err.message;
+  }
 };
 
 export default sellerReducer;

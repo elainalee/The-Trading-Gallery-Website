@@ -1,35 +1,27 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import CustomButton from '../../components/Buttons/CustomButton';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../../components/Footer';
-import { logOut } from '../../reducers/authReducer';
-import { LogInRoute } from '../../utils/routes';
+import ProductsRow from '../../components/Rows/ProductsRow';
+import { getSellerProducts } from '../../reducers/sellerReducer';
 
 export default function ListingsPage() {
     const dispatch = useDispatch();
-    const history = useHistory();
 
-    async function handleLogOut() {
+    const { seller } = useSelector((state) => state);
 
-        dispatch(logOut()).then((res) => {
-            history.push(LogInRoute);
-        })
-        // try {
-        //     await logOut();
-        //     history.pushState('/logIn');
-        // } catch {
-        //     setError('Failed to log out');
-        // }
-    }
+    const sellerProducts = seller.products;
+
+    useEffect(() => {
+        dispatch(getSellerProducts());
+    }, []);
+
 
     return (
         <div className="marginTop">
-            <div className="marginLeft">
-                ListingsPage Page Placeholder
+            <div className="marginHorizontal">
+                <ProductsRow products={sellerProducts} placeholderNumbers={8}/>
             </div>
 
-            <CustomButton buttonStyle="link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
             <Footer />
         </div>
         

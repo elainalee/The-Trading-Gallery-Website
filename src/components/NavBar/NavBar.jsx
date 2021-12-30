@@ -7,11 +7,16 @@ import logoName from '../../ulma_black.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
 
-import { CartsPageRoute, MainPageRoute } from '../../utils/routes';
+import { CartsPageRoute, ListingsPageRoute, MainPageRoute } from '../../utils/routes';
+import { useSelector } from 'react-redux';
 
 
 function NavBar() {
+
+    const state = useSelector((state) => state);
     const history = useHistory();
+
+    const currentSeller = state.seller.seller;
     
     const [menuClicked, setMenuClicked] = useState(false);
 
@@ -27,6 +32,10 @@ function NavBar() {
         history.push(CartsPageRoute);
     }
 
+    const handleListingsClick = () => {
+        history.push(ListingsPageRoute);
+    }
+
     return (
         <div>
             <nav className="NavBar-Top">
@@ -36,7 +45,9 @@ function NavBar() {
 
                 <div className="nav-top-menu-items">
                     <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" />
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />
+                    {currentSeller
+                        ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
+                        : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
                     <UserButton />
                     <div className="menu-icon">
                         <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
