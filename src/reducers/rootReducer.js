@@ -11,7 +11,7 @@ const appReducer = combineReducers({
     seller: sellerReducer,
     products: productsReducer,
     contents: contentsReducer,
-})
+});
 
 const rootReducer = (state, action) => {
     if (action.type === "HOME/LOGOUT") {

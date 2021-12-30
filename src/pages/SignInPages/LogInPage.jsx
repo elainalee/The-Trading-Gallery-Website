@@ -14,7 +14,6 @@ import { PasswordResetRoute, SignUpRoute } from '../../utils/routes';
 
 export default function LogInPage() {
     const state = useSelector((state) => state);
-    const user = state.user;
 
     const dispatch = useDispatch();
 

@@ -4,15 +4,15 @@ import { Route, Redirect } from 'react-router-dom';
 import { getUser } from '../reducers/userReducer';
 import { LogInRoute } from '../utils/routes';
 
-export default function EnsureLogInRoute({ component: Component, ...rest }) {
+export default function EnsureSellerRoute({ component: Component, ...rest }) {
     const state = useSelector((state) => state);
-    const currentUser = state.user.user;
+    const currentSeller = state.seller.seller;
     
 
     return (
         <Route
           {...rest}
-          render={(props) => (currentUser
+          render={(props) => (currentSeller
                 ? <Component {...props} />
                 : <Redirect to={LogInRoute} />)}
         />
