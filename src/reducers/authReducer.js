@@ -42,7 +42,6 @@ const authReducer = (state = initialState, action) => {
 
 export const checkJWT = () => async (dispatch, getState) => {
     try {
-        // TODO: backend is not ready yet
         const url = BASE_URL + "/token";
         const res = await client.post(url);
 

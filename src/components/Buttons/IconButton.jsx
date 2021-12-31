@@ -8,6 +8,7 @@ const ICONS = {
     'search-btn': 'fas fa-search',
     'listings-btn': 'fas fa-box',
     'menu-btn': 'fas fa-bars',
+    'add-btn': 'fas fa-plus',
     'cancel-btn': 'fas fa-times',
 };
 
