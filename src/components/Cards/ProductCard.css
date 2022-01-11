@@ -15,5 +15,5 @@
 }
 
 .productCard {
-    background-color: black;
+    background-color: var(--primary-light);
 }
