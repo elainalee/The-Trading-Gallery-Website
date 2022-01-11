@@ -10,13 +10,25 @@
     --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
 }
 
+h2 {
+    padding-bottom: 10px;
+}
+
 .links {
-    color: var(--primary-color);
+    color: black;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .links:hover {
-    color: #000000;
+    color: var(--primary-color);
 }
+
+.disabledCursor { 
+    cursor: default;
+  }
 
 .marginLeft {
     margin-left: 80px;

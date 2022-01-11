@@ -3,18 +3,20 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../callisto_font_black.png';
+import logoName from '../../ulma_black.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
-import { useDispatch } from 'react-redux';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { getUser } from '../../reducers/userReducer';
-import { CartsPageRoute, MainPageRoute } from '../../utils/routes';
+import { CartsPageRoute, ListingsPageRoute, MainPageRoute } from '../../utils/routes';
+import { useSelector } from 'react-redux';
 
 
 function NavBar() {
+
+    const state = useSelector((state) => state);
     const history = useHistory();
+
+    const currentSeller = state.seller.seller;
     
     const [menuClicked, setMenuClicked] = useState(false);
 
@@ -30,19 +32,25 @@ function NavBar() {
         history.push(CartsPageRoute);
     }
 
+    const handleListingsClick = () => {
+        history.push(ListingsPageRoute);
+    }
+
     return (
         <div>
             <nav className="NavBar-Top">
                 <div className="navBar-logo" onClick={handleLogoClick}>
-                    <img src={logoName} className="navBar-logo-name" alt="logo-name" />
+                    <img src={logoName} className="navBar-logo-symbol" alt="logo-name" />
                 </div>
 
                 <div className="nav-top-menu-items">
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="icon-btn--navbar" color="black" />
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleCartsClick} />
+                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" />
+                    {currentSeller
+                        ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
+                        : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
                     <UserButton />
                     <div className="menu-icon">
-                        <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="icon-btn--navbar" color="black" onClick={handleMenuClick} />
+                        <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
                     </div>
                 </div>
             </nav>

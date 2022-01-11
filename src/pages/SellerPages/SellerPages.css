@@ -1,0 +1,26 @@
+.listingsPage .myProductsTitle {
+    display: flex;
+    flex-direction:row;
+}
+
+/* AddListingPage */
+
+.addListingPage .productShowing {
+    height: 700px;
+}
+
+.addListingPage .left {
+    float: left;
+    width: 50%;
+}
+
+.addListingPage .right {
+    float: right;
+    width: 50%;
+}
+
+.addListingPage .image {
+    width: 90%;
+    height: 700px;
+    background-color: var(--primary-light);
+}

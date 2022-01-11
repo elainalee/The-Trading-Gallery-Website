@@ -9,23 +9,29 @@ import { AUTH_INVALID, ERROR, SUCCESS } from "../utils/constants";
 
 const initialState = {
     loggedIn: false,
+    seller: false,
 }
 
 const authReducer = (state = initialState, action) => {
-    console.log("before swtich statement");
-    console.log(action.type);
     switch (action.type) {
         case "AUTH/LOGIN":
-            console.log("in logIN switch case");
             return {
                 ...state,
                 loggedIn: true,
+        }
+
+        case "AUTH/LOGINSELLER":
+            return {
+                ...state,
+                loggedIn: true,
+                seller: true,
         }
 
         case "AUTH/LOGOUT":
             return {
                 ...state,
                 loggedIn: false,
+                seller: false,
         }
 
         default:
@@ -36,7 +42,6 @@ const authReducer = (state = initialState, action) => {
 
 export const checkJWT = () => async (dispatch, getState) => {
     try {
-        // TODO: backend is not ready yet
         const url = BASE_URL + "/token";
         const res = await client.post(url);
 
@@ -56,7 +61,6 @@ export const checkJWT = () => async (dispatch, getState) => {
 
 export const logIn = (email, password) => async (dispatch, getState) => {
     try {
-        // TODO: backend ready, needs to verify connection
         const url = BASE_URL + "/home/login";
 
         const payload = {
@@ -67,16 +71,36 @@ export const logIn = (email, password) => async (dispatch, getState) => {
         const res = await axios.post(url, payload);
 
         const data = res.data;
-        console.log("in authReducer: login. res.data is: ", data);
-        // checked: retrieving this jwt is pretty successful.
 
         await AsyncStorage.setItem("jwt", data.jwt);
         await AsyncStorage.setItem("email", email);
 
-        console.log("in logIn----- before doing dispatch");
-
-
         dispatch({ type: "AUTH/LOGIN" });
+        
+        return SUCCESS;
+
+    } catch (err) {
+        return ERROR;
+    }
+}
+
+export const logInSeller = (email, password) => async (dispatch, getState) => {
+    try {
+        const url = BASE_URL + "/home/loginSeller";
+
+        const payload = {
+            email,
+            password
+        };
+
+        const res = await axios.post(url, payload);
+
+        const data = res.data;
+
+        await AsyncStorage.setItem("jwt", data.jwt);
+        await AsyncStorage.setItem("email", email);
+
+        dispatch({ type: "AUTH/LOGINSELLER" });
         
         return SUCCESS;
 
@@ -96,7 +120,6 @@ export const logOut = () => async (dispatch, getState) => {
 
 export const signUp = (userInfo) => async (dispatch, getState) => {
     try {
-        // TODO: backend ready, needs to verify connection
         const url = BASE_URL + "/home/signup";
 
         const payload = {

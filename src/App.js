@@ -9,16 +9,18 @@ import CartsPage from './pages/UserPages/CartsPage';
 import NavBar from './components/NavBar/NavBar';
 import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
-import EnsureLogInRoute from './RoutesManager/EnsureLogInRoute';
+import EnsureUserRoute from './RoutesManager/EnsureUserRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
 import ShopPage from './pages/UlmaPages/ShopPage';
-import BlogPage from './pages/UlmaPages/ContactPage';
-import FoodPage from './pages/UlmaPages/AboutPage';
+import BlogPage from './pages/UlmaPages/BlogPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
 import rootReducer from './reducers/rootReducer';
 import { getUser } from './reducers/userReducer';
+
+import ListingsPage from './pages/SellerPages/ListingsPage';
+import SellerProfilePage from './pages/SellerPages/SellerProfilePage';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -27,7 +29,11 @@ import ContactPage from './pages/UlmaPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, AddListingPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import ProductDetailPage from './pages/ProductDetailPages/ProductDetailPage';
+import { getSeller } from './reducers/sellerReducer';
+import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
+import AddListingPage from './pages/SellerPages/AddListingPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -51,25 +57,38 @@ function NavPages(props) {
       dispatch(getUser());
   }, []);
 
+  useEffect(() => {
+    dispatch(getSeller());
+  }, []);
+
+
   return (
     <div>
       <NavBar />
       <Route exact path={MainPageRoute} component={MainPage} />
-      <EnsureLogInRoute path={CartsPageRoute} component={CartsPage} />
+      <EnsureUserRoute path={CartsPageRoute} component={CartsPage} />
 
-      {/* User Pages */}
-      <Container
-        className="d-flex justify-content-center"
-        // style={{ minHeight: '100vh' }}
-      >
+      <Container className="d-flex justify-content-center" /* style={{ minHeight: '100vh' } }*/>
         <div className="w-100" style={{ maxWidth: '400px' }}>
-          <EnsureLogInRoute path={ProfileRoute} component={UserProfilePage} />
-          <EnsureLogInRoute path={UpdateProfileRoute} component={UpdateProfile} />
+          {/* User Pages */}
+          <EnsureUserRoute path={ProfileRoute} component={UserProfilePage} />
+          <EnsureUserRoute path={UpdateProfileRoute} component={UpdateProfile} />
+
+          {/* Seller Pages */}
+          <EnsureSellerRoute path={SellerProfileRoute} component={SellerProfilePage} />
+          
+          {/* Logged out Pages */}
           <EnsureLogOutRoute path={SignUpRoute} component={SignUpPage} />
           <EnsureLogOutRoute path={LogInRoute} component={LogInPage} />
           <EnsureLogOutRoute path={PasswordResetRoute} component={PasswordResetPage} />
         </div>
       </Container>
+
+      <EnsureSellerRoute path={ListingsPageRoute} component={ListingsPage} />
+      <EnsureSellerRoute path={AddListingPageRoute} component={AddListingPage} />
+
+      {/* Product Detail Pages */}
+      <Route path={"/product/:productId"} component={ProductDetailPage} />
         
       {/* Ulma Pages */}
       <Route path={ShopPageRoute} component={ShopPage} />

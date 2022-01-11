@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { SUCCESS } from '../../utils/constants';
-import { logIn } from '../../reducers/authReducer';
+import { logIn, logInSeller } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
 import { PasswordResetRoute, SignUpRoute } from '../../utils/routes';
@@ -14,10 +14,6 @@ import { PasswordResetRoute, SignUpRoute } from '../../utils/routes';
 
 export default function LogInPage() {
     const state = useSelector((state) => state);
-    const user = state.user;
-
-    console.log("in login: ", user);
-    // console.log("in login: ", user.user.email);
 
     const dispatch = useDispatch();
 
@@ -26,14 +22,28 @@ export default function LogInPage() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const isSellerEmail = (email) => {
+        return email.split("@")?.[1] === "seller";
+    }
+
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         setError('');
         setLoading(true);
-        console.log("clicked");
-        dispatch(logIn(emailRef.current.value, passwordRef.current.value))
+        if (isSellerEmail(emailRef.current.value)) {
+            dispatch(logInSeller(emailRef.current.value, passwordRef.current.value))
+            .then((res) => {
+            if (res === SUCCESS) {
+                window.location.href = '/';
+            } else {
+                console.log("error logging in.")
+            }
+            setLoading(false);
+            });
+        } else {
+            dispatch(logIn(emailRef.current.value, passwordRef.current.value))
             .then((res) => {
             if (res === SUCCESS) {
                 console.log("signed in");
@@ -42,7 +52,9 @@ export default function LogInPage() {
                 console.log("error logging in.")
             }
             setLoading(false);
-        });
+            });
+        }
+        
     }
 
     return (
@@ -60,7 +72,7 @@ export default function LogInPage() {
                           <Form.Label>Password</Form.Label>
                           <Form.Control type="password" ref={passwordRef} required />
                       </Form.Group>
-                    <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="updateprofile" marginTop="4px">Log In</CustomButton>  
+                    <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="userpages updateprofile">Log In</CustomButton>  
                   </Form>
                   {/* <div className="w-100 text-center mt-4">
                       <Link to={PasswordResetRoute} className="links">Forgot password?</Link>

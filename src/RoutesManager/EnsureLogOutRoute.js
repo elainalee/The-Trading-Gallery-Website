@@ -1,19 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { ProfileRoute } from '../utils/routes';
+import { ProfileRoute, SellerProfileRoute } from '../utils/routes';
 
-export default function EnsureLogInRoute({ component: Component, ...rest }) {
+export default function EnsureLogOutRoute({ component: Component, ...rest }) {
 
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
+    const currentSeller = state.seller.seller;
 
     return (
         <Route
           {...rest}
-          render={(props) => (!currentUser
+          render={(props) => ((!currentUser && !currentSeller)
                 ? <Component {...props} />
-                : <Redirect to={ProfileRoute}/>)}
+                : <Redirect to={currentUser ? ProfileRoute : SellerProfileRoute}/>)}
         />
     );
 }

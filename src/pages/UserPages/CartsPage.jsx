@@ -1,11 +1,15 @@
 import React from 'react';
+import Footer from '../../components/Footer';
 
 import '../../utils/globalStyles.css';
 
 export default function CartsPage() {
     return (
-        <div className="marginHorizontal marginTop">
-            Carts Page
+        <div className="marginTop">
+            <div className="marginLeft">
+            Carts Page Placeholder
+            </div>
+            <Footer />
         </div>
     );
 }

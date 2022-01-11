@@ -58,11 +58,11 @@ export default function UserProfilePage() {
                         <strong>Email: </strong>
                         {currentUser.email}
                     </div>
-                    <CustomButton buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="userprofile" marginTop="10px" onClick={goToUpdateProfile}>Update Profile</CustomButton>
+                    <CustomButton buttonStyle="outline" buttonDetail="userpages userprofile" onClick={goToUpdateProfile}>Update Profile</CustomButton>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2 links">
-                <CustomButton buttonStyle="btn--link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
+                <CustomButton buttonStyle="link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
             </div>
         </div>
     );

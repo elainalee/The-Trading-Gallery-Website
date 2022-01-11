@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
-import LoadingBox from '../../components/Utils/LoadingBox';
-import MessageBox from '../../components/Utils/MessageBox';
 import { getBestSellers } from '../../reducers/productsReducer';
-import { SUCCESS } from '../../utils/constants';
+import Footer from '../../components/Footer';
+import ProductsRow from '../../components/Rows/ProductsRow';
 
 import creamImage from "../../assets/cream.jpg";
 import makeupsImage from "../../assets/makeups.jpg";
 
-
 import "./MainPage.css"
 import "../../utils/globalStyles.css";
-import Footer from '../../components/Footer';
-import ProductsRow from '../../components/Rows/ProductsRow';
 
 
 export default function MainPage() {
@@ -22,18 +18,10 @@ export default function MainPage() {
 
     const { products } = useSelector((state) => state);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
     const bestSellers = products.bestSellers;
 
     useEffect(() => {
-        dispatch(getBestSellers()).then((res) => {
-            setLoading(false);
-            if (res != SUCCESS) {
-                setError(res);
-            }
-        });
+        dispatch(getBestSellers());
     }, []);
 
     return (
@@ -49,12 +37,7 @@ export default function MainPage() {
             <div className="bestSeller marginHorizontal">
                 <div className="title">Shop Our Best Sellers</div>
 
-                {loading
-                    ? <LoadingBox />
-                    : error
-                        ? <MessageBox>{error}</MessageBox>
-                        : <ProductsRow products = {bestSellers} />
-                }
+                <ProductsRow products={bestSellers} placeholderNumbers={4} />
             </div>
 
             <div className="discoverMakeup">
@@ -110,9 +93,5 @@ export default function MainPage() {
 
             <Footer />
         </div>
-
-        
-
-        
     );
 }

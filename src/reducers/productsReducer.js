@@ -77,5 +77,21 @@ export const getBestSellers = () => async (
   }
 };
 
+export const getProductInfo = (productId) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const url = BASE_URL + "/products/" + productId;
+    const res = await axios.get(url);
+    const data = res.data;
+
+    return data;
+
+  } catch (err) {
+    console.log("getProductInfo err :>> ", err.message);
+    return err.message;
+  }
+};
 
 export default productsReducer;

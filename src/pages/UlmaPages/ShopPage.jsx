@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SUCCESS } from '../../utils/constants';
 
 import { getProducts } from '../../reducers/productsReducer';
-import LoadingBox from '../../components/Utils/LoadingBox';
-import MessageBox from '../../components/Utils/MessageBox';
 import ProductsRow from '../../components/Rows/ProductsRow';
+import Footer from '../../components/Footer';
 
 export default function ShopPage() {
 
@@ -13,29 +11,20 @@ export default function ShopPage() {
 
     const { products } = useSelector((state) => state);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
     const items = products.items;
 
     useEffect(() => {
-        dispatch(getProducts()).then((res) => {
-            setLoading(false);
-            if (res != SUCCESS) {
-                setError(res);
-            }
-        });
+        dispatch(getProducts());
     }, []);
 
 
     return (
-        <div className="marginHorizontal marginTop">
-            {loading
-                    ? <LoadingBox />
-                    : error
-                        ? <MessageBox>{error}</MessageBox>
-                        : <ProductsRow products = {items} />
-                }
+        <div className="marginTop">
+            <div className="marginHorizontal">
+                <ProductsRow products={items} placeholderNumbers={8}/>
+            </div>
+
+            <Footer />
         </div>
     );
 }

@@ -6,15 +6,17 @@ const ICONS = {
     'user-profile-btn': 'fas fa-user',
     'carts-btn': 'fas fa-shopping-cart',
     'search-btn': 'fas fa-search',
+    'listings-btn': 'fas fa-box',
     'menu-btn': 'fas fa-bars',
+    'add-btn': 'fas fa-plus',
     'cancel-btn': 'fas fa-times',
 };
 
 const SIZES = [
-    'icon-btn--small',
-    'icon-btn--medium',
-    'icon-btn--large',
-    'icon-btn--navbar',
+    'small',
+    'medium',
+    'large',
+    'navbar',
 ];
 
 export const IconButton = ({

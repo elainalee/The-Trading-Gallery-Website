@@ -1,37 +1,24 @@
-:root {
-    --primary-color: #5c5959;
-    --primary-pink: #f1a9aa;
-    --primary-orange: #fcc7a7;
-    --primary-blue: #88c0db;
-    --primary-purple: #b09cb9;
-    --primary-magenta: #cd99b0;
-  }
-
 .NavBar-Top {
     background: white;
-    height: 90px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    padding: 0% 5%;
 }
 
 .navBar-logo {
+    flex: 1;
     margin-bottom: 0px;
     margin-left: 0px;
     cursor: pointer;
 }
 
-.navBar-logo-name {
-    height: 30px;
+.navBar-logo-symbol {
+    height: 70px;
     justify-self: start;
     margin-bottom: 3px;
-}
-
-.navBar-logo-image {
-    width: 50px;
-    height: 50px;
-    justify-self: start;
 }
 
 .fa-react {
@@ -41,6 +28,7 @@
 }
 
 .nav-top-menu-items {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 0px;

@@ -6,12 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <head>
-      <title>Ulma</title>
-
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
-
-    </head>
     <App />
   </React.StrictMode>,
   document.getElementById('root'),

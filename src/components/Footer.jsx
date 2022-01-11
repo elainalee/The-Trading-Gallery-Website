@@ -26,16 +26,16 @@ export default function Footer() {
 
                 <div className="info">
                     <p className="title">Info</p>
-                    <p className="link"><a className="link" href={ShippingReturnPageRoute}>Shipping & Return</a></p>
-                    <p className="link"><a className="link" href={TermsOfUsePageRoute}>Terms of Use</a></p>
-                    <p className="link"><a className="link" href={PrivacyPolicyPageRoute}>Privacy Policy</a></p>
+                    <p><a className="link" href={ShippingReturnPageRoute}>Shipping & Return</a></p>
+                    <p><a className="link" href={TermsOfUsePageRoute}>Terms of Use</a></p>
+                    <p><a className="link" href={PrivacyPolicyPageRoute}>Privacy Policy</a></p>
                 </div>
 
                 <div className="social">
                     <p className="title">Social</p>
-                    <p className="link"><a className="link" href="#">Instagram</a></p>
-                    <p className="link"><a className="link" href="#">Facebook</a></p>
-                    <p className="link">Y<a className="link" href="#">outube</a></p>
+                    <p><a className="link" href="#">Instagram</a></p>
+                    <p><a className="link" href="#">Facebook</a></p>
+                    <p><a className="link" href="#">Youtube</a></p>
                 </div>
             </div>
         </div>

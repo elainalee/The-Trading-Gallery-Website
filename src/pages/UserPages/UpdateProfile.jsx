@@ -87,12 +87,12 @@ export default function UpdateProfile() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
                       </Form.Group> */}
-                      <CustomButton disabled={loading} type="submit" buttonStyle="btn--outline" buttonSize="btn--signin" buttonDetail="updateprofile" marginTop="4px">Update</CustomButton>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="userpages updateprofile">Update</CustomButton>
                   </Form>
               </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2 links">
-              <CustomButton buttonStyle="btn--link" onClick={goToUserProfile} marginTop="10px">Cancel</CustomButton>
+              <CustomButton buttonStyle="link" onClick={goToUserProfile} marginTop="10px">Cancel</CustomButton>
           </div>
         </div>
     );

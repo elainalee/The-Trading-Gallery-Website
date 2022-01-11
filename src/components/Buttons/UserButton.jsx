@@ -1,13 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { LogInRoute, ProfileRoute } from '../../utils/routes';
+import { ListingsPageRoute, LogInRoute, ProfileRoute, SellerProfileRoute } from '../../utils/routes';
 import { CustomButton } from './CustomButton';
 import { IconButton } from './IconButton';
 
 export default function UserButton() {
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
+    const currentSeller = state.seller.seller;
+
+    const loggedIn = state.auth.loggedIn;
+    console.log("loggedIn? " , loggedIn);
 
     const history = useHistory();
 
@@ -19,11 +23,15 @@ export default function UserButton() {
         history.push(ProfileRoute);
     }
 
+    function goToSellerProfile() {
+        history.push(SellerProfileRoute);
+    }
+
     return (
         <div className="user-icon">
-            {currentUser
-                ? <IconButton buttonIcon="user-profile-btn" buttonSize="icon-btn--navbar" onClick={goToUserProfile} />
-                : <CustomButton className="nav-top-menu-item-name" buttonStyle="btn--outline" buttonSize="btn--navbar" marginLeft="1rem" color="black" onClick={goToLogIn}>Sign In</CustomButton>}
+            {loggedIn
+                ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
+                : <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="navbar" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>}
         </div>
     );
 }

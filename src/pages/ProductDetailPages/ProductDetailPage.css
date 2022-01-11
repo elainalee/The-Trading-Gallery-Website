@@ -1,0 +1,49 @@
+.productDetailPage main {
+    height: 800px;
+}
+
+.productDetailPage .productShowing .left {
+    float: left;
+    width: 50%;
+}
+
+.productDetailPage .productShowing .left .image {
+    width: 90%;
+}
+
+.productDetailPage .productShowing .right {
+    float: right;
+    width: 50%;
+}
+
+.productDetailPage .productShowing .right .brand {
+    font-size: 18px;
+
+}
+
+.productDetailPage .productShowing .right .title {
+    font-size: 35px;
+    line-height: 47px;
+    font-weight: bold;
+
+}
+
+.productDetailPage .productShowing .right .price {
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.productDetailPage .productShowing .right .description {
+    margin-top: 15px;
+    font-size: 18px;
+
+}
+
+.productDetailPage .productShowing .right .quantity {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
