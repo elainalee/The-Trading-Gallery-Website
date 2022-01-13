@@ -10,14 +10,14 @@ export default function Footer() {
     return (
         <div className="footer">
             <div className="companyDescription">
-                <p className="title">Follow K-beauty trends</p>
-                <p className="subTitle">Effective. Safe. Affordable.</p>
+                <p className="title">The Trading Gallery</p>
+                <p className="subTitle">Reliable. Safe. Competitive Prices.</p>
             </div>
 
             <div className="footerAbout">
 
                 <div className="eolma">
-                    <p className="title">Ulma</p>
+                    <p className="title">About Us</p>
                     <p><a className="link" href={ShopPageRoute}>Shop</a></p>
                     <p><a className="link" href={BlogPageRoute}>Blog</a></p>
                     <p><a className="link" href={AboutPageRoute}>About</a></p>

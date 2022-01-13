@@ -6,8 +6,10 @@ import { getBestSellers } from '../../reducers/productsReducer';
 import Footer from '../../components/Footer';
 import ProductsRow from '../../components/Rows/ProductsRow';
 
-import creamImage from "../../assets/cream.jpg";
-import makeupsImage from "../../assets/makeups.jpg";
+import mainImage from "../../assets/shonen_jump.jpeg";
+import cardboxImage from "../../assets/cardbox.png";
+import cardpack from "../../assets/cardpack.png";
+
 
 import "./MainPage.css"
 import "../../utils/globalStyles.css";
@@ -26,69 +28,38 @@ export default function MainPage() {
 
     return (
         <div className="mainPage">
-            <div className="mainImage">
-                <div className="marginLeft">
-                    <div className="title">Nutrient-rich formulas for every skin type</div>
-                    <div className="subTitle">Experience the beauty of K-beauty</div>
-                    
-                </div>
-            </div>
+            <img className="mainImage" src={mainImage} />
 
-            <div className="bestSeller marginHorizontal">
+            <div className="bestSeller paddingHorizontal">
                 <div className="title">Shop Our Best Sellers</div>
 
                 <ProductsRow products={bestSellers} placeholderNumbers={4} />
             </div>
 
-            <div className="discoverMakeup">
-                <div className="discover">
-                    <div className="left">
-                        <p className="title">Discover your softest skin yet.</p>
-                        <p className="description">Our cream is packed with aloe vera and hyaluronic acid to get your skin softer than you ever thought possible.</p>
-                    </div>
-                    <div className="right">
-                        <img className="cream-image" src={creamImage} />
-                    </div>
-
-                </div>
-
-                <div className="makeup">
-                    <div className="left">
-                        <img className="makeup-image" src={makeupsImage} />
-                    </div>
-                    <div className="right">
-                        <p className="title">K-beauty with a purpose.</p>
-                        <p className="description">Natural and harsh-free ingredients to create the clear, glowy, and natural-looking skin.</p>
-
-                    </div>
-
-                </div>
-            </div>
-
             <div className="moreAbout">
-                <div className="title">A Little About Our Products</div>
+                <div className="title">A Little About Our Company</div>
 
                 <div className="explanations">
                     <div className="first">
-                        <p className="subTitle">Safe Formulas</p>
-                        <p className="description">We make sure everything we sell is high quality and gentle on the skin.</p>
+                        <p className="subTitle">Reliable Communication</p>
+                        <p className="description">We respond to you within 24 hours. Your satisfaction is key to us.</p>
                     </div>
 
                     <div className="second">
-                        <p className="subTitle">Highly Effective</p>
-                        <p className="description">Our skin care products have been created and tested by us to get you noticeable results.</p>
+                        <p className="subTitle">Safe Shipping</p>
+                        <p className="description">Singles will be sleeved, top loaded and slight amount of bubble wrap for quality assurance.</p>
                     </div>
 
                     <div className="third">
-                        <p className="subTitle">Ethically Sourced</p>
-                        <p className="description">You can sleep easy knowing we only use ethically sourced natural raw materials.</p>
+                        <p className="subTitle">Competitive Prices</p>
+                        <p className="description">We ensure competitive prices. All local (within Canada) orders are free shipping.</p>
                         
                     </div>
                 </div>
             </div>
 
             <div className="exclusive">
-                <div className="title">Exclusive: The Rejuvenation Line</div>
+                {/* <div className="title">Exclusive: The Rejuvenation Line</div> */}
             </div>
 
             <Footer />

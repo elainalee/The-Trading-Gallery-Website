@@ -1,5 +1,5 @@
 {
-  "name": "front_end",
+  "name": "the_trading_gallery_website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -60,15 +60,15 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "This project is owned by Hyehwa (Jennifer) Lee.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jennlee0929/Callisto_Website.git"
+    "url": "git+https://github.com/jennlee0929/The-Trading-Gallery-Website.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jennlee0929/Callisto_Website/issues"
+    "url": "https://github.com/jennlee0929/The-Trading-Gallery-Website/issues"
   }
 }

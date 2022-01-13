@@ -11,8 +11,8 @@ import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 import EnsureUserRoute from './RoutesManager/EnsureUserRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
-import ShopPage from './pages/UlmaPages/ShopPage';
-import BlogPage from './pages/UlmaPages/BlogPage';
+import ShopPage from './pages/AboutUsPages/ShopPage';
+import BlogPage from './pages/AboutUsPages/BlogPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
@@ -24,8 +24,8 @@ import SellerProfilePage from './pages/SellerPages/SellerProfilePage';
 
 import './App.css';
 import "./utils/globalStyles.css";
-import AboutPage from './pages/UlmaPages/AboutPage';
-import ContactPage from './pages/UlmaPages/ContactPage';
+import AboutPage from './pages/AboutUsPages/AboutPage';
+import ContactPage from './pages/AboutUsPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
@@ -90,7 +90,7 @@ function NavPages(props) {
       {/* Product Detail Pages */}
       <Route path={"/product/:productId"} component={ProductDetailPage} />
         
-      {/* Ulma Pages */}
+      {/* About Us Pages */}
       <Route path={ShopPageRoute} component={ShopPage} />
       <Route path={BlogPageRoute} component={BlogPage} />
       <Route path={AboutPageRoute} component={AboutPage} />

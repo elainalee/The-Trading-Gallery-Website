@@ -11,7 +11,7 @@ import { submitFeedback } from '../../reducers/contentsReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
-import "./UlmaPages.css";
+import "./AboutUsPages.css";
 import { ContactPageRoute } from '../../utils/routes';
 
 export default function ContactPage() {
@@ -65,7 +65,7 @@ export default function ContactPage() {
                                 <h2>We are here for you.</h2>
                                 <p>How can we help? Send us a message!</p>
 
-                                <h4>email@example.com</h4>
+                                <h4>hello@theTradingGallery.ca</h4>
                             </div>
 
                             <div className="right">

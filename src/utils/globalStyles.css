@@ -1,4 +1,6 @@
 :root {
+    --primary-yellow: #E8DE2A;
+
     --primary-color: #5c5959;
     --primary-light: #00000020;
     --primary-dark: #5c5959;
@@ -37,6 +39,11 @@ h2 {
 .marginHorizontal {
     margin-left: 80px;
     margin-right: 80px;
+}
+
+.paddingHorizontal {
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 .marginTop {

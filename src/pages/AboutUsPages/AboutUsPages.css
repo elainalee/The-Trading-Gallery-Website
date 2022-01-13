@@ -3,6 +3,9 @@
 .aboutPage main {
     padding-left: 20%;
     padding-right: 20%;
+
+    font-size: 20px;
+    color: black;
 }
 
 .aboutPage main .title {
@@ -14,8 +17,6 @@
 
 .aboutPage main .body {
     margin-top: 20px;
-    font-size: 20px;
-    color: black;
 }
 
 .aboutPage .mainImage {

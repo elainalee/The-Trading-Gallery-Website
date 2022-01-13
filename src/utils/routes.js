@@ -22,7 +22,7 @@ export const AddListingPageRoute = "/add-listing";
 export const ProductDetailPageGeneralRoute = "/product";
 export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";
 
-// Ulma Pages
+// About Us Pages
 export const ShopPageRoute = "/shop";
 export const BlogPageRoute = "/blog";
 export const AboutPageRoute = "/about";

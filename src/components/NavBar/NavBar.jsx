@@ -3,7 +3,7 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../ulma_black.png';
+import logoName from '../../tradingGallery_logo.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
 
