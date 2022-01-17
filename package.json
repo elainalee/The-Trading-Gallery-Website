@@ -52,7 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jennlee0929.github.io/The-Trading-Gallery-Website",
+  "homepage": "http://thetradinggallery.ca/",
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
