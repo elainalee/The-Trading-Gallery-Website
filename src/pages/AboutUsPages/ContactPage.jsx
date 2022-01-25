@@ -13,7 +13,6 @@ import { SUCCESS } from '../../utils/constants';
 import "../../utils/globalStyles.css";
 import "./AboutUsPages.css";
 import { ContactPageRoute } from '../../utils/routes';
-import { Link } from 'react-router-dom';
 
 export default function ContactPage() {
     const dispatch = useDispatch();
@@ -58,7 +57,7 @@ export default function ContactPage() {
                     ? (
                         <div>
                             <h2>Your information has been received.</h2>
-                            <p>We will contact you as soon as possible. To submit another response, click <Link className="underline link" to={ContactPageRoute}>here</Link>.</p>
+                            <p>We will contact you as soon as possible. To submit another response, click <a className="underline links" href={ContactPageRoute}>here</a>.</p>
                         </div>)
                     : (
                         <div>

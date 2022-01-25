@@ -11,6 +11,7 @@ export default function UserButton() {
     const currentSeller = state.seller.seller;
 
     const loggedIn = state.auth.loggedIn;
+    console.log("loggedIn? " , loggedIn);
 
     const history = useHistory();
 
