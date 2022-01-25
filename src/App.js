@@ -40,7 +40,7 @@ function App() {
   const store = createStore(rootReducer, middleWare);
 
   return (
-    <Router>
+    <Router basename="/The-Trading-Gallery-Website">
       <Provider store={store}>
         <NavPages />
       </Provider>
@@ -91,7 +91,7 @@ function NavPages(props) {
       <Route path={"/product/:productId"} component={ProductDetailPage} />
         
       {/* About Us Pages */}
-      <Route path={ShopPageRoute} component={ShopPage} />
+      <Route exact path={ShopPageRoute} component={ShopPage} />
       <Route path={BlogPageRoute} component={BlogPage} />
       <Route path={AboutPageRoute} component={AboutPage} />
       <Route path={ContactPageRoute} component={ContactPage} />
