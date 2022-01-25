@@ -1,6 +1,6 @@
 const NETLIFY_FUNCTIONS = ".netlify/functions/api";
 
-const BASE_URL = "https://ulmaseoul-server.netlify.app/" + NETLIFY_FUNCTIONS;
+const BASE_URL = "https://thetradinggallery.netlify.app/" + NETLIFY_FUNCTIONS;
 
 // const BASE_URL = "http://192.168.1.71:9000/" + NETLIFY_FUNCTIONS;
 
