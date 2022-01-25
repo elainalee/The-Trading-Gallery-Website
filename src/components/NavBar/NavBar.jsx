@@ -1,7 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
-import { useHistory, withRouter } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
+import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
 import logoName from '../../tradingGallery_logo.png';
 import './NavBarBottom.css';
@@ -36,6 +37,10 @@ function NavBar() {
         history.push(ListingsPageRoute);
     }
 
+    function moveToTop() {
+        window.scrollTo(0, 0);
+    }
+
     return (
         <div>
             <nav className="NavBar-Top">
@@ -59,9 +64,7 @@ function NavBar() {
                 <ul className={menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
                             <li key={item.title}>
-                                <a className={item.cName} href={item.url}>
-                                    {item.title}
-                                </a>
+                                <Link className={item.cName + " link"} to={item.url} onClick={moveToTop}>{item.title}</Link>
                             </li>
                         ))}
                 </ul>
