@@ -28,7 +28,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b prod -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -52,7 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://www.thetradinggallery.ca/",
+  "homepage": "https://jennlee0929.github.io/The-Trading-Gallery-Website/",
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
