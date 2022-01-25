@@ -40,7 +40,7 @@ function App() {
   const store = createStore(rootReducer, middleWare);
 
   return (
-    <Router basename="/The-Trading-Gallery-Website">
+    <Router basename={window.location.pathname || ''}>
       <Provider store={store}>
         <NavPages />
       </Provider>
