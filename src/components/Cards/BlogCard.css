@@ -1,0 +1,59 @@
+.blogCard {
+}
+
+.blogCard .image {
+    /* height: 10%; */
+    /* aspect-ratio: 5000 / 6000; */
+    background-color: var(--primary-light);
+}
+
+.blogCard .gap {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.blogCard .sm {
+    display: flex;
+    flex-direction:row;
+    /* border-bottom: 1px solid var(--primary-light); */
+}
+
+.blogCard .sm .image-section {
+    width: 40%;
+}
+
+.blogCard .sm .title-section {
+    width: 60%;
+}
+
+.blogCard .title {
+    color: black;
+    font-weight: bold;
+}
+
+.blogCard .sm .title{
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.blogCard .md .title{
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.blogCard .lg .title{
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+.blogCard .placeholder {
+    /* height: 10%; */
+    /* aspect-ratio: 5000 / 6000; */
+
+    background-color: var(--primary-light);
+}
+
+.blogCard .cardDescription {
+    /* height: 130px; */
+    color: black;
+}

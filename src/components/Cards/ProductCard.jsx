@@ -6,7 +6,6 @@ import "../../utils/globalStyles.css";
 import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
-
   return (
     <Link to={product?._id ? `/product/${product?._id}` : '#'} className={`links ${!product && "disabledCursor"}`}>
       <Card className="productCard">

@@ -13,6 +13,10 @@ import cardpack from "../../assets/cardpack.png";
 
 import "./MainPage.css"
 import "../../utils/globalStyles.css";
+import BlogCard from '../../components/Cards/BlogCard';
+import { Link } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
+import ProductCard from '../../components/Cards/ProductCard';
 
 
 export default function MainPage() {
@@ -28,7 +32,24 @@ export default function MainPage() {
 
     return (
         <div className="mainPage">
-            <img className="mainImage" src={mainImage} />
+            <Row className="marginTop paddingHorizontalSm">
+                <Col md={3} className="grayBorderRight">
+                    <BlogCard sm content={{ title: "the title", }}  />
+                    <BlogCard sm content={{ title: "the title", }} />
+                    <BlogCard sm content={{ title: "the title", }} />
+                    <BlogCard sm last content={{ title: "the title", }} />
+                </Col>
+                <Col md={6} className="grayBorderRight">
+                    <BlogCard lg last content={{ title: "the title", }} />
+                </Col>
+                <Col md={3}>
+                    <BlogCard md content={{ title: "the title", }} />
+                    <BlogCard md last content={{ title: "the title", }} />
+                </Col>
+            </Row>
+
+
+            {/* <img className="mainImage" src={mainImage} /> */}
 
             <div className="bestSeller paddingHorizontal">
                 <div className="title">Shop Our Best Sellers</div>

@@ -4,7 +4,7 @@ import { MenuItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../tradingGallery_logo.png';
+import logoName from '../../assets/TTG-logo-w-text.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
 

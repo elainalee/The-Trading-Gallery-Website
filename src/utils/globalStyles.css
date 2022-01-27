@@ -46,8 +46,21 @@ h2 {
     padding-right: 80px;
 }
 
+.paddingHorizontalSm {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .marginTop {
     margin-top: 35px;
+}
+
+.grayBorderRight {
+    border-right: 1px solid var(--primary-light);
+}
+
+.grayBorderBottom {
+    border-bottom: 1px solid var(--primary-light);
 }
 
 .userPages {
