@@ -19,12 +19,12 @@ export default function BlogCard(props) {
                 <div className="image-section">
                     <Card.Img
                         className="image"
-                        src={mainImage}
+                        src={props?.blog?.mainImage}
                         alt="product-image"
                     />
                 </div>
                 <div className="title-section">
-                    <Card.Title className="title">{props.content?.title}</Card.Title>
+                    <Card.Title className="title">{props.blog?.title}</Card.Title>
                 </div>
             </div>
             

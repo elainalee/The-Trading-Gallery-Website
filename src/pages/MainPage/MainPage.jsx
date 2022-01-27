@@ -17,34 +17,47 @@ import BlogCard from '../../components/Cards/BlogCard';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import ProductCard from '../../components/Cards/ProductCard';
+import { getBlogs } from '../../reducers/blogsReducer';
 
 
 export default function MainPage() {
     const dispatch = useDispatch();
 
-    const { products } = useSelector((state) => state);
+    const { products, blogs } = useSelector((state) => state);
 
     const bestSellers = products.bestSellers;
 
+    const mainBlog = blogs.mainBlog;
+    const subBlogs = blogs.subBlogs;
+    const recentBlogs = blogs.recentBlogs;
+
+    console.log("mainBlog ", mainBlog);
+    console.log("subblog ", subBlogs);
+    console.log("recentBlog ", recentBlogs);
+
+
     useEffect(() => {
         dispatch(getBestSellers());
+        dispatch(getBlogs("mainBlog"));
+        dispatch(getBlogs("subBlog"));
+        dispatch(getBlogs("recentBlog"));
     }, []);
 
     return (
         <div className="mainPage">
             <Row className="marginTop paddingHorizontalSm">
                 <Col md={3} className="grayBorderRight">
-                    <BlogCard sm content={{ title: "the title", }}  />
-                    <BlogCard sm content={{ title: "the title", }} />
-                    <BlogCard sm content={{ title: "the title", }} />
-                    <BlogCard sm last content={{ title: "the title", }} />
+                    <BlogCard sm blog={recentBlogs?.[0]} />
+                    <BlogCard sm blog={recentBlogs?.[1]} />
+                    <BlogCard sm blog={recentBlogs?.[2]} />
+                    <BlogCard sm last blog={recentBlogs?.[3]} />
                 </Col>
                 <Col md={6} className="grayBorderRight">
-                    <BlogCard lg last content={{ title: "the title", }} />
+                    <BlogCard lg last blog={ mainBlog?.[0] } />
                 </Col>
                 <Col md={3}>
-                    <BlogCard md content={{ title: "the title", }} />
-                    <BlogCard md last content={{ title: "the title", }} />
+                    <BlogCard md blog={ subBlogs?.[0] } />
+                    <BlogCard md last blog={ subBlogs?.[1]  } />
                 </Col>
             </Row>
 

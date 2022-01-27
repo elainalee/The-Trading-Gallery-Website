@@ -17,6 +17,7 @@ export const PasswordResetRoute = "/password-reset" ;
 export const ListingsPageRoute = "/listings";
 export const SellerProfileRoute = "/seller-profile-page";
 export const AddListingPageRoute = "/add-listing";
+export const AddBlogPageRoute = "/add-blog";
 
 // Product Detail Pages
 export const ProductDetailPageGeneralRoute = "/product";

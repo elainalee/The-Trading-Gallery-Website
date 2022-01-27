@@ -139,4 +139,41 @@ export const addSellerProduct = (title, brand, description, price, mainImage) =>
   }
 };
 
+
+export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    console.log(state);
+
+    const url = BASE_URL + "/sellers/addBlog";
+
+    const payload = {
+      title,
+      mainImage,
+      body,
+      mainBlog: isMainBlog,
+      subBlog: isSubBlog
+    };
+
+    const res = await client.post(url, payload);
+    const data = res.data;
+
+    dispatch({
+      type: "BLOGS/ADDBLOG",
+      payload: {
+        blog: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("addBlog err :>> ", err.message);
+    return err.message;
+  }
+};
+
 export default sellerReducer;
