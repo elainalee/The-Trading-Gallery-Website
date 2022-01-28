@@ -12,8 +12,5 @@
 
 .productCard .cardDescription {
     height: 130px;
-}
-
-.productCard {
-    background-color: var(--primary-light);
+    background-color: white;
 }

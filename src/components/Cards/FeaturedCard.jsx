@@ -7,29 +7,26 @@ import mainImage from "../../assets/shonen_jump.jpeg";
 
 import "../../utils/globalStyles.css";
 
-import './BlogCard.css';
+import './FeaturedCard.css';
 
-export default function BlogCard(props) {
-    const blog = props.blog;
-
-    const sizeName = props.sm ? "sm" : props.lg ? "lg" : "md";
-    const hasGrayBorderBottom = props.sm && !props.last;
+export default function FeaturedCard({ product }) {
 
     return (
-        <Link className="blogCard" to={'#'}>
-            <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
+        <Link to={product?._id ? `/product/${product?._id}` : '#'} className={`links ${!product && "disabledCursor"}`}>
+            <div className={"featuredCard"}>
                 <div className="image-section">
-                    {blog 
+                    {product 
                         ? (<Card.Img
-                            className="image"
-                            src={blog?.mainImage}
-                            alt="blog-image"
+                                className="image"
+                                src={product?.mainImage}
+                                alt="blog-image"
                         />)
                     : (<div className="placeholder" />)
                     }
                 </div>
                 <div className="title-section">
-                    <Card.Title className="title">{props.blog?.title}</Card.Title>
+                    <Card.Title className="title">{product?.title}</Card.Title>
+                    <Card.Subtitle className="subtitle">{product?.brand}</Card.Subtitle>
                 </div>
             </div>
             

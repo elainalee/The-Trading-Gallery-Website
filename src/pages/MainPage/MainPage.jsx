@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import ProductCard from '../../components/Cards/ProductCard';
 import { getBlogs } from '../../reducers/blogsReducer';
+import FeaturedCard from '../../components/Cards/FeaturedCard';
 
 
 export default function MainPage() {
@@ -61,16 +62,30 @@ export default function MainPage() {
                 </Col>
             </Row>
 
+            <div className="featured marginTop paddingHorizontalSm">
+                <div className="title">Featured</div>
+                <Row className="marginTop paddingHorizontalSm">
+                <Col >
+                    <FeaturedCard sm product={bestSellers?.[0]} />
+                    <FeaturedCard sm product={bestSellers?.[1]} />
+                    <FeaturedCard sm product={bestSellers?.[2]} />
+                    <FeaturedCard sm product={bestSellers?.[3]} />
+                    <FeaturedCard sm product={bestSellers?.[3]} />
+                    <FeaturedCard sm product={bestSellers?.[3]} />
+                </Col>
+                <Col>
+                    <FeaturedCard sm product={ bestSellers?.[0] } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                    <FeaturedCard sm product={bestSellers?.[3]} />
+                    <FeaturedCard sm product={bestSellers?.[3]} />
+                </Col>
+            </Row>
 
-            {/* <img className="mainImage" src={mainImage} /> */}
-
-            <div className="bestSeller paddingHorizontal">
-                <div className="title">Shop Our Best Sellers</div>
-
-                <ProductsRow products={bestSellers} placeholderNumbers={4} />
             </div>
 
-            <div className="moreAbout">
+            <div className="moreAbout grayBorderTop grayBorderBottom">
                 <div className="title">A Little About Our Company</div>
 
                 <div className="explanations">
@@ -90,6 +105,12 @@ export default function MainPage() {
                         
                     </div>
                 </div>
+            </div>
+
+            <div className="bestSeller paddingHorizontal marginTopExLg grayBorderTop grayBorderBottom">
+                <div className="title">Shop Our Best Sellers</div>
+
+                <ProductsRow products={bestSellers} placeholderNumbers={4} />
             </div>
 
             <div className="exclusive">
