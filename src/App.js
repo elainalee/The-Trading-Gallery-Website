@@ -29,11 +29,12 @@ import ContactPage from './pages/AboutUsPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, AddListingPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
 import ProductDetailPage from './pages/ProductDetailPages/ProductDetailPage';
 import { getSeller } from './reducers/sellerReducer';
 import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
 import AddListingPage from './pages/SellerPages/AddListingPage';
+import AddBlogPage from './pages/SellerPages/AddBlogPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -86,6 +87,7 @@ function NavPages(props) {
 
       <EnsureSellerRoute path={ListingsPageRoute} component={ListingsPage} />
       <EnsureSellerRoute path={AddListingPageRoute} component={AddListingPage} />
+      <EnsureSellerRoute path={AddBlogPageRoute} component={AddBlogPage} />
 
       {/* Product Detail Pages */}
       <Route path={"/product/:productId"} component={ProductDetailPage} />

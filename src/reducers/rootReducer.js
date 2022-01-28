@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
+import blogsReducer from "./blogsReducer";
 import contentsReducer from "./contentsReducer";
 import productsReducer from "./productsReducer";
 import sellerReducer from "./sellerReducer";
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
     seller: sellerReducer,
     products: productsReducer,
     contents: contentsReducer,
+    blogs: blogsReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -3,24 +3,47 @@
     flex-direction:row;
 }
 
-/* AddListingPage */
+/* AddListingPage and AddBlogPage */
+.addPostPages #mainImage {
+    width: 90%;
+}
 
-.addListingPage .productShowing {
+.addPostPages #googleDriveCheckbox {
+    margin-left: 15px;
+}
+
+.addPostPages .productShowing {
     height: 700px;
 }
 
-.addListingPage .left {
+.addPostPages .left {
     float: left;
     width: 50%;
 }
 
-.addListingPage .right {
+.addPostPages .right {
     float: right;
     width: 50%;
 }
 
-.addListingPage .image {
+.addPostPages .image {
+    width: 100%;
+    aspect-ratio: 5000 / 6000;
+    /* height: 700px; */
+}
+
+/* AddListingPage */
+.addListingPage .imgPlaceholder {
     width: 90%;
-    height: 700px;
+    aspect-ratio: 5000 / 6000;
+    /* height: 700px; */
+    background-color: var(--primary-light);
+}
+
+/* AddBlogPage */
+.addBlogPage .imgPlaceholder {
+    width: 90%;
+    aspect-ratio: 300 / 200;
+    /* height: 700px; */
     background-color: var(--primary-light);
 }
