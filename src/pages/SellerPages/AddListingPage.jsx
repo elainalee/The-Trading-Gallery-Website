@@ -18,9 +18,11 @@ export default function AddListingPage() {
     const titleRef = useRef();
     const priceRef = useRef();
     const descriptionRef = useRef();
+    const mainImageRef = useRef();
     const tagRef = useRef();
 
-    const [mainImage, setMainImage] = useState(undefined);
+    const [isGoogleDriveLink, setIsGoogleDriveLink] = useState(false);
+    const [mainImageLink, setMainImageLink] = useState(undefined);
 
     const { seller } = useSelector((state) => state);
 
@@ -33,8 +35,9 @@ export default function AddListingPage() {
             titleRef.current.value, 
             brandRef.current.value, 
             descriptionRef.current.value, 
-            priceRef.current.value, 
-            mainImage))
+            priceRef.current.value,
+            isGoogleDriveLink ? formatGoogleDriveLink(mainImageLink) : mainImageLink
+            ))
             .then((res) => {
             if (res === SUCCESS) {
                 console.log("product added");
@@ -46,16 +49,16 @@ export default function AddListingPage() {
             });
     }
 
-    const hiddenFileInput = useRef();
-
-    const handleAddImageClick = () => {
-        hiddenFileInput.current.click();
+    async function renderImageButton(e) {
+        e.preventDefault();
+        setMainImageLink(mainImageRef?.current?.value);
     }
 
-    const handleSelectPhoto = (event) => {
-        const fileUploaded = event.target.files[0];
-        console.log(fileUploaded);
-        setMainImage(fileUploaded);
+    const formatGoogleDriveLink = (googleLink) => {
+        const brokenDownLink = googleLink.split('/');
+        const photoID = brokenDownLink[brokenDownLink.length - 2];
+
+        return "https://drive.google.com/thumbnail?id=" + photoID;
     }
 
 
@@ -65,12 +68,19 @@ export default function AddListingPage() {
                 <div className="productShowing marginHorizontal">
                         <Form onSubmit={handleSubmit}>
                             <div className="left">
-                                <Form.Group id="image">
-                                    {mainImage 
-                                        ? <img className="image" src={URL.createObjectURL(mainImage)} onClick={handleAddImageClick}/>
-                                        : <div className="image" onClick={handleAddImageClick}>+</div>}
-                                    <Form.Control type="file" onChange={handleSelectPhoto} multiple ref={hiddenFileInput} style={{display:'none'}} required />
+                                <Form.Group id="mainImage">
+                                    <Form.Label>Main Image URL *</Form.Label>
+                                    <Form.Control type="text" ref={mainImageRef} required />
+                                    <div id="googleDriveCheckbox"><Form.Check type="checkbox" checked={isGoogleDriveLink} onChange={() => {setIsGoogleDriveLink(!isGoogleDriveLink)}} label="this link is from google drive" /></div>
                                 </Form.Group>
+
+                                <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="renderImg" marginTop="2.5rem" marginBottom="1rem" onClick={renderImageButton}>Click to Preview Image</CustomButton>
+
+                                <div className="imgPlaceholder">
+                                    {mainImageLink && (
+                                        <img className="image" src={isGoogleDriveLink ? formatGoogleDriveLink(mainImageLink) : mainImageLink} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
+                                    )}
+                                </div>
                             </div>
                             <div className="right">
                                 <Form.Group id="title">

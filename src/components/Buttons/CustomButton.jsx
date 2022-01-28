@@ -19,6 +19,7 @@ export const CustomButton = ({
     color,
     marginLeft,
     marginTop,
+    marginBottom,
     fontSize,
 }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
@@ -45,7 +46,7 @@ export const CustomButton = ({
           onClick={onClick}
           disabled={disabled}
           type={type}
-          style={({ marginTop, marginLeft })}
+          style={({ marginTop, marginLeft, marginBottom })}
         >
             {children}
         </button>

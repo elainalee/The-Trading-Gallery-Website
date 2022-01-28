@@ -94,7 +94,7 @@ export const getSellerProducts = () => async (
 };
 
 //TODO: not done
-export const addSellerProduct = (title, brand, description, price, mainImage) => async (
+export const addSellerProduct = (title, brand, description, price, mainImageLink) => async (
   dispatch,
   getState
 ) => {
@@ -104,16 +104,14 @@ export const addSellerProduct = (title, brand, description, price, mainImage) =>
 
     const url = BASE_URL + "/sellers/addProduct";
 
-    const payload = new FormData();
-    payload.append('file', mainImage);
-
-    payload.append('title', title);
-    payload.append('brand', brand);
-    payload.append('price', price);
-    payload.append('description', description);
-    payload.append('sellerID', state.seller.seller._id);
-    
-
+    const payload = {
+      mainImage: mainImageLink,
+      title,
+      brand,
+      price,
+      description,
+      sellerID: state.seller.seller._id
+    }
     console.log(payload);
 
 

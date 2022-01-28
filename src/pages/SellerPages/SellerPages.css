@@ -4,6 +4,13 @@
 }
 
 /* AddListingPage */
+.addListingPage #mainImage {
+    width: 90%;
+}
+
+.addListingPage #googleDriveCheckbox {
+    margin-left: 15px;
+}
 
 .addListingPage .productShowing {
     height: 700px;
@@ -20,7 +27,14 @@
 }
 
 .addListingPage .image {
+    width: 100%;
+    aspect-ratio: 5000 / 6000;
+    /* height: 700px; */
+}
+
+.addListingPage .imgPlaceholder {
     width: 90%;
-    height: 700px;
+    aspect-ratio: 5000 / 6000;
+    /* height: 700px; */
     background-color: var(--primary-light);
 }
