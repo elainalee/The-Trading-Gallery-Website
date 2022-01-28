@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -41,7 +42,7 @@ function App() {
   const store = createStore(rootReducer, middleWare);
 
   return (
-    <Router basename={window.location.pathname || ''}>
+    <Router>
       <Provider store={store}>
         <NavPages />
       </Provider>
