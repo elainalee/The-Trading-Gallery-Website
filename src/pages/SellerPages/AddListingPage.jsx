@@ -6,6 +6,7 @@ import { addSellerProduct } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
+import { formatGoogleDriveLink } from '../../utils/Helper';
 import "./SellerPages.css";
 
 export default function AddListingPage() {
@@ -49,21 +50,14 @@ export default function AddListingPage() {
             });
     }
 
-    async function renderImageButton(e) {
+    async function handleRenderImage(e) {
         e.preventDefault();
         setMainImageLink(mainImageRef?.current?.value);
     }
 
-    const formatGoogleDriveLink = (googleLink) => {
-        const brokenDownLink = googleLink.split('/');
-        const photoID = brokenDownLink[brokenDownLink.length - 2];
-
-        return "https://drive.google.com/thumbnail?id=" + photoID;
-    }
-
 
     return (
-        <div className="marginTop addListingPage">
+        <div className="marginTop addPostPages addListingPage">
             <main>
                 <div className="productShowing marginHorizontal">
                         <Form onSubmit={handleSubmit}>
@@ -74,7 +68,7 @@ export default function AddListingPage() {
                                     <div id="googleDriveCheckbox"><Form.Check type="checkbox" checked={isGoogleDriveLink} onChange={() => {setIsGoogleDriveLink(!isGoogleDriveLink)}} label="this link is from google drive" /></div>
                                 </Form.Group>
 
-                                <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="renderImg" marginTop="2.5rem" marginBottom="1rem" onClick={renderImageButton}>Click to Preview Image</CustomButton>
+                                <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="renderImg" marginTop="2.5rem" marginBottom="1rem" onClick={handleRenderImage}>Click to Preview Image</CustomButton>
 
                                 <div className="imgPlaceholder">
                                     {mainImageLink && (
