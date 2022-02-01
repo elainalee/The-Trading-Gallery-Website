@@ -1,0 +1,58 @@
+/* All InfoPages */
+
+.infoPages main * {
+    font-size: 20px;
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.infoPages main {
+    padding-left: 20%;
+    padding-right: 20%;
+
+    margin-bottom: 85px;
+}
+
+.infoPages main .section {
+    margin-top: 50px;
+    line-height: 30px;
+}
+
+.infoPages main .title {
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.infoPages main .body {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.infoPages main .emphasis {
+    margin-top: 10px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.infoPages main .body .emphasis {
+    margin-top: 10px;
+    font-size: 16px;
+    display: inline;
+}
+
+
+/* contactPage */
+
+.contactPage .left {
+    float: left;
+    width: 50%;
+}
+
+.contactPage .right {
+    float: right;
+    width: 50%;
+}
+
+.contactPage main {
+    height: 800px;
+}

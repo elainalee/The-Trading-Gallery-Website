@@ -1,0 +1,37 @@
+
+/* contactPage */
+
+.contactPage main * {
+    /* font-size: 20px; */
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.contactPage main .title {
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.contactPage main .subtitle {
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.contactPage main .body {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.contactPage .left {
+    float: left;
+    width: 50%;
+}
+
+.contactPage .right {
+    float: right;
+    width: 50%;
+}
+
+.contactPage main {
+    height: 800px;
+}

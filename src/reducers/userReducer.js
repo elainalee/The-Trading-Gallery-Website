@@ -26,12 +26,12 @@ export const getUser = () => async (
     getState
   ) => {
     try {
-      console.log("==== in get User");
+      // console.log("==== in get User");
       const url = BASE_URL + "/users/getUser";
       const res = await client.get(url);
       const data = res.data;
 
-      console.log("==== in get User, data is: ", data);
+      // console.log("==== in get User, data is: ", data);
   
       dispatch({
         type: "USER/SETUSER",

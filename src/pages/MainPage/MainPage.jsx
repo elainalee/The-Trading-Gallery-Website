@@ -32,9 +32,9 @@ export default function MainPage() {
     const subBlogs = blogs.subBlogs;
     const recentBlogs = blogs.recentBlogs;
 
-    console.log("mainBlog ", mainBlog);
-    console.log("subblog ", subBlogs);
-    console.log("recentBlog ", recentBlogs);
+    // console.log("mainBlog ", mainBlog);
+    // console.log("subblog ", subBlogs);
+    // console.log("recentBlog ", recentBlogs);
 
 
     useEffect(() => {
@@ -70,16 +70,12 @@ export default function MainPage() {
                     <FeaturedCard sm product={bestSellers?.[1]} />
                     <FeaturedCard sm product={bestSellers?.[2]} />
                     <FeaturedCard sm product={bestSellers?.[3]} />
-                    <FeaturedCard sm product={bestSellers?.[3]} />
-                    <FeaturedCard sm product={bestSellers?.[3]} />
                 </Col>
                 <Col>
                     <FeaturedCard sm product={ bestSellers?.[0] } />
                     <FeaturedCard sm product={ bestSellers?.[1]  } />
                     <FeaturedCard sm product={ bestSellers?.[1]  } />
                     <FeaturedCard sm product={ bestSellers?.[1]  } />
-                    <FeaturedCard sm product={bestSellers?.[3]} />
-                    <FeaturedCard sm product={bestSellers?.[3]} />
                 </Col>
             </Row>
 

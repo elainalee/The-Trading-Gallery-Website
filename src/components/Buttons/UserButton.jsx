@@ -8,7 +8,6 @@ import { IconButton } from './IconButton';
 export default function UserButton() {
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
-    const currentSeller = state.seller.seller;
 
     const loggedIn = state.auth.loggedIn;
 

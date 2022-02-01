@@ -55,7 +55,7 @@ export const getBlogs = (blogType) => async (
     try {
       const url = BASE_URL + "/blogs/getBlogs" + ((blogType === undefined) ? "" : "?" + blogType + "=true");
 
-      console.log("getBlogs: ", url);
+    //   console.log("getBlogs: ", url);
 
       const res = await axios.get(url);
       const data = res.data;

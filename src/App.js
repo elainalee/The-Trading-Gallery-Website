@@ -12,8 +12,8 @@ import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
 import EnsureUserRoute from './RoutesManager/EnsureUserRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
-import ShopPage from './pages/AboutUsPages/ShopPage';
-import BlogPage from './pages/AboutUsPages/BlogPage';
+import ShopPage from './pages/SectionPages/ShopPage';
+import BlogPage from './pages/SectionPages/BlogPage';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from "redux-thunk";
@@ -25,17 +25,18 @@ import SellerProfilePage from './pages/SellerPages/SellerProfilePage';
 
 import './App.css';
 import "./utils/globalStyles.css";
-import AboutPage from './pages/AboutUsPages/AboutPage';
-import ContactPage from './pages/AboutUsPages/ContactPage';
+import AboutPage from './pages/InfoPages/AboutPage';
+import ContactPage from './pages/SectionPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
 import ProductDetailPage from './pages/ProductDetailPages/ProductDetailPage';
 import { getSeller } from './reducers/sellerReducer';
 import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
 import AddListingPage from './pages/SellerPages/AddListingPage';
 import AddBlogPage from './pages/SellerPages/AddBlogPage';
+import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -57,12 +58,8 @@ function NavPages(props) {
 
   useEffect(() => {
       dispatch(getUser());
+      dispatch(getSeller());
   }, []);
-
-  useEffect(() => {
-    dispatch(getSeller());
-  }, []);
-
 
   return (
     <div>
@@ -93,7 +90,7 @@ function NavPages(props) {
       {/* Product Detail Pages */}
       <Route path={"/product/:productId"} component={ProductDetailPage} />
         
-      {/* About Us Pages */}
+      {/* Trading Gallery Pages */}
       <Route exact path={ShopPageRoute} component={ShopPage} />
       <Route path={BlogPageRoute} component={BlogPage} />
       <Route path={AboutPageRoute} component={AboutPage} />
@@ -101,6 +98,7 @@ function NavPages(props) {
 
       {/* Info Pages */}
       <Route path={ShippingReturnPageRoute} component={ShippingReturnPage} />
+      <Route path={AddressPickupRoute} component={AddressPickupPage} />
       <Route path={TermsOfUsePageRoute} component={TermsOfUsePage} />
       <Route path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
       

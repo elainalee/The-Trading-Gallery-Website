@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Alert, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import CustomButton from '../../components/Buttons/CustomButton';
 import Footer from '../../components/Footer';
 
@@ -9,11 +10,11 @@ import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
 import { submitFeedback } from '../../reducers/contentsReducer';
 import { SUCCESS } from '../../utils/constants';
+import { ContactPageRoute } from '../../utils/routes';
 
 import "../../utils/globalStyles.css";
-import "./AboutUsPages.css";
-import { ContactPageRoute } from '../../utils/routes';
-import { Link } from 'react-router-dom';
+import "./SectionPages.css";
+
 
 export default function ContactPage() {
     const dispatch = useDispatch();
@@ -50,6 +51,10 @@ export default function ContactPage() {
         });
     }
 
+    const handleAnotherSubmitClick = () => {
+        window.location.href = ContactPageRoute;
+    }
+
     return (
         <div className="marginTop contactPage">
             <div className="marginHorizontal">
@@ -57,16 +62,16 @@ export default function ContactPage() {
                 {submitted
                     ? (
                         <div>
-                            <h2>Your information has been received.</h2>
-                            <p>We will contact you as soon as possible. To submit another response, click <Link className="underline link" to={ContactPageRoute}>here</Link>.</p>
+                            <div className="title">Your information has been received.</div>
+                            <div className="body">We will contact you as soon as possible. To submit another response, click <Link className="underline link" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</div>
                         </div>)
                     : (
                         <div>
                             <div className="left">
-                                <h2>We are here for you.</h2>
-                                <p>How can we help? Send us a message!</p>
+                                <div className="title">We are here for you.</div>
+                                <div className="body">How can we help? Send us a message!</div>
 
-                                <h4>hello@theTradingGallery.ca</h4>
+                                <div className="subtitle">hello@thetradinggallery.ca</div>
                             </div>
 
                             <div className="right">

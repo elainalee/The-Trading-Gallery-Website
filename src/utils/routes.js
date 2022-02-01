@@ -23,7 +23,7 @@ export const AddBlogPageRoute = "/add-blog";
 export const ProductDetailPageGeneralRoute = "/product";
 export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";
 
-// About Us Pages
+// Trading Gallery Pages
 export const ShopPageRoute = "/shop";
 export const BlogPageRoute = "/blog";
 export const AboutPageRoute = "/about";
@@ -31,5 +31,6 @@ export const ContactPageRoute = "/contact";
 
 // Info Pages
 export const ShippingReturnPageRoute = "/shippingReturn";
+export const AddressPickupRoute = "/address-pickup";
 export const TermsOfUsePageRoute = "/termsOfUse";
 export const PrivacyPolicyPageRoute = "/privacyPolicy";

@@ -5,6 +5,7 @@ const STYLES = [
     'primary',
     'outline',
     'link',
+    'link underline',
 ];
 
 
