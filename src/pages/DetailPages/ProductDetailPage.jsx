@@ -8,7 +8,7 @@ import { getProductInfo } from '../../reducers/productsReducer';
 
 import Footer from '../../components/Footer';
 
-import "./ProductDetailPage.css";
+import "./DetailPages.css";
         
 
 export default function ProductDetailPage(props) {

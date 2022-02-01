@@ -13,10 +13,12 @@ export default function BlogCard(props) {
     const blog = props.blog;
 
     const sizeName = props.sm ? "sm" : props.lg ? "lg" : "md";
+    console.log(blog, sizeName);
+
     const hasGrayBorderBottom = props.sm && !props.last;
 
     return (
-        <Link className="blogCard" to={'#'}>
+        <Link to={blog?._id ? `/blog/${blog?._id}` : '#'} className={`blogCard links ${!blog && "disabledCursor"}`}>
             <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
                 <div className="image-section">
                     {blog 

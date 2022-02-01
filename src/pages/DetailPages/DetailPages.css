@@ -1,3 +1,5 @@
+/* Product Detail Page */
+
 .productDetailPage main {
     height: 800px;
 }
@@ -47,3 +49,31 @@
 
 }
 
+
+/* Blog Detail Page */
+.blogDetailPage main * {
+    font-size: 20px;
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.blogDetailPage main {
+    padding-left: 20%;
+    padding-right: 20%;
+
+    margin-bottom: 85px;
+}
+
+.blogDetailPage main .title {
+    font-weight: 500;
+    font-size: 27px;
+}
+
+.blogDetailPage main .image {
+    width: 90%;
+    margin-top: 5%;
+}
+
+.blogDetailPage main .body {
+    margin-top: 5%;
+    font-size: 22px;
+}

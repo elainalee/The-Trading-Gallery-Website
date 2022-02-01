@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { AboutPageRoute, AddressPickupRoute, BlogPageRoute, ContactPageRoute, MainPageRoute, PrivacyPolicyPageRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute } from '../utils/routes';
+import { AboutPageRoute, AddressPickupRoute, BlogsPageRoute, ContactPageRoute, MainPageRoute, PrivacyPolicyPageRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute } from '../utils/routes';
 
 import "./Footer.css"
 
@@ -23,7 +23,7 @@ export default function Footer() {
                 <div className="eolma">
                     <p className="title">Trading Gallery</p>
                     <p><Link to={ShopPageRoute} onClick={moveToTop} className="link">Shop</Link></p>
-                    <p><Link to={BlogPageRoute} onClick={moveToTop} className="link">Blog</Link></p>
+                    <p><Link to={BlogsPageRoute} onClick={moveToTop} className="link">Blog</Link></p>
                     <p><Link to={AboutPageRoute} onClick={moveToTop} className="link">About</Link></p>
                     <p><Link to={ContactPageRoute} onClick={moveToTop} className="link">Contact</Link></p>
                 </div>

@@ -77,6 +77,23 @@ export const getBlogs = (blogType) => async (
     }
 };
 
+export const getBlogDetail = (blogId) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const url = BASE_URL + "/blogs/" + blogId;1
+    const res = await axios.get(url);
+    const data = res.data;
+
+    return data;
+
+  } catch (err) {
+    console.log("getBlogDetail err :>> ", err.message);
+    return err.message;
+  }
+};
+
 
 
 export default blogsReducer;

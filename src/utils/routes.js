@@ -25,7 +25,7 @@ export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:product
 
 // Trading Gallery Pages
 export const ShopPageRoute = "/shop";
-export const BlogPageRoute = "/blog";
+export const BlogsPageRoute = "/blog";
 export const AboutPageRoute = "/about";
 export const ContactPageRoute = "/contact";
 

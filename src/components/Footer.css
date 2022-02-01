@@ -1,13 +1,13 @@
 .footer {
-    /* background-color: var(--primary-light); */
-    background-color: var(--primary-blue);
-    color: white;
+    background-color: var(--primary-light);
+
+    color: black;
     font-size: 16px;
     font-family: Roboto;
 }
 
 .footer .link {
-    color: white;
+    color: black;
 }
 
 .footer {
