@@ -1,3 +1,13 @@
+/* More About Banner */
+export const BANNER_FIRST = "Our Goal";
+export const BANNER_FIRST_CONTENT = "Starting as a small business in Vancouver, B.C, Canada. We sell products and aim to create experiences people love.";
+
+export const BANNER_SECOND = "Our Team";
+export const BANNER_SECOND_CONTENT = "Consists of opposite individual personality and career types. People who are used to making and creating solo, but excel when working together.";
+
+export const BANNER_THIRD = "Our Ethic";
+export const BANNER_THIRD_CONTENT = "We bring good quality to our customers. We ask that you have confidence when making a purchase with us. ";
+
 /* About us Page */
 
 export const THE_TRADING_GALLERY = "The Trading Gallery";

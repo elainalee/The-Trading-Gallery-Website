@@ -64,9 +64,11 @@
 
 /* moreAbout section */
 
-.moreAbout {
-    /* background-color: var(--primary-blue); */
+.mainPage .moreAbout * {
+    font-family: 'Roboto mono', 'Open Sans';
+}
 
+.moreAbout {
     margin-top: 10%;
 
     width: 100%;
@@ -84,7 +86,7 @@
     display: flex;
     flex-direction:row;
 
-    padding-top: 10%;
+    padding-top: 7%;
 }
 
 .moreAbout .explanations .first {

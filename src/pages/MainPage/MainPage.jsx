@@ -19,6 +19,7 @@ import { Col, Row } from 'react-bootstrap';
 import ProductCard from '../../components/Cards/ProductCard';
 import { getBlogs } from '../../reducers/blogsReducer';
 import FeaturedCard from '../../components/Cards/FeaturedCard';
+import { BANNER_FIRST, BANNER_FIRST_CONTENT, BANNER_SECOND, BANNER_SECOND_CONTENT, BANNER_THIRD, BANNER_THIRD_CONTENT } from '../../utils/contents';
 
 
 export default function MainPage() {
@@ -86,19 +87,18 @@ export default function MainPage() {
 
                 <div className="explanations">
                     <div className="first">
-                        <p className="subTitle">Reliable Communication</p>
-                        <p className="description">We respond to you within 24 hours. Your satisfaction is key to us.</p>
+                        <p className="subTitle">{BANNER_FIRST}</p>
+                        <p className="description">{BANNER_FIRST_CONTENT}</p>
                     </div>
 
                     <div className="second">
-                        <p className="subTitle">Safe Shipping</p>
-                        <p className="description">Singles will be sleeved, top loaded and slight amount of bubble wrap for quality assurance.</p>
+                        <p className="subTitle">{BANNER_SECOND}</p>
+                        <p className="description">{BANNER_SECOND_CONTENT}</p>
                     </div>
 
                     <div className="third">
-                        <p className="subTitle">Competitive Prices</p>
-                        <p className="description">We ensure competitive prices. All local (within Canada) orders are free shipping.</p>
-                        
+                        <p className="subTitle">{BANNER_THIRD}</p>
+                        <p className="description">{BANNER_THIRD_CONTENT}</p>
                     </div>
                 </div>
             </div>

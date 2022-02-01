@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="footer">
             <div className="companyDescription">
                 <p className="title">The Trading Gallery</p>
-                <p className="subTitle">Reliable. Safe. Competitive Prices.</p>
+                <p className="subTitle">hello@thetradinggallery.ca</p>
             </div>
 
             <div className="footerAbout">
