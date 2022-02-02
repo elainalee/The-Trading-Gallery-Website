@@ -9,6 +9,7 @@ import { getProductInfo } from '../../reducers/productsReducer';
 import Footer from '../../components/Footer';
 
 import "./DetailPages.css";
+import { Col, Row } from 'react-bootstrap';
         
 
 export default function ProductDetailPage(props) {
@@ -31,53 +32,50 @@ export default function ProductDetailPage(props) {
         return <LoadingBox />;
     }
 
-
     return (
         <div className="marginTop productDetailPage" >
             <main>
                 <div className="productShowing marginHorizontal">
-                    <div className="left">
-                        <img className="image" src={productInfo.mainImage} />
-                    </div>
-                    <div className="right">
-                        <div className="brand">
-                            {productInfo.brand}
-                        </div>
+                    <Row xs={1} md={2}>
+                        <Col>
+                            <img className="image" src={productInfo.mainImage} />
 
-                        <div className="title">
-                            {productInfo.title}
-                        </div>
+                        </Col>
+                        <Col>
+                            <div className="brand">
+                                    {productInfo.brand}
+                                </div>
 
-                        <div className="price">
-                            {"$" + productInfo.price}
-                        </div>
+                                <div className="title">
+                                    {productInfo.title}
+                                </div>
 
-                        <div className="description">
-                            {productInfo.description}
-                        </div>
+                                <div className="price">
+                                    {"$" + productInfo.price}
+                                </div>
 
-                        <div className="quantity">
-                            <h6>Quantity: </h6>
-                            <QuantityBox quantity="1" />
-                        </div>
+                                <div className="description">
+                                    {productInfo.description}
+                                </div>
 
-                        <CustomButton
-                            marginTop="15px"
-                            buttonDetail="productDetail"
-                            onClick={handleAddCart}>Add To Cart</CustomButton>
+                                <div className="quantity">
+                                    <h6>Quantity: </h6>
+                                    <QuantityBox quantity="1" />
+                                </div>
 
-                    </div>
-                </div>
+                                <CustomButton
+                                    marginTop="15px"
+                                    buttonDetail="default-size"
+                                    onClick={handleAddCart}>
+                                    Add To Cart
+                                </CustomButton>
 
-                <div className="keyIngredients marginHorizontal">
-                    {/* key ingredients placeholder */}
-                </div>
-
-                <div className="howToUse marginHorizontal">
-                    {/* how to use placeholder */}
-
+                                
+                        </Col>
+                    </Row>
                 </div>
             </main>
+            <div className="divider">d</div>
             
 
             <Footer />

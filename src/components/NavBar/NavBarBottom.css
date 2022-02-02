@@ -51,8 +51,9 @@
         left: -100%;
         opacity: 1;
         transition: all 0.3s ease;
-
-        padding-top: 10%;
+        padding-top: 30px;
+        
+        grid-gap: 18px;
     }
 
     .nav-bottom-menu-items.expanded {
@@ -66,7 +67,7 @@
     .nav-bottom-menu-item {
         color: black;
         text-align: start;
-        padding: 2rem;
+        padding-left: 1.5rem;
         width: 100%;
     }
 
@@ -75,6 +76,11 @@
     }
 
     Button {
-        display: none
+        display: none;
     }
 }
+
+
+
+
+

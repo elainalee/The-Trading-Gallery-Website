@@ -34,11 +34,11 @@ export default function ContactPage() {
         setError('');
         setLoading(true);
         dispatch(submitFeedback(
-            firstNameRef.current.value, 
-            lastNameRef.current.value,
-            emailRef.current.value,
-            subjectRef.current.value,
-            messageRef.current.value))
+            firstNameRef?.current?.value, 
+            lastNameRef?.current?.value,
+            emailRef?.current?.value,
+            subjectRef?.current?.value,
+            messageRef?.current?.value))
         .then((res) => {
             if (res === SUCCESS) {
                 console.log("form submitted");
@@ -67,47 +67,48 @@ export default function ContactPage() {
                         </div>)
                     : (
                         <div>
-                            <div className="left">
-                                <div className="title">We are here for you.</div>
-                                <div className="body">How can we help? Send us a message!</div>
+                            <Row>
+                                <Col>
+                                    <div className="title">We are here for you.</div>
+                                    <div className="body">How can we help? Send us a message!</div>
 
-                                <div className="subtitle">hello@thetradinggallery.ca</div>
-                            </div>
+                                    <div className="subtitle">hello@thetradinggallery.ca</div>
+                                </Col>
+                                <Col>
+                                    {error && <Alert variant="danger">{error}</Alert>}
+                                    <Form onSubmit={handleSubmit}>
+                                        <Form.Group id="name">
+                                            <Row className="g-2">
+                                                <Col>
+                                                    <Form.Label>First Name *</Form.Label>
+                                                    <Form.Control type="text" ref={firstNameRef} required />
+                                                </Col>
+                                                <Col>
+                                                    <Form.Label>Last Name *</Form.Label>                        
+                                                    <Form.Control type="text" ref={lastNameRef} required />
+                                                </Col>
+                                            </Row>
+                                        </Form.Group>
 
-                            <div className="right">
-                                {error && <Alert variant="danger">{error}</Alert>}
-                                <Form onSubmit={handleSubmit}>
-                                    <Form.Group id="name">
-                                        <Row className="g-2">
-                                            <Col>
-                                                <Form.Label>First Name *</Form.Label>
-                                                <Form.Control type="text" ref={firstNameRef} required />
-                                            </Col>
-                                            <Col>
-                                                <Form.Label>Last Name *</Form.Label>                        
-                                                <Form.Control type="text" ref={lastNameRef} required />
-                                            </Col>
-                                        </Row>
-                                    </Form.Group>
+                                        <Form.Group id="email">
+                                            <Form.Label>Email *</Form.Label>
+                                            <Form.Control type="email" ref={emailRef} required />
+                                        </Form.Group>
 
-                                    <Form.Group id="email">
-                                        <Form.Label>Email *</Form.Label>
-                                        <Form.Control type="email" ref={emailRef} required />
-                                    </Form.Group>
+                                        <Form.Group id="subject">
+                                            <Form.Label>Subject *</Form.Label>
+                                            <Form.Control type="text" ref={subjectRef} required />
+                                        </Form.Group>
 
-                                    <Form.Group id="subject">
-                                        <Form.Label>Subject *</Form.Label>
-                                        <Form.Control type="text" ref={subjectRef} required />
-                                    </Form.Group>
-
-                                    <Form.Group id="message">
-                                        <Form.Label>Message *</Form.Label>
-                                        <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
-                                    </Form.Group>
-                                    
-                                    <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="contactUs" marginTop="20px">Send</CustomButton>
-                                </Form>
-                            </div>
+                                        <Form.Group id="message">
+                                            <Form.Label>Message *</Form.Label>
+                                            <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
+                                        </Form.Group>
+                                        
+                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Send</CustomButton>
+                                    </Form>
+                                </Col>
+                            </Row>
                         </div>
                     )}
                 </main>

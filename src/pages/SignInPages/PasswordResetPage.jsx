@@ -41,7 +41,7 @@ export default function PasswordResetPage() {
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />
                       </Form.Group>
-                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="userpages resetpw" marginTop="4px">Reset Password</CustomButton>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px">Reset Password</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
                       <Link to={LogInRoute} className="links">Log in</Link>

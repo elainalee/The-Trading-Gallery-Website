@@ -27,8 +27,7 @@ export default function BlogCard(props) {
                             src={blog?.mainImage}
                             alt="blog-image"
                         />)
-                    : (<div className="placeholder" />)
-                    }
+                    : (<div className="placeholder" />)}
                 </div>
                 <div className="title-section">
                     <Card.Title className="title">{props.blog?.title}</Card.Title>

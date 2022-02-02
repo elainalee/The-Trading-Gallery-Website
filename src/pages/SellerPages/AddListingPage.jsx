@@ -102,7 +102,7 @@ export default function AddListingPage() {
                                     <Form.Control type="text" ref={tagRef} required />
                                 </Form.Group> */}
                                 
-                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="productDetail" marginTop="20px">Upload</CustomButton>
+                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>
                             </div>
                         </Form>
                     

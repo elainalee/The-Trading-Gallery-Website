@@ -27,17 +27,17 @@ export default function BlogsPage() {
 
 
     return (
-        <div className="marginTop listingsPage">
-            <div className="marginHorizontal">
-                <div className="myProductsTitle">
-                    <h2>All Blogs</h2>
-                    {currentSeller && (
-                        <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
-                    )}
+        <div className="marginTop blogsPage">
+            <main>
+                <div className="marginHorizontal">
+                    <div className="myProductsTitle">
+                        {currentSeller && (
+                            <p className="title" onClick={handleAddClick}>Click to Add Listing<IconButton buttonIcon="add-btn" onClick={handleAddClick}/></p>
+                        )}
+                    </div>
+                    <BlogsRow blogs={allBlogs} placeholderNumbers={8}/>
                 </div>
-                <BlogsRow blogs={allBlogs} placeholderNumbers={8}/>
-            </div>
-
+            </main>
             <Footer />
         </div>        
     );

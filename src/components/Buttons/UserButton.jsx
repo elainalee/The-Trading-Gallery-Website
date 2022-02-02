@@ -5,7 +5,7 @@ import { ListingsPageRoute, LogInRoute, ProfileRoute, SellerProfileRoute } from 
 import { CustomButton } from './CustomButton';
 import { IconButton } from './IconButton';
 
-export default function UserButton() {
+export default function UserButton(props) {
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
 
@@ -18,10 +18,12 @@ export default function UserButton() {
     }
 
     function goToUserProfile() {
+        props.setMenuClicked(false);
         history.push(ProfileRoute);
     }
 
     function goToSellerProfile() {
+        props.setMenuClicked(false);
         history.push(SellerProfileRoute);
     }
 

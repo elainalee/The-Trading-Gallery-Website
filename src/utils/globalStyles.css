@@ -61,7 +61,7 @@ h2 {
 }
 
 .marginTop {
-    margin-top: 35px;
+    margin-top: 30px;
 }
 
 .marginTopExLg {
@@ -113,9 +113,12 @@ h2 {
         margin-left: 45px;
     }
 
-
     .marginHorizontal {
         margin-left: 45px;
         margin-right: 45px;
+    }
+
+    .grayBorderRight {
+        border-right: 0px;
     }
 }

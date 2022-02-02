@@ -72,7 +72,7 @@ export default function LogInPage() {
                           <Form.Label>Password</Form.Label>
                           <Form.Control type="password" ref={passwordRef} required />
                       </Form.Group>
-                    <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="userpages updateprofile">Log In</CustomButton>  
+                    <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">Log In</CustomButton>  
                   </Form>
                   {/* <div className="w-100 text-center mt-4">
                       <Link to={PasswordResetRoute} className="links">Forgot password?</Link>

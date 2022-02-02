@@ -66,13 +66,19 @@ export default function MainPage() {
             <div className="featured marginTop paddingHorizontalSm">
                 <div className="title">Featured</div>
                 <Row className="marginTop paddingHorizontalSm">
-                <Col >
+                <Col lg={4}>
                     <FeaturedCard sm product={bestSellers?.[0]} />
                     <FeaturedCard sm product={bestSellers?.[1]} />
                     <FeaturedCard sm product={bestSellers?.[2]} />
                     <FeaturedCard sm product={bestSellers?.[3]} />
                 </Col>
-                <Col>
+                <Col lg={4}>
+                    <FeaturedCard sm product={ bestSellers?.[0] } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                    <FeaturedCard sm product={ bestSellers?.[1]  } />
+                </Col>
+                <Col lg={4}>
                     <FeaturedCard sm product={ bestSellers?.[0] } />
                     <FeaturedCard sm product={ bestSellers?.[1]  } />
                     <FeaturedCard sm product={ bestSellers?.[1]  } />
@@ -103,16 +109,11 @@ export default function MainPage() {
                 </div>
             </div>
 
-            <div className="bestSeller paddingHorizontal marginTopExLg grayBorderTop grayBorderBottom">
+            <div className="bestSeller paddingHorizontal grayBorderBottom">
                 <div className="title">Shop Our Best Sellers</div>
 
                 <ProductsRow products={bestSellers} placeholderNumbers={4} />
             </div>
-
-            <div className="exclusive">
-                {/* <div className="title">Exclusive: The Rejuvenation Line</div> */}
-            </div>
-
             <Footer />
         </div>
     );

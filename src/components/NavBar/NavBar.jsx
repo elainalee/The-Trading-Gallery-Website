@@ -37,8 +37,9 @@ function NavBar() {
         history.push(ListingsPageRoute);
     }
 
-    function moveToTop() {
+    function handleSectionClick() {
         window.scrollTo(0, 0);
+        setMenuClicked(false);
     }
 
     return (
@@ -49,11 +50,11 @@ function NavBar() {
                 </div>
 
                 <div className="nav-top-menu-items">
-                    <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" />
+                    {/* <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" /> */}
                     {currentSeller
                         ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
                         : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
-                    <UserButton />
+                    {menuClicked && <UserButton setMenuClicked={setMenuClicked}/>}
                     <div className="menu-icon">
                         <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
                     </div>
@@ -61,10 +62,11 @@ function NavBar() {
             </nav>
 
             <nav className="NavBar-Bottom">
+
                 <ul className={menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
                             <li key={item.title}>
-                                <Link className={item.cName + " link"} to={item.url} onClick={moveToTop}>{item.title}</Link>
+                                <Link className={item.cName + " link"} to={item.url} onClick={handleSectionClick}>{item.title}</Link>
                             </li>
                         ))}
                 </ul>

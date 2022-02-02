@@ -99,7 +99,7 @@ export default function AddBlogPage() {
                                 <Form.Control as="textarea" type="text" style={{ height: '400px' }}  ref={bodyRef} required />
                             </Form.Group>
 
-                            <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="productDetail" marginTop="20px">Upload</CustomButton>
+                            <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>
                         </div>
                     </Form>
             

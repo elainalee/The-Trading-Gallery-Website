@@ -2,7 +2,7 @@
     background-color: var(--primary-light);
 
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     font-family: Roboto;
 }
 
@@ -11,8 +11,8 @@
 }
 
 .footer {
-    padding: 45px;
-    height: 350px;
+    padding: 40px;
+    height: 230px;
 }
 
 .footer .title {
@@ -24,26 +24,30 @@
 }
 
 .footer .companyDescription {
-    width: 50%;
+    width: 70%;
     float: left;
 }
 
 .footer .footerAbout {
-    width: 50%;
+    width: 30%;
     float: right;
 
     display: flex;
     flex-direction:row;
 }
 
-.footerAbout .eolma {
+.footerAbout .section {
     flex: 1;
 }
 
-.footerAbout .info {
-    flex: 1;
+.footerAbout .section .title {
+    padding-bottom: 10px;
 }
 
-.footerAbout .social {
-    flex: 1;
+.footerAbout .section .link {
+    padding-bottom: 5px;
+}
+
+
+@media screen and (max-width: 767px) {
 }

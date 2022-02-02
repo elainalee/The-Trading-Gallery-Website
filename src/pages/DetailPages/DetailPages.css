@@ -4,33 +4,25 @@
     height: 800px;
 }
 
-.productDetailPage .productShowing .left {
-    float: left;
-    width: 50%;
-}
-
-.productDetailPage .productShowing .left .image {
+.productDetailPage .productShowing .image {
     width: 90%;
+    /* height: 500px; */
 }
 
-.productDetailPage .productShowing .right {
-    float: right;
-    width: 50%;
-}
 
-.productDetailPage .productShowing .right .brand {
+.productDetailPage .productShowing .brand {
     font-size: 18px;
 
 }
 
-.productDetailPage .productShowing .right .title {
+.productDetailPage .productShowing .title {
     font-size: 35px;
     line-height: 47px;
     font-weight: bold;
 
 }
 
-.productDetailPage .productShowing .right .price {
+.productDetailPage .productShowing .price {
     margin-top: 15px;
     font-size: 24px;
     font-weight: bold;
@@ -46,8 +38,13 @@
 .productDetailPage .productShowing .right .quantity {
     margin-top: 15px;
     margin-bottom: 15px;
-
 }
+
+.productDetailPage main .divider {
+    height: 10px;
+    margin-bottom: 10px;
+}
+
 
 
 /* Blog Detail Page */
@@ -57,10 +54,10 @@
 }
 
 .blogDetailPage main {
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
 
-    margin-bottom: 85px;
+    margin-bottom: 150px;
 }
 
 .blogDetailPage main .title {
@@ -76,4 +73,83 @@
 .blogDetailPage main .body {
     margin-top: 5%;
     font-size: 22px;
+}
+
+.blogDetailPage main .placeholder {
+    margin-top: 5%;
+    font-size: 22px;
+
+    width: 90%;
+    height: 310px;
+
+    background-color: var(--primary-light);
+}
+
+.blogDetailPage main {
+    height: 800px;
+}
+
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    /* Blog Detail Page */
+    .blogDetailPage main * {
+        font-size: 20px;
+    }
+
+    .blogDetailPage main {
+        padding-left: 12%;
+        padding-right: 12%;
+    
+        margin-bottom: 85px;
+    }
+
+    .blogDetailPage main .title {
+        font-size: 24px;
+    }
+
+    .blogDetailPage main .image {
+        width: 100%;
+    }
+
+    .blogDetailPage main .body {
+        font-size: 17px;
+    }
+
+    .blogDetailPage main .placeholder {
+        font-size: 18px;
+    }   
+}
+
+
+@media screen and (max-width: 767px) {
+    /* Blog Detail Page */
+    .blogDetailPage main * {
+        font-size: 18px;
+    }
+
+    .blogDetailPage main {
+        padding-left: 10%;
+        padding-right: 10%;
+    
+        margin-bottom: 85px;
+    }
+
+    .blogDetailPage main .title {
+        font-size: 18px;
+    }
+
+    .blogDetailPage main .image {
+        width: 100%;
+    }
+
+    .blogDetailPage main .body {
+        font-size: 16px;
+    }
+
+    .blogDetailPage main .placeholder {
+        font-size: 18px;
+    }
 }

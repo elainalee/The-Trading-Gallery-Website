@@ -56,3 +56,79 @@
 .contactPage main {
     height: 800px;
 }
+
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .infoPages main * {
+        font-size: 20px;
+    }
+    
+    .infoPages main {
+        padding-left: 15%;
+        padding-right: 15%;
+    
+        margin-bottom: 85px;
+    }
+    
+    .infoPages main .section {
+        margin-top: 40px;
+        line-height: 30px;
+    }
+    
+    .infoPages main .title {
+        font-size: 20px;
+    }
+    
+    .infoPages main .body {
+        font-size: 16px;
+    }
+    
+    .infoPages main .emphasis {
+        font-size: 16px;
+    }
+    
+    .infoPages main .body .emphasis {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+    
+}
+
+@media screen and (max-width: 767px) {
+    .infoPages main * {
+        font-size: 18px;
+    }
+    
+    .infoPages main {
+        padding-left: 10%;
+        padding-right: 10%;
+    
+        margin-bottom: 85px;
+    }
+    
+    .infoPages main .section {
+        margin-top: 30px;
+        line-height: 30px;
+    }
+    
+    .infoPages main .title {
+        font-size: 18px;
+    }
+    
+    .infoPages main .body {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+    .infoPages main .emphasis {
+        font-size: 14px;
+    }
+    
+    .infoPages main .body .emphasis {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+}

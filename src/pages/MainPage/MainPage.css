@@ -11,10 +11,10 @@
     font-weight: bold;
 }
 
-
 /* bestSeller section */
 
 .bestSeller {
+    margin-top: 6%;
     background-color: white;
 }
 
@@ -23,42 +23,8 @@
     font-weight: bold;
     /* line-height: 70px; */
     width: 100%;
-    padding-top: 5%;
+    padding-top: 3%;
     padding-bottom: 1%;
-}
-
-/* expectation section */
-
-.expectation {
-    height: 400px;
-
-    padding-left: 10%;
-    padding-right: 10%; 
-    margin-top: 10%;
-}
-
-.expectation .left {
-    float: left;
-    width: 50%;
-}
-
-.expectation .cardpack-image {
-    width: 280px;
-    /* height: 350px; */
-}
-
-.expectation .right{
-    float: right;
-    width: 50%;
-}
-
-.expectation .right .title {
-    width: 50%;
-}
-
-.expectation .right .description {
-    margin-top: 14px;
-    width: 50%;
 }
 
 
@@ -69,16 +35,16 @@
 }
 
 .moreAbout {
-    margin-top: 10%;
+    margin-top: 6%;
 
     width: 100%;
 
-    padding: 6% 10% 5% 10%;
+    padding: 4% 8% 3% 8%;
     
 }
 
 .moreAbout .title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -86,7 +52,7 @@
     display: flex;
     flex-direction:row;
 
-    padding-top: 7%;
+    padding-top: 5%;
 }
 
 .moreAbout .explanations .first {
@@ -102,34 +68,11 @@
 }
 
 .moreAbout .explanations .subTitle {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .moreAbout .explanations .description {
-    font-size: 14px;
+    font-size: 13px;
     width: 80%;
-}
-
-/* exclusive section */
-
-.exclusive {
-    margin: 5%;
-    padding: 50px;
-
-    background: url(/src/assets/trading_card_game.jpeg);
-    background-color: var(--primary-light);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    width: 90%;
-    height: 550px;
-    opacity: 0.9;
-}
-
-
-.exclusive .title {
-    width: 30%;
-    font-size: 35px;
-    font-weight: bold;
-    color: black;
 }

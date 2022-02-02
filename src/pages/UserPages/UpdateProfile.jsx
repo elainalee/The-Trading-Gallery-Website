@@ -87,7 +87,7 @@ export default function UpdateProfile() {
                           <Form.Label>Password Confirmation</Form.Label>
                           <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
                       </Form.Group> */}
-                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="userpages updateprofile">Update</CustomButton>
+                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">Update</CustomButton>
                   </Form>
               </Card.Body>
           </Card>

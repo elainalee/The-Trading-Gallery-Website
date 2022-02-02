@@ -24,26 +24,18 @@ export default function BlogDetailPage(props) {
         dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));
     }, []);
 
-
-    if (blogDetail === undefined) {
-        return <LoadingBox />;
-    }
-
     return (
         <div className="marginTop blogDetailPage" >
             <main>
-                <div className="title">{blogDetail.title}</div>
+                <div className="title">{blogDetail?.title}</div>
 
-                <img className="image" src={blogDetail.mainImage} />
+                {blogDetail?.mainImage  
+                    ? (<img className="image" src={blogDetail.mainImage} />)
+                    : (<div className="placeholder" />)}
 
-                <div className="body">{blogDetail.body}</div>
-                {/* <div className="title">
-                    {blogDetail.title}
-                </div>
-                <img className="image" src={blogDetail.mainImage} />
-                <div className="title">
-                    {blogDetail.body} */}
-                {/* </div> */}
+                
+
+                <div className="body">{blogDetail?.body}</div>
             </main>
             
 
