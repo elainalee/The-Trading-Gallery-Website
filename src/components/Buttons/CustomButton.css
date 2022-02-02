@@ -56,7 +56,7 @@
     width: 100%;
 }
 
-.navbar {
+.navbar-size {
     width: 90%;
 }
 
@@ -85,5 +85,11 @@
 @media screen and (max-width: 767px) {
     .updateprofile {
         padding: 6px 42%;
+    }
+
+    .navbar-size {
+        font-size: 12px;
+        padding: 6px 10px;
+        width: 90%;
     }
 }

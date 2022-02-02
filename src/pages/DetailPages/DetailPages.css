@@ -1,7 +1,7 @@
 /* Product Detail Page */
 
 .productDetailPage main {
-    height: 800px;
+    margin-bottom: 150px;
 }
 
 .productDetailPage .productShowing .image {
@@ -29,28 +29,26 @@
 
 }
 
-.productDetailPage .productShowing .right .description {
+.productDetailPage .productShowing .description {
     margin-top: 15px;
     font-size: 18px;
 
 }
 
-.productDetailPage .productShowing .right .quantity {
+.productDetailPage .productShowing .quantity {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-
-.productDetailPage main .divider {
-    height: 10px;
-    margin-bottom: 10px;
-}
-
 
 
 /* Blog Detail Page */
 .blogDetailPage main * {
     font-size: 20px;
     font-family: 'Roboto mono', 'Open Sans';
+}
+
+.blogDetailPage main {
+    margin-bottom: 150px;
 }
 
 .blogDetailPage main {
@@ -85,10 +83,6 @@
     background-color: var(--primary-light);
 }
 
-.blogDetailPage main {
-    height: 800px;
-}
-
 
 
 
@@ -120,7 +114,44 @@
 
     .blogDetailPage main .placeholder {
         font-size: 18px;
-    }   
+    }
+
+    /* Product Detail Page */
+    .productDetailPage main {
+        margin-bottom: 130px;
+    }
+    
+    .productDetailPage .productShowing .image {
+        width: 100%;
+    }
+    
+    .productDetailPage .productShowing .brand {
+        font-size: 17px;
+    
+    }
+    
+    .productDetailPage .productShowing .title {
+        font-size: 26px;
+        line-height: 26px;
+    
+    }
+    
+    .productDetailPage .productShowing .price {
+        margin-top: 7px;
+        font-size: 21px;
+    
+    }
+    
+    .productDetailPage .productShowing .description {
+        margin-top: 5px;
+        font-size: 16px;
+    
+    }
+    
+    .productDetailPage .productShowing .quantity {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
 }
 
 
@@ -151,5 +182,43 @@
 
     .blogDetailPage main .placeholder {
         font-size: 18px;
+    }
+
+    /* Product Detail Page */
+    .productDetailPage main {
+        margin-bottom: 130px;
+    }
+    
+    .productDetailPage .productShowing .image {
+        width: 100%;
+    }
+    
+    .productDetailPage .productShowing .brand {
+        margin-top: 20px;
+        font-size: 15px;
+    
+    }
+    
+    .productDetailPage .productShowing .title {
+        font-size: 25px;
+        line-height: 25px;
+    
+    }
+    
+    .productDetailPage .productShowing .price {
+        margin-top: 5px;
+        font-size: 20px;
+    
+    }
+    
+    .productDetailPage .productShowing .description {
+        margin-top: 5px;
+        font-size: 16px;
+    
+    }
+    
+    .productDetailPage .productShowing .quantity {
+        margin-top: 12px;
+        margin-bottom: 12px;
     }
 }

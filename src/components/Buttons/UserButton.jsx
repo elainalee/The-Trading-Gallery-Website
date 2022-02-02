@@ -28,10 +28,11 @@ export default function UserButton(props) {
     }
 
     return (
-        <div className="user-icon">
+        <div className={props.menuClicked ? "" : " hide"}>
             {loggedIn
                 ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
-                : <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="navbar" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>}
+                : <CustomButton buttonStyle="outline" buttonDetail="navbar-size" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>
+            }
         </div>
     );
 }

@@ -54,7 +54,7 @@ function NavBar() {
                     {currentSeller
                         ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
                         : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
-                    {menuClicked && <UserButton setMenuClicked={setMenuClicked}/>}
+                    <UserButton menuClicked={menuClicked} setMenuClicked={setMenuClicked}/>
                     <div className="menu-icon">
                         <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
                     </div>

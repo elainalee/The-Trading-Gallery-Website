@@ -9,3 +9,20 @@
     justify-content: center;
     align-items: center;
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .quantityBox {
+        height: 40px;
+        border: 2px solid;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .quantityBox {
+        height: 35px;
+        width: 100%;
+        border: 1.5px solid;
+    }
+}

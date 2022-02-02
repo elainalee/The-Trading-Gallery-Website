@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import LoadingBox from '../../components/Utils/LoadingBox';
-import QuantityBox from '../../components/Utils/QuantityBox';
-import CustomButton from "../../components/Buttons/CustomButton";
-import { getProductInfo } from '../../reducers/productsReducer';
 import { getBlogDetail } from '../../reducers/blogsReducer';
 
 import Footer from '../../components/Footer';
@@ -32,8 +28,6 @@ export default function BlogDetailPage(props) {
                 {blogDetail?.mainImage  
                     ? (<img className="image" src={blogDetail.mainImage} />)
                     : (<div className="placeholder" />)}
-
-                
 
                 <div className="body">{blogDetail?.body}</div>
             </main>

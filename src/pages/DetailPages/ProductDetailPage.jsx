@@ -43,39 +43,38 @@ export default function ProductDetailPage(props) {
                         </Col>
                         <Col>
                             <div className="brand">
-                                    {productInfo.brand}
-                                </div>
+                                {productInfo.brand}
+                            </div>
 
-                                <div className="title">
-                                    {productInfo.title}
-                                </div>
+                            <div className="title">
+                                {productInfo.title}
+                            </div>
 
-                                <div className="price">
-                                    {"$" + productInfo.price}
-                                </div>
+                            <div className="price">
+                                {"$" + productInfo.price}
+                            </div>
 
-                                <div className="description">
-                                    {productInfo.description}
-                                </div>
+                            <div className="description">
+                                {productInfo.description}
+                            </div>
 
-                                <div className="quantity">
-                                    <h6>Quantity: </h6>
-                                    <QuantityBox quantity="1" />
-                                </div>
+                            <div className="quantity">
+                                <h6>Quantity: </h6>
+                                <QuantityBox quantity="1" />
+                            </div>
 
-                                <CustomButton
-                                    marginTop="15px"
-                                    buttonDetail="default-size"
-                                    onClick={handleAddCart}>
-                                    Add To Cart
-                                </CustomButton>
+                            <CustomButton
+                                marginTop="15px"
+                                buttonDetail="default-size"
+                                onClick={handleAddCart}>
+                                Add To Cart
+                            </CustomButton>
 
-                                
                         </Col>
                     </Row>
                 </div>
             </main>
-            <div className="divider">d</div>
+            {/* <div className="divider"></div> */}
             
 
             <Footer />
