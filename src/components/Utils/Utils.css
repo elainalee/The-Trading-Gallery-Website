@@ -10,6 +10,55 @@
     align-items: center;
 }
 
+/* Banner */
+.banner * {
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.banner {
+    margin-top: 6%;
+    width: 100%;
+    padding: 4% 8% 3% 8%;
+    
+}
+
+.banner .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.banner .explanations {
+    display: flex;
+    flex-direction:row;
+
+    padding-top: 4%;
+}
+
+.banner .explanations .section {
+    flex: 1;
+}
+
+.banner .explanations .subTitle {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner .explanations .description {
+    font-size: 13px;
+    width: 80%;
+}
+
+.banner .selection {
+    padding-top: 15px;
+    margin-left: 80%;
+}
+
+.banner .fas {
+    display: none;
+}
+
+
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
     .quantityBox {
@@ -24,5 +73,51 @@
         height: 35px;
         width: 100%;
         border: 1.5px solid;
+    }
+
+    /* Banner */
+    .banner {
+        margin-top: 7%;
+        width: 100%;
+        padding: 5% 8% 4% 8%;   
+    }
+
+    .banner .title {
+        font-size: 17px;
+    }
+
+    .banner .explanations {
+        display: block;
+        flex-direction:row;
+
+        padding-top: 5%;
+    }
+
+    .banner .explanations .subTitle {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .banner .explanations .description {
+        font-size: 13px;
+        width: 100%;
+    }
+    
+    .banner .fas {
+        display: inline;
+        font-family: 'Font Awesome 5 Free';
+        font-size: 25px;
+    }
+    
+    .banner .fa-angle-left {
+        margin-right: 25px;
+    }    
+
+    .disable {
+        color: gray;
+    }
+
+    .hide {
+        display: none;
     }
 }

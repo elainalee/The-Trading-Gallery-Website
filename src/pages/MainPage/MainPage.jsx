@@ -20,6 +20,7 @@ import ProductCard from '../../components/Cards/ProductCard';
 import { getBlogs } from '../../reducers/blogsReducer';
 import FeaturedCard from '../../components/Cards/FeaturedCard';
 import { BANNER_FIRST, BANNER_FIRST_CONTENT, BANNER_SECOND, BANNER_SECOND_CONTENT, BANNER_THIRD, BANNER_THIRD_CONTENT } from '../../utils/contents';
+import Banner from '../../components/Utils/Banner';
 
 
 export default function MainPage() {
@@ -32,10 +33,6 @@ export default function MainPage() {
     const mainBlog = blogs.mainBlog;
     const subBlogs = blogs.subBlogs;
     const recentBlogs = blogs.recentBlogs;
-
-    // console.log("mainBlog ", mainBlog);
-    // console.log("subblog ", subBlogs);
-    // console.log("recentBlog ", recentBlogs);
 
 
     useEffect(() => {
@@ -65,49 +62,17 @@ export default function MainPage() {
 
             <div className="featured marginTop paddingHorizontalSm">
                 <div className="title">Featured</div>
-                <Row className="marginTop paddingHorizontalSm">
-                <Col lg={4}>
-                    <FeaturedCard sm product={bestSellers?.[0]} />
-                    <FeaturedCard sm product={bestSellers?.[1]} />
-                    <FeaturedCard sm product={bestSellers?.[2]} />
-                    <FeaturedCard sm product={bestSellers?.[3]} />
-                </Col>
-                <Col lg={4}>
-                    <FeaturedCard sm product={ bestSellers?.[0] } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                </Col>
-                <Col lg={4}>
-                    <FeaturedCard sm product={ bestSellers?.[0] } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                    <FeaturedCard sm product={ bestSellers?.[1]  } />
-                </Col>
-            </Row>
 
+                <Row xs={1} md={2} lg={3} className="marginTop paddingHorizontalSm">
+                    {bestSellers?.map((product, index) => ( 
+                        <Col key={index} className="cardMargin">
+                            <FeaturedCard sm product={product} />
+                        </Col>
+                    ))}
+                </Row>
             </div>
 
-            <div className="moreAbout grayBorderTop grayBorderBottom">
-                <div className="title">A Little About Our Company</div>
-
-                <div className="explanations">
-                    <div className="first">
-                        <p className="subTitle">{BANNER_FIRST}</p>
-                        <p className="description">{BANNER_FIRST_CONTENT}</p>
-                    </div>
-
-                    <div className="second">
-                        <p className="subTitle">{BANNER_SECOND}</p>
-                        <p className="description">{BANNER_SECOND_CONTENT}</p>
-                    </div>
-
-                    <div className="third">
-                        <p className="subTitle">{BANNER_THIRD}</p>
-                        <p className="description">{BANNER_THIRD_CONTENT}</p>
-                    </div>
-                </div>
-            </div>
+            <Banner />
 
             <div className="bestSeller paddingHorizontal grayBorderBottom">
                 <div className="title">Shop Our Best Sellers</div>
