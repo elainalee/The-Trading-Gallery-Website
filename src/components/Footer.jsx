@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 import { AboutPageRoute, AddressPickupRoute, BlogsPageRoute, ContactPageRoute, MainPageRoute, PrivacyPolicyPageRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute } from '../utils/routes';
@@ -7,42 +8,39 @@ import "./Footer.css"
 
 export default function Footer() {
 
+    const [tggSectionClicked, setTggSectionClicked] = useState(false);
+    const [infoSectionClicked, setInfoSectionClicked] = useState(false);
+
     function moveToTop() {
         window.scrollTo(0, 0);
     }
 
     return (
         <div className="footer">
-            <div className="companyDescription">
-                <p className="title">The Trading Gallery</p>
-                <p className="subTitle"><a href="mailto:hello@thetradinggallery.ca" className="link">hello@thetradinggallery.ca</a></p>
+                <Row>
+                    <Col md={8} lg={8} className="companyDescription">
+                        <div className="title">The Trading Gallery</div>
+                        <div className="subTitle"><a href="mailto:hello@thetradinggallery.ca" className="link">hello@thetradinggallery.ca</a></div>
+                    </Col>
+                    <Col md={2} lg={2} className="footerAbout">
+                        <ul className={tggSectionClicked ? "section-items expanded" : "section-items"}>
+                            <div className="title" onClick={() => setTggSectionClicked(!tggSectionClicked)}>TGG<i className={"fas " + (tggSectionClicked ? "fa-angle-up" : "fa-angle-down")}></i></div>
+                            <div className="section-item"><Link to={ShopPageRoute} onClick={moveToTop} className="link">Shop</Link></div>
+                            <div className="section-item"><Link to={BlogsPageRoute} onClick={moveToTop} className="link">Blog</Link></div>
+                            <div className="section-item"><Link to={AboutPageRoute} onClick={moveToTop} className="link">About</Link></div>
+                            <div className="section-item"><Link to={ContactPageRoute} onClick={moveToTop} className="link">Contact</Link></div>
+                        </ul>
+                    </Col>
+                    <Col md={2} lg={2} className="footerAbout">
+                        <ul className={infoSectionClicked ? "section-items expanded" : "section-items"}>
+                            <div className="title" onClick={() => setInfoSectionClicked(!infoSectionClicked)}>INFO<i className={"fas " + (infoSectionClicked ? "fa-angle-up" : "fa-angle-down")}></i></div>
+                            <div className="section-item"><Link to={ShippingReturnPageRoute} onClick={moveToTop} className="link">Shipping & Return</Link></div>
+                            <div className="section-item"><Link to={AddressPickupRoute} onClick={moveToTop} className="link">Address & Pickup</Link></div>
+                            <div className="section-item"><Link to={TermsOfUsePageRoute} onClick={moveToTop} className="link">Terms of Use</Link></div>
+                            <div className="section-item"><Link to={PrivacyPolicyPageRoute} onClick={moveToTop} className="link">Privacy Policy</Link></div>
+                        </ul>
+                    </Col>
+                </Row>
             </div>
-
-            <div className="footerAbout">
-
-                <div className="section">
-                    <div className="title">TGG</div>
-                    <div><Link to={ShopPageRoute} onClick={moveToTop} className="link">Shop</Link></div>
-                    <div><Link to={BlogsPageRoute} onClick={moveToTop} className="link">Blog</Link></div>
-                    <div><Link to={AboutPageRoute} onClick={moveToTop} className="link">About</Link></div>
-                    <div><Link to={ContactPageRoute} onClick={moveToTop} className="link">Contact</Link></div>
-                </div>
-
-                <div className="section">
-                    <div className="title">Info</div>
-                    <div><Link to={ShippingReturnPageRoute} onClick={moveToTop} className="link">Shipping & Return</Link></div>
-                    <div><Link to={AddressPickupRoute} onClick={moveToTop} className="link">Address & Pickup</Link></div>
-                    <div><Link to={TermsOfUsePageRoute} onClick={moveToTop} className="link">Terms of Use</Link></div>
-                    <div><Link to={PrivacyPolicyPageRoute} onClick={moveToTop} className="link">Privacy Policy</Link></div>
-                </div>
-
-                {/* <div className="section">
-                    <p className="title">Social</p>
-                    <p><Link to={() => {}} className="link">Instagram</Link></p>
-                    <p><Link to={() => {}} className="link">Facebook</Link></p>
-                    <p><Link to={() => {}} className="link">Youtube</Link></p>
-                </div> */}
-            </div>
-        </div> 
     );
 }
