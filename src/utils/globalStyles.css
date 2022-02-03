@@ -121,4 +121,9 @@ h2 {
     .grayBorderRight {
         border-right: 0px;
     }
+
+    .paddingHorizontal {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }

@@ -74,10 +74,10 @@ export default function MainPage() {
 
             <Banner />
 
-            <div className="bestSeller paddingHorizontal grayBorderBottom">
+            <div className="bestSeller paddingHorizontal">
                 <div className="title">Shop Our Best Sellers</div>
 
-                <ProductsRow products={bestSellers} placeholderNumbers={4} />
+                <ProductsRow products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
             </div>
             <Footer />
         </div>
