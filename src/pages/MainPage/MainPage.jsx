@@ -2,25 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { getBestSellers } from '../../reducers/productsReducer';
+import { getBestSellers, getProducts } from '../../reducers/productsReducer';
 import Footer from '../../components/Footer';
 import ProductsRow from '../../components/Rows/ProductsRow';
-
-import mainImage from "../../assets/shonen_jump.jpeg";
-import cardboxImage from "../../assets/cardbox.png";
-import cardpack from "../../assets/cardpack.png";
-
 
 import "./MainPage.css"
 import "../../utils/globalStyles.css";
 import BlogCard from '../../components/Cards/BlogCard';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
-import ProductCard from '../../components/Cards/ProductCard';
 import { getBlogs } from '../../reducers/blogsReducer';
 import FeaturedCard from '../../components/Cards/FeaturedCard';
-import { BANNER_FIRST, BANNER_FIRST_CONTENT, BANNER_SECOND, BANNER_SECOND_CONTENT, BANNER_THIRD, BANNER_THIRD_CONTENT } from '../../utils/contents';
 import Banner from '../../components/Utils/Banner';
+import FeaturedRow from '../../components/Rows/FeaturedRow';
 
 
 export default function MainPage() {
@@ -36,6 +30,7 @@ export default function MainPage() {
 
 
     useEffect(() => {
+        dispatch(getProducts());
         dispatch(getBestSellers());
         dispatch(getBlogs("mainBlog"));
         dispatch(getBlogs("subBlog"));
@@ -44,23 +39,26 @@ export default function MainPage() {
 
     return (
         <div className="mainPage">
-            <Row className="marginTop paddingHorizontalSm">
+            <Row className="marginTop paddingHorizontalSm blogSection">
                 <Col md={3} className="grayBorderRight">
-                    <BlogCard sm blog={recentBlogs?.[0]} />
-                    <BlogCard sm blog={recentBlogs?.[1]} />
-                    <BlogCard sm blog={recentBlogs?.[2]} />
-                    <BlogCard sm last blog={recentBlogs?.[3]} />
+                    <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 1]} />
+                    <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 2]} />
+                    <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 3]} />
+                    <BlogCard sm last blog={recentBlogs?.[recentBlogs.length - 4]} />
                 </Col>
                 <Col md={6} className="grayBorderRight">
-                    <BlogCard lg last blog={ mainBlog?.[0] } />
+                    <BlogCard lg last blog={ mainBlog?.[mainBlog.length - 1] } />
                 </Col>
                 <Col md={3}>
-                    <BlogCard md blog={ subBlogs?.[0] } />
-                    <BlogCard md last blog={ subBlogs?.[1]  } />
+                    <BlogCard md blog={ subBlogs?.[subBlogs.length - 1] } />
+                    <BlogCard md last blog={ subBlogs?.[subBlogs.length - 2]  } />
                 </Col>
             </Row>
 
-            <div className="featured marginTop paddingHorizontalSm">
+            {/* <FeaturedRow title="Featured" products={bestSellers} placeholderNumbers={4} /> */}
+            <FeaturedRow title="Featured" products={products.items} placeholderNumbers={4} />
+
+            {/* <div className="featured marginTop paddingHorizontalSm">
                 <div className="title">Featured</div>
 
                 <Row xs={1} md={2} lg={3} className="marginTop paddingHorizontalSm">
@@ -70,14 +68,12 @@ export default function MainPage() {
                         </Col>
                     ))}
                 </Row>
-            </div>
+            </div> */}
 
             <Banner />
 
             <div className="bestSeller paddingHorizontal">
-                <div className="title">Shop Our Best Sellers</div>
-
-                <ProductsRow products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
+                <ProductsRow title="Shop Our Best Sellers" products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
             </div>
             <Footer />
         </div>

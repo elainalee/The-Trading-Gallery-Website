@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../../utils/globalStyles.css';
-import "./ProductsRow.css";
+import "./TGGRows.css";
 import BlogCard from '../Cards/BlogCard';
 
 export default function BlogsRow(props) {

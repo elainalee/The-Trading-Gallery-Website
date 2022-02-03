@@ -96,7 +96,7 @@ h2 {
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
     .marginLeft {
         margin-left: 60px;
     }
@@ -125,5 +125,10 @@ h2 {
     .paddingHorizontal {
         padding-left: 50px;
         padding-right: 50px;
+    }
+
+    .paddingHorizontalSm {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }

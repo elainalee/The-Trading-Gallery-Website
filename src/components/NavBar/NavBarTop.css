@@ -45,7 +45,7 @@
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 992px) {
     .NavBar-Top {
         position: relative;
     }
@@ -61,15 +61,15 @@
         transform: translate(25%, 50%);
     }
 
-    .fa-bars {
+    .NavBar-Top .fa-bars {
         color: black;
     }
 
-    Button {
+    .NavBar-Top Button {
         display: none
     }
 
-    .hide {
+    .NavBar-Top .hide {
         display: none;
     }
 }

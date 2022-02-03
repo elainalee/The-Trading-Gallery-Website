@@ -1,9 +1,10 @@
-/* mainImage section */
-
-.mainImage {
+.blogSection {
     width: 100%;
 }
 
+.mainPage .cardMargin {
+    margin-bottom: 5%;
+}
 
 /* Featured section */
 .featured .title {
@@ -17,27 +18,16 @@
     background-color: white;
 }
 
-.bestSeller .title {
-    font-size: 25px;
-    font-weight: bold;
-    /* line-height: 70px; */
-    width: 100%;
-    padding-top: 3%;
-    padding-bottom: 1%;
-}
 
 @media screen and (max-width: 767px) {
     /* bestSeller section */
-
     .bestSeller {
         margin-top: 6%;
         margin-bottom: 10%;
     }
 
-    .bestSeller .title {
-        font-size: 22px;
-        width: 100%;
-        padding-top: 3%;
-        padding-bottom: 1%;
+    .blogSection {
+        padding-left: 20px;
+        padding-right: 0px;
     }
 }
