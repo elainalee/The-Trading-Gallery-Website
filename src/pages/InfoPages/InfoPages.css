@@ -5,6 +5,10 @@
     font-family: 'Roboto mono', 'Open Sans';
 }
 
+.termsOfUse main * {
+    font-size: 15px;
+}
+
 .infoPages main {
     padding-left: 20%;
     padding-right: 20%;
@@ -17,14 +21,27 @@
     line-height: 30px;
 }
 
+.termsOfUse main .section {
+    margin-top: 30px;
+}
+
 .infoPages main .title {
     font-weight: 500;
     font-size: 23px;
 }
 
+.termsOfUse main .title {
+    font-size: 20px;
+}
+
 .infoPages main .body {
     margin-top: 15px;
     font-size: 16px;
+}
+
+.termsOfUse main .body {
+    margin-top: 5px;
+    font-size: 14px;
 }
 
 .infoPages main .emphasis {
@@ -34,12 +51,33 @@
     font-size: 16px;
 }
 
-.infoPages main .body .emphasis {
-    margin-top: 10px;
+.infoPages main .italized {
+    font-style: italic;
+}
+
+.infoPages main .body .subtitle {
+    font-weight: bold;
     font-size: 16px;
     display: inline;
 }
 
+.termsOfUse main .body .subtitle {
+    font-size: 14px;
+}
+
+.infoPages main .body .emphasis {
+    font-size: 16px;
+    display: inline;
+}
+
+.termsOfUse main .body .emphasis {
+    font-size: 14px;
+}
+
+
+.infoPages main li {
+    margin-left: 30px;
+}
 
 /* contactPage */
 
@@ -77,29 +115,65 @@
         margin-top: 40px;
         line-height: 30px;
     }
+
+    .termsOfUse main .section {
+        margin-top: 25px;
+    }
     
     .infoPages main .title {
         font-size: 20px;
+    }
+
+    .termsOfUse main .title {
+        font-size: 18px;
     }
     
     .infoPages main .body {
         font-size: 16px;
     }
+
+    .termsOfUse main .body {
+        font-size: 14px;
+    }
     
     .infoPages main .emphasis {
         font-size: 16px;
+    }
+
+    .termsOfUse main .emphasis {
+        font-size: 14px;
+    }
+    
+    .infoPages main .body .subtitle {
+        font-size: 16px;
+    }
+
+    .termsOfUse main .body .subtitle {
+        font-size: 14px;
     }
     
     .infoPages main .body .emphasis {
         margin-top: 5px;
         font-size: 16px;
     }
+
+    .termsOfUse main .body .emphasis {
+        font-size: 14px;
+    }
+
+    .infoPages main li {
+        margin-left: 20px;
+    }    
     
 }
 
 @media screen and (max-width: 767px) {
     .infoPages main * {
         font-size: 18px;
+    }
+
+    .termsOfUse main * {
+        font-size: 13px;
     }
     
     .infoPages main {
@@ -113,22 +187,56 @@
         margin-top: 30px;
         line-height: 30px;
     }
+
+    .termsOfUse main .section {
+        margin-top: 20px;
+    }
     
     .infoPages main .title {
         font-size: 18px;
+    }
+    
+    .termsOfUse main .title {
+        font-size: 16px;
     }
     
     .infoPages main .body {
         margin-top: 15px;
         font-size: 14px;
     }
+
+    .termsOfUse main .body {
+        margin-top: 1px;
+        font-size: 13px;
+    }
     
     .infoPages main .emphasis {
         font-size: 14px;
     }
-    
-    .infoPages main .body .emphasis {
-        margin-top: 5px;
+
+    .termsOfUse main .emphasis {
+        font-size: 13px;
+    }
+
+    .infoPages main .body .subtitle {
         font-size: 14px;
     }
+
+    .termsOfUse main .body .subtitle {
+        font-size: 13px;
+    }
+    
+    .infoPages main .body .emphasis {
+        margin-top: 1px;
+        font-size: 14px;
+    }
+
+    .termsOfUse main .body .emphasis {
+        margin-top: 1px;
+        font-size: 13px;
+    }
+
+    .infoPages main li {
+        margin-left: 18px;
+    }   
 }
