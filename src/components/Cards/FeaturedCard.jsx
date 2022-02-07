@@ -19,7 +19,7 @@ export default function FeaturedCard({ product }) {
                         ? (<Card.Img
                                 className="image"
                                 src={product?.mainImage}
-                                alt="blog-image"
+                                alt="product-image"
                         />)
                     : (<div className="placeholder" />)
                     }

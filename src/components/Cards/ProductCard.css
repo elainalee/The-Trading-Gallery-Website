@@ -1,3 +1,10 @@
+.productCard {
+    /* border: 0px solid; */
+    border-width: 0;
+    /* elevation:0; */
+    border: none;
+}
+
 .productCard .image {
     /* height: 10%; */
     aspect-ratio: 5000 / 6000;
@@ -13,4 +20,25 @@
 .productCard .cardDescription {
     height: 130px;
     background-color: white;
+}
+
+.productCard .cardTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.productCard .cardSubtitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.productCard .cardBody {
+    font-size: 12px;
+}
+
+.productCard .addButton {
+    margin-top: 10px;
+    font-size: 12px;
+    color: black;
+    /* text-align: center; */
 }

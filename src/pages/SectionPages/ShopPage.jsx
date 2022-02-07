@@ -19,9 +19,9 @@ export default function ShopPage() {
 
 
     return (
-        <div className="marginTop">
+        <div>
             <div className="marginHorizontal">
-                <ProductsRow products={items} placeholderNumbers={8}/>
+                <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8}/>
             </div>
 
             <Footer />
