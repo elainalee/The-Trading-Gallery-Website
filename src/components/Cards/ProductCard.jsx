@@ -21,7 +21,20 @@ export default function ProductCard({ product }) {
             />)}
         </div>
         
-        <Card.Body className="cardDescription">
+        {/* <Card.Body className="cardDescription">
+          {product && (
+            <div>
+              <Card.Title className="cardTitle">{product?.title}</Card.Title>
+              <Card.Subtitle className="cardSubtitle">{product?.brand}</Card.Subtitle>
+              <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
+            </div>
+          )}
+          <Card.Link href="#">
+              <h2 className="addButton">ADD TO CART</h2>
+          </Card.Link>
+        </Card.Body> */}
+      </Card>
+      <Card.Body className="productCard cardDescription">
           {product && (
             <div>
               <Card.Title className="cardTitle">{product?.title}</Card.Title>
@@ -33,7 +46,6 @@ export default function ProductCard({ product }) {
               <h2 className="addButton">ADD TO CART</h2>
           </Card.Link>
         </Card.Body>
-      </Card>
     </Link>
   );
 }

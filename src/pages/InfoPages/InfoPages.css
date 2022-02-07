@@ -60,7 +60,7 @@
     display: inline;
 }
 
-.termsOfUse main .body .subtitle {
+.termsAndPolicy main .body .subtitle {
     font-size: 14px;
 }
 
@@ -69,13 +69,17 @@
     display: inline;
 }
 
-.termsOfUse main .body .emphasis {
+.termsAndPolicy main .body .emphasis {
     font-size: 14px;
 }
 
-
-.infoPages main li {
+.termsAndPolicy main ul {
     margin-left: 30px;
+    list-style-position: outside;
+}
+
+.infoPages main .noBullet {
+    list-style-type: none;
 }
 
 /* contactPage */
@@ -115,7 +119,7 @@
         line-height: 30px;
     }
 
-    .termsOfUse main .section {
+    .termsAndPolicy main .section {
         margin-top: 25px;
     }
     
@@ -123,7 +127,7 @@
         font-size: 20px;
     }
 
-    .termsOfUse main .title {
+    .termsAndPolicy main .title {
         font-size: 18px;
     }
     
@@ -131,7 +135,7 @@
         font-size: 16px;
     }
 
-    .termsOfUse main .body {
+    .termsAndPolicy main .body {
         font-size: 14px;
     }
     
@@ -139,7 +143,7 @@
         font-size: 16px;
     }
 
-    .termsOfUse main .emphasis {
+    .termsAndPolicy main .emphasis {
         font-size: 14px;
     }
     
@@ -147,7 +151,7 @@
         font-size: 16px;
     }
 
-    .termsOfUse main .body .subtitle {
+    .termsAndPolicy main .body .subtitle {
         font-size: 14px;
     }
     
@@ -156,13 +160,13 @@
         font-size: 16px;
     }
 
-    .termsOfUse main .body .emphasis {
+    .termsAndPolicy main .body .emphasis {
         font-size: 14px;
     }
-
-    .infoPages main li {
+    
+    .termsAndPolicy main ul {
         margin-left: 20px;
-    }    
+    }
     
 }
 
@@ -171,7 +175,7 @@
         font-size: 18px;
     }
 
-    .termsOfUse main * {
+    .termsAndPolicy main * {
         font-size: 13px;
     }
     
@@ -187,7 +191,7 @@
         line-height: 30px;
     }
 
-    .termsOfUse main .section {
+    .termsAndPolicy main .section {
         margin-top: 20px;
     }
     
@@ -195,7 +199,7 @@
         font-size: 18px;
     }
     
-    .termsOfUse main .title {
+    .termsAndPolicy main .title {
         font-size: 16px;
     }
     
@@ -204,7 +208,7 @@
         font-size: 14px;
     }
 
-    .termsOfUse main .body {
+    .termsAndPolicy main .body {
         margin-top: 1px;
         font-size: 13px;
     }
@@ -213,7 +217,7 @@
         font-size: 14px;
     }
 
-    .termsOfUse main .emphasis {
+    .termsAndPolicy main .emphasis {
         font-size: 13px;
     }
 
@@ -221,7 +225,7 @@
         font-size: 14px;
     }
 
-    .termsOfUse main .body .subtitle {
+    .termsAndPolicy main .body .subtitle {
         font-size: 13px;
     }
     
@@ -230,12 +234,12 @@
         font-size: 14px;
     }
 
-    .termsOfUse main .body .emphasis {
+    .termsAndPolicy main .body .emphasis {
         margin-top: 1px;
         font-size: 13px;
     }
 
-    .infoPages main li {
+    .termsAndPolicy main ul {
         margin-left: 18px;
-    }   
+    }
 }
