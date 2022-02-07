@@ -32,7 +32,7 @@ export default function AddBlogPage() {
         setLoading(true);
         dispatch(addBlog(
             titleRef.current.value, 
-            mainImageRef.current.value, 
+            isGoogleDriveLink ? formatGoogleDriveLink(mainImageLink) : mainImageLink, 
             bodyRef.current.value,
             isMainBlog,
             isSubBlog))
