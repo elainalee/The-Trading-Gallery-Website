@@ -2,6 +2,8 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
+import {IconButton} from "../Buttons/IconButton";
+
 import "../../utils/globalStyles.css";
 import "./ProductCard.css";
 
@@ -22,14 +24,14 @@ export default function ProductCard({ product }) {
         <Card.Body className="cardDescription">
           {product && (
             <div>
-              <Card.Title>{product?.title}</Card.Title>
-              <Card.Subtitle>{product?.brand}</Card.Subtitle>
-              <Card.Text>{"$" + product?.price}</Card.Text>
+              <Card.Title className="cardTitle">{product?.title}</Card.Title>
+              <Card.Subtitle className="cardSubtitle">{product?.brand}</Card.Subtitle>
+              <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
             </div>
           )}
-          {/* <Card.Link href="#">
-                    <IconButton buttonIcon = "carts-btn" color="black" />
-                </Card.Link> */}
+          <Card.Link href="#">
+              <h2 className="addButton">ADD TO CART</h2>
+          </Card.Link>
         </Card.Body>
       </Card>
     </Link>

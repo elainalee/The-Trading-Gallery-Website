@@ -29,7 +29,7 @@ export default function ProductsRow(props) {
             </Carousel>
             
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
-                <Row xs={1} md={2} lg={4} >
+                <Row xs={1} md={2} lg={5} >
                     {productsToDisplay.map((product, index) => ( 
                         <Col key={index} className={"cardMargin" + ((index !== rowPage && index !== rowPage +1) ? " hide-some" : "")}>
                             <ProductCard product={product} />
