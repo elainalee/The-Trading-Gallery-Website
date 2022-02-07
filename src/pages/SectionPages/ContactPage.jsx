@@ -14,6 +14,7 @@ import { ContactPageRoute } from '../../utils/routes';
 
 import "../../utils/globalStyles.css";
 import "./SectionPages.css";
+import { TGG_EMAIL } from '../../utils/contents';
 
 
 export default function ContactPage() {
@@ -72,7 +73,7 @@ export default function ContactPage() {
                                     <div className="title">We are here for you.</div>
                                     <div className="body">How can we help? Send us a message!</div>
 
-                                    <div className="subtitle">hello@thetradinggallery.ca</div>
+                                    <div className="subtitle">{TGG_EMAIL}</div>
                                 </Col>
                                 <Col>
                                     {error && <Alert variant="danger">{error}</Alert>}

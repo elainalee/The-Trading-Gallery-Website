@@ -1,3 +1,7 @@
+/* Universal */
+export const TGG_ADDRESS = "200-13888 Wireless way, Richmond, B.C, V6V 1X2";
+export const TGG_EMAIL = "hello@thetradinggallery.ca";
+
 /* More About Banner */
 export const BANNER_FIRST = "Our Goal";
 export const BANNER_FIRST_CONTENT = "Starting as a small business in Vancouver, B.C, Canada. We sell products and aim to create experiences people love.";
@@ -56,7 +60,6 @@ export const ADDRESS_PICKUP = "ADDRESS and PICK-UP";
 export const ADDRESS_SECTION_1 = "Please note; WE ARE NOT A BROWSING PHYSICAL STORE. Our address is pick-up only.";
 export const ADDRESS_SECTION_2 = "If you come to our location we will not have any product on display nor can we process any payments.";
 
-export const ADDRESS = "200-13888 Wireless way, Richmond, B.C, V6V 1X2";
 export const ADDRESS_GOOGLE_MAP = "https://goo.gl/maps/LE3eh7oY4SrS91Gz8";
 
 export const PICKUP = "Pick up-";

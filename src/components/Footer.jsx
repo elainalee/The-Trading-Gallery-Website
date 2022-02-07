@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { TGG_EMAIL } from '../utils/contents';
 
 import { AboutPageRoute, AddressPickupRoute, BlogsPageRoute, ContactPageRoute, MainPageRoute, PrivacyPolicyPageRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute } from '../utils/routes';
 
@@ -20,7 +21,7 @@ export default function Footer() {
                 <Row>
                     <Col md={8} lg={8} className="companyDescription">
                         <div className="title">The Trading Gallery</div>
-                        <div className="subTitle"><a href="mailto:hello@thetradinggallery.ca" className="link">hello@thetradinggallery.ca</a></div>
+                        <div className="subTitle"><a href={"mailto:" + TGG_EMAIL} className="link">{TGG_EMAIL}</a></div>
                     </Col>
                     <Col md={2} lg={2} className="footerAbout">
                         <ul className={tggSectionClicked ? "section-items expanded" : "section-items"}>
