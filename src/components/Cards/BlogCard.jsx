@@ -13,7 +13,6 @@ export default function BlogCard(props) {
     const blog = props.blog;
 
     const sizeName = props.sm ? "sm" : props.lg ? "lg" : "md";
-    console.log(blog, sizeName);
 
     const hasGrayBorderBottom = props.sm && !props.last;
 

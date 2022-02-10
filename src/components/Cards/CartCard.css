@@ -1,0 +1,50 @@
+.cartCard {
+    display: flex;
+    flex-direction:row;
+    /* border-bottom: 1px solid var(--primary-light); */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+    align-items: center;
+}
+
+.cartCard .image-section {   
+    margin-right: 50px;
+}
+
+.cartCard .image-section .image {   
+    background-color: var(--primary-light);
+    width: 110px;
+}
+
+.cartCard .image-section .placeholder {   
+    background-color: var(--primary-light);
+    width: 110px;
+    height: 170px;
+}
+
+.cartCard .title {
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.cartCard .subtitle {
+    margin-bottom: 10px;
+}
+
+.cartCard .body {
+    margin-bottom: 10px;
+}
+
+.cartCard .placeholder {
+    /* height: 10%; */
+    /* aspect-ratio: 5000 / 6000; */
+
+    background-color: var(--primary-light);
+}
+
+.cartCard .cardDescription {
+    /* height: 130px; */
+    color: black;
+}

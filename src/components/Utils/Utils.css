@@ -10,6 +10,77 @@
     align-items: center;
 }
 
+/* ChooseQuantity Box */
+.display-flex {
+    width: 200px;
+    display: flex;
+}
+
+.chooseQuantity .fas {
+    display: inline;
+    cursor: pointer;
+    color: black;
+}
+
+.chooseQuantity .quantity-section {
+    width: 200px;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.chooseQuantity .section {
+    flex: 1;
+}
+
+.chooseQuantity .updateText {
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.chooseQuantity .disable {
+    color: gray;
+    cursor: default;
+}
+
+
+/* Placeholder Box */
+.placeholderBox * {
+    background-color: var(--primary-light);
+}
+
+.placeholderBox .pagebox {
+    width: 400px;
+}
+
+.placeholderBox .cardbox {
+    width: 200px;
+}
+
+.placeholderBox .title {
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.placeholderBox .subtitle {
+    height: 20px;
+    margin-bottom: 8px;
+}
+
+.placeholderBox .body {
+    height: 18px;
+    /* margin-bottom: 5px; */
+}
+
+.placeholderBox .body-lg {
+    height: 200px;
+    /* margin-bottom: 5px; */
+}
+
+
 /* Banner */
 .banner * {
     font-family: 'Roboto mono', 'Open Sans';
@@ -119,5 +190,11 @@
 
     .banner .hide {
         display: none;
+    }
+
+    /* Placeholder Box */
+
+    .placeholderBox .pagebox {
+        width: 90%;
     }
 }

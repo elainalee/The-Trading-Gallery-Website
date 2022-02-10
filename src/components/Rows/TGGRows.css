@@ -21,7 +21,11 @@
     font-weight: bold;
 }
 
-.productsRow .fas {
+.productsRow .fa-angle-left {
+    display: none;
+}
+
+.productsRow .fa-angle-right {
     display: none;
 }
 

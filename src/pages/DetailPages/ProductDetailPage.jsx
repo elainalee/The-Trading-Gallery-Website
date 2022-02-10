@@ -6,10 +6,14 @@ import QuantityBox from '../../components/Utils/QuantityBox';
 import CustomButton from "../../components/Buttons/CustomButton";
 import { getProductInfo } from '../../reducers/productsReducer';
 
+import PlaceholderBox from "../../components/Utils/PlaceholderBox";
+
 import Footer from '../../components/Footer';
 
 import "./DetailPages.css";
 import { Col, Row } from 'react-bootstrap';
+import ChooseQuantityBox from '../../components/Utils/ChooseQuantityBox';
+import { addItem } from '../../reducers/cartReducer';
         
 
 export default function ProductDetailPage(props) {
@@ -18,18 +22,17 @@ export default function ProductDetailPage(props) {
     const productId = props.match.params.productId;
     
     const [productInfo, setProductInfo] = useState(undefined);
+    const [quantity, setQuantity] = useState(1);
+    const [updating, setUpdating] = useState(false);
 
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, []);
 
-    const handleAddCart = () => {
-
-    }
-
-    if (productInfo === undefined) {
-        return <LoadingBox />;
+    const handleAddCart = (quantity) => {
+        setUpdating(true);
+        dispatch(addItem(productId, quantity)).then((res) => setUpdating(false));
     }
 
     return (
@@ -37,38 +40,47 @@ export default function ProductDetailPage(props) {
             <main>
                 <div className="productShowing marginHorizontal">
                     <Row xs={1} md={2}>
-                        <Col>
-                            <img className="image" src={productInfo.mainImage} />
-
+                        <Col className="image-section">
+                            {productInfo?.mainImage
+                                ? <img className="image" alt="product-image" src={productInfo.mainImage} />
+                                : <div className="placeholder" />}
                         </Col>
                         <Col>
-                            <div className="brand">
-                                {productInfo.brand}
-                            </div>
+                            {productInfo?.brand
+                                ? <div className="brand">{productInfo?.brand}</div>
+                                : <PlaceholderBox page={true} size="subtitle" />}
 
-                            <div className="title">
-                                {productInfo.title}
-                            </div>
+                            {productInfo?.title
+                                ? <div className="title">{productInfo?.title}</div>
+                                : <PlaceholderBox page={true} size="title" />}
 
-                            <div className="price">
-                                {"$" + productInfo.price}
-                            </div>
+                            {productInfo?.price
+                                ? <div className="price">{"$" + productInfo?.price}</div>
+                                : <PlaceholderBox page={true} size="body" />}
 
-                            <div className="description">
-                                {productInfo.description}
-                            </div>
+                            {productInfo?.description
+                                ? <div className="description">{productInfo?.description}</div>
+                                : <PlaceholderBox page={true} size="body-lg" />}
+
+
 
                             <div className="quantity">
                                 <h6>Quantity: </h6>
-                                <QuantityBox quantity="1" />
+                                <ChooseQuantityBox 
+                                    quantity={quantity} 
+                                    setQuantity={setQuantity}
+                                    handleUpdateButton={handleAddCart}
+                                    updateButton={
+                                        <CustomButton
+                                            marginTop="15px"
+                                            buttonDetail="default-size"
+                                            // onClick={handleAddCart}
+                                            disabled={updating}
+                                        >
+                                            Add To Cart
+                                        </CustomButton>
+                                    }/>
                             </div>
-
-                            <CustomButton
-                                marginTop="15px"
-                                buttonDetail="default-size"
-                                onClick={handleAddCart}>
-                                Add To Cart
-                            </CustomButton>
 
                         </Col>
                     </Row>

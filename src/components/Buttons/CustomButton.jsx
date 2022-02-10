@@ -48,7 +48,7 @@ export const CustomButton = ({
           onClick={onClick}
           disabled={disabled}
           type={type}
-          style={({ marginTop, marginRight, marginBottom, marginLeft  })}
+          style={({ marginTop, marginRight, marginBottom, marginLeft })}
         >
             {children}
         </button>
