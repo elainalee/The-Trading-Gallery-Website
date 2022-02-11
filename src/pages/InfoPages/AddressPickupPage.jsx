@@ -25,8 +25,6 @@ export default function AddressPickupPage() {
                     <div className="body">{PICKUP_SECTION}</div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     );
 }

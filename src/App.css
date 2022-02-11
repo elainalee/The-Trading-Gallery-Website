@@ -20,6 +20,22 @@
   pointer-events: none;
 }
 
+.app-min-height {
+  min-height: 71vh;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .app-min-height {
+    min-height: 82vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app-min-height {
+    min-height: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -25,8 +25,6 @@ export default function AboutPage() {
                     <div className="body">{OUR_TEAM_CONTENT}</div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     );
 }

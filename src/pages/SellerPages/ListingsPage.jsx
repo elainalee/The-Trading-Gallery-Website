@@ -36,8 +36,6 @@ export default function ListingsPage() {
                 </div>
                 <ProductsRow products={sellerProducts} placeholderNumbers={8}/>
             </div>
-
-            <Footer />
         </div>
         
     );

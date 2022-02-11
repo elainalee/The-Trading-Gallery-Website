@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import { TGG_EMAIL } from '../utils/contents';
 
 import { AboutPageRoute, AddressPickupRoute, BlogsPageRoute, ContactPageRoute, MainPageRoute, PrivacyPolicyPageRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute } from '../utils/routes';
 
 import "./Footer.css"
 
-export default function Footer() {
+function Footer() {
 
     const [tggSectionClicked, setTggSectionClicked] = useState(false);
     const [infoSectionClicked, setInfoSectionClicked] = useState(false);
@@ -45,3 +45,6 @@ export default function Footer() {
             </div>
     );
 }
+
+
+export default withRouter(Footer);

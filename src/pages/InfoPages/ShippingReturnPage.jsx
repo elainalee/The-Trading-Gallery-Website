@@ -52,8 +52,6 @@ export default function ShippingReturnPage() {
                 </div>
 
             </main>
-
-            <Footer />
         </div>
     );
 }

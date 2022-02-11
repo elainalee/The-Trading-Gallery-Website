@@ -30,7 +30,6 @@ export default function CartsPage() {
                         <CartCard key={index} productId={product?.productID} quantity={product?.quantity} last={index == cartItems?.length - 1}/>))}
                 </div>
             </main>
-            <Footer />
         </div> 
     );
 }

@@ -38,7 +38,6 @@ export default function BlogsPage() {
                     <BlogsRow blogs={allBlogs} placeholderNumbers={8}/>
                 </div>
             </main>
-            <Footer />
         </div>        
     );
 }

@@ -168,8 +168,6 @@ export default function TermsOfUsePage() {
                     <div className="body">{"Email: " + TGG_EMAIL}</div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     );
 }

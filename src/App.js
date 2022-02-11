@@ -22,15 +22,12 @@ import { getUser } from './reducers/userReducer';
 
 import ListingsPage from './pages/SellerPages/ListingsPage';
 import SellerProfilePage from './pages/SellerPages/SellerProfilePage';
-
-import './App.css';
-import "./utils/globalStyles.css";
 import AboutPage from './pages/InfoPages/AboutPage';
 import ContactPage from './pages/SectionPages/ContactPage';
 import ShippingReturnPage from './pages/InfoPages/ShippingReturnPage';
 import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+
 import ProductDetailPage from './pages/DetailPages/ProductDetailPage';
 import { getSeller } from './reducers/sellerReducer';
 import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
@@ -38,6 +35,12 @@ import AddListingPage from './pages/SellerPages/AddListingPage';
 import AddBlogPage from './pages/SellerPages/AddBlogPage';
 import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
+import Footer from './components/Footer';
+
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+
+import './App.css';
+import "./utils/globalStyles.css";
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -65,48 +68,51 @@ function NavPages(props) {
   return (
     <div>
       <NavBar />
-      <Route exact path={MainPageRoute} component={MainPage} />
-      <EnsureUserRoute exact path={CartsPageRoute} component={CartsPage} />
+      <div className="app-min-height">
+        <Route exact path={MainPageRoute} component={MainPage} />
+        <EnsureUserRoute exact path={CartsPageRoute} component={CartsPage} />
 
-      <Container className="d-flex justify-content-center" /* style={{ minHeight: '100vh' } }*/>
-        <div className="w-100" style={{ maxWidth: '400px' }}>
-          {/* User Pages */}
-          <EnsureUserRoute exact path={ProfileRoute} component={UserProfilePage} />
-          <EnsureUserRoute exact path={UpdateProfileRoute} component={UpdateProfile} />
+        <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
+          <div className="w-100" style={{ maxWidth: '400px' }}>
+            {/* User Pages */}
+            <EnsureUserRoute exact path={ProfileRoute} component={UserProfilePage} />
+            <EnsureUserRoute exact path={UpdateProfileRoute} component={UpdateProfile} />
 
-          {/* Seller Pages */}
-          <EnsureSellerRoute exact path={SellerProfileRoute} component={SellerProfilePage} />
-          
-          {/* Logged out Pages */}
-          <EnsureLogOutRoute exact path={SignUpRoute} component={SignUpPage} />
-          <EnsureLogOutRoute exact path={LogInRoute} component={LogInPage} />
-          <EnsureLogOutRoute exact path={PasswordResetRoute} component={PasswordResetPage} />
-        </div>
-      </Container>
+            {/* Seller Pages */}
+            <EnsureSellerRoute exact path={SellerProfileRoute} component={SellerProfilePage} />
+            
+            {/* Logged out Pages */}
+            <EnsureLogOutRoute exact path={SignUpRoute} component={SignUpPage} />
+            <EnsureLogOutRoute exact path={LogInRoute} component={LogInPage} />
+            <EnsureLogOutRoute exact path={PasswordResetRoute} component={PasswordResetPage} />
+          </div>
+        </Container>
 
-      <EnsureSellerRoute exact path={ListingsPageRoute} component={ListingsPage} />
-      <EnsureSellerRoute exact path={AddListingPageRoute} component={AddListingPage} />
-      <EnsureSellerRoute exact path={AddBlogPageRoute} component={AddBlogPage} />
+        <EnsureSellerRoute exact path={ListingsPageRoute} component={ListingsPage} />
+        <EnsureSellerRoute exact path={AddListingPageRoute} component={AddListingPage} />
+        <EnsureSellerRoute exact path={AddBlogPageRoute} component={AddBlogPage} />
 
-      {/* Product Detail Pages */}
-      <Route path={"/product/:productId"} component={ProductDetailPage} />
+        {/* Product Detail Pages */}
+        <Route path={"/product/:productId"} component={ProductDetailPage} />
 
-      {/* Blog Pages */}
-      <Route path={"/blog/:blogId"} component={BlogDetailPage} />
-      
+        {/* Blog Pages */}
+        <Route path={"/blog/:blogId"} component={BlogDetailPage} />
         
-      {/* Trading Gallery Pages */}
-      <Route exact path={ShopPageRoute} component={ShopPage} />
-      <Route exact path={BlogsPageRoute} component={BlogsPage} />
-      <Route exact path={AboutPageRoute} component={AboutPage} />
-      <Route exact path={ContactPageRoute} component={ContactPage} />
+          
+        {/* Trading Gallery Pages */}
+        <Route exact path={ShopPageRoute} component={ShopPage} />
+        <Route exact path={BlogsPageRoute} component={BlogsPage} />
+        <Route exact path={AboutPageRoute} component={AboutPage} />
+        <Route exact path={ContactPageRoute} component={ContactPage} />
 
-      {/* Info Pages */}
-      <Route exact path={ShippingReturnPageRoute} component={ShippingReturnPage} />
-      <Route exact path={AddressPickupRoute} component={AddressPickupPage} />
-      <Route exact path={TermsOfUsePageRoute} component={TermsOfUsePage} />
-      <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
-      
+        {/* Info Pages */}
+        <Route exact path={ShippingReturnPageRoute} component={ShippingReturnPage} />
+        <Route exact path={AddressPickupRoute} component={AddressPickupPage} />
+        <Route exact path={TermsOfUsePageRoute} component={TermsOfUsePage} />
+        <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
+
+      </div>
+      <Footer />
     </div>
   );
 }

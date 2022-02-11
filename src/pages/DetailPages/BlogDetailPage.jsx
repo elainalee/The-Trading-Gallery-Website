@@ -30,11 +30,7 @@ export default function BlogDetailPage(props) {
                     : (<div className="placeholder" />)}
 
                 <div className="body">{blogDetail?.body}</div>
-            </main>
-            
-
-            <Footer />
-            
+            </main>            
         </div>
     );
 }

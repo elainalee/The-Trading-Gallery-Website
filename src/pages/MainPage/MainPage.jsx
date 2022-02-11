@@ -75,7 +75,6 @@ export default function MainPage() {
             <div className="bestSeller paddingHorizontal">
                 <ProductsRow title="Shop Our Best Sellers" products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
             </div>
-            <Footer />
         </div>
     );
 }

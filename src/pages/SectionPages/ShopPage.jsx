@@ -23,8 +23,6 @@ export default function ShopPage() {
             <div className="marginHorizontal">
                 <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8}/>
             </div>
-
-            <Footer />
         </div>
     );
 }

@@ -88,11 +88,6 @@ export default function ProductDetailPage(props) {
                     </Row>
                 </div>
             </main>
-            {/* <div className="divider"></div> */}
-            
-
-            <Footer />
-            
         </div>
     );
 }
