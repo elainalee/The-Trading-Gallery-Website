@@ -38,6 +38,7 @@
     margin-top: 15px;
     font-size: 18px;
 
+    white-space: break-spaces;
 }
 
 .productDetailPage .productShowing .quantity {
@@ -76,6 +77,8 @@
 .blogDetailPage main .body {
     margin-top: 5%;
     font-size: 22px;
+
+    white-space: break-spaces;
 }
 
 .blogDetailPage main .placeholder {
@@ -150,7 +153,6 @@
     .productDetailPage .productShowing .description {
         margin-top: 5px;
         font-size: 16px;
-    
     }
     
     .productDetailPage .productShowing .quantity {
@@ -219,7 +221,6 @@
     .productDetailPage .productShowing .description {
         margin-top: 5px;
         font-size: 16px;
-    
     }
     
     .productDetailPage .productShowing .quantity {
