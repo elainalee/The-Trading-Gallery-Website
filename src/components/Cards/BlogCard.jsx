@@ -29,6 +29,9 @@ export default function BlogCard(props) {
                     : (<div className="placeholder" />)}
                 </div>
                 <div className="title-section">
+                    {/* {props.blog?.title
+                        ? <Card.Title className="title">{props.blog?.title}</Card.Title>
+                        : <placeholderBox page={false} size="title" />} */}
                     <Card.Title className="title">{props.blog?.title}</Card.Title>
                 </div>
             </div>

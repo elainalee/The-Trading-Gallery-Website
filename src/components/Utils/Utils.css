@@ -57,7 +57,8 @@
 }
 
 .placeholderBox .cardbox {
-    width: 200px;
+    /* width: 200px; */
+    width: 90%;
 }
 
 .placeholderBox .title {
@@ -196,5 +197,12 @@
 
     .placeholderBox .pagebox {
         width: 90%;
+    }
+
+    /* ChooseQuantity Box */
+
+    .chooseQuantity .quantity-section {
+        width: 120px;
+        margin-bottom: 0px;
     }
 }

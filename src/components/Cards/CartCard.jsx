@@ -12,7 +12,6 @@ import "../../utils/globalStyles.css";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
-import './BlogCard.css';
 import "./CartCard.css";
 
 export default function CartCard(props) {

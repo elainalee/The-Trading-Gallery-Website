@@ -9,15 +9,10 @@ import "./ProductCard.css";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../reducers/cartReducer";
+import PlaceholderBox from "../Utils/PlaceholderBox";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
-
-  const [quantity, setQuantity] = useState(1);
-
-  const handleAddCart = (quantity) => {
-    dispatch(addItem(product?._id, quantity));
-}
 
   return (
     <Link to={product?._id ? `/product/${product?._id}` : '#'} className={`links ${!product && "disabledCursor"}`}>
@@ -33,17 +28,23 @@ export default function ProductCard({ product }) {
         </div>
       </Card>
       <Card.Body className="productCard cardDescription">
-          {product && (
-            <div>
-              <Card.Title className="cardTitle">{product?.title}</Card.Title>
-              <Card.Subtitle className="cardSubtitle">{product?.brand}</Card.Subtitle>
-              <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
-            </div>
-          )}
+        {product?.title
+          ? <Card.Title className="cardTitle">{product?.title}</Card.Title>
+          : <PlaceholderBox page={false} size="title" />}
 
+        {product?.brand
+          ? <Card.Subtitle className="cardSubtitle">{product?.brand}</Card.Subtitle>
+          : <PlaceholderBox page={false} size="subtitle" />}
+        
+        {product?.price
+          ? <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
+          : <PlaceholderBox page={false} size="body" />}
+
+        {product && (
           <Card.Link className="addButton" href="#">
               <h2 className="addButton link">ADD TO CART</h2>
           </Card.Link> 
+        )}
         </Card.Body>
     </Link>
   );

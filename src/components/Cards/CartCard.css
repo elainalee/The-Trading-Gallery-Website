@@ -1,4 +1,5 @@
 .cartCard {
+    width: 100%;
     display: flex;
     flex-direction:row;
     /* border-bottom: 1px solid var(--primary-light); */
@@ -47,4 +48,37 @@
 .cartCard .cardDescription {
     /* height: 130px; */
     color: black;
+}
+
+
+@media screen and (max-width: 767px) {
+    .cartCard .image-section {   
+        margin-right: 20px;
+    }
+
+    .cartCard .image-section .image {   
+        background-color: var(--primary-light);
+        width: 70px;
+    }
+    
+    .cartCard .image-section .placeholder {   
+        background-color: var(--primary-light);
+        width: 70px;
+        height: 100px;
+    }
+
+    .cartCard .title {
+        font-size: 17px;
+    }
+    
+    .cartCard .subtitle {
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+    
+    .cartCard .body {
+        margin-bottom: 3px;
+    }
+    
+    
 }

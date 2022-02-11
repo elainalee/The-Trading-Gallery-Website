@@ -55,21 +55,8 @@ export default function MainPage() {
                 </Col>
             </Row>
 
-            {/* <FeaturedRow title="Featured" products={bestSellers} placeholderNumbers={4} /> */}
             <FeaturedRow title="Featured" products={products.items} placeholderNumbers={4} />
-
-            {/* <div className="featured marginTop paddingHorizontalSm">
-                <div className="title">Featured</div>
-
-                <Row xs={1} md={2} lg={3} className="marginTop paddingHorizontalSm">
-                    {bestSellers?.map((product, index) => ( 
-                        <Col key={index} className="cardMargin">
-                            <FeaturedCard sm product={product} />
-                        </Col>
-                    ))}
-                </Row>
-            </div> */}
-
+            
             <Banner />
 
             <div className="bestSeller paddingHorizontal">

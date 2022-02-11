@@ -35,8 +35,6 @@ export default function ProductDetailPage(props) {
         dispatch(addItem(productId, quantity)).then((res) => setUpdating(false));
     }
 
-    console.log(productInfo?.description);
-
     return (
         <div className="marginTop productDetailPage" >
             <main>

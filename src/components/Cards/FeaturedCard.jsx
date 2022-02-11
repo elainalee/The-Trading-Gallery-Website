@@ -3,9 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-import mainImage from "../../assets/shonen_jump.jpeg";
-
 import "../../utils/globalStyles.css";
+import PlaceholderBox from "../Utils/PlaceholderBox";
 
 import './FeaturedCard.css';
 
@@ -25,9 +24,14 @@ export default function FeaturedCard({ product }) {
                     }
                 </div>
                 <div className="title-section">
-                    <Card.Title className="title">{product?.title}</Card.Title>
-                    <Card.Subtitle className="subtitle">{product?.brand}</Card.Subtitle>
-                </div>
+                    {product?.title
+                        ? <Card.Title className="title">{product?.title}</Card.Title>
+                        : <PlaceholderBox page={false} size="title" />}
+                        
+                    {product?.brand
+                        ? <Card.Subtitle className="subtitle">{product?.brand}</Card.Subtitle>
+                        : <PlaceholderBox page={false} size="subtitle" />}
+                    </div>
             </div>
             
         </Link>
