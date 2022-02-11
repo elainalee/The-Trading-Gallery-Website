@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-import {IconButton} from "../Buttons/IconButton";
-
 import "../../utils/globalStyles.css";
 import "./ProductCard.css";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
@@ -41,9 +39,7 @@ export default function ProductCard({ product }) {
           : <PlaceholderBox page={false} size="body" />}
 
         {product && (
-          <Card.Link className="addButton" href="#">
-              <h2 className="addButton link">ADD TO CART</h2>
-          </Card.Link> 
+          <h2 className="addButton link">ADD TO CART</h2>
         )}
         </Card.Body>
     </Link>

@@ -43,6 +43,10 @@
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
     /* productsRow section */
+    .productsRow .carousel {
+        display: block;
+    }
+
     .productsRow .fas {
         display: inline;
         font-family: 'Font Awesome 5 Free';
@@ -56,8 +60,8 @@
     .productsRow .disable {
         color: gray;
     }
-    
-    .productsRow .hide-some {
+
+    .productsRow .hide {
         display: none;
     }
 
@@ -122,7 +126,7 @@
 @media screen and (max-width: 767px) {
     /* productsRow section */
     .productsRow .carousel {
-        display: inline;
+        display: block;
     }
 
     .productCards {

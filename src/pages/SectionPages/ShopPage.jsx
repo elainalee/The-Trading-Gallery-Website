@@ -21,7 +21,7 @@ export default function ShopPage() {
     return (
         <div>
             <div className="marginHorizontal">
-                <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8}/>
+                <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8} enableCarousel={false}/>
             </div>
         </div>
     );

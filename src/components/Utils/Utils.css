@@ -189,12 +189,7 @@
         color: gray;
     }
 
-    .banner .hide {
-        display: none;
-    }
-
     /* Placeholder Box */
-
     .placeholderBox .pagebox {
         width: 90%;
     }
