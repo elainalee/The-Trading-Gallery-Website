@@ -9,7 +9,7 @@ import { signUp } from '../../reducers/authReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import '../../utils/globalStyles.css';
-import { LogInRoute } from '../../utils/routes';
+import { LogInRoute, ProfileRoute } from '../../utils/routes';
 
 export default function SignUpPage() {
     const firstNameRef = useRef();
@@ -46,7 +46,7 @@ export default function SignUpPage() {
             .then((res) => {
                 if (res === SUCCESS) {
                     console.log("registered user");
-                    history.push('/');
+                    history.push(ProfileRoute);
                 } else {
                     console.log("error logging in.")
                 }

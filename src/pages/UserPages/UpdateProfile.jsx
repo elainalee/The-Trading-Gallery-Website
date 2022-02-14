@@ -49,7 +49,7 @@ export default function UpdateProfile() {
         dispatch(updateUser(userInfo))
             .then((res) => {
                 if (res === SUCCESS) {
-                    history.push('/');
+                    history.push(ProfileRoute);
                 } else {
                     setError(res);
                 }

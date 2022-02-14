@@ -10,10 +10,8 @@ import { AddBlogPageRoute } from '../../utils/routes';
 export default function BlogsPage() {
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
-    const { seller, blogs } = useSelector((state) => state);
-    const currentSeller = seller?.seller;
+    const { blogs } = useSelector((state) => state);
 
     const allBlogs = blogs.blogs;
 
@@ -21,21 +19,11 @@ export default function BlogsPage() {
         dispatch(getBlogs());
     }, []);
 
-    const handleAddClick = () => {
-        history.push(AddBlogPageRoute);
-    }
-
-
     return (
         <div className="marginTop blogsPage">
             <main>
                 <div className="marginHorizontal">
-                    <div className="myProductsTitle">
-                        {currentSeller && (
-                            <p className="title" onClick={handleAddClick}>Click to Add Listing<IconButton buttonIcon="add-btn" onClick={handleAddClick}/></p>
-                        )}
-                    </div>
-                    <BlogsRow blogs={allBlogs} placeholderNumbers={8}/>
+                    <BlogsRow blogs={allBlogs} title="THE TRADING GALLERY BLOGS" placeholderNumbers={8}/>
                 </div>
             </main>
         </div>        

@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { ListingsPageRoute, LogInRoute, ProfileRoute, SellerProfileRoute } from '../../utils/routes';
-import { CustomButton } from './CustomButton';
+import { SellerPanelPageRoute, LogInRoute, ProfileRoute, SellerProfileRoute } from '../../utils/routes';
 import { IconButton } from './IconButton';
 
 export default function UserButton(props) {

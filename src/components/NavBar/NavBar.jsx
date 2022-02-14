@@ -8,7 +8,7 @@ import logoName from '../../assets/TTG-logo-w-text.png';
 import './NavBarBottom.css';
 import './NavBarTop.css';
 
-import { CartsPageRoute, ListingsPageRoute, MainPageRoute } from '../../utils/routes';
+import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
 
 
@@ -34,7 +34,7 @@ function NavBar() {
     }
 
     const handleListingsClick = () => {
-        history.push(ListingsPageRoute);
+        history.push(SellerPanelPageRoute);
     }
 
     function handleSectionClick() {

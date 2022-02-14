@@ -14,7 +14,7 @@ export const LogInRoute = "/logIn" ;
 export const PasswordResetRoute = "/password-reset" ;
 
 // Seller Pages
-export const ListingsPageRoute = "/listings";
+export const SellerPanelPageRoute = "/seller-panel";
 export const SellerProfileRoute = "/seller-profile-page";
 export const AddListingPageRoute = "/add-listing";
 export const AddBlogPageRoute = "/add-blog";
@@ -23,7 +23,7 @@ export const AddBlogPageRoute = "/add-blog";
 export const ProductDetailPageGeneralRoute = "/product";
 export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";
 
-// Trading Gallery Pages
+// Trading Gallery PagesProfileRoute
 export const ShopPageRoute = "/shop";
 export const BlogsPageRoute = "/blog";
 export const AboutPageRoute = "/about";

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getProducts } from '../../reducers/productsReducer';
 import ProductsRow from '../../components/Rows/ProductsRow';
-import Footer from '../../components/Footer';
 
 export default function ShopPage() {
 

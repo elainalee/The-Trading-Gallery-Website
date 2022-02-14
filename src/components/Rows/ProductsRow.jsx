@@ -8,8 +8,16 @@ import 'swiper/swiper.min.css';
 
 import '../../utils/globalStyles.css';
 import "./TGGRows.css";
+import { IconButton } from '../Buttons/IconButton';
+import { useSelector } from 'react-redux';
+import { AddListingPageRoute } from '../../utils/routes';
+import { useHistory } from 'react-router-dom';
 
 export default function ProductsRow(props) {
+    const history = useHistory();
+    
+    const { seller } = useSelector((state) => state);
+    const currentSeller = seller?.seller;
 
     const rowPageRef = useRef();
     const [rowPage, setRowPage] = useState(0);
@@ -22,19 +30,31 @@ export default function ProductsRow(props) {
         setIsMobile(window?.innerWidth <= 767);
     }
 
+    const handleAddClick = () => {
+        history.push(AddListingPageRoute);
+    }
+
     useEffect(() => {
         window.addEventListener('resize', handleResize);
     });
 
     useEffect(() => {
         rowPageRef.current.swiper.slideTo(rowPage);
-      }, [rowPage]);
+    }, [rowPage]);
 
 
     return (
         <div className="productsRow">
             <div className="title">
-                <div className="titleText">{props.title}</div>
+                {props.title && (
+                    <p className="titleText">
+                        {props.title}
+                        {currentSeller && (
+                            <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
+                        )}
+                    </p>
+                )}
+                
                 <div className={enableCarousel ? "selection" : "selection hide"}>
                     <i className={"fas fa-angle-left " + (rowPage === 0 && "disable")} onClick={() => { if (rowPage > 0) setRowPage(rowPage - 1) }}/>
                     <i className={"fas fa-angle-right " + (rowPage === 2 && "disable")} onClick={() => { if (rowPage < 2) setRowPage(rowPage + 1) }}/>

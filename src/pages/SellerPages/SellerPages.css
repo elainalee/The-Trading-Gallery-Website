@@ -1,6 +1,11 @@
-.listingsPage .myProductsTitle {
+/* .sellerPanelPage .myProductsTitle {
     display: flex;
     flex-direction:row;
+} */
+
+.sellerPanelPage .title {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* AddListingPage and AddBlogPage */

@@ -7,6 +7,7 @@ import { SUCCESS } from "../utils/constants";
 const initialState = {
     seller: undefined,
     products: undefined,
+    blogs: undefined,
 }
 
 const sellerReducer = (state = initialState, action) => {
@@ -27,6 +28,12 @@ const sellerReducer = (state = initialState, action) => {
           return {
               ...state,
               products: state.products + action.payload.product,
+          }
+
+        case "SELLER/SETBLOGS":
+          return {
+              ...state,
+              blogs: action.payload.blogs,
           }
 
         default:
@@ -61,6 +68,39 @@ export const getSeller = () => async (
       console.log("getSeller err :>> ", err.message);
       return err.message;
     }
+};
+
+//TODO: seller blogs call not ready yet
+export const getSellerBlogs = () => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    console.log(state);
+
+    const url = BASE_URL + "/blogs/getSellerBlogs/" + state.seller.seller._id;
+
+    console.log("getSellerBlogs url : ", url);
+
+    const res = await axios.get(url);
+    const data = res.data;
+
+    console.log("data", data);
+
+    dispatch({
+      type: "SELLER/SETBLOGS",
+      payload: {
+        blogs: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("getSellerProducts err :>> ", err.message);
+    return err.message;
+  }
 };
 
 export const getSellerProducts = () => async (
@@ -125,7 +165,7 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
     dispatch({
       type: "SELLER/ADDPRODUCT",
       payload: {
-        product: data,
+        blogs: data,
       },
     });
 
