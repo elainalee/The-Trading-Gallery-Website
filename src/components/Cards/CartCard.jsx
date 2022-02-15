@@ -9,6 +9,7 @@ import { updateItem } from "../../reducers/cartReducer";
 import { getProductInfo } from "../../reducers/productsReducer";
 
 import "../../utils/globalStyles.css";
+import CustomButton from "../Buttons/CustomButton";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
@@ -16,25 +17,40 @@ import "./CartCard.css";
 
 export default function CartCard(props) {
     const dispatch = useDispatch();
-    const productId = props.productId;
+    const canModify = props.canModify ?? true;
+
+    const productId = props.product?.productID;
+    const quantity = props.product?.quantity;
+    const unselected = props.product?.unselected ?? false;
 
     const [productInfo, setProductInfo] = useState(undefined);
-    const quantity = props.quantity;
-
+    // const [isChecked, setIsChecked] = useState(productInfo?.checked ?? true);
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, [productId]);
 
     const handleUpdateButton = (quantity) => {
-        dispatch(updateItem(productId, quantity));
+        dispatch(updateItem(productId, quantity, unselected));
     }
 
+    const handleCheckbox = () => {
+        dispatch(updateItem(productId, quantity, !unselected));
+    }
 
     const hasGrayBorderBottom = !props.last;
 
     return (
         <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"}>
+            {canModify && (
+                <input
+                    className="checkbox"
+                    type="checkbox"
+                    checked={!unselected}
+                    onChange={handleCheckbox}
+                />
+            )}
+            
             <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
                 <div className="image-section">
                     {productInfo?.mainImage
@@ -59,8 +75,14 @@ export default function CartCard(props) {
                     {productInfo?.price
                         ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
                         : <PlaceholderBox size="body" />}
-                <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
+                {canModify 
+                    ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
+                    : productInfo?.price
+                        ? <Card.Text className="body">{"Quantity: " + productInfo?.quantity}</Card.Text>
+                        : <PlaceholderBox size="body" />
+                }
             </div>
+            
         </div>
         
     );

@@ -34,3 +34,8 @@ export const ShippingReturnPageRoute = "/shippingReturn";
 export const AddressPickupRoute = "/address-pickup";
 export const TermsOfUsePageRoute = "/termsOfUse";
 export const PrivacyPolicyPageRoute = "/privacyPolicy";
+
+// Payment Pages
+export const SummaryPageRoute = "/summary";
+export const CheckoutPageRoute = "/test-payment";
+export const ReceiptPage = "receipt";

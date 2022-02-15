@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.cartCard .checkbox {
+    margin-right: 17px;
+}
+
 .cartCard .image-section {   
     margin-right: 50px;
 }
