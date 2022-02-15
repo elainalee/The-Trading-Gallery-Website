@@ -3,7 +3,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/Buttons/CustomButton';
 import { getBlogDetail } from '../../reducers/blogsReducer';
-import { addBlog, addSellerProduct } from '../../reducers/sellerReducer';
+import { addBlog, addUpdateSellerBlog } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
@@ -31,7 +31,8 @@ export default function AddBlogPage(props) {
 
         setError('');
         setLoading(true);
-        dispatch(addBlog(
+        dispatch(addUpdateSellerBlog(
+            blogId,
             blogDetail?.title,
             blogDetail?.mainImage,
             blogDetail?.body,

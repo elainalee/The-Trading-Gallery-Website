@@ -177,8 +177,8 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
   }
 };
 
-//TODO: not done
-export const addUpdateSellerProduct = (productId, title, brand, description, price, mainImage) => async (
+
+export const addUpdateSellerProduct = (productId, title, brand, description, quantity, price, mainImage, bestSeller) => async (
   dispatch,
   getState
 ) => {
@@ -192,9 +192,11 @@ export const addUpdateSellerProduct = (productId, title, brand, description, pri
       mainImage,
       title,
       brand,
+      quantity,
       price,
       description,
-      sellerID: state.seller.seller._id
+      sellerID: state.seller.seller._id,
+      bestSeller
     }
     console.log(payload);
 
@@ -216,6 +218,42 @@ export const addUpdateSellerProduct = (productId, title, brand, description, pri
 
   } catch (err) {
     console.log("addUpdateSellerProduct err :>> ", err.message);
+    return err.message;
+  }
+};
+
+export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlog, isSubBlog) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    console.log(state);
+
+    const url = BASE_URL + "/sellers/addUpdateBlog/" + (productId ?? "");
+
+    const payload = {
+      title,
+      mainImage,
+      body,
+      mainBlog: isMainBlog,
+      subBlog: isSubBlog
+    };
+
+    const res = await client.post(url, payload);
+    const data = res.data;
+
+    dispatch({
+      type: "SELLER/SETBLOGS",
+      payload: {
+        blogs: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("addUpdateSellerBlog err :>> ", err.message);
     return err.message;
   }
 };

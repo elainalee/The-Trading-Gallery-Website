@@ -36,8 +36,10 @@ export default function AddListingPage(props) {
             productInfo?.title, 
             productInfo?.brand, 
             productInfo?.description,
+            productInfo?.quantity,
             productInfo?.price,
-            productInfo?.mainImage
+            productInfo?.mainImage,
+            productInfo?.bestSeller
             ))
             .then((res) => {
             if (res === SUCCESS) {
@@ -55,6 +57,11 @@ export default function AddListingPage(props) {
             <main>
                 <div className="productShowing marginHorizontal">
                         <Form onSubmit={handleSubmit}>
+                            <Form.Group id="titles">
+                                <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
+                                
+                            </Form.Group>
+
                             <div className="left">
                                 <Form.Group id="mainImage">
                                     <Form.Label>Main Image URL *</Form.Label>
@@ -76,6 +83,11 @@ export default function AddListingPage(props) {
                                 <Form.Group id="brand">
                                     <Form.Label>Brand *</Form.Label>
                                     <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
+                                </Form.Group>
+
+                                <Form.Group id="title">
+                                    <Form.Label>Total Quantity *</Form.Label>                        
+                                    <Form.Control type="number" min="1" value={productInfo?.quantity || ""} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
                                 </Form.Group>
 
                                 <Form.Group id="price">

@@ -65,3 +65,7 @@
     /* height: 130px; */
     color: black;
 }
+
+.blogCard .blogType {
+    font-weight: bold;
+}

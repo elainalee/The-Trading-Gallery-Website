@@ -4,8 +4,6 @@ import Card from "react-bootstrap/Card";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import mainImage from "../../assets/shonen_jump.jpeg";
-
 import "../../utils/globalStyles.css";
 import { AddBlogPageRoute } from "../../utils/routes";
 
@@ -24,6 +22,11 @@ export default function BlogCard(props) {
 
     return (
         <Link to={linkOnClick} className={`blogCard links ${!blog && "disabledCursor"}`}>
+            {blog && currentSeller &&  (
+                <div className="blogType">
+                    {blog.mainBlog ? "(main)": blog.subBlog ? "(sub)" : "-"}
+                </div>
+            )}
             <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
                 <div className="image-section">
                     {blog 

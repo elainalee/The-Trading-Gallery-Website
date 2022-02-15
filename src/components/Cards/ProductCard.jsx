@@ -29,7 +29,8 @@ export default function ProductCard({ product }) {
             />)}
         </div>
       </Card>
-      <Card.Body className="productCard cardDescription">
+      <Card.Body className="productCard">
+        <div className="cardDescription">
         {product?.title
           ? <Card.Title className="cardTitle">{product?.title}</Card.Title>
           : <PlaceholderBox page={false} size="title" />}
@@ -41,11 +42,17 @@ export default function ProductCard({ product }) {
         {product?.price
           ? <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
           : <PlaceholderBox page={false} size="body" />}
-
+        </div>
         {product && (
-          <h2 className="addButton link">ADD TO CART</h2>
+          currentSeller
+            ? <div>
+                {"quantity: " + product.quantity}
+                {product.bestSeller ? <i className="fa-solid fa-thumbs-up" /> : ""}
+              </div>
+            : <h2 className="addButton link">ADD TO CART</h2>
         )}
         </Card.Body>
+        
     </Link>
   );
 }
