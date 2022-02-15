@@ -41,6 +41,8 @@ import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRou
 import './App.css';
 import "./utils/globalStyles.css";
 import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
+import CheckoutPage from './pages/PaymentPages/CheckoutPage';
+import ReceiptPage from './pages/PaymentPages/ReceiptPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -112,6 +114,10 @@ function NavPages(props) {
         <Route exact path={AddressPickupRoute} component={AddressPickupPage} />
         <Route exact path={TermsOfUsePageRoute} component={TermsOfUsePage} />
         <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
+
+        {/* Payment Pages */}
+        <Route exact path={"/receipt"} component={ReceiptPage} />
+        <Route exact path={"/test-payment"} component={CheckoutPage} />
 
       </div>
       <Footer />

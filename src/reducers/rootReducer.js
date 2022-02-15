@@ -3,6 +3,7 @@ import authReducer from "./authReducer";
 import blogsReducer from "./blogsReducer";
 import cartReducer from "./cartReducer";
 import contentsReducer from "./contentsReducer";
+import paymentReducer from "./paymentReducer";
 import productsReducer from "./productsReducer";
 import sellerReducer from "./sellerReducer";
 import userReducer from "./userReducer";
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
     products: productsReducer,
     contents: contentsReducer,
     blogs: blogsReducer,
+    payments: paymentReducer,
 });
 
 const rootReducer = (state, action) => {
@@ -23,6 +25,7 @@ const rootReducer = (state, action) => {
         state.user = undefined;
         state.cart = undefined;
         state.seller = undefined;
+        state.payments = undefined;
     }
 
     return appReducer(state, action);
