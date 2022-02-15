@@ -33,7 +33,7 @@ export default function Banner() {
             <Swiper
                 className={"explanations"}
                 slidesPerView={isMobile ? 1 : 3}
-                centeredSlide={true}
+                // centeredSlide={true}
                 ref={sectionNumRef}
                 onSlideChange={(info) => setSectionNum(info.activeIndex)}
                 >

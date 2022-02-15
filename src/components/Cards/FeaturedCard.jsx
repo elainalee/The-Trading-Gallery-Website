@@ -1,17 +1,23 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../../utils/globalStyles.css";
+import { AddListingPageRoute } from "../../utils/routes";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
 import './FeaturedCard.css';
 
 export default function FeaturedCard({ product }) {
+    const { seller } = useSelector((state) => state);
+    const currentSeller = seller?.seller;
+
+    const linkOnClick = currentSeller ? `${AddListingPageRoute}/${product?._id}` : product?._id ? `/product/${product?._id}` : '#';
 
     return (
-        <Link to={product?._id ? `/product/${product?._id}` : '#'} className={`links ${!product && "disabledCursor"}`}>
+        <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
             <div className={"featuredCard"}>
                 <div className="image-section">
                     {product 

@@ -92,6 +92,7 @@ function NavPages(props) {
         <EnsureSellerRoute exact path={AddListingPageRoute} component={AddListingPage} />
         <EnsureSellerRoute path={"/add-listing/:productId"} component={AddListingPage} />
         <EnsureSellerRoute exact path={AddBlogPageRoute} component={AddBlogPage} />
+        <EnsureSellerRoute path={"/add-blog/:blogId"} component={AddBlogPage} />
 
         {/* Product Detail Pages */}
         <Route path={"/product/:productId"} component={ProductDetailPage} />

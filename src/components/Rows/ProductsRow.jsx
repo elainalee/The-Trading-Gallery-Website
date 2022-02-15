@@ -65,7 +65,7 @@ export default function ProductsRow(props) {
                 className={enableCarousel ? "carousel" : "carousel hide"}
                 spaceBetween={50}
                 slidesPerView={isMobile ? 1 : 2}
-                centeredSlide={isMobile}
+                // centeredSlide={isMobile}
                 ref={rowPageRef}
                 onSlideChange={(info) => setRowPage(info.activeIndex)}
                 >

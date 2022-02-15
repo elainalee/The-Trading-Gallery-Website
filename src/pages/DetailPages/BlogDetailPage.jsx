@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBlogDetail } from '../../reducers/blogsReducer';
 
-import Footer from '../../components/Footer';
-
 import "./DetailPages.css";
         
 

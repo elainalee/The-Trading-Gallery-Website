@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/Buttons/CustomButton';
+import { getBlogDetail } from '../../reducers/blogsReducer';
 import { addBlog, addSellerProduct } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
@@ -9,21 +10,21 @@ import "../../utils/globalStyles.css";
 import { formatGoogleDriveLink } from '../../utils/Helper';
 import "./SellerPages.css";
 
-export default function AddBlogPage() {
+export default function AddBlogPage(props) {
     const dispatch = useDispatch();
+
+    const blogId = props.match.params.blogId;
+
+    const [blogDetail, setBlogDetail] = useState(undefined);
+
+    console.log(blogDetail);
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const [isGoogleDriveLink, setIsGoogleDriveLink] = useState(false);
-    const [mainImageLink, setMainImageLink] = useState(undefined);
-
-    const [isMainBlog, setIsMainBlog] = useState(false);
-    const [isSubBlog, setIsSubBlog] = useState(false);
-
-    const mainImageRef = useRef();
-    const titleRef = useRef();
-    const bodyRef = useRef();
+    useEffect(() => {
+        dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();        
@@ -31,11 +32,11 @@ export default function AddBlogPage() {
         setError('');
         setLoading(true);
         dispatch(addBlog(
-            titleRef.current.value, 
-            isGoogleDriveLink ? formatGoogleDriveLink(mainImageLink) : mainImageLink, 
-            bodyRef.current.value,
-            isMainBlog,
-            isSubBlog))
+            blogDetail?.title,
+            blogDetail?.mainImage,
+            blogDetail?.body,
+            blogDetail?.mainBlog,
+            blogDetail?.subBlog))
             .then((res) => {
             if (res === SUCCESS) {
                 console.log("blog added");
@@ -47,37 +48,27 @@ export default function AddBlogPage() {
             });
     }
 
-    async function handleRenderImage(e) {
-        e.preventDefault();
-        setMainImageLink(mainImageRef?.current?.value);
-    }
-
-
     return (
         <div className="marginTop addPostPages addBlogPage">
             <main>
                 <div className="productShowing marginHorizontal">
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="titles">
-                            <Form.Check type="checkbox" checked={isMainBlog} onChange={() => {setIsMainBlog(!isMainBlog)}} label="Do you want this to be the new main blog?" />
-                            <Form.Check type="checkbox" checked={isSubBlog} onChange={() => {setIsSubBlog(!isSubBlog)}} label="Do you want this to be the new sub blog?" />
+                            <Form.Check type="checkbox" checked={blogDetail?.mainBlog} onChange={() => {setBlogDetail({...blogDetail, mainBlog: !blogDetail.mainBlog})}} label="Do you want this to be the new main blog?" />
+                            <Form.Check type="checkbox" checked={blogDetail?.subBlog} onChange={() => {setBlogDetail({...blogDetail, subBlog: !blogDetail.subBlog})}} label="Do you want this to be the new sub blog?" />
                             
                         </Form.Group>
 
                         <div className="left">
-                            
 
                             <Form.Group id="mainImage">
                                 <Form.Label>Main Image URL *</Form.Label>
-                                <Form.Control type="text" ref={mainImageRef} required />
-                                <div id="googleDriveCheckbox"><Form.Check type="checkbox" checked={isGoogleDriveLink} onChange={() => {setIsGoogleDriveLink(!isGoogleDriveLink)}} label="this link is from google drive" /></div>
+                                <Form.Control type="text" value={blogDetail?.mainImage || ""} onChange={e => setBlogDetail({...blogDetail, mainImage: e.target.value})} required />
                             </Form.Group>
 
-                            <CustomButton className="nav-top-menu-item-name" buttonStyle="outline" buttonDetail="renderImg" marginTop="2.5rem" marginBottom="1rem" onClick={handleRenderImage}>Click to Preview Image</CustomButton>
-
                             <div className="imgPlaceholder">
-                                {mainImageLink && (
-                                    <img className="image" src={isGoogleDriveLink ? formatGoogleDriveLink(mainImageLink) : mainImageLink} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
+                                {blogDetail?.mainImage && (
+                                    <img className="blog-image" src={blogDetail?.mainImage} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
                                 )}
                             </div>
                         </div>
@@ -86,17 +77,12 @@ export default function AddBlogPage() {
 
                             <Form.Group id="title">
                                 <Form.Label>Title *</Form.Label>                        
-                                <Form.Control type="text" ref={titleRef} required />
+                                <Form.Control type="text" value={blogDetail?.title || ""} onChange={e => setBlogDetail({...blogDetail, title: e.target.value})} required />
                             </Form.Group>
-
-                            {/* <Form.Group id="mainImage">
-                                <Form.Label>Main Image URL *</Form.Label>
-                                <Form.Control type="text" ref={mainImageRef} required />
-                            </Form.Group> */}
 
                             <Form.Group id="body">
                                 <Form.Label>Body *</Form.Label>
-                                <Form.Control as="textarea" type="text" style={{ height: '400px' }}  ref={bodyRef} required />
+                                <Form.Control as="textarea" type="text" style={{ height: '400px' }}  value={blogDetail?.body || ""} onChange={e => setBlogDetail({...blogDetail, body: e.target.value})} required />
                             </Form.Group>
 
                             <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>

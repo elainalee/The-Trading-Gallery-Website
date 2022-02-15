@@ -15,7 +15,7 @@ export default function AddListingPage(props) {
     const productId = props.match.params.productId;
     console.log(productId);
 
-    const [productInfo, setProductInfo] = useState(undefined);
+    const [productInfo, setProductInfo] = useState({});
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
@@ -58,7 +58,7 @@ export default function AddListingPage(props) {
                             <div className="left">
                                 <Form.Group id="mainImage">
                                     <Form.Label>Main Image URL *</Form.Label>
-                                    <Form.Control type="text" value={productInfo?.mainImage} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
+                                    <Form.Control type="text" value={productInfo?.mainImage || ""} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
                                 </Form.Group>
 
                                 <div className="imgPlaceholder">
@@ -70,22 +70,22 @@ export default function AddListingPage(props) {
                             <div className="right">
                                 <Form.Group id="title">
                                     <Form.Label>Product Name *</Form.Label>                        
-                                    <Form.Control type="text" value={productInfo?.title} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
+                                    <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
                                 </Form.Group>
 
                                 <Form.Group id="brand">
                                     <Form.Label>Brand *</Form.Label>
-                                    <Form.Control type="text" value={productInfo?.brand} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
+                                    <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
                                 </Form.Group>
 
                                 <Form.Group id="price">
                                     <Form.Label>Price *</Form.Label>
-                                    <Form.Control type="number" min="0" value={productInfo?.price} onChange={e => setProductInfo({...productInfo, price: e.target.value})} required />
+                                    <Form.Control type="number" min="0" value={productInfo?.price || ""} onChange={e => setProductInfo({...productInfo, price: e.target.value})} required />
                                 </Form.Group>
 
                                 <Form.Group id="description">
                                     <Form.Label>Description *</Form.Label>
-                                    <Form.Control as="textarea" type="text" style={{ height: '400px' }} value={productInfo?.description} onChange={e => setProductInfo({...productInfo, description: e.target.value})} required />
+                                    <Form.Control as="textarea" type="text" style={{ height: '400px' }} value={productInfo?.description || ""} onChange={e => setProductInfo({...productInfo, description: e.target.value})} required />
                                 </Form.Group>
 
                                 {/* <Form.Group id="tag">

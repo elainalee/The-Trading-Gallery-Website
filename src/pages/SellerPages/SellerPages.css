@@ -46,9 +46,13 @@
 }
 
 /* AddBlogPage */
-.addBlogPage .imgPlaceholder {
+/* .addBlogPage .imgPlaceholder {
     width: 90%;
     aspect-ratio: 300 / 200;
-    /* height: 700px; */
     background-color: var(--primary-light);
+} */
+
+.addBlogPage .blog-image {
+    width: 90%;
+    /* height: 300px; */
 }

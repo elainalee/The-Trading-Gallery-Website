@@ -1,23 +1,29 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import mainImage from "../../assets/shonen_jump.jpeg";
 
 import "../../utils/globalStyles.css";
+import { AddBlogPageRoute } from "../../utils/routes";
 
 import './BlogCard.css';
 
 export default function BlogCard(props) {
+    const { seller } = useSelector((state) => state);
     const blog = props.blog;
+
+    const currentSeller = seller?.seller;
+    const linkOnClick = currentSeller ? `${AddBlogPageRoute}/${blog?._id}` : blog?._id ? `/blog/${blog?._id}` : '#';
 
     const sizeName = props.sm ? "sm" : props.lg ? "lg" : "md";
 
     const hasGrayBorderBottom = props.sm && !props.last;
 
     return (
-        <Link to={blog?._id ? `/blog/${blog?._id}` : '#'} className={`blogCard links ${!blog && "disabledCursor"}`}>
+        <Link to={linkOnClick} className={`blogCard links ${!blog && "disabledCursor"}`}>
             <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
                 <div className="image-section">
                     {blog 
