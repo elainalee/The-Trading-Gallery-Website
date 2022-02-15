@@ -23,7 +23,7 @@ export default function LogInPage() {
     const [loading, setLoading] = useState(false);
 
     const isSellerEmail = (email) => {
-        return email.split("@")?.[1] === "seller";
+        return email.split("@")?.[1] === "thetradinggallery.ca";
     }
 
 
