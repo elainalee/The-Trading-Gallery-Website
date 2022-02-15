@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import PlaceholderBox from "../Utils/PlaceholderBox";
 
 import "../../utils/globalStyles.css";
 import "./ProductCard.css";
-import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../reducers/cartReducer";
-import PlaceholderBox from "../Utils/PlaceholderBox";
+import { useSelector } from "react-redux";
+import { AddListingPageRoute } from "../../utils/routes";
+
 
 export default function ProductCard({ product }) {
-  const dispatch = useDispatch();
+  const { seller } = useSelector((state) => state);
+  const currentSeller = seller?.seller;
+
+  const linkOnClick = currentSeller ? `${AddListingPageRoute}/${product?._id}` : product?._id ? `/product/${product?._id}` : '#';
+
 
   return (
-    <Link to={product?._id ? `/product/${product?._id}` : '#'} className={`links ${!product && "disabledCursor"}`}>
+    <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
       <Card className="productCard">
         <div className="placeholder">
           {product && (

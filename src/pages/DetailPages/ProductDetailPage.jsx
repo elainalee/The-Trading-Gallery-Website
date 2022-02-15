@@ -20,6 +20,7 @@ export default function ProductDetailPage(props) {
     const dispatch = useDispatch();
 
     const productId = props.match.params.productId;
+    console.log(productId);
     
     const [productInfo, setProductInfo] = useState(undefined);
     const [quantity, setQuantity] = useState(1);

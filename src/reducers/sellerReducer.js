@@ -177,6 +177,49 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
   }
 };
 
+//TODO: not done
+export const addUpdateSellerProduct = (productId, title, brand, description, price, mainImage) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    console.log(state);
+
+    const url = BASE_URL + "/sellers/addUpdateProduct/" + (productId ?? "");
+
+    const payload = {
+      mainImage,
+      title,
+      brand,
+      price,
+      description,
+      sellerID: state.seller.seller._id
+    }
+    console.log(payload);
+
+
+    console.log("addUpdateSellerProduct url : ", url);
+    console.log("payload is: ", payload);
+
+    const res = await client.post(url, payload);
+    const data = res.data;
+
+    dispatch({
+      type: "SELLER/SETPRODUCTS",
+      payload: {
+        products: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("addUpdateSellerProduct err :>> ", err.message);
+    return err.message;
+  }
+};
+
 
 export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async (
   dispatch,

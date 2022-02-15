@@ -20,7 +20,6 @@ import thunkMiddleware from "redux-thunk";
 import rootReducer from './reducers/rootReducer';
 import { getUser } from './reducers/userReducer';
 
-import ListingsPage from './pages/SellerPages/ListingsPage';
 import SellerProfilePage from './pages/SellerPages/SellerProfilePage';
 import AboutPage from './pages/InfoPages/AboutPage';
 import ContactPage from './pages/SectionPages/ContactPage';
@@ -37,10 +36,11 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, ListingsPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
+import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -88,8 +88,9 @@ function NavPages(props) {
           </div>
         </Container>
 
-        <EnsureSellerRoute exact path={ListingsPageRoute} component={ListingsPage} />
+        <EnsureSellerRoute exact path={SellerPanelPageRoute} component={SellerPanelPage} />
         <EnsureSellerRoute exact path={AddListingPageRoute} component={AddListingPage} />
+        <EnsureSellerRoute path={"/add-listing/:productId"} component={AddListingPage} />
         <EnsureSellerRoute exact path={AddBlogPageRoute} component={AddBlogPage} />
 
         {/* Product Detail Pages */}
