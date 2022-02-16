@@ -15,6 +15,7 @@ import { getBlogs } from '../../reducers/blogsReducer';
 import FeaturedCard from '../../components/Cards/FeaturedCard';
 import Banner from '../../components/Utils/Banner';
 import FeaturedRow from '../../components/Rows/FeaturedRow';
+import Marquee from '../../components/Utils/Marquee';
 
 
 export default function MainPage() {

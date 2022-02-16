@@ -10,6 +10,7 @@ import './NavBarTop.css';
 
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
+import Marquee from '../Utils/Marquee';
 
 
 function NavBar() {
@@ -43,7 +44,11 @@ function NavBar() {
     }
 
     return (
-        <div>
+        <div className="navBar">
+            <div className="hide-mobile">
+                <Marquee/>
+            </div>
+            
             <nav className="NavBar-Top">
                 <div className="navBar-logo" onClick={handleLogoClick}>
                     <img src={logoName} className="navBar-logo-symbol" alt="logo-name" />
@@ -62,7 +67,6 @@ function NavBar() {
             </nav>
 
             <nav className="NavBar-Bottom">
-
                 <ul className={menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
                             <li key={item.title}>
@@ -71,6 +75,10 @@ function NavBar() {
                         ))}
                 </ul>
             </nav>
+
+            <div className="hide-full">
+                <Marquee/>
+            </div>
         </div>
     );
 }

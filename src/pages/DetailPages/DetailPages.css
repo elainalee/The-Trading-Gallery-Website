@@ -67,17 +67,17 @@
 
 .blogDetailPage main .title {
     font-weight: 500;
-    font-size: 27px;
+    font-size: 25px;
 }
 
 .blogDetailPage main .image {
     width: 90%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .blogDetailPage main .body {
-    margin-top: 5%;
-    font-size: 22px;
+    margin-top: 3%;
+    font-size: 15px;
 
     white-space: break-spaces;
 }
@@ -110,7 +110,7 @@
     }
 
     .blogDetailPage main .title {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .blogDetailPage main .image {
@@ -177,7 +177,7 @@
     }
 
     .blogDetailPage main .title {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .blogDetailPage main .image {
@@ -185,7 +185,7 @@
     }
 
     .blogDetailPage main .body {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .blogDetailPage main .placeholder {

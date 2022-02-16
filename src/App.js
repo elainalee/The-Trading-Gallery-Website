@@ -44,6 +44,7 @@ import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
 import ReceiptPage from './pages/PaymentPages/ReceiptPage';
 import PaymentPage from './pages/PaymentPages/PaymentPage';
 import CheckoutPage from './pages/PaymentPages/CheckoutPage';
+import Marquee from './components/Utils/Marquee';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
