@@ -4,38 +4,39 @@ import { Elements } from "@stripe/react-stripe-js";
 import { getPaymentIntent } from '../../reducers/paymentReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import PaymentForm from './PaymentForm';
+import CartCard from '../../components/Cards/CartCard';
 
 
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
 
 export default function PaymentPage() {
-    const dispatch = useDispatch();
-    const { payments } = useSelector((state) => state);
+    
+    const { cart, payments } = useSelector((state) => state);
 
     const clientSecret = payments.clientSecret;
-
-    useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
-        dispatch(getPaymentIntent());
-    }, []);
 
     const appearance = {
         theme: 'stripe',
     };
+
     const options = {
         clientSecret,
         appearance,
     };
 
-
     return (
         <div className="marginTop paddingHorizontal paymentPage">
+            {/* {cart?.items?.map((product, index) => (
+                product.unselected 
+                    ? <div />
+                    : <CartCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>))} */}
+            <h2>{"Total: $" + payments?.totalAmount}</h2>
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
                     <PaymentForm />
                 </Elements>
-        )}
+            )}
         </div>        
     );
 }

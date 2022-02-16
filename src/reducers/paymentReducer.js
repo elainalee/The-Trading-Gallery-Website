@@ -6,6 +6,7 @@ import { SUCCESS } from "../utils/constants";
 
 const initialState = {
     clientSecret: "",
+    totalAmount: 0,
 }
 
 const paymentReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const paymentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 clientSecret: action.payload.clientSecret,
+                totalAmount: action.payload.totalAmount
             }
 
         default:
@@ -21,22 +23,22 @@ const paymentReducer = (state = initialState, action) => {
     }
 }
 
-export const getPaymentIntent = () => async (
+export const getPaymentIntent = (cartItems) => async (
     dispatch,
     getState
   ) => {
     try {
-      const url = BASE_URL + "/payment/test-payment";
+      const url = BASE_URL + "/payment/create-payment-intent";
 
       const payload = {
-        items: [{ id: "xl-tshirt" }]
+        items: cartItems
       }
         // const payload = JSON.stringify({ items: [{ id: "xl-tshirt" }] });
 
         console.log("getpaymentintent url: ", url);
         console.log("getpaymentintent payload: ", payload);
 
-      const res = await axios.post(url, payload);
+      const res = await client.post(url, payload);
 
       console.log("res ", res);
 
@@ -48,6 +50,7 @@ export const getPaymentIntent = () => async (
         type: "PAYMENT/SETCLIENTSECRET",
         payload: {
             clientSecret: data.clientSecret,
+            totalAmount: data.totalAmount
         },
       });
   
