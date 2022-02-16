@@ -78,7 +78,7 @@ export default function CartCard(props) {
                 {canModify 
                     ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
                     : productInfo?.price
-                        ? <Card.Text className="body">{"Quantity: " + productInfo?.quantity}</Card.Text>
+                        ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
                         : <PlaceholderBox size="body" />
                 }
             </div>
