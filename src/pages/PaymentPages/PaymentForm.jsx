@@ -4,9 +4,12 @@ import {
     useStripe,
     useElements
   } from "@stripe/react-stripe-js";
+import CustomButton from '../../components/Buttons/CustomButton';
+
+import LoadingBox from "../../components/Utils/LoadingBox";
 
 
-export default function CheckoutForm() {
+export default function PaymentForm() {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -77,14 +80,15 @@ export default function CheckoutForm() {
     };
 
     return (
-        <div className="">
+        <div className="paymentForm">
             <form id="payment-form" onSubmit={handleSubmit}>
             <PaymentElement id="payment-element" />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                <span id="button-text">
-                {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-                </span>
-            </button>
+
+            <CustomButton id="submit" disabled={isLoading || !stripe || !elements} buttonStyle="outline" buttonDetail="default-size" marginTop="50px">
+              <span id="button-text">
+                {isLoading ? <LoadingBox text="Processing" /> : "Pay now"}
+              </span>
+            </CustomButton>
             {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
             </form>

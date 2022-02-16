@@ -36,14 +36,14 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, CheckoutPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, SummaryPageRoute, TermsOfUsePageRoute, UpdateProfileRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, PaymentPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
 import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
-import CheckoutPage from './pages/PaymentPages/CheckoutPage';
 import ReceiptPage from './pages/PaymentPages/ReceiptPage';
-import SummaryPage from './pages/PaymentPages/SummaryPage';
+import PaymentPage from './pages/PaymentPages/PaymentPage';
+import CheckoutPage from './pages/PaymentPages/CheckoutPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -118,8 +118,8 @@ function NavPages(props) {
 
         {/* Payment Pages */}
         <Route exact path={"/receipt"} component={ReceiptPage} />
-        <Route exact path={SummaryPageRoute} component={SummaryPage} />
         <Route exact path={CheckoutPageRoute} component={CheckoutPage} />
+        <Route exact path={PaymentPageRoute} component={PaymentPage} />
 
       </div>
       <Footer />

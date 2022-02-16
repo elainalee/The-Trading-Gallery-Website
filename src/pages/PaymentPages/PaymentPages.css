@@ -1,6 +1,11 @@
 /* Summary Page */
-.summaryPage {
+.checkoutPage {
     width: 100%;
     align-items: center;
     justify-content: center;
+}
+
+/* Payment Page */
+.paymentPage {
+    width: 100%;
 }

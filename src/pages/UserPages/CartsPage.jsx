@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 import CustomButton from '../../components/Buttons/CustomButton';
 import CartCard from '../../components/Cards/CartCard';
 import { getCart } from '../../reducers/cartReducer';
-import { SummaryPageRoute } from '../../utils/routes';
 
 import '../../utils/globalStyles.css';
+import { CheckoutPageRoute } from '../../utils/routes';
 import './UserPages.css';
 
 export default function CartsPage() {
@@ -24,7 +24,7 @@ export default function CartsPage() {
     }, []);
 
     const handleShowSummary = () => {
-        history.push(SummaryPageRoute);
+        history.push(CheckoutPageRoute);
     }
 
     return (

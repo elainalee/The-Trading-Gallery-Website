@@ -1,41 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from './CheckoutForm';
-import { getPaymentIntent } from '../../reducers/paymentReducer';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import CustomButton from '../../components/Buttons/CustomButton';
+import CartCard from '../../components/Cards/CartCard';
 
-
-// eslint-disable-next-line no-undef
-const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
+import '../../utils/globalStyles.css';
+import { PaymentPageRoute } from '../../utils/routes';
+import './PaymentPages.css';
 
 export default function CheckoutPage() {
-    const dispatch = useDispatch();
-    const { payments } = useSelector((state) => state);
+    const history = useHistory();
 
-    const clientSecret = payments.clientSecret;
+    const { cart } = useSelector((state) => state);
 
-    useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
-        dispatch(getPaymentIntent());
-    }, []);
-
-    const appearance = {
-        theme: 'stripe',
-    };
-    const options = {
-        clientSecret,
-        appearance,
-    };
-
+    const handleCheckout = () => {
+        history.push(PaymentPageRoute);
+    }
 
     return (
-        <div className="">
-            {clientSecret && (
-                <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm />
-                </Elements>
-        )}
-        </div>        
+        <div className="marginTop checkoutPage">
+            <main>
+                <div className="marginHorizontal">
+                    Summary of Items
+                    {cart?.items?.map((product, index) => (
+                        product.unselected 
+                            ? <div />
+                            : <CartCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>))}
+                    <CustomButton onClick={handleCheckout} buttonStyle="outline" buttonDetail="default-size" marginTop="10px" marginBottom="5%">CHECK OUT</CustomButton>
+                </div>
+            </main>
+        </div> 
     );
 }
