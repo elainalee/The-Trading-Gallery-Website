@@ -6,7 +6,8 @@ import { getPaymentIntent } from '../../reducers/paymentReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const stripePromise = loadStripe("pk_test_51KTYTRHtEWRM98DLhrXuHywscFH3q1IUfxcoQL0w7cXAT9TBDFcVQiJ5m0w1UrAcdReXuCgN5KjmhWQ5cim0OzsZ000vA2lquv");
+// eslint-disable-next-line no-undef
+const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
 
 export default function CheckoutPage() {
     const dispatch = useDispatch();
@@ -18,8 +19,6 @@ export default function CheckoutPage() {
         // Create PaymentIntent as soon as the page loads
         dispatch(getPaymentIntent());
     }, []);
-
-    console.log(payments.clientSecret);
 
     const appearance = {
         theme: 'stripe',
