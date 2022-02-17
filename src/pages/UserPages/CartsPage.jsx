@@ -7,7 +7,7 @@ import CartCard from '../../components/Cards/CartCard';
 import { getCart } from '../../reducers/cartReducer';
 
 import '../../utils/globalStyles.css';
-import { CheckoutPageRoute } from '../../utils/routes';
+import { CheckoutPageRoute, ShopPageRoute } from '../../utils/routes';
 import './UserPages.css';
 
 export default function CartsPage() {
@@ -23,19 +23,45 @@ export default function CartsPage() {
         dispatch(getCart());
     }, []);
 
-    const handleShowSummary = () => {
+    const handleCheckout = () => {
         history.push(CheckoutPageRoute);
+    }
+
+    const handleBackToShopping = () => {
+        history.push(ShopPageRoute);
     }
 
     return (
         <div className="marginTop cartsPage">
-            <main>
-                <div className="marginHorizontal">
-                    {cartItemsToDisplay.map((product, index) => ( 
-                        <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
-                    
-                    <CustomButton onClick={handleShowSummary} buttonStyle="outline" buttonDetail="default-size" marginTop="10px" marginBottom="5%">CHECK OUT</CustomButton>
+            <main className="marginHorizontal">
+                <div className="freeShipping">
+                    <text>Add $</text>
+                    <text className="amount">30</text>
+                    <text> for free shipping!</text>
                 </div>
+
+                <Row>
+                    <Col md={9}>
+                        <div>
+                            Item Price Quantity Total
+                            {cartItemsToDisplay.map((product, index) => ( 
+                                <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
+                        </div>
+                    </Col>
+                    <Col md={3} className="checkoutBox">
+                        <div className="estTotal">
+                            <text className="estTotalText">Estimated Total:</text>
+                            <text className="estTotalNumber">$140</text>
+                        </div>
+                        <div className="taxShipping">
+                            <text className="taxShippingText">Taxes and Shipping to be determined in the checkout</text>
+                        </div>
+                        <CustomButton onClick={handleCheckout} buttonStyle="primary" buttonDetail="default-size" marginTop="15px">CHECK OUT</CustomButton>
+                        <CustomButton onClick={handleBackToShopping} buttonStyle="outline" buttonDetail="default-size" marginTop="15px" marginBottom="5%">BACK TO SHOPPING</CustomButton>
+
+                    </Col>
+                </Row>
+                
             </main>
         </div> 
     );

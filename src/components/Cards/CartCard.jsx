@@ -21,7 +21,6 @@ export default function CartCard(props) {
 
     const productId = props.product?.productID;
     const quantity = props.product?.quantity;
-    const unselected = props.product?.unselected ?? false;
 
     const [productInfo, setProductInfo] = useState(undefined);
     // const [isChecked, setIsChecked] = useState(productInfo?.checked ?? true);
@@ -31,28 +30,15 @@ export default function CartCard(props) {
     }, [productId]);
 
     const handleUpdateButton = (quantity) => {
-        dispatch(updateItem(productId, quantity, unselected));
-    }
-
-    const handleCheckbox = () => {
-        dispatch(updateItem(productId, quantity, !unselected));
+        dispatch(updateItem(productId, quantity));
     }
 
     const hasGrayBorderBottom = !props.last;
 
     return (
-        <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"}>
-            {canModify && (
-                <input
-                    className="checkbox"
-                    type="checkbox"
-                    checked={!unselected}
-                    onChange={handleCheckbox}
-                />
-            )}
-            
+        <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"}>            
             <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
-                <div className="image-section">
+                <div className="section-sm">
                     {productInfo?.mainImage
                         ? (<Card.Img
                             className="image"
@@ -62,25 +48,37 @@ export default function CartCard(props) {
                     : (<div className="placeholder" />)}
                 </div>
             </Link>
-            <div className="title-section">
-                <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
-                    {productInfo?.title
-                        ? <Card.Title className="title">{productInfo?.title}</Card.Title>
-                        : <PlaceholderBox size="title" />}
 
-                    {productInfo?.brand
-                        ? <Card.Subtitle className="subtitle">{productInfo?.brand}</Card.Subtitle> 
-                        : <PlaceholderBox size="subtitle" />}
+            <div className="section-lg">
+                <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+                    
+                        {productInfo?.title
+                            ? <Card.Title className="title">{productInfo?.title}</Card.Title>
+                            : <PlaceholderBox size="title" />}
+
+                        {productInfo?.brand
+                            ? <Card.Subtitle className="subtitle">{productInfo?.brand}</Card.Subtitle> 
+                            : <PlaceholderBox size="subtitle" />}
                 </Link>
-                    {productInfo?.price
-                        ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
-                        : <PlaceholderBox size="body" />}
+            </div>
+
+            <div className="section-sm">
+                {productInfo?.price
+                    ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
+                    : <PlaceholderBox size="body" />}
+            </div>
+
+            <div className="section-md">
                 {canModify 
                     ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
                     : productInfo?.price
                         ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
                         : <PlaceholderBox size="body" />
                 }
+            </div>
+
+            <div className="section-sm">
+                $10.00
             </div>
             
         </div>

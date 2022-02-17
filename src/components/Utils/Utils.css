@@ -11,34 +11,44 @@
 }
 
 /* ChooseQuantity Box */
-.display-flex {
-    width: 200px;
-    display: flex;
+.chooseQuantity {
+    margin-top: 30px;
+    text-align: center;
+    width: 150px;
+}
+
+.chooseQuantity .removeText {
+    font-size: 14px;
+    color: var(--primary-dark);
+}
+
+.chooseQuantity .box {
+    padding: 10px;
+    margin-bottom: 5px;
+
+    border-radius: 5px;
+    border: 1px solid var(--primary-light);
 }
 
 .chooseQuantity .fas {
     display: inline;
     cursor: pointer;
     color: black;
+    
 }
 
 .chooseQuantity .quantity-section {
-    width: 200px;
     display: flex;
     align-items: center;
 
-    margin-bottom: 15px;
 }
 
 .chooseQuantity .section {
     flex: 1;
 }
 
-.chooseQuantity .updateText {
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 2px;
+.chooseQuantity .quantity {
+    font-size: 19px;
 }
 
 .chooseQuantity .disable {
@@ -211,8 +221,4 @@
     }
 
     /* ChooseQuantity Box */
-    .chooseQuantity .quantity-section {
-        width: 120px;
-        margin-bottom: 0px;
-    }
 }

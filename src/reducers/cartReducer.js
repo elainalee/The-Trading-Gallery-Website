@@ -49,7 +49,7 @@ export const getCart = () => async (
     }
 };
 
-export const updateItem = (productID, quantity, unselected) => async (
+export const updateItem = (productID, quantity) => async (
   dispatch,
   getState
 ) => {
@@ -61,8 +61,7 @@ export const updateItem = (productID, quantity, unselected) => async (
 
     const payload = {
       productID,
-      quantity,
-      unselected
+      quantity
     };
 
     console.log("payload: ", payload);
