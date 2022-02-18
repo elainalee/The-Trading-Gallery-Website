@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CustomButton from '../../components/Buttons/CustomButton';
 import CartCard from '../../components/Cards/CartCard';
-import { getCart } from '../../reducers/cartReducer';
+import { getCart, getCartTotal } from '../../reducers/cartReducer';
 
 import '../../utils/globalStyles.css';
 import { CheckoutPageRoute, ShopPageRoute } from '../../utils/routes';
@@ -17,12 +17,17 @@ export default function CartsPage() {
     const { cart } = useSelector((state) => state);
 
     const cartItems = cart?.items;
+    const cartTotal = cart?.total;
 
     const cartItemsToDisplay = cartItems ?? [...Array(5)];
 
     useEffect(() => {
         dispatch(getCart());
     }, []);
+
+    useEffect(() => {
+        dispatch(getCartTotal());
+    }, [cartItems]);
 
     const handleCheckout = () => {
         history.push(CheckoutPageRoute);
@@ -35,11 +40,15 @@ export default function CartsPage() {
     return (
         <div className="marginTop cartsPage">
             <main className="marginHorizontal">
-                <div className="freeShipping">
-                    <text>Add $</text>
-                    <text className="amount">30</text>
-                    <text> for free shipping!</text>
-                </div>
+                {cartTotal < 150
+                    ? (<div className="freeShipping">
+                            <text>Add</text>
+                            <text className="amount"> ${150 - cartTotal}</text>
+                            <text> more for free shipping!</text>
+                        </div>)
+                    : <div className="freeShipping">
+                        <text className="amount">You're qualified for free shipping!</text>
+                    </div>}
 
                 <Row>
                     <Col md={9}>
@@ -50,7 +59,7 @@ export default function CartsPage() {
                     <Col md={3} className="checkoutBox">
                         <div className="estTotal">
                             <text className="estTotalText">Estimated Total:</text>
-                            <text className="estTotalNumber">$140</text>
+                            <text className="estTotalNumber">${cartTotal}</text>
                         </div>
                         <div className="taxShipping">
                             <text className="taxShippingText">Taxes and Shipping to be determined in the checkout</text>

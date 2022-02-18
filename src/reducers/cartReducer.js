@@ -7,6 +7,7 @@ import { SUCCESS } from "../utils/constants";
 
 const initialState = {
   items: undefined,
+  total: undefined,
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 items: action.payload.items,
             }
+
+        case "CART/SETTOTAL":
+          return {
+              ...state,
+              total: action.payload.total,
+          }
 
         default:
             return state;
@@ -51,6 +58,37 @@ export const getCart = () => async (
       console.log("getCart err :>> ", err.message);
       return err.message;
     }
+};
+
+export const getCartTotal = () => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    const cartID = state.user.user.cartID;
+
+    const url = BASE_URL + "/carts/getTotal/" + cartID;
+    console.log(url);
+    const res = await client.get(url);
+    const data = res.data;
+
+    console.log("data ", data);
+
+
+    dispatch({
+      type: "CART/SETTOTAL",
+      payload: {
+        total: data.totalAmount,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("getCart err :>> ", err.message);
+    return err.message;
+  }
 };
 
 export const updateItem = (productID, quantity) => async (
