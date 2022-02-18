@@ -3,3 +3,64 @@
     align-items: center;
     justify-content: center;
 }
+
+.cartsPage .title {
+    font-size: 16px;
+}
+
+
+.cartsPage .freeShipping * {
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.cartsPage .freeShipping{
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.cartsPage .freeShipping .amount {
+    font-weight: bold;
+}
+
+.cartsPage .checkoutBox {
+    padding: 30px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-light);
+    height: 100%;
+}
+
+.cartsPage .checkoutBox .estTotal {
+    display: flex;
+    /* align-items: center; */
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.cartsPage .checkoutBox .taxShipping {
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.cartsPage .checkoutBox .estTotal .estTotalText {
+    font-size: 20px;
+}
+
+.cartsPage .checkoutBox .estTotal .estTotalNumber {
+    font-size: 19px;
+    color: var(--primary-color);
+}
+
+.cartsPage .checkoutBox .taxShippingText {
+    font-size: 15px;
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 767px) {
+
+    .cartsPage .title-section .image-width {
+        /* width: 70px; */
+        width: 0px;
+    }
+    
+}

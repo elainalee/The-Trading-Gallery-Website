@@ -39,6 +39,7 @@ export const getUser = () => async (
           user: data,
         },
       });
+  
 
       dispatch({ type: "AUTH/LOGIN" });
 

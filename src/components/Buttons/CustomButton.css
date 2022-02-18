@@ -9,7 +9,8 @@
     cursor: pointer;
     color: white;
     font-size: 18px;
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
+    background-color: black;
 }
 
 .customButton:hover {

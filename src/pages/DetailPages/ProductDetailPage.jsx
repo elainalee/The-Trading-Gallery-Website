@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import LoadingBox from '../../components/Utils/LoadingBox';
-import QuantityBox from '../../components/Utils/QuantityBox';
 import CustomButton from "../../components/Buttons/CustomButton";
 import { getProductInfo } from '../../reducers/productsReducer';
 
@@ -30,7 +28,7 @@ export default function ProductDetailPage(props) {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, []);
 
-    const handleAddCart = (quantity) => {
+    const handleAddCart = () => {
         setUpdating(true);
         dispatch(addItem(productId, quantity)).then((res) => setUpdating(false));
     }
@@ -65,16 +63,15 @@ export default function ProductDetailPage(props) {
 
 
                             <div className="quantity">
-                                <h6>Quantity: </h6>
                                 <ChooseQuantityBox 
                                     quantity={quantity} 
                                     setQuantity={setQuantity}
-                                    handleUpdateButton={handleAddCart}
-                                    updateButton={
+                                    // handleUpdateButton={handleAddCart}
+                                    addButton={
                                         <CustomButton
                                             marginTop="15px"
                                             buttonDetail="default-size"
-                                            // onClick={handleAddCart}
+                                            onClick={handleAddCart}
                                             disabled={updating}
                                         >
                                             Add To Cart
