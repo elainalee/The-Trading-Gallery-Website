@@ -4,12 +4,10 @@ import Card from "react-bootstrap/Card";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import mainImage from "../../assets/shonen_jump.jpeg";
 import { updateItem } from "../../reducers/cartReducer";
 import { getProductInfo } from "../../reducers/productsReducer";
 
 import "../../utils/globalStyles.css";
-import CustomButton from "../Buttons/CustomButton";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
@@ -23,7 +21,6 @@ export default function CartCard(props) {
     const quantity = props.product?.quantity;
 
     const [productInfo, setProductInfo] = useState(undefined);
-    // const [isChecked, setIsChecked] = useState(productInfo?.checked ?? true);
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
@@ -39,19 +36,23 @@ export default function CartCard(props) {
         <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"}>            
             <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
                 <div className="section-sm">
-                    {productInfo?.mainImage
-                        ? (<Card.Img
-                            className="image"
-                            src={productInfo?.mainImage}
-                            alt="product-image"
-                        />)
-                    : (<div className="placeholder" />)}
+                    {props.title
+                        ? <div className="image-width"><text className="title">Item</text></div>
+                        : productInfo?.mainImage
+                            ? (<Card.Img
+                                className="image"
+                                src={productInfo?.mainImage}
+                                alt="product-image"
+                            />)
+                        : <div className="placeholder" />
+                    }
                 </div>
             </Link>
 
             <div className="section-lg">
-                <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
-                    
+                {props.title
+                    ? <div />
+                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
                         {productInfo?.title
                             ? <Card.Title className="title">{productInfo?.title}</Card.Title>
                             : <PlaceholderBox size="title" />}
@@ -59,26 +60,32 @@ export default function CartCard(props) {
                         {productInfo?.brand
                             ? <Card.Subtitle className="subtitle">{productInfo?.brand}</Card.Subtitle> 
                             : <PlaceholderBox size="subtitle" />}
-                </Link>
+                    </Link>}
+                
             </div>
 
             <div className="section-sm">
-                {productInfo?.price
-                    ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
-                    : <PlaceholderBox size="body" />}
+                {props.title
+                    ? <text className="title">Price</text>
+                    : productInfo?.price
+                        ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
+                        : <PlaceholderBox size="body" />}
             </div>
 
             <div className="section-md">
-                {canModify 
-                    ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
-                    : productInfo?.price
-                        ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
-                        : <PlaceholderBox size="body" />
-                }
+                {props.title
+                    ? <div className="quantitybox-width"><text className="title">Quantity</text></div>
+                    : canModify 
+                        ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
+                        : productInfo?.price
+                            ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
+                            : <PlaceholderBox size="body" />}
             </div>
 
             <div className="section-sm">
-                $10.00
+                {props.title
+                    ? <text className="title">Total</text>
+                    : "$10"}
             </div>
             
         </div>

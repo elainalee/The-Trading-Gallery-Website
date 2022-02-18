@@ -4,7 +4,16 @@
     justify-content: center;
 }
 
-.cartsPage .freeShipping {
+.cartsPage .title {
+    font-size: 16px;
+}
+
+
+.cartsPage .freeShipping * {
+    font-family: 'Roboto mono', 'Open Sans';
+}
+
+.cartsPage .freeShipping{
     font-size: 17px;
     margin-bottom: 20px;
 }
@@ -22,7 +31,8 @@
 
 .cartsPage .checkoutBox .estTotal {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -44,4 +54,13 @@
 .cartsPage .checkoutBox .taxShippingText {
     font-size: 15px;
     color: var(--primary-color);
+}
+
+@media screen and (max-width: 767px) {
+
+    .cartsPage .title-section .image-width {
+        /* width: 70px; */
+        width: 0px;
+    }
+    
 }

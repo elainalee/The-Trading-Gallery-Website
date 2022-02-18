@@ -8,6 +8,7 @@ import { getCart } from '../../reducers/cartReducer';
 
 import '../../utils/globalStyles.css';
 import { CheckoutPageRoute, ShopPageRoute } from '../../utils/routes';
+import '../../components/Cards/CartCard.css';
 import './UserPages.css';
 
 export default function CartsPage() {
@@ -42,11 +43,9 @@ export default function CartsPage() {
 
                 <Row>
                     <Col md={9}>
-                        <div>
-                            Item Price Quantity Total
-                            {cartItemsToDisplay.map((product, index) => ( 
-                                <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
-                        </div>
+                        <CartCard title={true} />
+                        {cartItemsToDisplay.map((product, index) => ( 
+                            <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
                     </Col>
                     <Col md={3} className="checkoutBox">
                         <div className="estTotal">
