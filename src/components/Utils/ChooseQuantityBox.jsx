@@ -9,7 +9,7 @@ export default function ChooseQuantityBox(props) {
 
     const handleMinusQuantity = () => {
         if (quantity > minQuantity) {
-            if (!props.addButton) {
+            if (!props.seperateButton) {
                 props.handleUpdateButton(quantity - 1);
             } else {
                 props.setQuantity(quantity - 1);
@@ -19,7 +19,7 @@ export default function ChooseQuantityBox(props) {
 
     const handlePlusQuantity = () => {
         if (quantity < maxQuantity) {
-            if (!props.addButton && quantity < maxQuantity) {
+            if (!props.seperateButton && quantity < maxQuantity) {
                 props.handleUpdateButton(quantity + 1);
             } else {
                 props.setQuantity(quantity + 1);
@@ -29,7 +29,7 @@ export default function ChooseQuantityBox(props) {
 
     return (
         <div className="chooseQuantity">
-            <div className={props.addButton ? "row" : ""}>
+            <div>
                 <div className="box">
                     <div className="quantity-section">
                         <div className="section" onClick={handleMinusQuantity}>
@@ -43,10 +43,9 @@ export default function ChooseQuantityBox(props) {
                         </div>
                     </div>
                 </div>
-                {props.addButton
-                    ? <div className="addButton">{props.addButton}</div>
-                    : <text className="removeText" onClick={props.handleRemoveButton}>Remove</text>
-                }
+                {!props.seperateButton && (
+                    <text className="removeText" onClick={props.handleRemoveButton}>Remove</text>
+                )}
             </div>
         </div>
         

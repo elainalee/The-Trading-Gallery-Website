@@ -83,14 +83,14 @@ export default function ProductDetailPage(props) {
                                     quantity={quantity} 
                                     maxQuantity={productInfo?.quantity}
                                     setQuantity={setQuantity}
-                                    addButton={
-                                        <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={updating}>
-                                            <span id="button-text">
-                                                {updating ? <LoadingBox text="Adding" /> : "Add To Cart"}
-                                            </span>
-                                        </CustomButton>
-                                    }
+                                    seperateButton={true}
                                 />
+
+                                <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={(productInfo?.quantity == 0) || updating}>
+                                    <span id="button-text">
+                                        {(productInfo?.quantity == 0)  ? "OUT OF STOCK" : updating ? <LoadingBox text="Adding" /> : "Add To Cart"}
+                                    </span>
+                                </CustomButton>
                             </div>
 
                         </Col>

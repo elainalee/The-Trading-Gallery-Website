@@ -56,13 +56,14 @@ export default function AddListingPage(props) {
         <div className="marginTop addPostPages addListingPage">
             <main>
                 <div className="productShowing marginHorizontal">
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group id="titles">
-                                <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
-                                
-                            </Form.Group>
+                
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group id="titles">
+                            <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
+                        </Form.Group>
 
-                            <div className="left">
+                        <Row>
+                            <Col>
                                 <Form.Group id="mainImage">
                                     <Form.Label>Main Image URL *</Form.Label>
                                     <Form.Control type="text" value={productInfo?.mainImage || ""} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
@@ -73,8 +74,8 @@ export default function AddListingPage(props) {
                                         <img className="image" src={productInfo?.mainImage} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
                                     )}
                                 </div>
-                            </div>
-                            <div className="right">
+                            </Col>
+                            <Col>
                                 <Form.Group id="title">
                                     <Form.Label>Product Name *</Form.Label>                        
                                     <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
@@ -87,7 +88,7 @@ export default function AddListingPage(props) {
 
                                 <Form.Group id="title">
                                     <Form.Label>Total Quantity *</Form.Label>                        
-                                    <Form.Control type="number" min="1" value={productInfo?.quantity || ""} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
+                                    <Form.Control type="number" min={0} value={productInfo?.quantity} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
                                 </Form.Group>
 
                                 <Form.Group id="price">
@@ -105,10 +106,10 @@ export default function AddListingPage(props) {
                                     <Form.Control type="text" ref={tagRef} required />
                                 </Form.Group> */}
                                 
-                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>
-                            </div>
-                        </Form>
-                    
+                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>Upload</CustomButton>
+                            </Col>
+                        </Row>
+                    </Form>
                 </div>
             </main>
         </div>

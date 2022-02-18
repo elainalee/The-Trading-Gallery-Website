@@ -17,20 +17,6 @@
     margin-left: 15px;
 }
 
-.addPostPages .productShowing {
-    height: 700px;
-}
-
-.addPostPages .left {
-    float: left;
-    width: 50%;
-}
-
-.addPostPages .right {
-    float: right;
-    width: 50%;
-}
-
 .addPostPages .image {
     width: 100%;
     aspect-ratio: 5000 / 6000;

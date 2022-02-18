@@ -61,7 +61,6 @@ export default function AddBlogPage(props) {
                         </Form.Group>
 
                         <div className="left">
-
                             <Form.Group id="mainImage">
                                 <Form.Label>Main Image URL *</Form.Label>
                                 <Form.Control type="text" value={blogDetail?.mainImage || ""} onChange={e => setBlogDetail({...blogDetail, mainImage: e.target.value})} required />
@@ -75,7 +74,6 @@ export default function AddBlogPage(props) {
                         </div>
 
                         <div className="right">
-
                             <Form.Group id="title">
                                 <Form.Label>Title *</Form.Label>                        
                                 <Form.Control type="text" value={blogDetail?.title || ""} onChange={e => setBlogDetail({...blogDetail, title: e.target.value})} required />
@@ -85,7 +83,6 @@ export default function AddBlogPage(props) {
                                 <Form.Label>Body *</Form.Label>
                                 <Form.Control as="textarea" type="text" style={{ height: '400px' }}  value={blogDetail?.body || ""} onChange={e => setBlogDetail({...blogDetail, body: e.target.value})} required />
                             </Form.Group>
-
                             <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>
                         </div>
                     </Form>
