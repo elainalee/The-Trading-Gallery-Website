@@ -12,20 +12,21 @@
 
 /* ChooseQuantity Box */
 .chooseQuantity {
+    display: flex;
     margin-top: 30px;
     text-align: center;
-    width: 150px;
 }
 
-.chooseQuantity .removeText {
-    font-size: 14px;
-    color: var(--primary-dark);
-    cursor: pointer;
+.chooseQuantity .row .box {
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .chooseQuantity .box {
     padding: 10px;
     margin-bottom: 5px;
+
+    width: 150px;
 
     border-radius: 5px;
     border: 1px solid var(--primary-light);
@@ -34,8 +35,7 @@
 .chooseQuantity .fas {
     display: inline;
     cursor: pointer;
-    color: black;
-    
+    color: black;   
 }
 
 .chooseQuantity .quantity-section {
@@ -55,6 +55,16 @@
 .chooseQuantity .disable {
     color: gray;
     cursor: default;
+}
+
+.chooseQuantity .removeText {
+    font-size: 14px;
+    color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.chooseQuantity .addButton {
+    margin-left: 25px;
 }
 
 
