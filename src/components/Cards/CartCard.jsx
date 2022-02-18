@@ -80,7 +80,7 @@ export default function CartCard(props) {
                 {props.title
                     ? <div className="quantitybox-width"><text className="title">Quantity</text></div>
                     : canModify 
-                        ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton} handleRemoveButton={handleRemoveButton}/>
+                        ? <ChooseQuantityBox quantity={quantity} maxQuantity={productInfo?.quantity} handleUpdateButton={handleUpdateButton} handleRemoveButton={handleRemoveButton}/>
                         : productInfo?.price
                             ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
                             : <PlaceholderBox size="body" />}
@@ -89,7 +89,7 @@ export default function CartCard(props) {
             <div className="section-sm">
                 {props.title
                     ? <text className="title">Total</text>
-                    : "$10"}
+                    : "$" + (productInfo?.price * quantity)}
             </div>
             
         </div>

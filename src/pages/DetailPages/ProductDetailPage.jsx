@@ -24,7 +24,7 @@ export default function ProductDetailPage(props) {
     const [quantity, setQuantity] = useState(1);
     const [updating, setUpdating] = useState(false);
 
-    const [addToCartErr, setAddToCartErr] = useState("");
+    const [addToCartErr, setAddToCartErr] = useState(undefined);
 
     const [showCartPopup, setShowCartPopup] = useState(false);
 
@@ -36,10 +36,10 @@ export default function ProductDetailPage(props) {
 
     const handleAddCart = () => {
         setUpdating(true);
-        setAddToCartErr("");
+        setAddToCartErr(undefined);
         dispatch(addItem(productId, quantity)).then((res) => {
             setUpdating(false);
-            setAddToCartErr(res === SUCCESS ? "" : res);
+            setAddToCartErr(res === SUCCESS ? undefined : res);
             setShowCartPopup(true);
             showCartPopUpTimeOut().then(() => {
                 setShowCartPopup(false);
@@ -50,7 +50,9 @@ export default function ProductDetailPage(props) {
     return (
         <div className="marginTop productDetailPage" >
             <main>
-            <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
+                {!updating && (
+                    <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
+                )}
 
                 <div className="productShowing marginHorizontal">
                     <Row xs={1} md={2}>
@@ -79,6 +81,7 @@ export default function ProductDetailPage(props) {
                             <div className="quantity">
                                 <ChooseQuantityBox 
                                     quantity={quantity} 
+                                    maxQuantity={productInfo?.quantity}
                                     setQuantity={setQuantity}
                                     addButton={
                                         <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={updating}>

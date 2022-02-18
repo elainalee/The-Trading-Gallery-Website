@@ -11,13 +11,14 @@ export default function CartPopUp(props) {
         history.push(CartsPageRoute);
     }
 
+    console.log('err', props.err);
+
     return (
         <div>
             {props.show
                 ? <div className="cartPopup" onClick={handleCartsClick}>
-                        {props.error
-                            ? <text className="errMsg">{props.error}</text>
-                            : <div>
+                        {props.error === undefined
+                            ? <div>
                                 <text className="addedText">{props.quantity} ITEM(S) ADDED TO YOUR CART</text>
                                 <div className="productInfo">
                                     <img className="image" src={props.product.mainImage} alt="product-image" />
@@ -26,7 +27,9 @@ export default function CartPopUp(props) {
                                         <text className="priceText">${props.product.price}</text>
                                     </div>
                                 </div>                        
-                            </div>}
+                            </div>
+                            : <text className="errMsg">{props.error}</text>
+                            }
                         </div>
                 : <div />}
         </div>

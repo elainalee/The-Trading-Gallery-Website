@@ -1,27 +1,29 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
 import "./Utils.css";
 
 export default function ChooseQuantityBox(props) {
     const quantity = props.quantity;
 
-    const maxQuantity = 10;
+    const minQuantity = 1;
+    const maxQuantity = props.maxQuantity;
 
     const handleMinusQuantity = () => {
-        if (!props.addButton && quantity > 0) {
-            props.handleUpdateButton(quantity - 1);
-        } else {
-            props.setQuantity(quantity - 1);
+        if (quantity > minQuantity) {
+            if (!props.addButton) {
+                props.handleUpdateButton(quantity - 1);
+            } else {
+                props.setQuantity(quantity - 1);
+            }
         }
     }
 
     const handlePlusQuantity = () => {
-        if (!props.addButton && quantity < maxQuantity) {
-            props.handleUpdateButton(quantity + 1);
-        } else {
-            props.setQuantity(quantity + 1);
+        if (quantity < maxQuantity) {
+            if (!props.addButton && quantity < maxQuantity) {
+                props.handleUpdateButton(quantity + 1);
+            } else {
+                props.setQuantity(quantity + 1);
+            }
         }
     }
 
@@ -31,7 +33,7 @@ export default function ChooseQuantityBox(props) {
                 <div className="box">
                     <div className="quantity-section">
                         <div className="section" onClick={handleMinusQuantity}>
-                            <i className={"fas fa-minus" + (quantity <= 0 ? " disable" : "")}></i>
+                            <i className={"fas fa-minus" + (quantity <= minQuantity ? " disable" : "")}></i>
                         </div>
                         <div className="section">
                             <text className="quantity">{quantity}</text>
