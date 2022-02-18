@@ -45,6 +45,10 @@ import ReceiptPage from './pages/PaymentPages/ReceiptPage';
 import PaymentPage from './pages/PaymentPages/PaymentPage';
 import CheckoutPage from './pages/PaymentPages/CheckoutPage';
 import Marquee from './components/Utils/Marquee';
+import LogInFirstRoute from './RoutesManager/LogInFirstRoute';
+import { getBestSellers, getProducts } from './reducers/productsReducer';
+import { getBlogs } from './reducers/blogsReducer';
+import { getCart } from './reducers/cartReducer';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -61,20 +65,41 @@ function App() {
 
 
 function NavPages(props) {
-
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(getUser());
-      dispatch(getSeller());
+    dispatch(getProducts());
+    dispatch(getBestSellers());
+    dispatch(getBlogs("mainBlog"));
+    dispatch(getBlogs("subBlog"));
+    dispatch(getBlogs("recentBlog"));
+    dispatch(getBlogs());
   }, []);
+
+  useEffect(() => {
+    console.log("--page reloaded : fetching user info again");
+    dispatch(getUser());
+  }, [auth.loggedInUser]);
+
+  useEffect(() => {
+    console.log("--page reloaded : fetching seller info again");
+    dispatch(getSeller());
+  }, [auth.loggedInSeller]);
+
+  useEffect(() => {
+    console.log("--logged In : fetching user cart again");
+    dispatch(getCart());
+  }, [auth.loggedInUser]);
+
+  
 
   return (
     <div>
       <NavBar />
       <div className="app-min-height">
         <Route exact path={MainPageRoute} component={MainPage} />
-        <EnsureUserRoute exact path={CartsPageRoute} component={CartsPage} />
+        <LogInFirstRoute exact path={CartsPageRoute} component={CartsPage} />
 
         <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
           <div className="w-100" style={{ maxWidth: '400px' }}>

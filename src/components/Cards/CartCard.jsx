@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { removeItem, updateItem } from "../../reducers/cartReducer";
@@ -22,6 +22,7 @@ export default function CartCard(props) {
 
     const [productInfo, setProductInfo] = useState(undefined);
 
+
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, [productId]);
@@ -41,7 +42,7 @@ export default function CartCard(props) {
             <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
                 <div className="section-sm">
                     {props.title
-                        ? <div className="image-width"><text className="title">Item</text></div>
+                        ? <div className="image-width title">Item</div>
                         : productInfo?.mainImage
                             ? (<Card.Img
                                 className="image"
@@ -70,7 +71,7 @@ export default function CartCard(props) {
 
             <div className="section-sm">
                 {props.title
-                    ? <text className="title">Price</text>
+                    ? <div className="title">Price</div>
                     : productInfo?.price
                         ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
                         : <PlaceholderBox size="body" />}
@@ -78,7 +79,7 @@ export default function CartCard(props) {
 
             <div className="section-md">
                 {props.title
-                    ? <div className="quantitybox-width"><text className="title">Quantity</text></div>
+                    ? <div className="quantitybox-width title">Quantity</div>
                     : canModify 
                         ? <ChooseQuantityBox quantity={quantity} maxQuantity={productInfo?.quantity} handleUpdateButton={handleUpdateButton} handleRemoveButton={handleRemoveButton}/>
                         : productInfo?.price
@@ -88,8 +89,8 @@ export default function CartCard(props) {
 
             <div className="section-sm">
                 {props.title
-                    ? <text className="title">Total</text>
-                    : "$" + (productInfo?.price * quantity)}
+                    ? <div className="title">Total</div>
+                    : (productInfo?.price ? "$" + (productInfo?.price * quantity) : "")}
             </div>
             
         </div>

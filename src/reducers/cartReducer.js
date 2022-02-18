@@ -210,8 +210,8 @@ export const removeItem = (productID) => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("removeItem err :>> ", err.message);
-    return err.message;
+    console.log("removeItem err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 

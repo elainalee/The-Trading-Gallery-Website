@@ -31,7 +31,7 @@ export default function ProductDetailPage(props) {
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
-    }, []);
+    }, [productId]);
 
 
     const handleAddCart = () => {

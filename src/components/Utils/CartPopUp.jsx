@@ -19,17 +19,16 @@ export default function CartPopUp(props) {
                 ? <div className="cartPopup" onClick={handleCartsClick}>
                         {props.error === undefined
                             ? <div>
-                                <text className="addedText">{props.quantity} ITEM(S) ADDED TO YOUR CART</text>
+                                <div className="addedText">{props.quantity} ITEM(S) ADDED TO YOUR CART</div>
                                 <div className="productInfo">
                                     <img className="image" src={props.product.mainImage} alt="product-image" />
                                     <div className="description">
-                                        <text className="titleText">{props.product.title}</text>
-                                        <text className="priceText">${props.product.price}</text>
+                                        <div className="titleText">{props.product.title}</div>
+                                        <div className="priceText">${props.product.price}</div>
                                     </div>
                                 </div>                        
                             </div>
-                            : <text className="errMsg">{props.error}</text>
-                            }
+                            : <div className="errMsg">{props.error}</div>}
                         </div>
                 : <div />}
         </div>

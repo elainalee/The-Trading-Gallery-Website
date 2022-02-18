@@ -36,7 +36,7 @@ export default function ChooseQuantityBox(props) {
                             <i className={"fas fa-minus" + (quantity <= minQuantity ? " disable" : "")}></i>
                         </div>
                         <div className="section">
-                            <text className="quantity">{quantity}</text>
+                            <div className="quantity">{quantity}</div>
                         </div>
                         <div className="section" onClick={handlePlusQuantity}>
                             <i className={"fas fa-plus" + (quantity >= maxQuantity ? " disable" : "")}></i>
@@ -44,7 +44,7 @@ export default function ChooseQuantityBox(props) {
                     </div>
                 </div>
                 {!props.seperateButton && (
-                    <text className="removeText" onClick={props.handleRemoveButton}>Remove</text>
+                    <div className="removeText" onClick={props.handleRemoveButton}>Remove</div>
                 )}
             </div>
         </div>

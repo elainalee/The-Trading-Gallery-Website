@@ -26,28 +26,25 @@ export const getUser = () => async (
     getState
   ) => {
     try {
-      // console.log("==== in get User");
       const url = BASE_URL + "/users/getUser";
       const res = await client.get(url);
       const data = res.data;
-
-      // console.log("==== in get User, data is: ", data);
   
+      dispatch({ type: "AUTH/LOGINUSER" });
+
       dispatch({
         type: "USER/SETUSER",
         payload: {
           user: data,
         },
       });
-  
-
-      dispatch({ type: "AUTH/LOGIN" });
 
       return SUCCESS;
   
     } catch (err) {
-      console.log("getUser err :>> ", err.message);
-      return err.message;
+      dispatch({ type: "AUTH/USER_NOT_LOGGED_IN" });
+      console.log("getUser err :>> ", err.response.data.error);
+      return err?.response?.data?.error;
     }
 };
 
@@ -80,8 +77,8 @@ export const updateUser = (userInfo) => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("updateUser err :>> ", err.message);
-    return err.message;
+    console.log("updateUser err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 

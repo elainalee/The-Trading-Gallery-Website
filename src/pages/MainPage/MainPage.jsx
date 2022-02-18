@@ -19,8 +19,6 @@ import Marquee from '../../components/Utils/Marquee';
 
 
 export default function MainPage() {
-    const dispatch = useDispatch();
-
     const { products, blogs } = useSelector((state) => state);
 
     const bestSellers = products.bestSellers;
@@ -29,14 +27,6 @@ export default function MainPage() {
     const subBlogs = blogs.subBlogs;
     const recentBlogs = blogs.recentBlogs;
 
-
-    useEffect(() => {
-        dispatch(getProducts());
-        dispatch(getBestSellers());
-        dispatch(getBlogs("mainBlog"));
-        dispatch(getBlogs("subBlog"));
-        dispatch(getBlogs("recentBlog"));
-    }, []);
 
     return (
         <div className="mainPage">

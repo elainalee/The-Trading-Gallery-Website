@@ -8,7 +8,7 @@ export default function UserButton(props) {
     const state = useSelector((state) => state);
     const currentUser = state.user.user;
 
-    const loggedIn = state.auth.loggedIn;
+    const loggedIn = state.auth.loggedInUser;
 
     const history = useHistory();
 

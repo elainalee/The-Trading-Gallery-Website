@@ -8,30 +8,41 @@ import { AUTH_INVALID, ERROR, SUCCESS } from "../utils/constants";
 
 
 const initialState = {
-    loggedIn: false,
-    seller: false,
+    loggedInUser: undefined,
+    loggedInSeller: undefined,
 }
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "AUTH/LOGIN":
+        case "AUTH/LOGINUSER":
             return {
                 ...state,
-                loggedIn: true,
+                loggedInUser: true,
         }
 
         case "AUTH/LOGINSELLER":
             return {
                 ...state,
-                loggedIn: true,
-                seller: true,
+                loggedInSeller: true,
         }
 
         case "AUTH/LOGOUT":
             return {
                 ...state,
-                loggedIn: false,
-                seller: false,
+                loggedInUser: false,
+                loggedInSeller: false,
+        }
+
+        case "AUTH/USER_NOT_LOGGED_IN":
+            return {
+                ...state,
+                loggedInUser: false,
+        }
+
+        case "AUTH/SELLER_NOT_LOGGED_IN":
+            return {
+                ...state,
+                loggedInSeller: false,
         }
 
         default:
@@ -49,7 +60,7 @@ export const checkJWT = () => async (dispatch, getState) => {
 
         await AsyncStorage.setItem("jwt", data.jwt);
 
-        dispatch({ type: "AUTH/LOGIN" });
+        // dispatch({ type: "AUTH/LOGIN" });
         return SUCCESS;
 
     } catch (err) {
@@ -59,7 +70,7 @@ export const checkJWT = () => async (dispatch, getState) => {
     }
 }
 
-export const logIn = (email, password) => async (dispatch, getState) => {
+export const logInUser = (email, password) => async (dispatch, getState) => {
     try {
         const url = BASE_URL + "/home/login";
 
@@ -75,11 +86,12 @@ export const logIn = (email, password) => async (dispatch, getState) => {
         await AsyncStorage.setItem("jwt", data.jwt);
         await AsyncStorage.setItem("email", email);
 
-        dispatch({ type: "AUTH/LOGIN" });
+        dispatch({ type: "AUTH/LOGINUSER" });
         
         return SUCCESS;
 
     } catch (err) {
+        console.log("logInUser err :>> ", err.response.data.error);
         return ERROR;
     }
 }
@@ -105,6 +117,7 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
         return SUCCESS;
 
     } catch (err) {
+        console.log("logInSeller err :>> ", err.response.data.error);
         return ERROR;
     }
 }
@@ -113,6 +126,7 @@ export const logOut = () => async (dispatch, getState) => {
     AsyncStorage.removeItem("jwt")
         .then((status) => {
             dispatch({ type: "HOME/LOGOUT" });
+            dispatch({ type: "AUTH/LOGOUT" });
         });
     
     return SUCCESS;
@@ -132,6 +146,7 @@ export const signUp = (userInfo) => async (dispatch, getState) => {
         
         return SUCCESS;
     } catch (err) {
+        console.log("signUp err :>> ", err.response.data.error);
         return ERROR;
     }
     

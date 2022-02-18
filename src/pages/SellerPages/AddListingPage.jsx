@@ -19,7 +19,7 @@ export default function AddListingPage(props) {
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
-    }, []);
+    }, [productId]);
 
     const dispatch = useDispatch();
 

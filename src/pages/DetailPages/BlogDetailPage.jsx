@@ -13,10 +13,9 @@ export default function BlogDetailPage(props) {
     
     const [blogDetail, setBlogDetail] = useState(undefined);
 
-
     useEffect(() => {
         dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));
-    }, []);
+    }, [blogId]);
 
     return (
         <div className="marginTop blogDetailPage" >

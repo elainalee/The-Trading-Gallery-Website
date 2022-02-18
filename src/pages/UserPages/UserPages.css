@@ -16,10 +16,7 @@
 .cartsPage .freeShipping{
     font-size: 17px;
     margin-bottom: 20px;
-}
-
-.cartsPage .freeShipping .amount {
-    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .cartsPage .checkoutBox {

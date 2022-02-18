@@ -46,12 +46,9 @@ export const getSeller = () => async (
     getState
   ) => {
     try {
-      console.log("==== in get Seller");
       const url = BASE_URL + "/sellers/getSeller";
       const res = await client.get(url);
       const data = res.data;
-
-      console.log("==== in get Seller, data is: ", data);
   
       dispatch({
         type: "SELLER/SETSELLER",
@@ -65,8 +62,9 @@ export const getSeller = () => async (
       return SUCCESS;
   
     } catch (err) {
-      console.log("getSeller err :>> ", err.message);
-      return err.message;
+      dispatch({ type: "AUTH/SELLER_NOT_LOGGED_IN" });
+      console.log("getSeller err :>> ", err.response.data.error);
+      return err?.response?.data?.error;
     }
 };
 
@@ -98,8 +96,8 @@ export const getSellerBlogs = () => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("getSellerProducts err :>> ", err.message);
-    return err.message;
+    console.log("getSellerProducts err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 
@@ -128,8 +126,8 @@ export const getSellerProducts = () => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("getSellerProducts err :>> ", err.message);
-    return err.message;
+    console.log("getSellerProducts err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 
@@ -172,8 +170,8 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
     return SUCCESS;
 
   } catch (err) {
-    console.log("addSellerProduct err :>> ", err.message);
-    return err.message;
+    console.log("addSellerProduct err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 
@@ -217,8 +215,8 @@ export const addUpdateSellerProduct = (productId, title, brand, description, qua
     return SUCCESS;
 
   } catch (err) {
-    console.log("addUpdateSellerProduct err :>> ", err.message);
-    return err.message;
+    console.log("addUpdateSellerProduct err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 
@@ -253,8 +251,8 @@ export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlo
     return SUCCESS;
 
   } catch (err) {
-    console.log("addUpdateSellerBlog err :>> ", err.message);
-    return err.message;
+    console.log("addUpdateSellerBlog err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 
@@ -290,8 +288,8 @@ export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async 
     return SUCCESS;
 
   } catch (err) {
-    console.log("addBlog err :>> ", err.message);
-    return err.message;
+    console.log("addBlog err :>> ", err.response.data.error);
+    return err?.response?.data?.error;
   }
 };
 

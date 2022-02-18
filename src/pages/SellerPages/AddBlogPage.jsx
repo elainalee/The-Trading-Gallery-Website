@@ -24,7 +24,7 @@ export default function AddBlogPage(props) {
 
     useEffect(() => {
         dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));
-    }, []);
+    }, [blogId]);
 
     async function handleSubmit(e) {
         e.preventDefault();        
