@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { updateItem } from "../../reducers/cartReducer";
+import { removeItem, updateItem } from "../../reducers/cartReducer";
 import { getProductInfo } from "../../reducers/productsReducer";
 
 import "../../utils/globalStyles.css";
@@ -28,6 +28,10 @@ export default function CartCard(props) {
 
     const handleUpdateButton = (quantity) => {
         dispatch(updateItem(productId, quantity));
+    }
+
+    const handleRemoveButton = () => {
+        dispatch(removeItem(productId));
     }
 
     const hasGrayBorderBottom = !props.last;
@@ -76,7 +80,7 @@ export default function CartCard(props) {
                 {props.title
                     ? <div className="quantitybox-width"><text className="title">Quantity</text></div>
                     : canModify 
-                        ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton}/>
+                        ? <ChooseQuantityBox quantity={quantity} handleUpdateButton={handleUpdateButton} handleRemoveButton={handleRemoveButton}/>
                         : productInfo?.price
                             ? <Card.Text className="body">{"Quantity: " + quantity}</Card.Text>
                             : <PlaceholderBox size="body" />}
