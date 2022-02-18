@@ -11,8 +11,6 @@ export default function CartPopUp(props) {
         history.push(CartsPageRoute);
     }
 
-    console.log('err', props.err);
-
     return (
         <div>
             {props.show

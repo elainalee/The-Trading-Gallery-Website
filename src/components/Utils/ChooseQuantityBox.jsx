@@ -29,7 +29,7 @@ export default function ChooseQuantityBox(props) {
 
     return (
         <div className="chooseQuantity">
-            <div>
+            <div className={props.seperateButton ? "setHeight" : ""}>
                 <div className="box">
                     <div className="quantity-section">
                         <div className="section" onClick={handleMinusQuantity}>
