@@ -11,6 +11,7 @@ import './NavBarTop.css';
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
 import Marquee from '../Utils/Marquee';
+import CartPopUp from '../Utils/CartPopUp';
 
 
 function NavBar() {

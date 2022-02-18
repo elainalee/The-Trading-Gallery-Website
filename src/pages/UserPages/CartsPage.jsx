@@ -6,9 +6,9 @@ import CustomButton from '../../components/Buttons/CustomButton';
 import CartCard from '../../components/Cards/CartCard';
 import { getCart, getCartTotal } from '../../reducers/cartReducer';
 
-import '../../utils/globalStyles.css';
 import { CheckoutPageRoute, ShopPageRoute } from '../../utils/routes';
-import '../../components/Cards/CartCard.css';
+
+import '../../utils/globalStyles.css';
 import './UserPages.css';
 
 export default function CartsPage() {

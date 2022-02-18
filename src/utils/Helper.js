@@ -4,3 +4,7 @@ export const formatGoogleDriveLink = (googleLink) => {
 
     return "https://drive.google.com/thumbnail?id=" + photoID;
 }
+
+export const showCartPopUpTimeOut = async () => {
+    return new Promise((resolve) => setTimeout(resolve, 7500));
+  }

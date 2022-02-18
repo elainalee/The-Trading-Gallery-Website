@@ -5,13 +5,14 @@ import CustomButton from "../../components/Buttons/CustomButton";
 import { getProductInfo } from '../../reducers/productsReducer';
 
 import PlaceholderBox from "../../components/Utils/PlaceholderBox";
-
-import Footer from '../../components/Footer';
-
+import LoadingBox from "../../components/Utils/LoadingBox";
 import "./DetailPages.css";
 import { Col, Row } from 'react-bootstrap';
 import ChooseQuantityBox from '../../components/Utils/ChooseQuantityBox';
 import { addItem } from '../../reducers/cartReducer';
+import CartPopUp from '../../components/Utils/CartPopUp';
+import { SUCCESS } from '../../utils/constants';
+import { showCartPopUpTimeOut } from '../../utils/Helper';
         
 
 export default function ProductDetailPage(props) {
@@ -23,19 +24,34 @@ export default function ProductDetailPage(props) {
     const [quantity, setQuantity] = useState(1);
     const [updating, setUpdating] = useState(false);
 
+    const [addToCartErr, setAddToCartErr] = useState("");
+
+    const [showCartPopup, setShowCartPopup] = useState(false);
+
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, []);
 
+
     const handleAddCart = () => {
         setUpdating(true);
-        dispatch(addItem(productId, quantity)).then((res) => setUpdating(false));
+        setAddToCartErr("");
+        dispatch(addItem(productId, quantity)).then((res) => {
+            setUpdating(false);
+            setAddToCartErr(res === SUCCESS ? "" : res);
+            setShowCartPopup(true);
+            showCartPopUpTimeOut().then(() => {
+                setShowCartPopup(false);
+            })    
+        });
     }
 
     return (
         <div className="marginTop productDetailPage" >
             <main>
+            <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
+
                 <div className="productShowing marginHorizontal">
                     <Row xs={1} md={2}>
                         <Col className="image-section">
@@ -60,23 +76,18 @@ export default function ProductDetailPage(props) {
                                 ? <div className="description">{productInfo?.description}</div>
                                 : <PlaceholderBox page={true} size="body-lg" />}
 
-
-
                             <div className="quantity">
                                 <ChooseQuantityBox 
                                     quantity={quantity} 
                                     setQuantity={setQuantity}
-                                    // handleUpdateButton={handleAddCart}
                                     addButton={
-                                        <CustomButton
-                                            marginTop="15px"
-                                            buttonDetail="default-size"
-                                            onClick={handleAddCart}
-                                            disabled={updating}
-                                        >
-                                            Add To Cart
+                                        <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={updating}>
+                                            <span id="button-text">
+                                                {updating ? <LoadingBox text="Adding" /> : "Add To Cart"}
+                                            </span>
                                         </CustomButton>
-                                    }/>
+                                    }
+                                />
                             </div>
 
                         </Col>
