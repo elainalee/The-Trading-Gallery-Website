@@ -139,7 +139,7 @@ export default function InformationForm(props) {
                         </div>
                         
 
-                        <div className="body consent"><Form.Check checked={props.checkedTerms} onClick={() => props.setCheckedTerms(!props.checkedTerms)}/>By checking this box, I agree that I have read and agree to the above statement.</div>
+                        <div className="body consent"><Form.Check checked={props.checkedTerms} onClick={() => props.setCheckedTerms(!props.checkedTerms)} required/>By checking this box, I agree that I have read and agree to the above statement.</div>
 
                     </div>)}
 

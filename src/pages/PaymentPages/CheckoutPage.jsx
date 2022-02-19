@@ -78,7 +78,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="prices">
                         <div className="subpriceText">{"Subtotal"} </div>
-                        <div className="subpriceText">{"$" + payments?.totalAmount}</div>
+                        <div className="subpriceText">{"$" + cart?.total}</div>
                     </div>
                     <div className="prices">
                         <div className="subpriceText">{"Shipping"} </div>
@@ -90,7 +90,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="prices totalPrice">
                         <div className="totalPriceText">{"Total"} </div>
-                        <div className="totalPriceText">{"CAD $" + payments?.totalAmount}</div>
+                        <div className="totalPriceText">{"CAD $" + cart?.total}</div>
                     </div>
                 </Col>
             </Row>
