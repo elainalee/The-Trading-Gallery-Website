@@ -25,14 +25,10 @@
     width: 65px;
 }
 
-.checkoutCard .image-width {   
-    width: 65px;
-}
-
 .checkoutCard .placeholder {   
     background-color: var(--primary-light);
-    width: 110px;
-    height: 170px;
+    width: 65px;
+    height: 100px;
 }
 
 .checkoutCard .title {
@@ -66,17 +62,6 @@
 
 
 @media screen and (max-width: 767px) {
-
-    .checkoutCard .image {   
-        background-color: var(--primary-light);
-        width: 70px;
-    }
-    
-    .checkoutCard .placeholder {   
-        background-color: var(--primary-light);
-        width: 70px;
-        height: 100px;
-    }
 
     .checkoutCard .title {
         font-size: 17px;

@@ -48,7 +48,7 @@ import Marquee from './components/Utils/Marquee';
 import LogInFirstRoute from './RoutesManager/LogInFirstRoute';
 import { getBestSellers, getProducts } from './reducers/productsReducer';
 import { getBlogs } from './reducers/blogsReducer';
-import { getCart } from './reducers/cartReducer';
+import { getCart, getCartTotal } from './reducers/cartReducer';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -65,7 +65,7 @@ function App() {
 
 
 function NavPages(props) {
-  const { auth } = useSelector((state) => state);
+  const { cart, auth } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -91,6 +91,10 @@ function NavPages(props) {
     console.log("--logged In : fetching user cart again");
     dispatch(getCart());
   }, [auth.loggedInUser]);
+
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart?.items]);
 
   
 

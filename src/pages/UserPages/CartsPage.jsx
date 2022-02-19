@@ -20,10 +20,6 @@ export default function CartsPage() {
     const cartItems = cart?.items;
     const cartTotal = cart?.total;
 
-    useEffect(() => {
-        dispatch(getCartTotal());
-    }, [cartItems]);
-
 
     const handleBackToShopping = () => {
         history.push(ShopPageRoute);

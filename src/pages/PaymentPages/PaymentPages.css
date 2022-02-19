@@ -57,3 +57,16 @@
 .checkoutPage .totalPriceText {
     font-weight: 500;
 }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .checkoutPage .carts {
+        margin-top: 15px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .checkoutPage .carts {
+        margin-top: 30px;
+    }
+}

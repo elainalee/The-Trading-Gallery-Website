@@ -29,6 +29,7 @@ export default function CheckoutPage() {
 
     const clientSecret = payments?.clientSecret;
 
+    console.log(cart);
 
     const appearance = {
         theme: 'stripe',
@@ -48,8 +49,8 @@ export default function CheckoutPage() {
             <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage(paymentInfo ? 1 : stage)}>Shipping</span>
             <i className="fas fa-chevron-right" />
             <span className={stage === 2 ? "stageText selected" : "stageText"}>Payment</span>
-            <Row>
-                <Col md={8}>
+            <Row fluid={true}>
+                <Col sm={6} md={8} className="order-last order-sm-first">
                     {stage === 1
                         ? <ShippingForm paymentInfo={paymentInfo} setPaymentInfo={setPaymentInfo} shipOrder={shipOrder} stage={stage} setStage={setStage}/>
                         : stage === 2
@@ -69,7 +70,7 @@ export default function CheckoutPage() {
                                 setCheckedTerms={setCheckedTerms}
                                 />}
                 </Col>
-                <Col md={4} className="carts">
+                <Col sm={6} md={4} className="carts">
                     <div className="items">
                         {cart?.items?.map((product, index) => (
                             <div key={index}>

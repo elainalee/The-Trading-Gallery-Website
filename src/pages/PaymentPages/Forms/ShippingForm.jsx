@@ -116,7 +116,7 @@ export default function ShippingForm(props) {
                 
                 {/* Show any error or success messages */}
                 {errMsg && <div className="failedMsg">{errMsg}</div>}
-                <CustomButton type="submit" disabled={loading} buttonStyle="primary" buttonDetail="default-size" marginTop="15px">
+                <CustomButton type="submit" disabled={loading} buttonStyle="primary" buttonDetail="default-size" marginTop="15px" marginBottom="10%">
                     <span id="button-text">
                         {loading ? <LoadingBox text="Processing" /> : "CONTINUE TO PAYMENT"}
                     </span>

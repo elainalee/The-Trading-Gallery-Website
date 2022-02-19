@@ -39,7 +39,7 @@ export default function InformationForm(props) {
                         </Form.Group>
                         <Form.Group id="phone">
                             <Form.Label className="full-width">
-                                Phone Number
+                                Phone Number *
                                 <Form.Control type="tel" pattern="[0-9]{3}(-)*[0-9]{4}(-)*[0-9]{3}" placeholder="Phone Number" value={paymentInfo?.phoneNum || ""} onChange={e => setPaymentInfo({...paymentInfo, phoneNum: e.target.value})} required/>
                             </Form.Label>
                         </Form.Group>
@@ -143,7 +143,7 @@ export default function InformationForm(props) {
 
                     </div>)}
 
-                <CustomButton disabled={false} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px">
+                <CustomButton disabled={false} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px" marginBottom="10%">
                     CONTINUE
                 </CustomButton>
             </Form>
