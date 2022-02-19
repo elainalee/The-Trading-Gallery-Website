@@ -36,6 +36,6 @@ export const TermsOfUsePageRoute = "/termsOfUse";
 export const PrivacyPolicyPageRoute = "/privacyPolicy";
 
 // Payment Pages
-export const CheckoutPageRoute = "/summary";
+export const CheckoutPageRoute = "/checkout";
 export const PaymentPageRoute = "/test-payment";
 export const ReceiptPage = "receipt";

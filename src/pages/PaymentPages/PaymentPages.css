@@ -9,3 +9,27 @@
 .paymentPage {
     width: 100%;
 }
+
+
+/* Check out Page */
+.checkoutPage {
+    width: 100%;
+}
+
+.checkoutPage .fa-chevron-right {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.checkoutPage .stageText {
+    cursor: pointer;
+}
+
+.checkoutPage .selected {
+    font-weight: 500;
+}
+
+.checkoutPage .stageText:hover {
+    color: var(--primary-blue);
+}

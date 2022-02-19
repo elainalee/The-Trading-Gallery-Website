@@ -43,7 +43,7 @@ export const getUser = () => async (
   
     } catch (err) {
       dispatch({ type: "AUTH/USER_NOT_LOGGED_IN" });
-      console.log("getUser err :>> ", err.response.data.error);
+      console.log("getUser err :>> ", err?.response?.data?.error);
       return err?.response?.data?.error;
     }
 };
@@ -77,7 +77,7 @@ export const updateUser = (userInfo) => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("updateUser err :>> ", err.response.data.error);
+    console.log("updateUser err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };

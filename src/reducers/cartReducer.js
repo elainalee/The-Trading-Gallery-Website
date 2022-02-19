@@ -128,7 +128,7 @@ export const updateItem = (productID, quantity) => async (
 
   } catch (err) {
     // console.log("updateItem err :>> ", err.message);
-    console.log("updateItem err :>> ", err.response.data.error);
+    console.log("updateItem err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
 
   }
@@ -171,7 +171,7 @@ export const addItem = (productID, quantity) => async (
 
   } catch (err) {
     // console.log("addItem err :>> ", err);
-    console.log("addItem err :>> ", err.response.data.error);
+    console.log("addItem err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -210,7 +210,7 @@ export const removeItem = (productID) => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("removeItem err :>> ", err.response.data.error);
+    console.log("removeItem err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };

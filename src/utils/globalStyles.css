@@ -22,6 +22,10 @@
     font-family: 'Roboto Mono', 'Open Sans';
 }
 
+.failedMsg {
+    color: var(--primary-red);
+    font-size: 15px;
+}
 
 h2 {
     padding-bottom: 10px;

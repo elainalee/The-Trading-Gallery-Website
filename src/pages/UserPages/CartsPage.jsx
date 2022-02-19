@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -10,11 +10,17 @@ import { CheckoutPageRoute, ShopPageRoute } from '../../utils/routes';
 
 import '../../utils/globalStyles.css';
 import './UserPages.css';
+import LoadingBox from '../../components/Utils/LoadingBox';
+import { getPaymentIntent } from '../../reducers/paymentReducer';
+import { ERROR, SUCCESS } from '../../utils/constants';
 
 export default function CartsPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { cart } = useSelector((state) => state);
+
+    const [loading, setLoading] = useState(false);
+    const [errMsg, setErrMsg] = useState("");
 
     const cartItems = cart?.items;
     const cartTotal = cart?.total;
@@ -24,7 +30,16 @@ export default function CartsPage() {
     }, [cartItems]);
 
     const handleCheckout = () => {
-        history.push(CheckoutPageRoute);
+        setErrMsg("");
+        setLoading(true);
+        dispatch(getPaymentIntent()).then((res) => {
+            setLoading(false);
+            if (res === SUCCESS) {
+                history.push(CheckoutPageRoute);
+            } else {
+                setErrMsg(ERROR + ": " + res);
+            }
+        });
     }
 
     const handleBackToShopping = () => {
@@ -57,7 +72,16 @@ export default function CartsPage() {
                         <div className="taxShipping">
                             <div className="taxShippingText">Taxes and Shipping to be determined in the checkout</div>
                         </div>
-                        <CustomButton onClick={handleCheckout} buttonStyle="primary" buttonDetail="default-size" marginTop="15px">CHECK OUT</CustomButton>
+
+                        {/* Show any error or success messages */}
+                        {errMsg && <div className="failedMsg">{errMsg}</div>}
+
+                        <CustomButton onClick={handleCheckout} disabled={loading} buttonStyle="primary" buttonDetail="default-size" marginTop="15px">
+                            <span id="button-text">
+                                {loading ? <LoadingBox text="Processing" /> : "CHECK OUT"}
+                            </span>
+                        </CustomButton>
+
                         <CustomButton onClick={handleBackToShopping} buttonStyle="outline" buttonDetail="default-size" marginTop="15px" marginBottom="5%">BACK TO SHOPPING</CustomButton>
 
                     </Col>

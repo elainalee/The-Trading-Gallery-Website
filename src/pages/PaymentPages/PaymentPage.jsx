@@ -3,7 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { getPaymentIntent } from '../../reducers/paymentReducer';
 import { useDispatch, useSelector } from 'react-redux';
-import PaymentForm from './PaymentForm';
+// import PaymentForm from './PaymentForm';
 import CartCard from '../../components/Cards/CartCard';
 
 
@@ -27,14 +27,10 @@ export default function PaymentPage() {
 
     return (
         <div className="marginTop paddingHorizontal paymentPage">
-            {/* {cart?.items?.map((product, index) => (
-                product.unselected 
-                    ? <div />
-                    : <CartCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>))} */}
             <h2>{"Total: $" + payments?.totalAmount}</h2>
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
-                    <PaymentForm />
+                    {/* <PaymentForm /> */}
                 </Elements>
             )}
         </div>        

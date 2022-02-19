@@ -1,0 +1,91 @@
+/* paymentForms Form */
+.paymentForms .titleText {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.paymentForms .section {
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 6%;
+}
+
+.paymentForms #addressDetail {
+    width: 100%;
+}
+
+.paymentForms .shipMethodSelect {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--primary-light);
+    padding: 10px;
+    align-items: center;
+    border-radius: 5px;
+    margin: 0px 10px;
+}
+
+.shippingForm .shipMethodSelect {
+    margin-bottom: 10px;
+}
+
+.shippingForm .shipMethodSelect .title {
+    flex: 1;
+    margin-right: 1%;
+    color: var(--primary-dark);
+}
+
+.shippingForm .shipMethodSelect .content {
+    flex: 4;
+    /* padding-right: 5%; */
+    margin-right: 3%;
+}
+
+.shippingForm .shipMethodSelect .change {
+    flex: 1;
+    color: var(--primary-blue);
+    cursor: pointer;
+}
+
+
+.paymentForms .shipMethodSelect .fas {
+    margin-left: 10px;
+    margin-right: 12px;
+}
+
+.paymentForms .selected {
+    font-weight: 500;
+    color: var(--primary-blue);
+}
+
+.paymentForms .full-width {
+    width: 100%;
+}
+
+.paymentForms .pickupLocation {
+    padding: 10px;
+    border: 1px solid var(--primary-light);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
+.paymentForms .pickupLocation .title {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.paymentForms .pickupLocation .address {
+    margin-top: 10px;
+}
+
+
+.paymentForms .pickupLocation .body {
+    font-size: 14px;
+}
+
+.paymentForms .pickupLocation .consent {
+    display: flex;
+    flex-direction: row;
+}
+
+

@@ -28,17 +28,14 @@ export const getPaymentIntent = (cartItems) => async (
     getState
   ) => {
     try {
-      const url = BASE_URL + "/payment/create-payment-intent";
+      const state = getState();
+      const cartID = state.user.user.cartID;
 
-      const payload = {
-        items: cartItems
-      }
-        // const payload = JSON.stringify({ items: [{ id: "xl-tshirt" }] });
+      const url = BASE_URL + "/payment/create-payment-intent/" + cartID;
 
-        console.log("getpaymentintent url: ", url);
-        console.log("getpaymentintent payload: ", payload);
+      console.log("getpaymentintent url: ", url);
 
-      const res = await client.post(url, payload);
+      const res = await client.get(url);
 
       console.log("res ", res);
 
@@ -57,8 +54,8 @@ export const getPaymentIntent = (cartItems) => async (
       return SUCCESS;
   
     } catch (err) {
-      console.log("getPaymentIntent err :>> ", err.message);
-      return err.message;
+      console.log("getPaymentIntent err :>> ", err?.response?.data?.error);
+      return err?.response?.data?.error;
     }
   };
 

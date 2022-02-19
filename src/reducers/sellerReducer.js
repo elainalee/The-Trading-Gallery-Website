@@ -63,7 +63,7 @@ export const getSeller = () => async (
   
     } catch (err) {
       dispatch({ type: "AUTH/SELLER_NOT_LOGGED_IN" });
-      console.log("getSeller err :>> ", err.response.data.error);
+      console.log("getSeller err :>> ", err?.response?.data?.error);
       return err?.response?.data?.error;
     }
 };
@@ -96,7 +96,7 @@ export const getSellerBlogs = () => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("getSellerProducts err :>> ", err.response.data.error);
+    console.log("getSellerProducts err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -126,7 +126,7 @@ export const getSellerProducts = () => async (
     return SUCCESS;
 
   } catch (err) {
-    console.log("getSellerProducts err :>> ", err.response.data.error);
+    console.log("getSellerProducts err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -170,7 +170,7 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
     return SUCCESS;
 
   } catch (err) {
-    console.log("addSellerProduct err :>> ", err.response.data.error);
+    console.log("addSellerProduct err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -215,7 +215,7 @@ export const addUpdateSellerProduct = (productId, title, brand, description, qua
     return SUCCESS;
 
   } catch (err) {
-    console.log("addUpdateSellerProduct err :>> ", err.response.data.error);
+    console.log("addUpdateSellerProduct err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -251,7 +251,7 @@ export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlo
     return SUCCESS;
 
   } catch (err) {
-    console.log("addUpdateSellerBlog err :>> ", err.response.data.error);
+    console.log("addUpdateSellerBlog err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };
@@ -288,7 +288,7 @@ export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async 
     return SUCCESS;
 
   } catch (err) {
-    console.log("addBlog err :>> ", err.response.data.error);
+    console.log("addBlog err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };

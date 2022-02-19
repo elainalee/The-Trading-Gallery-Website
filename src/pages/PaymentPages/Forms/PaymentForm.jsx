@@ -4,9 +4,9 @@ import {
     useStripe,
     useElements
   } from "@stripe/react-stripe-js";
-import CustomButton from '../../components/Buttons/CustomButton';
+import CustomButton from '../../../components/Buttons/CustomButton';
 
-import LoadingBox from "../../components/Utils/LoadingBox";
+import LoadingBox from "../../../components/Utils/LoadingBox";
 
 
 export default function PaymentForm() {
