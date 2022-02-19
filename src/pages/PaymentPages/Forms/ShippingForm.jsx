@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Form } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../../components/Buttons/CustomButton';
+import LoadingBox from '../../../components/Utils/LoadingBox';
+import { getPaymentIntent } from '../../../reducers/paymentReducer';
+import { ERROR, SUCCESS } from '../../../utils/constants';
 import { ADDRESS_GOOGLE_MAP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP_SECTION, TGG_ADDRESS } from '../../../utils/contents';
 
 import './PaymentForms.css';
 
 export default function ShippingForm(props) {
     const { user } = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     const paymentInfo = props.paymentInfo;
     const [deliveryChoice, setDeliveryChoice] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [errMsg, setErrMsg] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
-        props.setStage(props.stage + 1);
+        setErrMsg("");
+        setLoading(true);
+        dispatch(getPaymentIntent()).then((res) => {
+            setLoading(false);
+            if (res === SUCCESS) {
+                props.setStage(props.stage + 1);
+            } else {
+                setErrMsg(ERROR + ": " + res);
+            }
+        });
     }
+
     
     return (
         <div className="marginTop paymentForms shippingForm">
@@ -98,10 +114,14 @@ export default function ShippingForm(props) {
                         </div>
                     )}
                 
-
-                <CustomButton disabled={false} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px">
-                    CONTINUE
+                {/* Show any error or success messages */}
+                {errMsg && <div className="failedMsg">{errMsg}</div>}
+                <CustomButton type="submit" disabled={loading} buttonStyle="primary" buttonDetail="default-size" marginTop="15px">
+                    <span id="button-text">
+                        {loading ? <LoadingBox text="Processing" /> : "CONTINUE TO PAYMENT"}
+                    </span>
                 </CustomButton>
+
             </Form>
         </div>        
     );

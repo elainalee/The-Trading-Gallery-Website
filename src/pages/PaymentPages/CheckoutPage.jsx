@@ -15,6 +15,7 @@ import '../../utils/globalStyles.css';
 import './PaymentPages.css';
 import { CartsPageRoute } from '../../utils/routes';
 import CustomButton from '../../components/Buttons/CustomButton';
+import { getPaymentIntent } from '../../reducers/paymentReducer';
 
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
@@ -22,15 +23,16 @@ const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
 export default function CheckoutPage() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [stage, setStage] = useState(0);
 
     const { cart, payments } = useSelector((state) => state);
 
+    const [stage, setStage] = useState(0);
     const [paymentInfo, setPaymentInfo] = useState(undefined);
     const [shipOrder, setShipOrder] = useState(true);
     const [checkedTerms, setCheckedTerms] = useState(false);
 
-    const clientSecret = payments.clientSecret;
+    const clientSecret = payments?.clientSecret;
+
 
     const appearance = {
         theme: 'stripe',
