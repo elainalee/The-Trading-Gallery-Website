@@ -4,6 +4,11 @@
     font-weight: 500;
 }
 
+.paymentForms .subtitleText {
+    font-size: 16px;
+    color: var(--primary-dark);
+}
+
 .paymentForms .section {
     width: 100%;
     padding-top: 3%;
@@ -24,28 +29,32 @@
     margin: 0px 10px;
 }
 
-.shippingForm .shipMethodSelect {
+.paymentForm .sameAsShipping {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.paymentForms .section .shipMethodSelect {
     margin-bottom: 10px;
 }
 
-.shippingForm .shipMethodSelect .title {
+.paymentForms .section .shipMethodSelect .title {
     flex: 1;
     margin-right: 1%;
     color: var(--primary-dark);
 }
 
-.shippingForm .shipMethodSelect .content {
+.paymentForms .section .shipMethodSelect .content {
     flex: 4;
-    /* padding-right: 5%; */
     margin-right: 3%;
 }
 
-.shippingForm .shipMethodSelect .change {
+.paymentForms .section .shipMethodSelect .change {
     flex: 1;
     color: var(--primary-blue);
     cursor: pointer;
 }
-
 
 .paymentForms .shipMethodSelect .fas {
     margin-left: 10px;

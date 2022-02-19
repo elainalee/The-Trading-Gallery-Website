@@ -78,7 +78,7 @@ export default function ShippingForm(props) {
                             <Form.Group id="shipMethod">
                                 <Form.Label className="shipMethodSelect full-width" onClick={() => setDeliveryChoice(0)}>
                                     <Form.Check className="check" type="radio" checked={deliveryChoice === 0}/> 
-                                    Free Shipping Over $50
+                                    Free Shipping Over $150
                                 </Form.Label>
 
                                 <Form.Label className="shipMethodSelect full-width" onClick={() => setDeliveryChoice(1)}>

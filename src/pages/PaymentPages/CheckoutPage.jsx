@@ -24,6 +24,7 @@ export default function CheckoutPage() {
 
     const [stage, setStage] = useState(0);
     const [paymentInfo, setPaymentInfo] = useState(undefined);
+    const [billingInfo, setBillingInfo] = useState(undefined);
     const [shipOrder, setShipOrder] = useState(true);
     const [checkedTerms, setCheckedTerms] = useState(false);
 
@@ -46,7 +47,7 @@ export default function CheckoutPage() {
             <i className="fas fa-chevron-right" />
             <span className={stage === 0 ? "stageText selected" : "stageText"} onClick={() => setStage(0)}>Information</span>
             <i className="fas fa-chevron-right" />
-            <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage(paymentInfo ? 1 : stage)}>Shipping</span>
+            <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage((paymentInfo && (shipOrder || checkedTerms)) ? 1 : stage)}>Shipping</span>
             <i className="fas fa-chevron-right" />
             <span className={stage === 2 ? "stageText selected" : "stageText"}>Payment</span>
             <Row fluid={true}>
@@ -56,16 +57,25 @@ export default function CheckoutPage() {
                         : stage === 2
                             ? (clientSecret && (
                                 <Elements options={options} stripe={stripePromise}>
-                                    <PaymentForm />
+                                    <PaymentForm 
+                                        stage={stage} 
+                                        setStage={setStage}
+
+                                        shipOrder={shipOrder}
+                                        paymentInfo={paymentInfo} 
+                                        setPaymentInfo={setPaymentInfo} 
+                                        billingInfo={billingInfo} 
+                                        setBillingInfo={setBillingInfo} />
                                 </Elements>
                             ))
                             : <InformationForm 
-                                paymentInfo={paymentInfo} 
-                                setPaymentInfo={setPaymentInfo} 
-                                shipOrder={shipOrder} 
-                                setShipOrder={setShipOrder} 
                                 stage={stage} 
                                 setStage={setStage}
+
+                                paymentInfo={paymentInfo} 
+                                setPaymentInfo={setPaymentInfo} 
+                                shipOrder={shipOrder}
+                                setShipOrder={setShipOrder} 
                                 checkedTerms={checkedTerms}
                                 setCheckedTerms={setCheckedTerms}
                                 />}
