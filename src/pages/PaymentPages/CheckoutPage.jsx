@@ -4,18 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import CartCard from '../../components/Cards/CartCard';
 import PaymentForm from "./Forms/PaymentForm";
 import ShippingForm from './Forms/ShippingForm';
 import InformationForm from './Forms/InformationForm';
+import { CartsPageRoute } from '../../utils/routes';
+import CheckoutCard from '../../components/Cards/CheckoutCard';
 
 import '../../utils/globalStyles.css';
 import './PaymentPages.css';
-import { CartsPageRoute } from '../../utils/routes';
-import CustomButton from '../../components/Buttons/CustomButton';
-import { getPaymentIntent } from '../../reducers/paymentReducer';
 
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
@@ -53,7 +49,7 @@ export default function CheckoutPage() {
             <i className="fas fa-chevron-right" />
             <span className={stage === 2 ? "stageText selected" : "stageText"}>Payment</span>
             <Row>
-                <Col md={7}>
+                <Col md={8}>
                     {stage === 1
                         ? <ShippingForm paymentInfo={paymentInfo} setPaymentInfo={setPaymentInfo} shipOrder={shipOrder} stage={stage} setStage={setStage}/>
                         : stage === 2
@@ -73,12 +69,29 @@ export default function CheckoutPage() {
                                 setCheckedTerms={setCheckedTerms}
                                 />}
                 </Col>
-                <Col md={5}>
-                    {cart?.items?.map((product, index) => (
-                        <div key={index}>
-                            {!product.unselected && <CartCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>}
-                        </div>))}
-                    <h2>{"Total: $" + payments?.totalAmount}</h2>
+                <Col md={4} className="carts">
+                    <div className="items">
+                        {cart?.items?.map((product, index) => (
+                            <div key={index}>
+                                {!product.unselected && <CheckoutCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>}
+                            </div>))}
+                    </div>
+                    <div className="prices">
+                        <div className="subpriceText">{"Subtotal"} </div>
+                        <div className="subpriceText">{"$" + payments?.totalAmount}</div>
+                    </div>
+                    <div className="prices">
+                        <div className="subpriceText">{"Shipping"} </div>
+                        <div className="subpriceText">{"TBD"}</div>
+                    </div>
+                    <div className="prices">
+                        <div className="subpriceText">{"Taxes"} </div>
+                        <div className="subpriceText">{"TBD"}</div>
+                    </div>
+                    <div className="prices totalPrice">
+                        <div className="totalPriceText">{"Total"} </div>
+                        <div className="totalPriceText">{"CAD $" + payments?.totalAmount}</div>
+                    </div>
                 </Col>
             </Row>
         </div>        

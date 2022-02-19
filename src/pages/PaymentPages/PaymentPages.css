@@ -33,3 +33,32 @@
 .checkoutPage .stageText:hover {
     color: var(--primary-blue);
 }
+
+.checkoutPage .carts .items {
+    border-bottom: 1px solid var(--primary-light);
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+
+}
+
+.checkoutPage .prices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkoutPage .subpriceText {
+    font-size: 16px;
+}
+
+.checkoutPage .totalPrice {
+    font-weight: 500;
+    font-size: 18px;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: 1px solid var(--primary-light);
+}
+
+.checkoutPage .totalPriceText {
+    font-weight: 500;
+}
