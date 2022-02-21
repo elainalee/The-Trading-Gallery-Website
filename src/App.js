@@ -147,9 +147,9 @@ function NavPages(props) {
         <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
 
         {/* Payment Pages */}
-        <Route exact path={"/receipt"} component={ReceiptPage} />
-        <Route exact path={CheckoutPageRoute} component={CheckoutPage} />
-        <Route exact path={PaymentPageRoute} component={PaymentPage} />
+        <LogInFirstRoute exact path={"/receipt"} component={ReceiptPage} />
+        <LogInFirstRoute exact path={CheckoutPageRoute} component={CheckoutPage} />
+        <LogInFirstRoute exact path={PaymentPageRoute} component={PaymentPage} />
 
       </div>
       <Footer />

@@ -22,7 +22,7 @@ export default function ShippingForm(props) {
         e.preventDefault();
         setErrMsg("");
         setLoading(true);
-        dispatch(getPaymentIntent()).then((res) => {
+        dispatch(getPaymentIntent(paymentInfo.province)).then((res) => {
             setLoading(false);
             if (res === SUCCESS) {
                 props.setStage(props.stage + 1);

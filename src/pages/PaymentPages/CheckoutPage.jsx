@@ -30,8 +30,6 @@ export default function CheckoutPage() {
 
     const clientSecret = payments?.clientSecret;
 
-    console.log(cart);
-
     const appearance = {
         theme: 'stripe',
     };
@@ -97,11 +95,11 @@ export default function CheckoutPage() {
                     </div>
                     <div className="prices">
                         <div className="subpriceText">{"Taxes"} </div>
-                        <div className="subpriceText">{"TBD"}</div>
+                        <div className="subpriceText">{payments?.taxAmount ? "$" + payments?.taxAmount : "TBD"}</div>
                     </div>
                     <div className="prices totalPrice">
                         <div className="totalPriceText">{"Total"} </div>
-                        <div className="totalPriceText">{"CAD $" + cart?.total}</div>
+                        <div className="totalPriceText">{"CAD $" + (payments?.totalAmount ?? cart?.total)}</div>
                     </div>
                 </Col>
             </Row>

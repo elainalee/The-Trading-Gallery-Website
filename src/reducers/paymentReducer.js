@@ -6,7 +6,9 @@ import { SUCCESS } from "../utils/constants";
 
 const initialState = {
     clientSecret: "",
-    totalAmount: 0,
+    totalAmount: undefined,
+    subtotalAmount: undefined,
+    taxAmount: undefined
 }
 
 const paymentReducer = (state = initialState, action) => {
@@ -15,7 +17,9 @@ const paymentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 clientSecret: action.payload.clientSecret,
-                totalAmount: action.payload.totalAmount
+                totalAmount: action.payload.totalAmount,
+                subtotalAmount: action.payload.subtotalAmount,
+                taxAmount: action.payload.taxAmount,
             }
 
         default:
@@ -23,7 +27,7 @@ const paymentReducer = (state = initialState, action) => {
     }
 }
 
-export const getPaymentIntent = (cartItems) => async (
+export const getPaymentIntent = (province) => async (
     dispatch,
     getState
   ) => {
@@ -33,9 +37,13 @@ export const getPaymentIntent = (cartItems) => async (
 
       const url = BASE_URL + "/payment/create-payment-intent/" + cartID;
 
+      const payload = {
+        province
+      };
+
       console.log("getpaymentintent url: ", url);
 
-      const res = await client.get(url);
+      const res = await client.post(url, payload);
 
       console.log("res ", res);
 
@@ -47,7 +55,9 @@ export const getPaymentIntent = (cartItems) => async (
         type: "PAYMENT/SETCLIENTSECRET",
         payload: {
             clientSecret: data.clientSecret,
-            totalAmount: data.totalAmount
+            totalAmount: data.totalAmount,
+            subtotalAmount: data.subtotalAmount,
+            taxAmount: data.taxAmount
         },
       });
   
