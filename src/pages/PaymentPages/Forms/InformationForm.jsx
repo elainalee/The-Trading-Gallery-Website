@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Col, Dropdown, DropdownButton, Form, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../../components/Buttons/CustomButton';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
 
 import { ADDRESS_GOOGLE_MAP, ADDRESS_PICKUP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP, PICKUP_SECTION, TGG_ADDRESS } from "../../../utils/contents";
 
 import './PaymentForms.css';
+import { getTax } from '../../../utils/Helper';
 
 export default function InformationForm(props) {
-    const { user } = useSelector((state) => state);
+    const dispatch = useDispatch();
+    const { cart, user } = useSelector((state) => state);
 
     const [paymentInfo, setPaymentInfo] = useState(props.paymentInfo);
     const [shipOrder, setShipOrder] = useState(props.shipOrder);
@@ -19,6 +21,8 @@ export default function InformationForm(props) {
 
         props.setPaymentInfo(paymentInfo);
         props.setShipOrder(shipOrder);
+
+        props.setEstTax(getTax(cart?.total, paymentInfo?.province));
 
         props.setStage(props.stage + 1);
     }
@@ -55,7 +59,7 @@ export default function InformationForm(props) {
                                 <i className="fas fa-truck" />
                                 Ship
                             </Col>
-                            <Col className={shipOrder ? "shipMethodSelect" : "shipMethodSelect selected"} onClick={() => setShipOrder(false)}>
+                            <Col className={shipOrder ? "shipMethodSelect" : "shipMethodSelect selected"} onClick={() => { setShipOrder(false); setPaymentInfo({...paymentInfo, province: "BC"})}}>
                                 <Form.Check className="check" type="radio" checked={!shipOrder} readOnly />
                                 <i className="fas fa-store" />
                                 Pick Up

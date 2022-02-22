@@ -12,6 +12,8 @@ import CheckoutCard from '../../components/Cards/CheckoutCard';
 
 import '../../utils/globalStyles.css';
 import './PaymentPages.css';
+import { getShippingOptions } from '../../reducers/paymentReducer';
+import { getTax } from '../../utils/Helper';
 
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
@@ -27,8 +29,19 @@ export default function CheckoutPage() {
     const [billingInfo, setBillingInfo] = useState(undefined);
     const [shipOrder, setShipOrder] = useState(true);
     const [checkedTerms, setCheckedTerms] = useState(false);
-
+    const [deliveryChoice, setDeliveryChoice] = useState(undefined);
+    const [estTax, setEstTax] = useState(undefined);
     const clientSecret = payments?.clientSecret;
+
+
+    const shippingPriceEst = payments?.shippingOptions?.[deliveryChoice]?.rate ?? 0;
+    console.log("shippingPriceEst ", shippingPriceEst);
+    const totalPrice = (payments?.totalAmount ?? (cart?.total + (payments?.taxAmount ?? estTax ?? 0)) + shippingPriceEst).toFixed(2);
+
+
+    useEffect(() => {
+        dispatch(getShippingOptions());
+    }, [cart?.items]);
 
     const appearance = {
         theme: 'stripe',
@@ -45,13 +58,20 @@ export default function CheckoutPage() {
             <i className="fas fa-chevron-right" />
             <span className={stage === 0 ? "stageText selected" : "stageText"} onClick={() => setStage(0)}>Information</span>
             <i className="fas fa-chevron-right" />
-            <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage((paymentInfo && (shipOrder || checkedTerms)) ? 1 : stage)}>Shipping</span>
+            <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage((paymentInfo && payments.shippingOptions && (shipOrder || checkedTerms)) ? 1 : stage)}>Shipping</span>
             <i className="fas fa-chevron-right" />
             <span className={stage === 2 ? "stageText selected" : "stageText"}>Payment</span>
             <Row fluid={true}>
                 <Col sm={6} md={8} className="order-last order-sm-first">
                     {stage === 1
-                        ? <ShippingForm paymentInfo={paymentInfo} setPaymentInfo={setPaymentInfo} shipOrder={shipOrder} stage={stage} setStage={setStage}/>
+                        ? <ShippingForm 
+                            paymentInfo={paymentInfo} 
+                            setPaymentInfo={setPaymentInfo} 
+                            shipOrder={shipOrder}
+                            deliveryChoice={deliveryChoice}
+                            setDeliveryChoice={setDeliveryChoice}
+                            stage={stage} 
+                            setStage={setStage}/>
                         : stage === 2
                             ? (clientSecret && (
                                 <Elements options={options} stripe={stripePromise}>
@@ -73,7 +93,9 @@ export default function CheckoutPage() {
                                 paymentInfo={paymentInfo} 
                                 setPaymentInfo={setPaymentInfo} 
                                 shipOrder={shipOrder}
-                                setShipOrder={setShipOrder} 
+                                setShipOrder={setShipOrder}
+                                estTax={estTax}
+                                setEstTax={setEstTax}
                                 checkedTerms={checkedTerms}
                                 setCheckedTerms={setCheckedTerms}
                                 />}
@@ -89,17 +111,24 @@ export default function CheckoutPage() {
                         <div className="subpriceText">{"Subtotal"} </div>
                         <div className="subpriceText">{"$" + cart?.total}</div>
                     </div>
-                    <div className="prices">
-                        <div className="subpriceText">{"Shipping"} </div>
-                        <div className="subpriceText">{"TBD"}</div>
-                    </div>
+                    {shipOrder && (
+                        <div className="prices">
+                            <div className="subpriceText">{"Shipping"} </div>
+                            <div className="subpriceText">
+                                {deliveryChoice === undefined 
+                                    ? "TBD" 
+                                    : payments?.shippingOptions?.[deliveryChoice]?.rate === 0 
+                                        ? "FREE" : ("$" + payments?.shippingOptions?.[deliveryChoice]?.rate)}</div>
+                        </div>
+                    )}
+                    
                     <div className="prices">
                         <div className="subpriceText">{"Taxes"} </div>
-                        <div className="subpriceText">{payments?.taxAmount ? "$" + payments?.taxAmount : "TBD"}</div>
+                        <div className="subpriceText">{payments?.taxAmount ? ("$" + payments?.taxAmount) : estTax ? ("$" + estTax) : "TBD"}</div>
                     </div>
                     <div className="prices totalPrice">
                         <div className="totalPriceText">{"Total"} </div>
-                        <div className="totalPriceText">{"CAD $" + (payments?.totalAmount ?? cart?.total)}</div>
+                        <div className="totalPriceText">{"CAD $" + totalPrice}</div>
                     </div>
                 </Col>
             </Row>

@@ -56,6 +56,10 @@
     cursor: pointer;
 }
 
+.paymentForms .section .shipMethodSelect .price {
+    font-weight: 500;
+}
+
 .paymentForms .shipMethodSelect .fas {
     margin-left: 10px;
     margin-right: 12px;

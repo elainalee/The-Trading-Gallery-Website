@@ -8,7 +8,8 @@ const initialState = {
     clientSecret: "",
     totalAmount: undefined,
     subtotalAmount: undefined,
-    taxAmount: undefined
+    taxAmount: undefined,
+    shippingOptions: undefined,
 }
 
 const paymentReducer = (state = initialState, action) => {
@@ -22,12 +23,18 @@ const paymentReducer = (state = initialState, action) => {
                 taxAmount: action.payload.taxAmount,
             }
 
+        case "PAYMENT/SETSHIPPINGOPTIONS":
+          return {
+              ...state,
+              shippingOptions: action.payload.shippingOptions,
+          }
+
         default:
             return state;
     }
 }
 
-export const getPaymentIntent = (province) => async (
+export const getPaymentIntent = (province, deliveryChoice) => async (
     dispatch,
     getState
   ) => {
@@ -38,7 +45,8 @@ export const getPaymentIntent = (province) => async (
       const url = BASE_URL + "/payment/create-payment-intent/" + cartID;
 
       const payload = {
-        province
+        province,
+        deliveryChoice
       };
 
       console.log("getpaymentintent url: ", url);
@@ -57,7 +65,8 @@ export const getPaymentIntent = (province) => async (
             clientSecret: data.clientSecret,
             totalAmount: data.totalAmount,
             subtotalAmount: data.subtotalAmount,
-            taxAmount: data.taxAmount
+            deliveryChoice: data.deliveryAmount,
+            taxAmount: data.taxAmount,
         },
       });
   
@@ -67,7 +76,39 @@ export const getPaymentIntent = (province) => async (
       console.log("getPaymentIntent err :>> ", err?.response?.data?.error);
       return err?.response?.data?.error;
     }
-  };
+};
+
+
+export const getShippingOptions = () => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+    const cartID = state.user.user.cartID;
+
+    const url = BASE_URL + "/payment/getShippingOptions/" + cartID;
+
+
+    const res = await client.get(url);
+
+    const data = res.data;
+
+    dispatch({
+      type: "PAYMENT/SETSHIPPINGOPTIONS",
+      payload: {
+          shippingOptions: data
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("getShippingOptions err :>> ", err?.response?.data?.error);
+    return err?.response?.data?.error;
+  }
+};
+
 
 
 

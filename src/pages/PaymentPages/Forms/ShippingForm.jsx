@@ -10,19 +10,22 @@ import { ADDRESS_GOOGLE_MAP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICK
 import './PaymentForms.css';
 
 export default function ShippingForm(props) {
-    const { user } = useSelector((state) => state);
+    const { user, payments } = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const paymentInfo = props.paymentInfo;
-    const [deliveryChoice, setDeliveryChoice] = useState(0);
     const [loading, setLoading] = useState(false);
     const [errMsg, setErrMsg] = useState("");
+
+    useEffect(() => {
+        props.setDeliveryChoice(0);
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();
         setErrMsg("");
         setLoading(true);
-        dispatch(getPaymentIntent(paymentInfo.province)).then((res) => {
+        dispatch(getPaymentIntent(paymentInfo.province, props.deliveryChoice)).then((res) => {
             setLoading(false);
             if (res === SUCCESS) {
                 props.setStage(props.stage + 1);
@@ -31,7 +34,6 @@ export default function ShippingForm(props) {
             }
         });
     }
-
     
     return (
         <div className="marginTop paymentForms shippingForm">
@@ -76,20 +78,14 @@ export default function ShippingForm(props) {
                 {props.shipOrder
                     ? (<div className="section">
                             <Form.Group id="shipMethod">
-                                <Form.Label className="shipMethodSelect full-width" onClick={() => setDeliveryChoice(0)}>
-                                    <Form.Check className="check" type="radio" checked={deliveryChoice === 0}/> 
-                                    Free Shipping Over $150
-                                </Form.Label>
-
-                                <Form.Label className="shipMethodSelect full-width" onClick={() => setDeliveryChoice(1)}>
-                                    <Form.Check className="check" type="radio" checked={deliveryChoice === 1}/> 
-                                    Canada Post (Standard) $12.99
-                                </Form.Label>
-
-                                <Form.Label className="shipMethodSelect full-width" onClick={() => setDeliveryChoice(2)}>
-                                    <Form.Check className="check" type="radio" checked={deliveryChoice === 2}/> 
-                                    UPS Express $50
-                                </Form.Label>
+                                {payments?.shippingOptions?.map((option, index) => (
+                                    <Form.Label key={index} className="shipMethodSelect full-width" onClick={() => props.setDeliveryChoice(index)}>
+                                        <Form.Check className="check" type="radio" checked={props.deliveryChoice === index} readOnly/> 
+                                        
+                                        <div className="content">{option.name}</div>
+                                        <div className="price">{option.rate ? ("$" + option.rate) : ""}</div>
+                                    </Form.Label>
+                                ))}
                         </Form.Group>
                     </div>)
                     : (<div className="pickupLocation">
