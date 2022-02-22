@@ -2,7 +2,7 @@ import axios from "axios";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 
-import { SUCCESS } from "../utils/constants";
+import { ERROR, SUCCESS } from "../utils/constants";
 
 const initialState = {
     clientSecret: "",
@@ -84,7 +84,6 @@ export const getPaymentIntent = (paymentInfo, deliveryChoice) => async (
     }
 };
 
-// TODO : COMPLETE THIS
 export const generateReceipt = (clientSecret, billingAddress) => async (
   dispatch,
   getState
@@ -92,8 +91,8 @@ export const generateReceipt = (clientSecret, billingAddress) => async (
   try {
     const state = getState();
 
-    console.log("client secret in generate ", clientSecret);
-    console.log("billingAddress  in generate ", billingAddress);
+    // console.log("client secret in generate ", clientSecret);
+    // console.log("billingAddress  in generate ", billingAddress);
 
     const url = BASE_URL + "/receipts/generateReceipt/" + clientSecret;
 
@@ -104,23 +103,51 @@ export const generateReceipt = (clientSecret, billingAddress) => async (
       }
     };
 
-    console.log("generateReceipt url: ", url);
+    // console.log("generateReceipt url: ", url);
 
     const res = await client.post(url, payload);
 
-    console.log("res ", res);
+    // console.log("res ", res);
 
     const data = res.data;
 
     console.log(data);
 
-    return SUCCESS;
+    return data.receiptID;
 
   } catch (err) {
     console.log("generateReceipt err :>> ", err?.response?.data?.error);
-    return err?.response?.data?.error;
+    return ERROR;
   }
 };
+
+export const getReceiptDetail = (receiptID) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+
+    const url = BASE_URL + "/receipts/getReceipt/" + receiptID;
+
+
+    // console.log("generateReceipt url: ", url);
+
+    const res = await client.get(url);
+
+
+    const data = res.data;
+
+    console.log(data);
+
+    return data;
+
+  } catch (err) {
+    console.log("getReceiptDetail err :>> ", err?.response?.data?.error);
+    return ERROR;
+  }
+};
+
 
 
 export const getShippingOptions = () => async (

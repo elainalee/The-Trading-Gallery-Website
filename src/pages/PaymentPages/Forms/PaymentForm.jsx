@@ -13,6 +13,7 @@ import './PaymentForms.css';
 import { Col, Form } from 'react-bootstrap';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
 import { generateReceipt } from '../../../reducers/paymentReducer';
+import { ERROR } from '../../../utils/constants';
 
 
 export default function PaymentForm(props) {
@@ -76,17 +77,20 @@ export default function PaymentForm(props) {
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://google.ca",
+            return_url: "http://thetradinggallery.ca",
             redirect: "if_required"
           },
         }).then(function(result) {
-          console.log("confirm payment" , result);
           if (result?.error?.payment_intent) {
-            console.log("------before calling generate : succeded");
-            dispatch(generateReceipt(result.error.payment_intent.id, sameAsShipping ? paymentInfo : billingInfo));
+            dispatch(generateReceipt(result.error.payment_intent.id, sameAsShipping ? paymentInfo : billingInfo)).then((res) => {
+              if (res === ERROR) {
+                setMessage("Sorry, an error occured. Please contact hello@thetradinggallery with your payment number: " + result.error.payment_intent.id);
+              } else {
+                window.location.href = "receipt/" + res;
+              }
+            });
           } else {
             const error = result.error;
-            // Inform the customer that there was an error.
             if (error.type === "card_error" || error.type === "validation_error") {
               setMessage(error.message);
             } else {
@@ -95,22 +99,6 @@ export default function PaymentForm(props) {
           }
           
         });
-    
-        // const { error } = await stripe.confirmPayment({
-        //   elements,
-        //   confirmParams: {
-        //     // Make sure to change this to your payment completion page
-        //     return_url: "http://google.ca",
-        //     redirect: "if_required"
-        //   },
-        // });
-    
-        // This point will only be reached if there is an immediate error when
-        // confirming the payment. Otherwise, your customer will be redirected to
-        // your `return_url`. For some payment methods like iDEAL, your customer will
-        // be redirected to an intermediate site first to authorize the payment, then
-        // redirected to the `return_url`.
-        
 
         setIsLoading(false);
     };
