@@ -29,14 +29,9 @@ export default function CheckoutPage() {
     const [billingInfo, setBillingInfo] = useState(undefined);
     const [shipOrder, setShipOrder] = useState(true);
     const [checkedTerms, setCheckedTerms] = useState(false);
-    const [deliveryChoice, setDeliveryChoice] = useState(undefined);
+    const [deliveryChoice, setDeliveryChoice] = useState(0);
     const [estTax, setEstTax] = useState(undefined);
     const clientSecret = payments?.clientSecret;
-
-
-    const shippingPriceEst = payments?.shippingOptions?.[deliveryChoice]?.rate ?? 0;
-    console.log("shippingPriceEst ", shippingPriceEst);
-    const totalPrice = (payments?.totalAmount ?? (cart?.total + (payments?.taxAmount ?? estTax ?? 0)) + shippingPriceEst).toFixed(2);
 
 
     useEffect(() => {
@@ -109,26 +104,40 @@ export default function CheckoutPage() {
                     </div>
                     <div className="prices">
                         <div className="subpriceText">{"Subtotal"} </div>
-                        <div className="subpriceText">{"$" + cart?.total}</div>
+                        <div className="subpriceText">{"$" + (stage === 2 ? payments?.subtotalAmount : cart?.total)}</div>
                     </div>
                     {shipOrder && (
                         <div className="prices">
                             <div className="subpriceText">{"Shipping"} </div>
                             <div className="subpriceText">
-                                {deliveryChoice === undefined 
-                                    ? "TBD" 
-                                    : payments?.shippingOptions?.[deliveryChoice]?.rate === 0 
-                                        ? "FREE" : ("$" + payments?.shippingOptions?.[deliveryChoice]?.rate)}</div>
+                                {stage === 2
+                                    ? "$" + payments?.shippingAmount
+                                    : deliveryChoice === undefined 
+                                        ? "TBD"
+                                        : payments?.shippingOptions?.[deliveryChoice]?.rate === 0
+                                            ? "FREE"
+                                            : "$" + payments?.shippingOptions?.[deliveryChoice]?.rate}
+                            </div>
                         </div>
                     )}
                     
                     <div className="prices">
                         <div className="subpriceText">{"Taxes"} </div>
-                        <div className="subpriceText">{payments?.taxAmount ? ("$" + payments?.taxAmount) : estTax ? ("$" + estTax) : "TBD"}</div>
+                        <div className="subpriceText">
+                            {stage === 2
+                                ? "$" + payments?.taxAmount
+                                : estTax
+                                    ? "$" + estTax
+                                    : "TBD"}
+                        </div>
                     </div>
                     <div className="prices totalPrice">
                         <div className="totalPriceText">{"Total"} </div>
-                        <div className="totalPriceText">{"CAD $" + totalPrice}</div>
+                        <div className="totalPriceText">{"CAD $" + 
+                            (stage === 2
+                                ? payments?.totalAmount
+                                : cart?.total + (estTax ?? 0) + (shipOrder ? payments?.shippingOptions?.[deliveryChoice]?.rate : 0)).toFixed(2)}
+                        </div>
                     </div>
                 </Col>
             </Row>

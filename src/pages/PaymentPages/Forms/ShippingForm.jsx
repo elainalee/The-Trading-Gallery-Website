@@ -17,15 +17,11 @@ export default function ShippingForm(props) {
     const [loading, setLoading] = useState(false);
     const [errMsg, setErrMsg] = useState("");
 
-    useEffect(() => {
-        props.setDeliveryChoice(0);
-    }, []);
-
     async function handleSubmit(e) {
         e.preventDefault();
         setErrMsg("");
         setLoading(true);
-        dispatch(getPaymentIntent(paymentInfo.province, props.deliveryChoice)).then((res) => {
+        dispatch(getPaymentIntent(paymentInfo, props.shipOrder ? props.deliveryChoice : undefined)).then((res) => {
             setLoading(false);
             if (res === SUCCESS) {
                 props.setStage(props.stage + 1);
@@ -60,7 +56,6 @@ export default function ShippingForm(props) {
                                 {paymentInfo?.postalCode}
                                 {", Canada"}
                                 {paymentInfo?.phoneNum ? ", " + paymentInfo?.phoneNum: ""}
-                                
                                 </div>
                             <div className="change" onClick={() => props.setStage(props.stage-1)}>Change</div>
                         </div>

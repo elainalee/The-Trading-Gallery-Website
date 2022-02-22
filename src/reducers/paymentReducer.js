@@ -6,9 +6,12 @@ import { SUCCESS } from "../utils/constants";
 
 const initialState = {
     clientSecret: "",
+
     totalAmount: undefined,
     subtotalAmount: undefined,
     taxAmount: undefined,
+    shippingAmount: undefined,
+
     shippingOptions: undefined,
 }
 
@@ -20,6 +23,7 @@ const paymentReducer = (state = initialState, action) => {
                 clientSecret: action.payload.clientSecret,
                 totalAmount: action.payload.totalAmount,
                 subtotalAmount: action.payload.subtotalAmount,
+                shippingAmount: action.payload.shippingAmount,
                 taxAmount: action.payload.taxAmount,
             }
 
@@ -34,7 +38,7 @@ const paymentReducer = (state = initialState, action) => {
     }
 }
 
-export const getPaymentIntent = (province, deliveryChoice) => async (
+export const getPaymentIntent = (paymentInfo, deliveryChoice) => async (
     dispatch,
     getState
   ) => {
@@ -42,11 +46,13 @@ export const getPaymentIntent = (province, deliveryChoice) => async (
       const state = getState();
       const cartID = state.user.user.cartID;
 
+      const shippingChoice = deliveryChoice ? state.payments?.shippingOptions?.[deliveryChoice] : undefined;
+
       const url = BASE_URL + "/payment/create-payment-intent/" + cartID;
 
       const payload = {
-        province,
-        deliveryChoice
+        paymentInfo,
+        shippingChoice
       };
 
       console.log("getpaymentintent url: ", url);
@@ -65,7 +71,7 @@ export const getPaymentIntent = (province, deliveryChoice) => async (
             clientSecret: data.clientSecret,
             totalAmount: data.totalAmount,
             subtotalAmount: data.subtotalAmount,
-            deliveryChoice: data.deliveryAmount,
+            shippingAmount: data.shippingAmount,
             taxAmount: data.taxAmount,
         },
       });
