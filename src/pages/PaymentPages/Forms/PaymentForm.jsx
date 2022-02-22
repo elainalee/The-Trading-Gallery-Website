@@ -7,14 +7,16 @@ import {
 import CustomButton from '../../../components/Buttons/CustomButton';
 
 import LoadingBox from "../../../components/Utils/LoadingBox";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './PaymentForms.css';
 import { Col, Form } from 'react-bootstrap';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
+import { generateReceipt } from '../../../reducers/paymentReducer';
 
 
 export default function PaymentForm(props) {
+    const dispatch = useDispatch();
     const { user, payments } = useSelector((state) => state);
     const paymentInfo = props.paymentInfo;
     const setPaymentInfo = props.setPaymentInfo;
@@ -69,26 +71,47 @@ export default function PaymentForm(props) {
         }
     
         setIsLoading(true);
-    
-        const { error } = await stripe.confirmPayment({
+
+        stripe.confirmPayment({
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:3000",
+            return_url: "http://google.ca",
+            redirect: "if_required"
           },
+        }).then(function(result) {
+          console.log("confirm payment" , result);
+          if (result?.error?.payment_intent) {
+            console.log("------before calling generate : succeded");
+            dispatch(generateReceipt(result.error.payment_intent.id, sameAsShipping ? paymentInfo : billingInfo));
+          } else {
+            const error = result.error;
+            // Inform the customer that there was an error.
+            if (error.type === "card_error" || error.type === "validation_error") {
+              setMessage(error.message);
+            } else {
+              setMessage("An unexpected error occured.");
+            }
+          }
+          
         });
+    
+        // const { error } = await stripe.confirmPayment({
+        //   elements,
+        //   confirmParams: {
+        //     // Make sure to change this to your payment completion page
+        //     return_url: "http://google.ca",
+        //     redirect: "if_required"
+        //   },
+        // });
     
         // This point will only be reached if there is an immediate error when
         // confirming the payment. Otherwise, your customer will be redirected to
         // your `return_url`. For some payment methods like iDEAL, your customer will
         // be redirected to an intermediate site first to authorize the payment, then
         // redirected to the `return_url`.
-        if (error.type === "card_error" || error.type === "validation_error") {
-          setMessage(error.message);
-        } else {
-          setMessage("An unexpected error occured.");
-        }
-    
+        
+
         setIsLoading(false);
     };
 
@@ -106,14 +129,14 @@ export default function PaymentForm(props) {
                   <div className="shipMethodSelect full-width" >
                       <div className="title">Ship to</div>
                       <div className="content">
-                          {paymentInfo?.optionalAddress ? paymentInfo?.optionalAddress + " " : ""}
-                          {paymentInfo?.streetAddress}
+                          {paymentInfo?.line2 ? paymentInfo?.line2 + " " : ""}
+                          {paymentInfo?.line1}
                           {" "}
                           {paymentInfo?.city}
                           {" "}
-                          {paymentInfo?.province}
+                          {paymentInfo?.state}
                           {" "}
-                          {paymentInfo?.postalCode}
+                          {paymentInfo?.postal_code}
                           {", Canada"}
                           {paymentInfo?.phoneNum ? ", " + paymentInfo?.phoneNum: ""}
                           
@@ -151,12 +174,12 @@ export default function PaymentForm(props) {
                   </Col>
                 </Form.Row>
                </Form.Group>
-              <Form.Group id="streetAddress">
-                <Form.Control type="text" placeholder="Street Address *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.streetAddress : billingInfo?.streetAddress || ""} onChange={e => setBillingInfo({...billingInfo, streetAddress: e.target.value})} required />
+              <Form.Group id="line1">
+                <Form.Control type="text" placeholder="Street Address *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.line1 : billingInfo?.line1 || ""} onChange={e => setBillingInfo({...billingInfo, line1: e.target.value})} required />
               </Form.Group>
 
               <Form.Group id="aptAddress">
-                <Form.Control type="text" placeholder="Apt #, Floor, etc. (optional)" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.optionalAddress : billingInfo?.optionalAddress || ""} onChange={e => setBillingInfo({...billingInfo, optionalAddress: e.target.value})} />
+                <Form.Control type="text" placeholder="Apt #, Floor, etc. (optional)" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.line2 : billingInfo?.line2 || ""} onChange={e => setBillingInfo({...billingInfo, line2: e.target.value})} />
               </Form.Group>
 
               <Form.Group id="city">
@@ -173,12 +196,12 @@ export default function PaymentForm(props) {
                   </Form.Group>
                 </Col>
                 <Col>
-                  <Form.Group id="province">
+                  <Form.Group id="state">
                     <Form.Label>
                       Province *
-                      <select className="form-control" id="province" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.province : billingInfo?.province || ""} onChange={e => setBillingInfo({...billingInfo, province: e.target.value})}>
-                        {CANADA_PROVINCES.map((province, index) => 
-                          <option key={index} value={province.id}>{province.name}</option>)}
+                      <select className="form-control" id="state" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.state : billingInfo?.state || ""} onChange={e => setBillingInfo({...billingInfo, state: e.target.value})}>
+                        {CANADA_PROVINCES.map((state, index) => 
+                          <option key={index} value={state.id}>{state.name}</option>)}
                       </select>
                     </Form.Label>
                   </Form.Group>
@@ -186,7 +209,7 @@ export default function PaymentForm(props) {
                 <Form.Group id="postal">
                   <Form.Label>
                     Postal Code *
-                    <Form.Control type="text" placeholder="XXX XXX" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.postalCode : billingInfo?.postalCode || ""} onChange={e => setBillingInfo({...billingInfo, postalCode: e.target.value})} required />
+                    <Form.Control type="text" placeholder="XXX XXX" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.postal_code : billingInfo?.postal_code || ""} onChange={e => setBillingInfo({...billingInfo, postal_code: e.target.value})} required />
                   </Form.Label>
                 </Form.Group>
               </Form.Row>

@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Prompt, useHistory } from 'react-router-dom';
 import PaymentForm from "./Forms/PaymentForm";
 import ShippingForm from './Forms/ShippingForm';
 import InformationForm from './Forms/InformationForm';
@@ -38,6 +38,19 @@ export default function CheckoutPage() {
         dispatch(getShippingOptions());
     }, [cart?.items]);
 
+    const alertUser = (e) => {     
+        e.preventDefault();
+        e.returnValue = "";
+    };
+
+    useEffect(() => {
+        window.addEventListener("beforeunload", alertUser);
+        return () => {
+          window.removeEventListener("beforeunload", alertUser);
+        };
+      }, []);
+      
+
     const appearance = {
         theme: 'stripe',
     };
@@ -49,6 +62,10 @@ export default function CheckoutPage() {
 
     return (
         <div className="marginTop paddingHorizontal checkoutPage">
+            <Prompt
+                when={paymentInfo !== undefined}
+                message={"Changes you made may not be saved."}
+            />
             <span className="stageText" onClick={() => history.push(CartsPageRoute)}>Cart</span>
             <i className="fas fa-chevron-right" />
             <span className={stage === 0 ? "stageText selected" : "stageText"} onClick={() => setStage(0)}>Information</span>
@@ -136,7 +153,7 @@ export default function CheckoutPage() {
                         <div className="totalPriceText">{"CAD $" + 
                             (stage === 2
                                 ? payments?.totalAmount
-                                : cart?.total + (estTax ?? 0) + (shipOrder ? payments?.shippingOptions?.[deliveryChoice]?.rate : 0)).toFixed(2)}
+                                : cart?.total + (estTax ?? 0) + (shipOrder ? payments?.shippingOptions?.[deliveryChoice]?.rate : 0))?.toFixed(2)}
                         </div>
                     </div>
                 </Col>

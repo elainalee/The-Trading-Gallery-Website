@@ -46,14 +46,14 @@ export default function ShippingForm(props) {
                         <div className="shipMethodSelect full-width" >
                             <div className="title">Ship to</div>
                             <div className="content">
-                                {paymentInfo?.optionalAddress ? paymentInfo?.optionalAddress + " " : ""}
-                                {paymentInfo?.streetAddress}
+                                {paymentInfo?.line2 ? paymentInfo?.line2 + " " : ""}
+                                {paymentInfo?.line1}
                                 {" "}
                                 {paymentInfo?.city}
                                 {" "}
-                                {paymentInfo?.province}
+                                {paymentInfo?.state}
                                 {" "}
-                                {paymentInfo?.postalCode}
+                                {paymentInfo?.postal_code}
                                 {", Canada"}
                                 {paymentInfo?.phoneNum ? ", " + paymentInfo?.phoneNum: ""}
                                 </div>

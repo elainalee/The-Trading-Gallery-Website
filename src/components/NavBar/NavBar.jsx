@@ -32,14 +32,17 @@ function NavBar() {
     }
 
     const handleCartsClick = () => {
-        history.push(CartsPageRoute);
+        window.location.href = CartsPageRoute;
+        // history.push(CartsPageRoute);
     }
 
     const handleListingsClick = () => {
-        history.push(SellerPanelPageRoute);
+        window.location.href = SellerPanelPageRoute;
+        // history.push(SellerPanelPageRoute);
     }
 
-    function handleSectionClick() {
+    function handleSectionClick(url) {
+        window.location.href = url;
         window.scrollTo(0, 0);
         setMenuClicked(false);
     }
@@ -71,7 +74,7 @@ function NavBar() {
                 <ul className={menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
                     {MenuItems.map((item) => (
                             <li key={item.title}>
-                                <Link className={item.cName + " link"} to={item.url} onClick={handleSectionClick}>{item.title}</Link>
+                                <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
                             </li>
                         ))}
                 </ul>

@@ -13,13 +13,24 @@ import "./SellerPages.css";
 
 export default function AddListingPage(props) {
     const productId = props.match.params.productId;
-    console.log(productId);
 
     const [productInfo, setProductInfo] = useState({});
 
     useEffect(() => {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, [productId]);
+
+    const alertUser = (e) => {     
+        e.preventDefault();
+        e.returnValue = "";
+    };
+
+    useEffect(() => {
+        window.addEventListener("beforeunload", alertUser);
+        return () => {
+          window.removeEventListener("beforeunload", alertUser);
+        };
+    }, []);
 
     const dispatch = useDispatch();
 

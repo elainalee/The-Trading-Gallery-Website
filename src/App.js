@@ -36,7 +36,7 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, PaymentPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, PaymentPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute, ReceiptPageRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -147,9 +147,8 @@ function NavPages(props) {
         <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
 
         {/* Payment Pages */}
-        <LogInFirstRoute exact path={"/receipt"} component={ReceiptPage} />
+        <LogInFirstRoute exact path={"/receipt/:receiptId"} component={ReceiptPage} />
         <LogInFirstRoute exact path={CheckoutPageRoute} component={CheckoutPage} />
-        <LogInFirstRoute exact path={PaymentPageRoute} component={PaymentPage} />
 
       </div>
       <Footer />

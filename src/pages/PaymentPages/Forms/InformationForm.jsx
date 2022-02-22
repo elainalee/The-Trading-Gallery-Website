@@ -22,7 +22,7 @@ export default function InformationForm(props) {
         props.setPaymentInfo(paymentInfo);
         props.setShipOrder(shipOrder);
 
-        props.setEstTax(getTax(cart?.total, paymentInfo?.province));
+        props.setEstTax(getTax(cart?.total, paymentInfo?.state));
 
         props.setStage(props.stage + 1);
     }
@@ -59,7 +59,7 @@ export default function InformationForm(props) {
                                 <i className="fas fa-truck" />
                                 Ship
                             </Col>
-                            <Col className={shipOrder ? "shipMethodSelect" : "shipMethodSelect selected"} onClick={() => { setShipOrder(false); setPaymentInfo({...paymentInfo, province: "BC"})}}>
+                            <Col className={shipOrder ? "shipMethodSelect" : "shipMethodSelect selected"} onClick={() => { setShipOrder(false); setPaymentInfo({...paymentInfo, state: "BC"})}}>
                                 <Form.Check className="check" type="radio" checked={!shipOrder} readOnly />
                                 <i className="fas fa-store" />
                                 Pick Up
@@ -83,12 +83,12 @@ export default function InformationForm(props) {
                             </Form.Row>
                         </Form.Group>
                         
-                        <Form.Group id="streetAddress">
-                            <Form.Control type="text" placeholder="Street Address *" value={paymentInfo?.streetAddress || ""} onChange={e => setPaymentInfo({...paymentInfo, streetAddress: e.target.value})} required />
+                        <Form.Group id="line1">
+                            <Form.Control type="text" placeholder="Street Address *" value={paymentInfo?.line1 || ""} onChange={e => setPaymentInfo({...paymentInfo, line1: e.target.value})} required />
                         </Form.Group>
 
                         <Form.Group id="aptAddress">
-                            <Form.Control type="text" placeholder="Apt #, Floor, etc. (optional)" value={paymentInfo?.optionalAddress || ""} onChange={e => setPaymentInfo({...paymentInfo, optionalAddress: e.target.value})} />
+                            <Form.Control type="text" placeholder="Apt #, Floor, etc. (optional)" value={paymentInfo?.line2 || ""} onChange={e => setPaymentInfo({...paymentInfo, line2: e.target.value})} />
                         </Form.Group>
 
                         <Form.Group id="city">
@@ -105,12 +105,12 @@ export default function InformationForm(props) {
                                 </Form.Group>
                             </Col>
                             <Col>
-                                <Form.Group id="province">
+                                <Form.Group id="state">
                                     <Form.Label>
                                         Province *
-                                        <select className="form-control" id="province" value={paymentInfo?.province || ""} onChange={e => setPaymentInfo({...paymentInfo, province: e.target.value})}>
-                                            {CANADA_PROVINCES.map((province, index) => 
-                                                <option key={index} value={province.id}>{province.name}</option>)}
+                                        <select className="form-control" id="state" value={paymentInfo?.state || ""} onChange={e => setPaymentInfo({...paymentInfo, state: e.target.value})}>
+                                            {CANADA_PROVINCES.map((state, index) => 
+                                                <option key={index} value={state.id}>{state.name}</option>)}
                                         </select>
                                     </Form.Label>
                                 </Form.Group>
@@ -118,7 +118,7 @@ export default function InformationForm(props) {
                             <Form.Group id="postal">
                                 <Form.Label>
                                     Postal Code *
-                                    <Form.Control type="text" placeholder="XXX XXX" value={paymentInfo?.postalCode || ""} onChange={e => setPaymentInfo({...paymentInfo, postalCode: e.target.value})} required />
+                                    <Form.Control type="text" placeholder="XXX XXX" value={paymentInfo?.postal_code || ""} onChange={e => setPaymentInfo({...paymentInfo, postal_code: e.target.value})} required />
                                 </Form.Label>
                             </Form.Group>
                         </Form.Row>

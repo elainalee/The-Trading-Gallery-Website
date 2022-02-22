@@ -84,6 +84,44 @@ export const getPaymentIntent = (paymentInfo, deliveryChoice) => async (
     }
 };
 
+// TODO : COMPLETE THIS
+export const generateReceipt = (clientSecret, billingAddress) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const state = getState();
+
+    console.log("client secret in generate ", clientSecret);
+    console.log("billingAddress  in generate ", billingAddress);
+
+    const url = BASE_URL + "/receipts/generateReceipt/" + clientSecret;
+
+    const payload = {
+      billingAddress: {
+        ...billingAddress,
+        country: "CA"
+      }
+    };
+
+    console.log("generateReceipt url: ", url);
+
+    const res = await client.post(url, payload);
+
+    console.log("res ", res);
+
+    const data = res.data;
+
+    console.log(data);
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("generateReceipt err :>> ", err?.response?.data?.error);
+    return err?.response?.data?.error;
+  }
+};
+
 
 export const getShippingOptions = () => async (
   dispatch,

@@ -7,7 +7,6 @@ import { addBlog, addUpdateSellerBlog } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
-import { formatGoogleDriveLink } from '../../utils/Helper';
 import "./SellerPages.css";
 
 export default function AddBlogPage(props) {
@@ -17,10 +16,20 @@ export default function AddBlogPage(props) {
 
     const [blogDetail, setBlogDetail] = useState(undefined);
 
-    console.log(blogDetail);
-
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const alertUser = (e) => {     
+        e.preventDefault();
+        e.returnValue = "";
+    };
+
+    useEffect(() => {
+        window.addEventListener("beforeunload", alertUser);
+        return () => {
+          window.removeEventListener("beforeunload", alertUser);
+        };
+    }, []);
 
     useEffect(() => {
         dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));
