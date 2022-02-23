@@ -21,7 +21,7 @@ export default function ReceiptPage(props) {
     return (
         <div className="marginTop receiptPage">
             Payment was successful!
-            <div>
+            <div className="section">
                 AMOUNT:
                 <div className="prices">
                     <div className="subpriceText">{"Subtotal"} </div>
@@ -41,15 +41,19 @@ export default function ReceiptPage(props) {
                 </div>
             </div>
 
-            <div>
+            <div className="section">
                 BILLING ADDRESS:
                 <div className="prices">
-                    <div className="subpriceText">{formatAddress(receiptDetail?.billingAddress)}</div>
+                    <div className="subpriceText">{receiptDetail?.billing_details?.name}</div>
+                    <div className="subpriceText">{receiptDetail?.billing_details?.email}</div>
+                    <div className="subpriceText">{receiptDetail?.billing_details?.phone}</div>
+
+                    <div className="subpriceText">{formatAddress(receiptDetail?.billing_details?.address)}</div>
                 </div>
             </div>
 
             {receiptDetail?.shippingChoice && (
-                <div>
+                <div className="section">
                     SHIPPING ADDRESS:
                     <div className="prices">
                         <div className="subpriceText">{formatAddress(receiptDetail?.shippingAddress)}</div>
@@ -58,7 +62,7 @@ export default function ReceiptPage(props) {
             )}
             
 
-            <div>
+            <div className="section">
                 PURCHASED ITEMS:
                 {receiptDetail?.products?.map((product, index) => (
                     <div key={index}>
@@ -68,7 +72,7 @@ export default function ReceiptPage(props) {
                 ))}
             </div>
 
-            <div>
+            <div className="section">
                 PICKUP/SHIPPING:
                 {receiptDetail?.shippingChoice
                     ? receiptDetail?.processed ? receiptDetail?.received ? "RECEIVED" : "SHIPPED" : "PROCESSING"

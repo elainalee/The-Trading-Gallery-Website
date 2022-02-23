@@ -55,7 +55,7 @@ export default function InformationForm(props) {
                     <Form.Group id="shipMethod">
                         <Form.Row>
                             <Col className={shipOrder ? "shipMethodSelect selected" : "shipMethodSelect"} onClick={() => setShipOrder(true)}>
-                                <Form.Check className="check" type="radio" checked={shipOrder} readOnly /> 
+                                <Form.Check className="check" type="radio" checked={shipOrder} defaultChecked readOnly /> 
                                 <i className="fas fa-truck" />
                                 Ship
                             </Col>
@@ -108,7 +108,7 @@ export default function InformationForm(props) {
                                 <Form.Group id="state">
                                     <Form.Label>
                                         Province *
-                                        <select className="form-control" id="state" value={paymentInfo?.state || ""} onChange={e => setPaymentInfo({...paymentInfo, state: e.target.value})}>
+                                        <select className="form-control" id="state" value={paymentInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setPaymentInfo({...paymentInfo, state: e.target.value})}>
                                             {CANADA_PROVINCES.map((state, index) => 
                                                 <option key={index} value={state.id}>{state.name}</option>)}
                                         </select>
@@ -143,7 +143,7 @@ export default function InformationForm(props) {
                         </div>
                         
 
-                        <div className="body consent"><Form.Check checked={props.checkedTerms} onClick={() => props.setCheckedTerms(!props.checkedTerms)} required/>By checking this box, I agree that I have read and agree to the above statement.</div>
+                        <div className="body consent"><Form.Check checked={props.checkedTerms} onChange={() => props.setCheckedTerms(!props.checkedTerms)} required/>By checking this box, I agree that I have read and agree to the above statement.</div>
 
                     </div>)}
 

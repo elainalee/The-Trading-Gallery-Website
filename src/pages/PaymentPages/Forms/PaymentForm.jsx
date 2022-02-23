@@ -198,7 +198,7 @@ export default function PaymentForm(props) {
                   <Form.Group id="state">
                     <Form.Label>
                       Province *
-                      <select className="form-control" id="state" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.state : billingInfo?.state || ""} onChange={e => setBillingInfo({...billingInfo, state: e.target.value})}>
+                      <select className="form-control" id="state" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.state : billingInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setBillingInfo({...billingInfo, state: e.target.value})}>
                         {CANADA_PROVINCES.map((state, index) => 
                           <option key={index} value={state.id}>{state.name}</option>)}
                       </select>
@@ -216,7 +216,7 @@ export default function PaymentForm(props) {
               {props.shipOrder && (
                 <Form.Group id="billingAddress">
                   <Form.Label className="sameAsShipping full-width" onClick={() => {setSameAsShipping(!sameAsShipping)}}>
-                      <Form.Check className="check" checked={sameAsShipping}/> 
+                      <Form.Check className="check" checked={sameAsShipping} readOnly/> 
                       Same as my shipping address
                   </Form.Label>
                 </Form.Group>
