@@ -22,7 +22,7 @@ export default function MyAccountPage(props) {
             <Row>
                 <Col md={3} className="selection">
                     {selections.map((selection, index) => (
-                        <div key={index} className="title" onClick={() => { history.push(MyAccountRoute + selection.route); }}>
+                        <div key={index} className="title links" onClick={() => { history.push(MyAccountRoute + selection.route); }}>
                             {selection.name}
                         </div>
                     ))}

@@ -7,9 +7,11 @@ import { LogInRoute } from '../utils/routes';
 export default function LogInFirstRoute({ component: Component, redirectTo, ...rest }) {
     const state = useSelector((state) => state);
 
+    console.log("redirectTo ", redirectTo);
+    
     return (
         <Route
-        //   exact
+          exact
           {...rest}
           render={(props) => (
             (state.auth.loggedInUser === false)

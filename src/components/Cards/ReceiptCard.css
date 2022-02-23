@@ -1,0 +1,25 @@
+/* ReceiptCard */
+.receiptCard {
+    margin-bottom: 20px;
+}
+
+.receiptCard .cardSubtitle {
+    margin-bottom: 7px;
+}
+
+.receiptCard .statusText {
+    display: inline;
+    font-weight: bold;
+}
+
+.receiptCard .processed {
+    color: green;
+}
+
+.receiptCard .received {
+    color: green;
+}
+
+.receiptCard .processing {
+    color: var(--primary-blue);
+}

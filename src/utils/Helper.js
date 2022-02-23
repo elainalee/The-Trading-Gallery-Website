@@ -18,5 +18,9 @@ export const getTax = (subtotalAmount, provinceID) => {
         }
     }
     return undefined;
-    // return subtotalAmount * 0.12;
+}
+
+export const formatDateToClient = (date) => {
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(date)?.toLocaleString('en-US', dateOptions);
 }
