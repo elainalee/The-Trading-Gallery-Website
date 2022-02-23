@@ -7,11 +7,15 @@ export const MainPageRoute = "/" ;
 export const CartsPageRoute = "/carts";
 
 // User Pages
+export const MyAccountRoute = "/my-account";
 export const ProfileRoute = "/profile-page";
 export const UpdateProfileRoute = "/update-profile";
 export const SignUpRoute = "/signUp";
 export const LogInRoute = "/logIn" ;
 export const PasswordResetRoute = "/password-reset" ;
+
+export const AccountInfoSubRoute = "/account-info";
+export const RecentOrdersSubRoute = "/recent-orders";
 
 // Seller Pages
 export const SellerPanelPageRoute = "/seller-panel";

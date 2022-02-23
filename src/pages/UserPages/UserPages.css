@@ -1,3 +1,5 @@
+/* Carts Page */
+
 .cartsPage {
     width: 100%;
     align-items: center;
@@ -54,8 +56,45 @@
     color: var(--primary-color);
 }
 
-@media screen and (max-width: 767px) {
+/* Profile Page */
+.myAccount {
+    width: 100%;
+}
 
+.myAccount .selection {
+    border-right: 1px solid var(--primary-light);
+    height: 100%;
+    text-align: end;
+}
+
+.myAccount .title {
+    font-family: 'Roboto Mono', 'Open Sans';
+    margin-bottom: 10px;
+}
+
+.myAccount .selection .title {
+    font-weight: 500;
+    text-align: end;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.myAccount .info .title {
+    border-bottom: 1px solid black;
+    font-weight: bold;
+
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.userPages {
+    margin: 0 5%;
+}
+
+
+
+@media screen and (max-width: 767px) {
     .cartsPage .title-section .image-width {
         /* width: 70px; */
         width: 0px;

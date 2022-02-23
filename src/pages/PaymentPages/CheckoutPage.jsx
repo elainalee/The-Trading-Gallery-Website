@@ -38,19 +38,6 @@ export default function CheckoutPage() {
         dispatch(getShippingOptions());
     }, [cart?.items]);
 
-    const alertUser = (e) => {     
-        e.preventDefault();
-        e.returnValue = "";
-    };
-
-    useEffect(() => {
-        window.addEventListener("beforeunload", alertUser);
-        return () => {
-          window.removeEventListener("beforeunload", alertUser);
-        };
-      }, []);
-      
-
     const appearance = {
         theme: 'stripe',
     };
@@ -73,7 +60,9 @@ export default function CheckoutPage() {
             <span className={stage === 1 ? "stageText selected" : "stageText"} onClick={() => setStage((paymentInfo && payments.shippingOptions && (shipOrder || checkedTerms)) ? 1 : stage)}>Shipping</span>
             <i className="fas fa-chevron-right" />
             <span className={stage === 2 ? "stageText selected" : "stageText"}>Payment</span>
-            <Row fluid={true}>
+            <Row 
+            // fluid={true}
+            >
                 <Col sm={6} md={8} className="order-last order-sm-first">
                     {stage === 1
                         ? <ShippingForm 

@@ -36,19 +36,18 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, PaymentPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute, ReceiptPageRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
 import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
 import ReceiptPage from './pages/PaymentPages/ReceiptPage';
-import PaymentPage from './pages/PaymentPages/PaymentPage';
 import CheckoutPage from './pages/PaymentPages/CheckoutPage';
-import Marquee from './components/Utils/Marquee';
 import LogInFirstRoute from './RoutesManager/LogInFirstRoute';
 import { getBestSellers, getProducts } from './reducers/productsReducer';
 import { getBlogs } from './reducers/blogsReducer';
 import { getCart, getCartTotal } from './reducers/cartReducer';
+import MyAccountPage from './pages/UserPages/MyAccount';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -105,10 +104,17 @@ function NavPages(props) {
         <Route exact path={MainPageRoute} component={MainPage} />
         <LogInFirstRoute exact path={CartsPageRoute} component={CartsPage} />
 
+        <LogInFirstRoute path={"/my-account"} redirectTo={"/my-account/account-info"} component={MyAccountPage} />
+        <LogInFirstRoute path={"/my-account/:type"} component={MyAccountPage} />
+
         <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
           <div className="w-100" style={{ maxWidth: '400px' }}>
             {/* User Pages */}
-            <EnsureUserRoute exact path={ProfileRoute} component={UserProfilePage} />
+          
+            {/* <LogInFirstRoute path={"/my-account/example"} component={UserProfilePage} /> */}
+            
+
+            <LogInFirstRoute exact path={ProfileRoute} component={UserProfilePage} />
             <EnsureUserRoute exact path={UpdateProfileRoute} component={UpdateProfile} />
 
             {/* Seller Pages */}

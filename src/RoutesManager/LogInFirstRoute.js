@@ -4,19 +4,18 @@ import { Route, Redirect, Link } from 'react-router-dom';
 import { LOGIN_AS_USER_FOR_ACCESS } from '../utils/constants';
 import { LogInRoute } from '../utils/routes';
 
-export default function LogInFirstRoute({ component: Component, ...rest }) {
+export default function LogInFirstRoute({ component: Component, redirectTo, ...rest }) {
     const state = useSelector((state) => state);
 
     return (
         <Route
-          exact
+        //   exact
           {...rest}
           render={(props) => (
             (state.auth.loggedInUser === false)
-                ? (
-                <div className="marginTop marginHorizontal cartsPage">
+                ? (<div className="marginTop marginHorizontal cartsPage">
                     <div className="freeShipping">
-                        Please <Link to={LogInRoute} className="links underline">log in</Link> first to use carts.
+                        Please <Link to={LogInRoute} className="links underline">log in</Link> to review this section.
                     </div>
                 </div>)
                 : (state.auth.loggedInSeller)
@@ -27,7 +26,9 @@ export default function LogInFirstRoute({ component: Component, ...rest }) {
                             </div>
                         </div>
                     )
-                    : (<Component {...props} />)
+                    : redirectTo
+                        ? <Redirect to={redirectTo} />
+                        : (<Component {...props} />)
               
             )}
         />

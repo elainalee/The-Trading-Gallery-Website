@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react';
 import {
- Form, Button, Card, Alert,
+ Form, Button, Card, Alert, Col,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -33,10 +33,6 @@ export default function UpdateProfile() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-        //     return setError('Passwords do not match');
-        // }
-
         setLoading(true);
         setError('');
 
@@ -62,38 +58,41 @@ export default function UpdateProfile() {
 
     return (
         <div className="userPages">
-          <Card>
-              <Card.Body>
-                  <h2 className="text-center mb-4">Update Profile</h2>
-                  {error && <Alert variant="danger">{error}</Alert>}
-                  <Form onSubmit={handleSubmit}>
-                      <Form.Group id="first-name">
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control type="text" ref={firstNameRef} required defaultValue={currentUser.firstName} />
-                      </Form.Group>
-                      <Form.Group id="last-name">
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control type="text" ref={lastNameRef} required defaultValue={currentUser.lastName} />
-                      </Form.Group>
-                      <Form.Group id="email">
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control type="email" ref={emailRef} required defaultValue={currentUser.email} />
-                      </Form.Group>
-                      {/* <Form.Group id="password">
-                          <Form.Label>Password</Form.Label>
-                          <Form.Control type="password" ref={passwordRef} placeholder="Leave blank to keep the same" />
-                      </Form.Group>
-                      <Form.Group id="password-confirm">
-                          <Form.Label>Password Confirmation</Form.Label>
-                          <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
-                      </Form.Group> */}
-                      <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">Update</CustomButton>
-                  </Form>
-              </Card.Body>
-          </Card>
-          <div className="w-100 text-center mt-2 links">
-              <CustomButton buttonStyle="link" onClick={goToUserProfile} marginTop="10px">Cancel</CustomButton>
-          </div>
+            <div className="title">{"Account Information"}</div>
+
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleSubmit}>
+                
+                <Form.Group id="name">
+                    <Form.Row>
+                        <Col>
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="text" ref={firstNameRef} required defaultValue={currentUser?.firstName} />
+                        </Col>
+                        <Col>
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" ref={lastNameRef} required defaultValue={currentUser?.lastName} />
+                            </Col>
+                    </Form.Row>
+                </Form.Group>
+
+                <Form.Group id="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" ref={emailRef} required defaultValue={currentUser?.email} />
+                </Form.Group>
+                {/* <Form.Group id="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" ref={passwordRef} placeholder="Leave blank to keep the same" />
+                </Form.Group>
+                <Form.Group id="password-confirm">
+                    <Form.Label>Password Confirmation</Form.Label>
+                    <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
+                </Form.Group> */}
+                    <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="30px" >Update</CustomButton>
+                </Form>
+            <div className="w-100 text-center mt-2 links">
+                <CustomButton buttonStyle="link" onClick={goToUserProfile} marginTop="15px">Cancel</CustomButton>
+            </div>
         </div>
     );
 }
