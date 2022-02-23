@@ -84,28 +84,17 @@ export const getPaymentIntent = (paymentInfo, deliveryChoice) => async (
     }
 };
 
-export const generateReceipt = (clientSecret, billingAddress) => async (
+export const generateReceipt = (clientSecret) => async (
   dispatch,
   getState
 ) => {
   try {
     const state = getState();
 
-    // console.log("client secret in generate ", clientSecret);
-    // console.log("billingAddress  in generate ", billingAddress);
-
     const url = BASE_URL + "/receipts/generateReceipt/" + clientSecret;
 
-    const payload = {
-      billingAddress: {
-        ...billingAddress,
-        country: "CA"
-      }
-    };
 
-    // console.log("generateReceipt url: ", url);
-
-    const res = await client.post(url, payload);
+    const res = await client.get(url);
 
     // console.log("res ", res);
 

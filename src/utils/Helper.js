@@ -24,3 +24,8 @@ export const formatDateToClient = (date) => {
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date)?.toLocaleString('en-US', dateOptions);
 }
+
+export const formatAddress = (addressObject) => {
+    return (addressObject?.line2 ? addressObject?.line2 + " " : "") + addressObject?.line1 + " " + addressObject?.city
+        + " " + addressObject?.state + " " + addressObject?.postal_code + ", " + addressObject?.country;
+}

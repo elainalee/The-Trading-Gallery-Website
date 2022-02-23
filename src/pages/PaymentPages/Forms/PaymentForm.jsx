@@ -8,12 +8,11 @@ import CustomButton from '../../../components/Buttons/CustomButton';
 
 import LoadingBox from "../../../components/Utils/LoadingBox";
 import { useDispatch, useSelector } from 'react-redux';
-
-import './PaymentForms.css';
 import { Col, Form } from 'react-bootstrap';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
 import { generateReceipt } from '../../../reducers/paymentReducer';
-import { ERROR } from '../../../utils/constants';
+
+import './PaymentForms.css';
 
 
 export default function PaymentForm(props) {
@@ -77,27 +76,39 @@ export default function PaymentForm(props) {
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://thetradinggallery.ca",
-            redirect: "if_required"
-          },
-        }).then(function(result) {
-          if (result?.error?.payment_intent) {
-            dispatch(generateReceipt(result.error.payment_intent.id, sameAsShipping ? paymentInfo : billingInfo)).then((res) => {
-              if (res === ERROR) {
-                setMessage("Sorry, an error occured. Please contact hello@thetradinggallery with your payment number: " + result.error.payment_intent.id);
-              } else {
-                window.location.href = "receipt/" + res;
+            return_url: "http://thetradinggallery.ca/my-account/recent-orders",
+            payment_method_data: {
+              billing_details: {
+                address: {
+                  city: sameAsShipping ? paymentInfo?.city : billingInfo?.city,
+                  country: "CA",
+                  line1: sameAsShipping ? paymentInfo?.line1 : billingInfo?.line1,
+                  line2: sameAsShipping ? paymentInfo?.line2 : billingInfo?.line2,
+                  postal_code: sameAsShipping ? paymentInfo?.postal_code : billingInfo?.postal_code,
+                  state: sameAsShipping ? paymentInfo?.state : billingInfo?.state,
+                },
+                email: paymentInfo?.email ?? user?.user?.email,
+                name: sameAsShipping ? (paymentInfo?.firstName + " " + paymentInfo?.lastName) : (billingInfo?.firstName + " " + billingInfo?.lastName),
+                phone: paymentInfo?.phoneNum,
               }
-            });
-          } else {
+            }
+          },
+          redirect: "if_required"
+        }).then(function(result) {
+          if (result?.error) {
             const error = result.error;
             if (error.type === "card_error" || error.type === "validation_error") {
               setMessage(error.message);
+            } else if (error.code === "payment_intent_unexpected_state") {
+              setMessage("Sorry, an error occured. Please check if your order has been placed at 'thetradinggallery.ca/my-account/recent-orders'. If your card has been charged but is not under the orders, please contact hello@thetradinggallery with your payment ID: " + error.payment_intent.id);
             } else {
-              setMessage("An unexpected error occured.");
+              setMessage("An unexpected error occured. Please try again.");
             }
+          } else {
+            dispatch(generateReceipt(result.paymentIntent.id, sameAsShipping ? paymentInfo : billingInfo)).then((res) => {
+              window.location.href = "receipt/" + res;
+            });
           }
-          
         });
 
         setIsLoading(false);

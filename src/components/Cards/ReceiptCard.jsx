@@ -44,7 +44,7 @@ export default function ReceiptCard(props) {
                             <div className={`statusText ${receiptInfo?.processed ? "processed" : receiptInfo?.received ? "received" : "processing" }`}>
                                 {receiptInfo?.shippingChoice
                                     ? receiptInfo?.processed ? receiptInfo?.received ? "RECEIVED" : "SHIPPED" : "PROCESSING"
-                                    : receiptInfo?.processed ? receiptInfo?.received ? "PICKED UP" : "READY FOR PICKUP" : "PROCESSING"}
+                                    : receiptInfo?.processed ? receiptInfo?.received ? "PICKED UP" : "READY FOR PICKUP" : "PROCESSING FOR PICKUP"}
                             </div>
                         </Card.Subtitle>
                         : <PlaceholderBox page={false} size="subtitle" />}

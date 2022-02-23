@@ -27,7 +27,6 @@
     border-bottom: 1px solid var(--primary-light);
     padding-bottom: 20px;
     margin-bottom: 15px;
-
 }
 
 .checkoutPage .prices {
@@ -51,6 +50,23 @@
 .checkoutPage .totalPriceText {
     font-weight: 500;
 }
+
+/* Receipt Page */
+.receiptPage {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.receiptPage .prices {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.receiptPage .subpriceText {
+    font-size: 16px;
+}
+
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
     .checkoutPage .carts {

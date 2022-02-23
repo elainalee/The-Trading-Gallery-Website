@@ -101,4 +101,8 @@
     flex-direction: row;
 }
 
-
+.paymentForm .payment-message {
+    font-size: 15px;
+    font-weight: 500;
+    
+}

@@ -110,10 +110,6 @@ function NavPages(props) {
         <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
           <div className="w-100" style={{ maxWidth: '400px' }}>
             {/* User Pages */}
-          
-            {/* <LogInFirstRoute path={"/my-account/example"} component={UserProfilePage} /> */}
-            
-
             <LogInFirstRoute exact path={ProfileRoute} component={UserProfilePage} />
             <EnsureUserRoute exact path={UpdateProfileRoute} component={UpdateProfile} />
 
