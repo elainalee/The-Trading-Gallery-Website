@@ -9,8 +9,10 @@ import { CustomButton } from '../../components/Buttons/CustomButton';
 import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
 
-import '../../utils/globalStyles.css';
 import { ProfileRoute } from '../../utils/routes';
+
+import '../../utils/globalStyles.css';
+import './UserPages.css';
 
 export default function UpdateProfile() {
     const emailRef = useRef();

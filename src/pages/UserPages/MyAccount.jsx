@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { Card, Container, Alert, Row, Col } from 'react-bootstrap';
 
-import '../../utils/globalStyles.css';
-import './UserPages.css';
 import UpdateProfile from './UpdateProfile';
 import RecentOrders from './RecentOrders';
 import { Redirect, useHistory } from 'react-router-dom';
 import { AccountInfoSubRoute, MyAccountRoute, RecentOrdersSubRoute } from '../../utils/routes';
 import { useDispatch, useSelector } from 'react-redux';
+
+import '../../utils/globalStyles.css';
+import './UserPages.css';
 
 export default function MyAccountPage(props) {
     const type = '/' + props?.match?.params?.type;

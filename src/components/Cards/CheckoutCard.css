@@ -14,6 +14,12 @@
     padding-left: 20px;
 }
 
+.checkoutCard .section-md {
+    flex: 3;
+
+    margin: 0px 10px;
+}
+
 .checkoutCard .section-sm {
     flex: 1;
 
@@ -22,6 +28,10 @@
 
 .checkoutCard .image {   
     background-color: var(--primary-light);
+    width: 65px;
+}
+
+.checkoutCard .image-width {
     width: 65px;
 }
 

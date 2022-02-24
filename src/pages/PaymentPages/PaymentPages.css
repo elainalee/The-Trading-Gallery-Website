@@ -53,13 +53,65 @@
 
 /* Receipt Page */
 .receiptPage {
-    padding-left: 10%;
-    padding-right: 10%;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .receiptPage .section {
-    padding-top: 5%;
-    padding-bottom: 5%;
+    margin-bottom: 30px;
+}
+
+.receiptPage .items  {
+    padding-top: 50px;
+}
+
+.receiptPage .line {
+    padding-bottom: 3px;
+}
+
+.receiptPage .title {
+    font-weight: 500;
+}
+
+.receiptPage .main-title {
+    border-bottom: 1px solid black;
+    font-weight: bold;
+
+    font-family: 'Roboto Mono', 'Open Sans';
+
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 20px;
+
+}
+
+.receiptPage .line {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.receiptPage .statusText {
+    font-weight: bold;
+}
+
+.receiptPage .line .processed {
+    color: green;
+}
+
+.receiptPage .line .received {
+    color: green;
+}
+
+.receiptPage .line .processing {
+    color: var(--primary-blue);
+}
+
+.receiptPage .line .unpaid {
+    color: red;
 }
 
 
@@ -68,6 +120,25 @@
     flex-direction: row;
     /* justify-content: space-between; */
 }
+
+.receiptPage .priceline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.receiptPage .orderTotal {
+    font-size: 17px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--primary-light);
+}
+
+
+
+
 
 .receiptPage .subpriceText {
     font-size: 16px;

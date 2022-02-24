@@ -30,31 +30,54 @@ export default function CheckoutCard(props) {
         <div className={hasGrayBorderBottom ? "checkoutCard grayBorderBottom" : "checkoutCard"}>            
             <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
                 <div className="section-sm">
-                    {productInfo?.mainImage
-                        ? (<Card.Img
-                            className="image"
-                            src={productInfo?.mainImage}
-                            alt="product-image"
-                        />)
+                    {props.title
+                        ? <div className="image-width title">Item</div>
+                        : productInfo?.mainImage
+                            ? (<Card.Img
+                                className="image"
+                                src={productInfo?.mainImage}
+                                alt="product-image"
+                            />)
                         : <div className="placeholder" />
                     }
                 </div>
             </Link>
 
             <div className="section-lg">
-                {<Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
-                    {productInfo?.title
-                        ? <Card.Title className="title">{productInfo?.title}</Card.Title>
-                        : <PlaceholderBox size="title" />}
+                {props.title
+                    ? <div />
+                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+                        {productInfo?.title
+                            ? <Card.Title className="title">{productInfo?.title}</Card.Title>
+                            : <PlaceholderBox size="title" />}
 
-                    {productInfo?.brand
-                        ? <Card.Subtitle className="subtitle">{productInfo?.brand}</Card.Subtitle> 
-                        : <PlaceholderBox size="subtitle" />}
-                </Link>}
+                        {productInfo?.brand
+                            ? <Card.Subtitle className="subtitle">{productInfo?.brand}</Card.Subtitle> 
+                            : <PlaceholderBox size="subtitle" />}
+                    </Link>}
             </div>
 
+            {props.showQuantity && (
+                <div className="section-sm">
+                    {props.title
+                        ? <div className="title">Price</div>
+                        : productInfo?.price ? "$" + (productInfo?.price) : ""}
+
+                </div>
+            )}
+
+            {props.showQuantity && (
+                <div className="section-sm">
+                    {props.title
+                        ? <div className="title">Quantity</div>
+                        : productInfo?.quantity ? (quantity) : ""}
+                </div>
+            )}
+
             <div className="section-sm price">
-                {productInfo?.price ? "$" + (productInfo?.price * quantity) : ""}
+                {props.title
+                    ? <div className="title">Total</div>
+                    : productInfo?.price ? "$" + (productInfo?.price * quantity) : ""}
             </div>
             
         </div>

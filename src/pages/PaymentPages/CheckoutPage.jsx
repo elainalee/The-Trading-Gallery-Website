@@ -105,7 +105,7 @@ export default function CheckoutPage() {
                     <div className="items">
                         {cart?.items?.map((product, index) => (
                             <div key={index}>
-                                {!product.unselected && <CheckoutCard key={index} canModify={false} product={product} last={index == cart?.items?.length - 1}/>}
+                                {!product.unselected && <CheckoutCard key={index} product={product} last={index == cart?.items?.length - 1}/>}
                             </div>))}
                     </div>
                     <div className="prices">

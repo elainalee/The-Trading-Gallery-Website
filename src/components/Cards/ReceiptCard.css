@@ -20,6 +20,11 @@
     color: green;
 }
 
+.receiptCard .unpaid {
+    color: red;
+}
+
+
 .receiptCard .processing {
     color: var(--primary-blue);
 }
