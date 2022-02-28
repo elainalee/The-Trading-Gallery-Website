@@ -73,7 +73,7 @@ export default function CartCard(props) {
                 {props.title
                     ? <div className="title">Price</div>
                     : productInfo?.price
-                        ? <Card.Text className="body">{"$" + productInfo?.price}</Card.Text>
+                        ? <Card.Text className="price">{"$" + productInfo?.price}</Card.Text>
                         : <PlaceholderBox size="body" />}
             </div>
 
@@ -90,7 +90,7 @@ export default function CartCard(props) {
             <div className="section-sm">
                 {props.title
                     ? <div className="title">Total</div>
-                    : (productInfo?.price ? "$" + (productInfo?.price * quantity) : "")}
+                    : <Card.Text className="total">{(productInfo?.price ? "$" + (productInfo?.price * quantity) : "")}</Card.Text>}
             </div>
             
         </div>

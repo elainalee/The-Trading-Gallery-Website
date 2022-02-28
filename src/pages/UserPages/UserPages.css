@@ -61,10 +61,13 @@
     width: 100%;
 }
 
+.myAccount .row {
+    width: 100%;
+}
+
 .myAccount .selection {
     border-right: 1px solid var(--primary-light);
     height: 100%;
-    text-align: end;
 }
 
 .myAccount .title {
@@ -96,8 +99,34 @@
 
 @media screen and (max-width: 767px) {
     .cartsPage .title-section .image-width {
-        /* width: 70px; */
         width: 0px;
+    }
+
+    .cartsPage .cart-title {
+        display: none;
+    }
+
+    .cartsPage .freeShipping{
+        margin-bottom: 30px;
+    }
+
+    /* Profile Page */
+    .myAccount .selection {
+        border-right: none;
+    }
+
+    .myAccount .selection .title {
+        text-align: start;
+
+        padding-left: 8%;
+    }
+
+    .myAccount .info {
+        padding-top: 10%;
+    }
+
+    .userPages {
+        margin: 0 0 0 8%;
     }
     
 }

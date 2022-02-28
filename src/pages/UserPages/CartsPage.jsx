@@ -39,7 +39,7 @@ export default function CartsPage() {
 
                 <Row>
                     <Col md={9}>
-                        <CartCard title={true} />
+                        <div className="cart-title"><CartCard title={true} /></div>
                         {cart?.items?.map((product, index) => ( 
                             <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
                     </Col>

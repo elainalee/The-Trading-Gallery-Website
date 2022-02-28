@@ -22,7 +22,6 @@
     padding-bottom: 0px;
 }
 
-
 .chooseQuantity .box {
     padding: 10px;
     margin-bottom: 5px;
@@ -42,7 +41,6 @@
 .chooseQuantity .quantity-section {
     display: flex;
     align-items: center;
-
 }
 
 .chooseQuantity .section {
@@ -60,8 +58,8 @@
 
 .chooseQuantity .removeText {
     font-size: 14px;
-    color: var(--primary-dark);
-    cursor: pointer;
+    /* color: var(--primary-dark);
+    cursor: pointer; */
 }
 
 .chooseQuantity .addButton {
@@ -295,4 +293,7 @@
     }
 
     /* ChooseQuantity Box */
+    .chooseQuantity {
+        margin-top: 15px;
+    }
 }

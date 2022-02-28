@@ -19,8 +19,8 @@ export default function MyAccountPage(props) {
     const selections = [{ route: AccountInfoSubRoute, name: "Account Information" }, { route: RecentOrdersSubRoute, name: "Recent Orders" }];
 
     return (
-        <div className="marginTop myAccount">
-            <Row>
+        <div className="marginTop">
+            <Row className="myAccount">
                 <Col md={3} className="selection">
                     {selections.map((selection, index) => (
                         <div key={index} className="title links" onClick={() => { history.push(MyAccountRoute + selection.route); }}>

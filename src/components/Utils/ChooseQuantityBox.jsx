@@ -44,7 +44,7 @@ export default function ChooseQuantityBox(props) {
                     </div>
                 </div>
                 {!props.seperateButton && (
-                    <div className="removeText" onClick={props.handleRemoveButton}>Remove</div>
+                    <div className="removeText links" onClick={props.handleRemoveButton}>Remove</div>
                 )}
             </div>
         </div>

@@ -33,6 +33,7 @@ h2 {
 
 .links {
     color: black;
+    cursor: pointer;
 }
 
 .underline {
@@ -45,12 +46,13 @@ h2 {
 
 .disabledCursor { 
     cursor: default;
-  }
+}
 
 .marginLeft {
     margin-left: 80px;
 }
 
+/* avoid use => breaks mobile */
 .marginHorizontal {
     margin-left: 80px;
     margin-right: 80px;
