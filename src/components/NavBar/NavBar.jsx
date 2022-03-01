@@ -5,14 +5,16 @@ import UserButton from '../Buttons/UserButton';
 import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
 import logoName from '../../assets/TTG-logo-w-text.png';
-import './NavBarBottom.css';
-import './NavBarTop.css';
 
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
 import Marquee from '../Utils/Marquee';
 import CartPopUp from '../Utils/CartPopUp';
 import { Modal } from 'react-bootstrap';
+
+import './NavBarBottom.css';
+import './NavBarTop.css';
+import './NavBarModal.css';
 
 
 function NavBar() {
@@ -48,13 +50,27 @@ function NavBar() {
         setMenuClicked(false);
     }
 
-    const [show, setShow] = useState(false);
-
     return (
         <div className="navBar">
-            <Modal fullscreen="xl-down" show={menuClicked} onHide={() => setMenuClicked(false)}>
-                <Modal.Header closeButton>Header</Modal.Header>
-                <Modal.Body>jseiorucde9rc8ufe9 xD</Modal.Body>
+            <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={menuClicked} onHide={() => setMenuClicked(false)}>
+                <Modal.Header className="buttons-top">
+                    <IconButton buttonIcon="cancel-btn" buttonSize="navbar" color="black" onClick={() => handleMenuClick(false)} />
+                </Modal.Header>
+
+                <Modal.Body className="body">
+                    <ul className="nav-menu-items">
+                        {MenuItems.map((item) => (
+                            <li key={item.title}>
+                                <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
+                            </li>))}
+                    </ul>
+                </Modal.Body>
+                <Modal.Footer className="buttons-bottom">
+                    <UserButton menuClicked={menuClicked} setMenuClicked={setMenuClicked}/> 
+                    {currentSeller
+                        ? <IconButton buttonIcon="listings-btn" buttonSize="navbar" color="black" onClick={handleListingsClick} />
+                        : <IconButton buttonIcon="carts-btn" buttonSize="navbar" color="black" onClick={handleCartsClick} />}
+                </Modal.Footer>
             </Modal>
 
             <div className="hide-mobile">
@@ -67,10 +83,12 @@ function NavBar() {
                 </div>
 
                 <div className="nav-top-menu-items">
-                    {/* <IconButton buttonIcon={menuClicked ? 'hidden' : 'search-btn'} buttonSize="navbar" color="black" /> */}
-                    {currentSeller
-                        ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
-                        : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
+                    <div className="hide-mobile">
+                        {currentSeller
+                            ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
+                            : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
+                    </div>
+                    
                     <UserButton menuClicked={menuClicked} setMenuClicked={setMenuClicked}/>
                     <div className="menu-icon">
                         <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
@@ -79,12 +97,12 @@ function NavBar() {
             </nav>
 
             <nav className="NavBar-Bottom">
-                <ul className={menuClicked ? 'nav-bottom-menu-items expanded' : 'nav-bottom-menu-items'}>
+                <ul className="nav-bottom-menu-items">
                     {MenuItems.map((item) => (
-                            <li key={item.title}>
-                                <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
-                            </li>
-                        ))}
+                        <li key={item.title}>
+                            <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
 
