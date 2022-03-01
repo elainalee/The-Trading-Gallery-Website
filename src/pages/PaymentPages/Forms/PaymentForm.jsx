@@ -8,7 +8,7 @@ import CustomButton from '../../../components/Buttons/CustomButton';
 
 import LoadingBox from "../../../components/Utils/LoadingBox";
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Form } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
 import { generateReceipt } from '../../../reducers/paymentReducer';
 
@@ -163,55 +163,51 @@ export default function PaymentForm(props) {
               <div className="subtitleText">Enter the address that matches your card information.</div>
               <div className="section">
 
-              <Form.Group id="name">
-                <Form.Row>
-                  <Col>
-                    <Form.Control type="text" placeholder="First Name *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.firstName : billingInfo?.firstName || ""} onChange={e => setBillingInfo({...billingInfo, firstName: e.target.value})} required />
-                  </Col>
-                  <Col>
-                    <Form.Control type="text" placeholder="Last Name *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.lastName : billingInfo?.lastName || ""} onChange={e => setBillingInfo({...billingInfo, lastName: e.target.value})} required />
-                  </Col>
-                </Form.Row>
-               </Form.Group>
-              <Form.Group id="line1">
+              <Row className="mb-3">
+                <Form.Group id="first-name" as={Col}>
+                  <Form.Control type="text" placeholder="First Name *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.firstName : billingInfo?.firstName || ""} onChange={e => setBillingInfo({...billingInfo, firstName: e.target.value})} required />
+                </Form.Group>
+                <Form.Group id="last-name" as={Col}>
+                  <Form.Control type="text" placeholder="Last Name *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.lastName : billingInfo?.lastName || ""} onChange={e => setBillingInfo({...billingInfo, lastName: e.target.value})} required />
+                </Form.Group>
+              </Row>
+
+              <Form.Group id="line1" className="mb-3">
                 <Form.Control type="text" placeholder="Street Address *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.line1 : billingInfo?.line1 || ""} onChange={e => setBillingInfo({...billingInfo, line1: e.target.value})} required />
               </Form.Group>
 
-              <Form.Group id="aptAddress">
+              <Form.Group id="aptAddress" className="mb-3">
                 <Form.Control type="text" placeholder="Apt #, Floor, etc. (optional)" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.line2 : billingInfo?.line2 || ""} onChange={e => setBillingInfo({...billingInfo, line2: e.target.value})} />
               </Form.Group>
 
-              <Form.Group id="city">
+              <Form.Group id="city" className="mb-3">
                 <Form.Control type="text" placeholder="City *" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.city : billingInfo?.city|| ""} onChange={e => setBillingInfo({...billingInfo, city: e.target.value})} required />
               </Form.Group>
 
-              <Form.Row id="addressDetail">
-                <Col>
-                  <Form.Group id="country">
-                    <Form.Label>
-                      Country
-                      <Form.Control type="text" value="CANADA" disabled={true} />
-                    </Form.Label>
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group id="state">
-                    <Form.Label>
-                      Province *
-                      <select className="form-control" id="state" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.state : billingInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setBillingInfo({...billingInfo, state: e.target.value})}>
-                        {CANADA_PROVINCES.map((state, index) => 
-                          <option key={index} value={state.id}>{state.name}</option>)}
-                      </select>
-                    </Form.Label>
-                  </Form.Group>
-                </Col>
-                <Form.Group id="postal">
+              <Row id="addressDetail" className="mb-3">
+                <Form.Group id="country" as={Col}>
+                  <Form.Label>
+                    Country
+                    <Form.Control type="text" value="CANADA" disabled={true} />
+                  </Form.Label>
+                </Form.Group>
+                <Form.Group id="state" as={Col}>
+                  <Form.Label>
+                    Province *
+                    <select className="form-control" id="state" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.state : billingInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setBillingInfo({...billingInfo, state: e.target.value})}>
+                      {CANADA_PROVINCES.map((state, index) => 
+                        <option key={index} value={state.id}>{state.name}</option>)}
+                    </select>
+                  </Form.Label>
+                </Form.Group>
+                <Form.Group id="postal" as={Col}>
                   <Form.Label>
                     Postal Code *
                     <Form.Control type="text" placeholder="XXX XXX" disabled={sameAsShipping} value={sameAsShipping ? paymentInfo?.postal_code : billingInfo?.postal_code || ""} onChange={e => setBillingInfo({...billingInfo, postal_code: e.target.value})} required />
                   </Form.Label>
                 </Form.Group>
-              </Form.Row>
+              </Row>
+
 
               {props.shipOrder && (
                 <Form.Group id="billingAddress">

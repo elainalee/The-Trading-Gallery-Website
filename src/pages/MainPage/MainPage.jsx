@@ -6,8 +6,6 @@ import { getBestSellers, getProducts } from '../../reducers/productsReducer';
 import Footer from '../../components/Footer';
 import ProductsRow from '../../components/Rows/ProductsRow';
 
-import "./MainPage.css"
-import "../../utils/globalStyles.css";
 import BlogCard from '../../components/Cards/BlogCard';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
@@ -15,8 +13,9 @@ import { getBlogs } from '../../reducers/blogsReducer';
 import FeaturedCard from '../../components/Cards/FeaturedCard';
 import Banner from '../../components/Utils/Banner';
 import FeaturedRow from '../../components/Rows/FeaturedRow';
-import Marquee from '../../components/Utils/Marquee';
 
+import "./MainPage.css"
+import "../../utils/globalStyles.css";
 
 export default function MainPage() {
     const { products, blogs } = useSelector((state) => state);
@@ -29,8 +28,8 @@ export default function MainPage() {
 
 
     return (
-        <div className="mainPage">
-            <Row className="marginTop paddingHorizontalSm blogSection">
+        <div className="mainPage marginTop">
+            <Row className="paddingHorizontalSm blogSection">
                 <Col md={3} className="grayBorderRight">
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 1]} />
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 2]} />

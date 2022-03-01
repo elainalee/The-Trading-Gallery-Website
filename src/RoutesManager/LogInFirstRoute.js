@@ -7,7 +7,7 @@ import { LogInRoute } from '../utils/routes';
 export default function LogInFirstRoute({ component: Component, redirectTo, ...rest }) {
     const state = useSelector((state) => state);
 
-    console.log("redirectTo ", redirectTo);
+    // console.log("redirectTo ", redirectTo);
     
     return (
         <Route

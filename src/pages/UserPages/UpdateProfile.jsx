@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react';
 import {
- Form, Button, Card, Alert, Col,
+ Form, Alert, Col, Row,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -64,19 +64,18 @@ export default function UpdateProfile() {
 
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
-                
-                <Form.Group id="name">
-                    <Form.Row>
-                        <Col>
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control type="text" ref={firstNameRef} required defaultValue={currentUser?.firstName} />
-                        </Col>
-                        <Col>
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control type="text" ref={lastNameRef} required defaultValue={currentUser?.lastName} />
-                            </Col>
-                    </Form.Row>
-                </Form.Group>
+
+                <Row className="mb-3">
+                    <Form.Group id="first-name" as={Col}>
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="text" ref={firstNameRef} required defaultValue={currentUser?.firstName} />
+                    </Form.Group>
+
+                    <Form.Group id="last-name" as={Col}>
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control type="text" ref={lastNameRef} required defaultValue={currentUser?.lastName} />
+                    </Form.Group>
+                </Row>
 
                 <Form.Group id="email">
                     <Form.Label>Email</Form.Label>

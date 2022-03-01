@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import PlaceholderBox from "../Utils/PlaceholderBox";
-
-import "../../utils/globalStyles.css";
-import "./ProductCard.css";
 import { useSelector } from "react-redux";
 import { AddListingPageRoute } from "../../utils/routes";
 
+import "../../utils/globalStyles.css";
+import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
   const { seller } = useSelector((state) => state);
@@ -19,15 +18,14 @@ export default function ProductCard({ product }) {
   return (
     <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
       <Card className="productCard">
-        <div className="placeholder">
-          {product && (
-            <Card.Img
+        {product?.mainImage
+          ? <Card.Img
               className="image"
               variant="top"
               src={product?.mainImage}
               alt="product-image"
-            />)}
-        </div>
+            />
+          : <div className="placeholder"></div>}
       </Card>
       <Card.Body className="productCard">
         <div className="cardDescription">

@@ -40,6 +40,13 @@
 }
 
 @media screen and (max-width: 992px) {
+
+    .NavBar-Bottom {
+        display: none;
+    }
+
+
+
     .navBar .hide-full {
         display: inline;
     }

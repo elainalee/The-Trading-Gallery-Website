@@ -26,22 +26,22 @@ function Footer() {
                         <div className="subTitle">{TGG_CITY_POSTAL}</div>
                     </Col>
                     <Col md={2} lg={2} className="footerAbout">
-                        <ul className={tggSectionClicked ? "section-items expanded" : "section-items"}>
+                        <div className={tggSectionClicked ? "section-items expanded" : "section-items"}>
                             <div className="title" onClick={() => setTggSectionClicked(!tggSectionClicked)}>TGG<i className={"fas " + (tggSectionClicked ? "fa-angle-up" : "fa-angle-down")}></i></div>
                             <div className="section-item"><Link to={ShopPageRoute} onClick={moveToTop} className="link">Shop</Link></div>
                             <div className="section-item"><Link to={BlogsPageRoute} onClick={moveToTop} className="link">Blog</Link></div>
                             <div className="section-item"><Link to={AboutPageRoute} onClick={moveToTop} className="link">About</Link></div>
                             <div className="section-item"><Link to={ContactPageRoute} onClick={moveToTop} className="link">Contact</Link></div>
-                        </ul>
+                        </div>
                     </Col>
                     <Col md={2} lg={2} className="footerAbout">
-                        <ul className={infoSectionClicked ? "section-items expanded" : "section-items"}>
+                        <div className={infoSectionClicked ? "section-items expanded" : "section-items"}>
                             <div className="title" onClick={() => setInfoSectionClicked(!infoSectionClicked)}>INFO<i className={"fas " + (infoSectionClicked ? "fa-angle-up" : "fa-angle-down")}></i></div>
                             <div className="section-item"><Link to={ShippingReturnPageRoute} onClick={moveToTop} className="link">Shipping & Return</Link></div>
                             <div className="section-item"><Link to={AddressPickupRoute} onClick={moveToTop} className="link">Address & Pickup</Link></div>
                             <div className="section-item"><Link to={TermsOfUsePageRoute} onClick={moveToTop} className="link">Terms of Use</Link></div>
                             <div className="section-item"><Link to={PrivacyPolicyPageRoute} onClick={moveToTop} className="link">Privacy Policy</Link></div>
-                        </ul>
+                        </div>
                     </Col>
                 </Row>
             </div>

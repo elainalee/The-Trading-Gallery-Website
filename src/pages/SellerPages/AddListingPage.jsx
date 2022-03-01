@@ -69,13 +69,13 @@ export default function AddListingPage(props) {
                 <div className="productShowing marginHorizontal">
                 
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group id="titles">
+                        <Form.Group id="titles" className="mb-3">
                             <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
                         </Form.Group>
 
                         <Row>
-                            <Col>
-                                <Form.Group id="mainImage">
+                            <Col md={6} className="mb-5">
+                                <Form.Group id="mainImage" className="mb-3">
                                     <Form.Label>Main Image URL *</Form.Label>
                                     <Form.Control type="text" value={productInfo?.mainImage || ""} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
                                 </Form.Group>
@@ -86,28 +86,28 @@ export default function AddListingPage(props) {
                                     )}
                                 </div>
                             </Col>
-                            <Col>
-                                <Form.Group id="title">
+                            <Col md={6}>
+                                <Form.Group id="title" className="mb-3">
                                     <Form.Label>Product Name *</Form.Label>                        
                                     <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
                                 </Form.Group>
 
-                                <Form.Group id="brand">
+                                <Form.Group id="brand" className="mb-3">
                                     <Form.Label>Brand *</Form.Label>
                                     <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
                                 </Form.Group>
 
-                                <Form.Group id="title">
+                                <Form.Group id="title" className="mb-3">
                                     <Form.Label>Total Quantity *</Form.Label>                        
                                     <Form.Control type="number" min={0} value={productInfo?.quantity} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
                                 </Form.Group>
 
-                                <Form.Group id="price">
+                                <Form.Group id="price" className="mb-3">
                                     <Form.Label>Price *</Form.Label>
                                     <Form.Control type="number" min="0" value={productInfo?.price || ""} onChange={e => setProductInfo({...productInfo, price: e.target.value})} required />
                                 </Form.Group>
 
-                                <Form.Group id="description">
+                                <Form.Group id="description" className="mb-3">
                                     <Form.Label>Description *</Form.Label>
                                     <Form.Control as="textarea" type="text" style={{ height: '400px' }} value={productInfo?.description || ""} onChange={e => setProductInfo({...productInfo, description: e.target.value})} required />
                                 </Form.Group>

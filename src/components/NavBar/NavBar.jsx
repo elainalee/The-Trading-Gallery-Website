@@ -12,6 +12,7 @@ import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils
 import { useSelector } from 'react-redux';
 import Marquee from '../Utils/Marquee';
 import CartPopUp from '../Utils/CartPopUp';
+import { Modal } from 'react-bootstrap';
 
 
 function NavBar() {
@@ -47,8 +48,15 @@ function NavBar() {
         setMenuClicked(false);
     }
 
+    const [show, setShow] = useState(false);
+
     return (
         <div className="navBar">
+            <Modal fullscreen="xl-down" show={menuClicked} onHide={() => setMenuClicked(false)}>
+                <Modal.Header closeButton>Header</Modal.Header>
+                <Modal.Body>jseiorucde9rc8ufe9 xD</Modal.Body>
+            </Modal>
+
             <div className="hide-mobile">
                 <Marquee/>
             </div>

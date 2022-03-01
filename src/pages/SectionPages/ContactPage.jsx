@@ -69,16 +69,16 @@ export default function ContactPage() {
                     : (
                         <div>
                             <Row>
-                                <Col>
+                                <Col md={6} className="mb-3">
                                     <div className="title">We are here for you.</div>
                                     <div className="body">How can we help? Send us a message!</div>
 
                                     <div className="subtitle">{TGG_EMAIL}</div>
                                 </Col>
-                                <Col>
+                                <Col md={6}>
                                     {error && <Alert variant="danger">{error}</Alert>}
                                     <Form onSubmit={handleSubmit}>
-                                        <Form.Group id="name">
+                                        <Form.Group id="name" className="mb-3">
                                             <Row className="g-2">
                                                 <Col>
                                                     <Form.Label>First Name *</Form.Label>
@@ -91,17 +91,17 @@ export default function ContactPage() {
                                             </Row>
                                         </Form.Group>
 
-                                        <Form.Group id="email">
+                                        <Form.Group id="email" className="mb-3">
                                             <Form.Label>Email *</Form.Label>
                                             <Form.Control type="email" ref={emailRef} required />
                                         </Form.Group>
 
-                                        <Form.Group id="subject">
+                                        <Form.Group id="subject" className="mb-3">
                                             <Form.Label>Subject *</Form.Label>
                                             <Form.Control type="text" ref={subjectRef} required />
                                         </Form.Group>
 
-                                        <Form.Group id="message">
+                                        <Form.Group id="message" className="mb-3">
                                             <Form.Label>Message *</Form.Label>
                                             <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
                                         </Form.Group>

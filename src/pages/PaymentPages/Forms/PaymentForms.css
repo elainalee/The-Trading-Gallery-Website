@@ -15,9 +15,6 @@
     padding-bottom: 6%;
 }
 
-.paymentForms #addressDetail {
-    width: 100%;
-}
 
 .paymentForms .shipMethodSelect {
     display: flex;
@@ -99,6 +96,10 @@
 .paymentForms .pickupLocation .consent {
     display: flex;
     flex-direction: row;
+}
+
+.paymentForms .pickupLocation .consent .text {
+    margin-left: 5px;
 }
 
 .paymentForm .payment-message {

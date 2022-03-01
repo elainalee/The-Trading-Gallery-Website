@@ -28,20 +28,22 @@ export default function BlogCard(props) {
                 </div>
             )}
             <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
-                <div className="image-section">
-                    {blog 
-                        ? (<Card.Img
-                            className="image"
-                            src={blog?.mainImage}
-                            alt="blog-image"
-                        />)
-                    : (<div className="placeholder" />)}
-                </div>
+
+            <Card className="image-section">
+                {blog?.mainImage
+                    ? (<Card.Img
+                        className="image"
+                        src={blog?.mainImage}
+                        alt="blog-image"
+                    />)
+                : (<div className="placeholder" />)}
+            </Card>
+
                 <div className="title-section">
-                    {/* {props.blog?.title
+                    {blog?.title
                         ? <Card.Title className="title">{props.blog?.title}</Card.Title>
-                        : <placeholderBox page={false} size="title" />} */}
-                    <Card.Title className="title">{props.blog?.title}</Card.Title>
+                        : <placeholderBox page={false} size="title" />}
+                    {/* <Card.Title className="title">{props.blog?.title}</Card.Title> */}
                 </div>
             </div>
             

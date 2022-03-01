@@ -14,6 +14,10 @@
     /* height: 60px; */
 }
 
+.blogCard .image-section .image {
+    height: 100%;
+}
+
 .blogCard .sm .image-section .placeholder  {   
     height: 60px;
 }

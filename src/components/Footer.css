@@ -73,7 +73,8 @@
     
 
     .footerAbout .section-items .title {
-        padding-bottom: 0px;
+        padding-bottom: 2px;
+        margin-bottom: 10px;
         border-bottom: 1px solid var(--primary-light);
     }
 
@@ -90,6 +91,8 @@
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
+
+        margin-bottom: 15px;
     }
 
     .footerAbout .section-items.expanded .title {

@@ -73,7 +73,6 @@ export default function ProductsRow(props) {
                         <SwiperSlide key={index}><ProductCard product={product} /></SwiperSlide>
                     ))}
             </Swiper>
-            
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
                 <Row xs={1} md={2} lg={5} >
                     {productsToDisplay.map((product, index) => ( 

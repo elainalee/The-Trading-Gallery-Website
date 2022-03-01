@@ -9,11 +9,10 @@ import ShippingForm from './Forms/ShippingForm';
 import InformationForm from './Forms/InformationForm';
 import { CartsPageRoute } from '../../utils/routes';
 import CheckoutCard from '../../components/Cards/CheckoutCard';
+import { getShippingOptions } from '../../reducers/paymentReducer';
 
 import '../../utils/globalStyles.css';
 import './PaymentPages.css';
-import { getShippingOptions } from '../../reducers/paymentReducer';
-import { getTax } from '../../utils/Helper';
 
 // eslint-disable-next-line no-undef
 const stripePromise = loadStripe(process.env.REACT_APP_PK_KEY);
@@ -63,7 +62,7 @@ export default function CheckoutPage() {
             <Row 
             // fluid={true}
             >
-                <Col sm={6} md={8} className="order-last order-sm-first">
+                <Col md={8} className="order-last order-sm-first">
                     {stage === 1
                         ? <ShippingForm 
                             paymentInfo={paymentInfo} 
@@ -101,7 +100,7 @@ export default function CheckoutPage() {
                                 setCheckedTerms={setCheckedTerms}
                                 />}
                 </Col>
-                <Col sm={6} md={4} className="carts">
+                <Col md={4} className="carts">
                     <div className="items">
                         {cart?.items?.map((product, index) => (
                             <div key={index}>
