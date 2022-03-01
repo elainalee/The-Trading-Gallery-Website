@@ -15,7 +15,7 @@ export default function FeaturedRow(props) {
 
     return (
         <div className="featuredRow marginTop paddingHorizontalSm">
-            <div className="title paddingHorizontalSm">
+            <div className="title paddingHorizontalSm mb-3">
                 <div className="titleText">{props.title}</div>
                 <div className="selection">
                     <i className={"fas fa-angle-left " + (rowPage === 0 && "disable")} onClick={() => { if (rowPage > 0) setRowPage(rowPage - 1) }}/>

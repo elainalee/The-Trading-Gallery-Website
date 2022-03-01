@@ -19,16 +19,16 @@ export default function FeaturedCard({ product }) {
     return (
         <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
             <div className={"featuredCard"}>
-                <div className="image-section">
-                    {product 
+                <Card className="image-section">
+                    {product?.mainImage
                         ? (<Card.Img
                                 className="image"
                                 src={product?.mainImage}
                                 alt="product-image"
                         />)
-                    : (<div className="placeholder" />)
-                    }
-                </div>
+                    : (<div className="placeholder" />)}
+                </Card>
+
                 <div className="title-section">
                     {product?.title
                         ? <Card.Title className="title">{product?.title}</Card.Title>
