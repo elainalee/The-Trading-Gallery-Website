@@ -3,11 +3,12 @@ import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { AddBlogPageRoute } from "../../utils/routes";
+import PlaceholderBox from "../../components/Utils/PlaceholderBox";
 
 import "../../utils/globalStyles.css";
-import { AddBlogPageRoute } from "../../utils/routes";
-
 import './BlogCard.css';
+
 
 export default function BlogCard(props) {
     const { seller } = useSelector((state) => state);
@@ -40,10 +41,10 @@ export default function BlogCard(props) {
                 </Card>
 
                 <div className="title-section">
-                    {blog?.title
+                    {/* {blog?.title
                         ? <Card.Title className="title links">{props.blog?.title}</Card.Title>
-                        : <placeholderBox page={false} size="title" />}
-                    {/* <Card.Title className="title">{props.blog?.title}</Card.Title> */}
+                        : <PlaceholderBox page={false} size="title" />} */}
+                    <Card.Title className="title">{blog?.title}</Card.Title>
                 </div>
             </div>
             

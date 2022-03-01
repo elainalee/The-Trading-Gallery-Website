@@ -44,17 +44,17 @@
     font-weight: 500;
 }
 
-.blogCard .sm .title{
+.blogCard .sm .title {
     font-size: 15px;
     padding-left: 10px;
 }
 
-.blogCard .md .title{
+.blogCard .md .title {
     font-size: 20px;
     padding-top: 10px;
 }
 
-.blogCard .lg .title{
+.blogCard .lg .title {
     font-size: 25px;
     padding-top: 10px;
 }
