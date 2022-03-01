@@ -39,7 +39,8 @@
 }
 
 .blogCard .title {
-    color: black;
+    /* color: black; */
+    text-decoration: none;
     font-weight: 500;
 }
 

@@ -38,26 +38,27 @@ export default function CartCard(props) {
     const hasGrayBorderBottom = !props.last;
 
     return (
-        <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"}>            
-            <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+        <div className={hasGrayBorderBottom ? "cartCard grayBorderBottom" : "cartCard"} >       
+            <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
                 <div className="section-sm">
                     {props.title
                         ? <div className="image-width title">Item</div>
-                        : productInfo?.mainImage
-                            ? (<Card.Img
-                                className="image"
-                                src={productInfo?.mainImage}
-                                alt="product-image"
-                            />)
-                        : <div className="placeholder" />
-                    }
+                        : <Card className="image-section">
+                            {productInfo?.mainImage
+                                ? (<Card.Img
+                                    className="image"
+                                    src={productInfo?.mainImage}
+                                    alt="product-image"
+                                    />)
+                                : <div className="placeholder" />}
+                            </Card>}
                 </div>
             </Link>
 
             <div className="section-lg">
                 {props.title
                     ? <div />
-                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
                         {productInfo?.title
                             ? <Card.Title className="title">{productInfo?.title}</Card.Title>
                             : <PlaceholderBox size="title" />}

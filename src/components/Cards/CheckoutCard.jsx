@@ -27,8 +27,8 @@ export default function CheckoutCard(props) {
     const hasGrayBorderBottom = !props.last;
 
     return (
-        <div className={hasGrayBorderBottom ? "checkoutCard grayBorderBottom" : "checkoutCard"}>            
-            <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+        <div className={hasGrayBorderBottom ? "checkoutCard grayBorderBottom" : "checkoutCard"} >         
+            <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
                 <div className="section-sm">
                     {props.title
                         ? <div className="image-width title">Item</div>
@@ -46,7 +46,7 @@ export default function CheckoutCard(props) {
             <div className="section-lg">
                 {props.title
                     ? <div />
-                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`}>
+                    : <Link to={productInfo?._id ? `/product/${productInfo?._id}` : '#'} className={`links ${!productInfo && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
                         {productInfo?.title
                             ? <Card.Title className="title">{productInfo?.title}</Card.Title>
                             : <PlaceholderBox size="title" />}

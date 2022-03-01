@@ -17,7 +17,7 @@ export default function FeaturedCard({ product }) {
     const linkOnClick = currentSeller ? `${AddListingPageRoute}/${product?._id}` : product?._id ? `/product/${product?._id}` : '#';
 
     return (
-        <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
+        <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
             <div className={"featuredCard"}>
                 <Card className="image-section">
                     {product?.mainImage

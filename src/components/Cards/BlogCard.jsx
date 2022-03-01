@@ -21,7 +21,7 @@ export default function BlogCard(props) {
     const hasGrayBorderBottom = props.sm && !props.last;
 
     return (
-        <Link to={linkOnClick} className={`blogCard links ${!blog && "disabledCursor"}`}>
+        <Link to={linkOnClick} className={`blogCard links ${!blog && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
             {blog && currentSeller &&  (
                 <div className="blogType">
                     {blog.mainBlog ? "(main)": blog.subBlog ? "(sub)" : "-"}
@@ -29,19 +29,19 @@ export default function BlogCard(props) {
             )}
             <div className={sizeName + (hasGrayBorderBottom ? " grayBorderBottom" : "") + " gap"}>
 
-            <Card className="image-section">
-                {blog?.mainImage
-                    ? (<Card.Img
-                        className="image"
-                        src={blog?.mainImage}
-                        alt="blog-image"
-                    />)
-                : (<div className="placeholder" />)}
-            </Card>
+                <Card className="image-section">
+                    {blog?.mainImage
+                        ? (<Card.Img
+                            className="image"
+                            src={blog?.mainImage}
+                            alt="blog-image"
+                        />)
+                    : (<div className="placeholder" />)}
+                </Card>
 
                 <div className="title-section">
                     {blog?.title
-                        ? <Card.Title className="title">{props.blog?.title}</Card.Title>
+                        ? <Card.Title className="title links">{props.blog?.title}</Card.Title>
                         : <placeholderBox page={false} size="title" />}
                     {/* <Card.Title className="title">{props.blog?.title}</Card.Title> */}
                 </div>

@@ -16,7 +16,7 @@ export default function ProductCard({ product }) {
 
 
   return (
-    <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`}>
+    <Link to={linkOnClick} className={`links ${!product && "disabledCursor"}`} style={{ textDecoration: 'none' }}>
       <Card className="productCard">
         {product?.mainImage
           ? <Card.Img
