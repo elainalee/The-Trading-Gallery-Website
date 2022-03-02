@@ -45,10 +45,11 @@ export default function SignUpForm() {
         dispatch(signUp(userInfo))
             .then((res) => {
                 if (res === SUCCESS) {
-                    console.log("registered user");
+                    // console.log("registered user");
                     history.push(MyAccountRoute);
                 } else {
-                    console.log("error logging in.")
+                    setError(res);
+                    console.log("error signing up.")
                 }
                 setLoading(false);
             });
@@ -56,28 +57,32 @@ export default function SignUpForm() {
 
     return (
         <div className="signUpForm">
-            <h2 className="text-center mb-4">Sign Up</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
+
+            <div className="mb-4">
+            <h2 className="text-center">Sign Up</h2>
+                {error && <div className="failedMsg">{error + ". Please try again."}</div>}
+            </div>
+
             <Form onSubmit={handleSubmit}>
-                <Form.Group id="first-name" className="mb-3">
+                {/* <Form.Group id="first-name" className="mb-3">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text" ref={firstNameRef} required />
                 </Form.Group>
                 <Form.Group id="last-name" className="mb-3">
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control type="text" ref={lastNameRef} required />
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group id="email" className="mb-3">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" ref={emailRef} required />
                 </Form.Group>
                 <Form.Group id="password" className="mb-3">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" ref={passwordRef} required />
+                    <Form.Control type="password" ref={passwordRef} isInvalid={error} required />
                 </Form.Group>
                 <Form.Group id="password-confirm" className="mb-3">
                     <Form.Label>Password Confirmation</Form.Label>
-                    <Form.Control type="password" ref={passwordConfirmRef} required />
+                    <Form.Control type="password" ref={passwordConfirmRef} isInvalid={error} required />
                 </Form.Group>
                 <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px">Sign Up</CustomButton>
             </Form>

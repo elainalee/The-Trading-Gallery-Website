@@ -92,7 +92,7 @@ export const logInUser = (email, password) => async (dispatch, getState) => {
 
     } catch (err) {
         console.log("logInUser err :>> ", err?.response?.data?.error);
-        return ERROR;
+        return err?.response?.data?.error;
     }
 }
 
@@ -118,7 +118,7 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
 
     } catch (err) {
         console.log("logInSeller err :>> ", err?.response?.data?.error);
-        return ERROR;
+        return err?.response?.data?.error;
     }
 }
 
@@ -147,7 +147,8 @@ export const signUp = (userInfo) => async (dispatch, getState) => {
         return SUCCESS;
     } catch (err) {
         console.log("signUp err :>> ", err?.response?.data?.error);
-        return ERROR;
+        // return ERROR;
+        return err?.response?.data?.error;
     }
     
 }

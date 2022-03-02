@@ -10,6 +10,8 @@ import { logInUser, logInSeller } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
 import './SignInPages.css';
+import { PasswordResetRoute } from '../../utils/routes';
+import LoadingBox from '../../components/Utils/LoadingBox';
 
 export default function LogInForm() {
     const state = useSelector((state) => state);
@@ -36,6 +38,7 @@ export default function LogInForm() {
             if (res === SUCCESS) {
                 window.location.href = '/';
             } else {
+                setError(res);
                 console.log("error logging in.")
             }
             setLoading(false);
@@ -47,6 +50,7 @@ export default function LogInForm() {
                 console.log("signed in");
                 window.location.href = '/';
             } else {
+                setError(res);
                 console.log("error logging in.")
             }
             setLoading(false);
@@ -56,19 +60,33 @@ export default function LogInForm() {
 
     return (
         <div className="logInForm">
-            <h2 className="text-center mb-4">Log In</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
+            <div className="mb-4">
+                <h2 className="text-center">Log In</h2>
+                {error && <div className="failedMsg">{error + ". Please try again."}</div>}
+            </div>
+            
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="email" className="mb-3">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" ref={emailRef} required />
+                    <Form.Control type="email" ref={emailRef} isInvalid={error} required />
                 </Form.Group>
                 <Form.Group id="password" className="mb-3"> 
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" ref={passwordRef} required />
+                    <Form.Control type="password" ref={passwordRef} isInvalid={error} required />
                 </Form.Group>
-                <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">Log In</CustomButton>  
+
+                <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">
+                    <span id="button-text">
+                        {loading ? <LoadingBox text="" /> : "Log In"}
+                    </span>
+                </CustomButton>
+
             </Form>
+            <div className="w-100 text-center mt-4">
+              {/* Forgot password? */}
+              {' '}
+              <Link to={PasswordResetRoute} className="emphasis-links">Forgot your Password?</Link>
+          </div>
         </div>
     );
 }

@@ -30,21 +30,22 @@ export default function PasswordResetPage() {
     }
 
     return (
-        <div className="userPages">
+        <div className="marginTop">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Password Reset</h2>
                   {error && <Alert variant="danger">{error}</Alert>}
                   {message && <Alert variant="success">{message}</Alert>}
                   <Form onSubmit={handleSubmit}>
-                      <Form.Group id="email">
+                      <Form.Group id="email" className="mb-3">
                           <Form.Label>Email</Form.Label>
                           <Form.Control type="email" ref={emailRef} required />
                       </Form.Group>
                       <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="4px">Reset Password</CustomButton>
                   </Form>
                   <div className="w-100 text-center mt-4">
-                      <Link to={LogInRoute} className="links">Log in</Link>
+                      {' '}
+                      <Link to={LogInRoute} className="emphasis-links">Back to Log In</Link>
                   </div>
               </Card.Body>
           </Card>
