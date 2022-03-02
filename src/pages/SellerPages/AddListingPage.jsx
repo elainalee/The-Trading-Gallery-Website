@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/Buttons/CustomButton';
+import LoadingBox from '../../components/Utils/LoadingBox';
 import { getProductInfo } from '../../reducers/productsReducer';
 import { addSellerProduct, addUpdateSellerProduct } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
@@ -54,10 +55,11 @@ export default function AddListingPage(props) {
             ))
             .then((res) => {
             if (res === SUCCESS) {
-                console.log("product added");
+                // console.log("product added");
                 window.location.href = ShopPageRoute;
             } else {
-                console.log("error adding the product.")
+                setError(res);
+                // console.log("error adding the product.")
             }
             setLoading(false);
             });
@@ -67,7 +69,8 @@ export default function AddListingPage(props) {
         <div className="marginTop addPostPages addListingPage">
             <main>
                 <div className="productShowing marginHorizontal">
-                
+                {error && <div className="failedMsg">{error + ". Please try again."}</div>}
+
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="titles" className="mb-3">
                             <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
@@ -117,7 +120,11 @@ export default function AddListingPage(props) {
                                     <Form.Control type="text" ref={tagRef} required />
                                 </Form.Group> */}
                                 
-                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>Upload</CustomButton>
+                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>
+                                    <span id="button-text">
+                                        {loading ? <LoadingBox text="Uploading" /> : "Upload"}
+                                    </span>
+                                </CustomButton>
                             </Col>
                         </Row>
                     </Form>

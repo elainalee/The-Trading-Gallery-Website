@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/Buttons/CustomButton';
+import LoadingBox from '../../components/Utils/LoadingBox';
 import { getBlogDetail } from '../../reducers/blogsReducer';
 import { addBlog, addUpdateSellerBlog } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
+import { BlogsPageRoute } from '../../utils/routes';
 import "./SellerPages.css";
 
 export default function AddBlogPage(props) {
@@ -49,10 +51,11 @@ export default function AddBlogPage(props) {
             blogDetail?.subBlog))
             .then((res) => {
             if (res === SUCCESS) {
-                console.log("blog added");
-                window.location.href = '/';
+                // console.log("blog added");
+                window.location.href = BlogsPageRoute;
             } else {
-                console.log("error adding the blog.")
+                setError(res);
+                // console.log("error adding the blog.")
             }
             setLoading(false);
             });
@@ -62,11 +65,12 @@ export default function AddBlogPage(props) {
         <div className="marginTop addPostPages addBlogPage">
             <main>
                 <div className="productShowing marginHorizontal">
+                    {error && <div className="failedMsg">{error + ". Please try again."}</div>}
+
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="titles" className="mb-3">
                             <Form.Check type="checkbox" checked={blogDetail?.mainBlog} onChange={() => {setBlogDetail({...blogDetail, mainBlog: !blogDetail.mainBlog})}} label="Do you want this to be the new main blog?" />
                             <Form.Check type="checkbox" checked={blogDetail?.subBlog} onChange={() => {setBlogDetail({...blogDetail, subBlog: !blogDetail.subBlog})}} label="Do you want this to be the new sub blog?" />
-                            
                         </Form.Group>
 
                         <Row>
@@ -81,7 +85,6 @@ export default function AddBlogPage(props) {
                                         )}
                                     </div>
                             </Col>
-                            
 
                             <Col md={6}>
                                 <Form.Group id="title" className="mb-3">
@@ -93,7 +96,12 @@ export default function AddBlogPage(props) {
                                     <Form.Label>Body *</Form.Label>
                                     <Form.Control as="textarea" type="text" style={{ height: '400px' }}  value={blogDetail?.body || ""} onChange={e => setBlogDetail({...blogDetail, body: e.target.value})} required />
                                 </Form.Group>
-                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Upload</CustomButton>
+
+                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">
+                                    <span id="button-text">
+                                        {loading ? <LoadingBox text="Uploading" /> : "Upload"}
+                                    </span>
+                                </CustomButton>
                             </Col>
                         </Row>
 

@@ -9,11 +9,12 @@ import { CustomButton } from '../../components/Buttons/CustomButton';
 import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
 
-import { MainPageRoute } from '../../utils/routes';
+import { MainPageRoute, MyAccountRoute } from '../../utils/routes';
 
 import '../../utils/globalStyles.css';
 import './UserPages.css';
 import { logOut } from '../../reducers/authReducer';
+import LoadingBox from '../../components/Utils/LoadingBox';
 
 export default function UpdateProfile() {
     const emailRef = useRef();
@@ -47,8 +48,9 @@ export default function UpdateProfile() {
 
         dispatch(updateUser(userInfo))
             .then((res) => {
+                setLoading(false);
                 if (res === SUCCESS) {
-                    // history.push(ProfileRoute);
+                    window.location.href = MyAccountRoute;
                 } else {
                     setError(res);
                 }
@@ -72,7 +74,8 @@ export default function UpdateProfile() {
         <div className="userPages">
             <div className="title">{"Account Information"}</div>
 
-            {error && <Alert variant="danger">{error}</Alert>}
+            {/* {error && <Alert variant="danger">{error}</Alert>} */}
+            {error && <div className="failedMsg">{error + ". Please try again."}</div>}
             <Form onSubmit={handleSubmit}>
 
                 <Row className="mb-3">
@@ -99,11 +102,13 @@ export default function UpdateProfile() {
                     <Form.Label>Password Confirmation</Form.Label>
                     <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
                 </Form.Group> */}
-                    <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="30px" >Update</CustomButton>
+
+                    <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="30px">
+                        <span id="button-text">
+                            {loading ? <LoadingBox text="Updating" /> : "Update"}
+                        </span>
+                    </CustomButton>
                 </Form>
-            {/* <div className="w-100 text-center mt-2 links">
-                <CustomButton buttonStyle="link" onClick={goToUserProfile} marginTop="15px">Cancel</CustomButton>
-            </div> */}
 
             <div className="w-100 text-center mt-2 links">
             <CustomButton onClick={handleLogOut} buttonStyle="outline" buttonDetail="default-size" marginTop="15px">Log Out</CustomButton>
