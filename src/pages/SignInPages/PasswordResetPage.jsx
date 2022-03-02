@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/Buttons/CustomButton';
 
 import '../../utils/globalStyles.css';
-import { LogInRoute, SignUpRoute } from '../../utils/routes';
+import { LogInRoute } from '../../utils/routes';
 
 export default function PasswordResetPage() {
     const emailRef = useRef();
@@ -48,11 +48,11 @@ export default function PasswordResetPage() {
                   </div>
               </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
+          {/* <div className="w-100 text-center mt-2">
               Need an account?
               {' '}
               <Link to={SignUpRoute} className="links">Sign Up</Link>
-          </div>
+          </div> */}
         </div>
     );
 }

@@ -31,16 +31,26 @@ h2 {
     padding-bottom: 10px;
 }
 
-.links {
-    color: black;
-    cursor: pointer;
-}
-
 .underline {
     text-decoration: underline;
 }
 
+.links {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .links:hover {
+    color: var(--primary-color);
+}
+
+.emphasis_links {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+.emphasis_links:hover {
     color: var(--primary-color);
 }
 

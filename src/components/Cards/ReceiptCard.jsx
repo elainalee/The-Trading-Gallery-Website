@@ -28,7 +28,7 @@ export default function ReceiptCard(props) {
 
     
     return (
-        <Link to={`${ReceiptPageRoute}/${receiptID}`} className={"links"}>
+        <Link to={`${ReceiptPageRoute}/${receiptID}`} className={"links"} style={{ textDecoration: "none" }}>
             <Card className="receiptCard">
                 <Card.Body>
                     {receiptInfo?.createdAt

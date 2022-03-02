@@ -15,12 +15,11 @@ export default function ReceiptPage(props) {
 
     const [receiptDetail, setReceiptDetail] = useState(undefined);
 
-    console.log("receiptDetail" , receiptDetail);
+    // console.log("receiptDetail" , receiptDetail);
 
     useEffect(() => {
         dispatch(getReceiptDetail(receiptId)).then((res) => setReceiptDetail(res));
     }, [receiptId]);
-
 
     return (
         <div className="marginTop receiptPage">
@@ -34,17 +33,22 @@ export default function ReceiptPage(props) {
                     </Row>
                     <Row className="line">
                         <Col md={2} className="title">Order Date</Col>
-                        <Col className="detail">{formatDateToClient(receiptDetail?.createdAt)}</Col>
+                        {receiptDetail?.createdAt && (
+                            <Col className="detail">{formatDateToClient(receiptDetail?.createdAt)}</Col>
+                        )}
                     </Row>
                     <Row className="line">
                         <Col md={2} className="title">Status</Col>
-                        <Col className={`detail statusText ${receiptDetail?.paid ? receiptDetail?.processed ? "processed" : receiptDetail?.received ? "received" : "processing" : "unpaid"}`}>
-                            {receiptDetail?.paid
-                                ? receiptDetail?.shippingChoice
-                                    ? receiptDetail?.processed ? receiptDetail?.received ? RECEIVED : SHIPPED : PROCESSING
-                                    : receiptDetail?.processed ? receiptDetail?.received ? PICKED_UP : READY_FOR_PICKUP : PROCESSING
-                                : "NOT PAID"}
-                        </Col>
+                        {receiptDetail?.paid && (
+                            <Col className={`detail statusText ${receiptDetail?.paid ? receiptDetail?.processed ? "processed" : receiptDetail?.received ? "received" : "processing" : "unpaid"}`}>
+                                {receiptDetail?.paid
+                                    ? receiptDetail?.shippingChoice
+                                        ? receiptDetail?.processed ? receiptDetail?.received ? RECEIVED : SHIPPED : PROCESSING
+                                        : receiptDetail?.processed ? receiptDetail?.received ? PICKED_UP : READY_FOR_PICKUP : PROCESSING
+                                    : "NOT PAID"}
+                            </Col>
+                        )}
+                        
                     </Row>
                 </Col>
             </Row>
@@ -58,23 +62,26 @@ export default function ReceiptPage(props) {
 
                     <Row className="line">
                         <Col md={4} className="title">{receiptDetail?.shippingChoice ? "Ship To" : "Pick Up Location"}</Col>
-                        <Col md={6} className="detail">
-                            <div className="">{formatAddress(receiptDetail?.shipping_details?.address)}</div>
-                            <div className="">{receiptDetail?.billing_details?.phone}</div> 
-                        </Col>
+                        {receiptDetail?.shipping_details && (
+                            <Col md={6} className="detail">
+                                <div className="">{formatAddress(receiptDetail?.shipping_details?.address)}</div>
+                                <div className="">{receiptDetail?.shipping_details?.phone}</div> 
+                            </Col>
+                        )}
                     </Row>
 
-                    
                 </Col>
                 <Col>
                     <Row className="line">
                         <Col md={4} className="title">Billing Info</Col>
-                        <Col md={6} className="detail">
-                            <div>{receiptDetail?.billing_details?.name}</div>
-                            <div className="">{formatAddress(receiptDetail?.billing_details?.address)}</div>
-                            <div className="">{receiptDetail?.billing_details?.phone}</div>
-                            <div className="">{receiptDetail?.billing_details?.email}</div>
-                        </Col>
+                        {receiptDetail?.billing_details && (
+                            <Col md={6} className="detail">
+                                <div>{receiptDetail?.billing_details?.name}</div>
+                                <div className="">{formatAddress(receiptDetail?.billing_details?.address)}</div>
+                                <div className="">{receiptDetail?.billing_details?.phone}</div>
+                                <div className="">{receiptDetail?.billing_details?.email}</div>
+                            </Col>
+                        )}
                     </Row>
                 </Col>
             </Row>

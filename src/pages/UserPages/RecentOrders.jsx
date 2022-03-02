@@ -12,7 +12,7 @@ export default function RecentOrders(props) {
     const state = useSelector((state) => state);
     const currentUser = state.user?.user;
 
-    console.log(currentUser?.receipts);
+    // console.log(currentUser?.receipts);
 
 
     return (

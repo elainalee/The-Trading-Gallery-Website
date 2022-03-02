@@ -8,9 +8,9 @@ export const CartsPageRoute = "/carts";
 
 // User Pages
 export const MyAccountRoute = "/my-account";
-export const ProfileRoute = "/profile-page";
-export const UpdateProfileRoute = "/update-profile";
-export const SignUpRoute = "/signUp";
+//export const ProfileRoute = "/profile-page";
+// export const UpdateProfileRoute = "/update-profile";
+// export const SignUpRoute = "/signUp";
 export const LogInRoute = "/logIn" ;
 export const PasswordResetRoute = "/password-reset" ;
 

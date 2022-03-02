@@ -13,6 +13,3 @@ export const RECEIVED = "RECEIVED";
 export const READY_FOR_PICKUP = "READY FOR PICKUP";
 export const PICKED_UP = "PICKED UP";
 export const SHIPPED = "SHIPPED";
-
-// export const RECEIVED = "RECEIVED";
-// export const RECEIVED = "RECEIVED";

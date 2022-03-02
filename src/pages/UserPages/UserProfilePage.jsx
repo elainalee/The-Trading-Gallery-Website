@@ -10,7 +10,7 @@ import { CustomButton } from '../../components/Buttons/CustomButton';
 import { getUser } from '../../reducers/userReducer';
 import { logOut } from '../../reducers/authReducer';
 
-import { LogInRoute, MainPageRoute, UpdateProfileRoute } from '../../utils/routes';
+import { LogInRoute, MainPageRoute } from '../../utils/routes';
 
 import '../../utils/globalStyles.css';
 import './UserPages.css';
@@ -37,7 +37,7 @@ export default function UserProfilePage() {
     }
 
     function goToUpdateProfile() {
-        history.push(UpdateProfileRoute);
+        // history.push(UpdateProfileRoute);
     }
     
 

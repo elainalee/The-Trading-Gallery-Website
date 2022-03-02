@@ -2,15 +2,11 @@
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignUpPage from './pages/SignInPages/SignUpPage';
 import LogInPage from './pages/SignInPages/LogInPage';
 import PasswordResetPage from './pages/SignInPages/PasswordResetPage';
-import UpdateProfile from './pages/UserPages/UpdateProfile';
 import CartsPage from './pages/UserPages/CartsPage';
 import NavBar from './components/NavBar/NavBar';
-import UserProfilePage from './pages/UserPages/UserProfilePage';
 import MainPage from './pages/MainPage/MainPage';
-import EnsureUserRoute from './RoutesManager/EnsureUserRoute';
 import EnsureLogOutRoute from './RoutesManager/EnsureLogOutRoute';
 import ShopPage from './pages/SectionPages/ShopPage';
 import BlogsPage from './pages/SectionPages/BlogsPage';
@@ -36,7 +32,7 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, ProfileRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, SignUpRoute, TermsOfUsePageRoute, UpdateProfileRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -102,23 +98,21 @@ function NavPages(props) {
       <NavBar />
       <div className="app-min-height">
         <Route exact path={MainPageRoute} component={MainPage} />
-        <LogInFirstRoute exact path={CartsPageRoute} component={CartsPage} />
+        
+        {/* Logged out Pages */}
+        <EnsureLogOutRoute exact path={LogInRoute} component={LogInPage} />
 
-        <LogInFirstRoute path={"/my-account"} redirectTo={"/my-account/account-info"} component={MyAccountPage} />
+        {/* User Pages */}
+        <LogInFirstRoute path={MyAccountRoute} redirectTo={"/my-account/account-info"} component={MyAccountPage} />
         <LogInFirstRoute path={"/my-account/:type"} component={MyAccountPage} />
+        <LogInFirstRoute exact path={CartsPageRoute} component={CartsPage} />
 
         <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
           <div className="w-100" style={{ maxWidth: '400px' }}>
-            {/* User Pages */}
-            <LogInFirstRoute exact path={ProfileRoute} component={UserProfilePage} />
-            <EnsureUserRoute exact path={UpdateProfileRoute} component={UpdateProfile} />
-
             {/* Seller Pages */}
             <EnsureSellerRoute exact path={SellerProfileRoute} component={SellerProfilePage} />
             
             {/* Logged out Pages */}
-            <EnsureLogOutRoute exact path={SignUpRoute} component={SignUpPage} />
-            <EnsureLogOutRoute exact path={LogInRoute} component={LogInPage} />
             <EnsureLogOutRoute exact path={PasswordResetRoute} component={PasswordResetPage} />
           </div>
         </Container>

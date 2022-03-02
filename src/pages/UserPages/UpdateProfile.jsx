@@ -9,10 +9,11 @@ import { CustomButton } from '../../components/Buttons/CustomButton';
 import { updateUser } from '../../reducers/userReducer';
 import { SUCCESS } from '../../utils/constants';
 
-import { ProfileRoute } from '../../utils/routes';
+import { MainPageRoute } from '../../utils/routes';
 
 import '../../utils/globalStyles.css';
 import './UserPages.css';
+import { logOut } from '../../reducers/authReducer';
 
 export default function UpdateProfile() {
     const emailRef = useRef();
@@ -47,7 +48,7 @@ export default function UpdateProfile() {
         dispatch(updateUser(userInfo))
             .then((res) => {
                 if (res === SUCCESS) {
-                    history.push(ProfileRoute);
+                    // history.push(ProfileRoute);
                 } else {
                     setError(res);
                 }
@@ -55,7 +56,16 @@ export default function UpdateProfile() {
     }
 
     function goToUserProfile() {
-        history.push(ProfileRoute);
+        // history.push(ProfileRoute);
+    }
+
+    async function handleLogOut() {
+
+        setError('');
+        dispatch(logOut()).then((res) => {
+            // history.push(LogInRoute);
+            window.location.href = MainPageRoute;
+        })
     }
 
     return (
@@ -89,10 +99,14 @@ export default function UpdateProfile() {
                     <Form.Label>Password Confirmation</Form.Label>
                     <Form.Control type="password" ref={passwordConfirmRef} placeholder="Leave blank to keep the same" />
                 </Form.Group> */}
-                    <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size" marginTop="30px" >Update</CustomButton>
+                    <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="30px" >Update</CustomButton>
                 </Form>
-            <div className="w-100 text-center mt-2 links">
+            {/* <div className="w-100 text-center mt-2 links">
                 <CustomButton buttonStyle="link" onClick={goToUserProfile} marginTop="15px">Cancel</CustomButton>
+            </div> */}
+
+            <div className="w-100 text-center mt-2 links">
+            <CustomButton onClick={handleLogOut} buttonStyle="outline" buttonDetail="default-size" marginTop="15px">Log Out</CustomButton>
             </div>
         </div>
     );

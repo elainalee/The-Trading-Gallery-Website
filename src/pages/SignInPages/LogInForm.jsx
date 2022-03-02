@@ -10,10 +10,8 @@ import { logInUser, logInSeller } from '../../reducers/authReducer';
 
 import '../../utils/globalStyles.css';
 import './SignInPages.css';
-import LogInForm from './LogInForm';
-import SignUpForm from './SignUpForm';
 
-export default function LogInPage() {
+export default function LogInForm() {
     const state = useSelector((state) => state);
 
     const dispatch = useDispatch();
@@ -57,16 +55,20 @@ export default function LogInPage() {
     }
 
     return (
-        <div className="logInPage paddingHorizontal marginTop">
-            <Row>
-                <Col md={6} className="grayBorderRight">
-                    <LogInForm />
-                </Col>
-                <Col md={6} className="">
-                    <SignUpForm />
-                </Col>
-            </Row>
-          
+        <div className="logInForm">
+            <h2 className="text-center mb-4">Log In</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleSubmit}>
+                <Form.Group id="email" className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" ref={emailRef} required />
+                </Form.Group>
+                <Form.Group id="password" className="mb-3"> 
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" ref={passwordRef} required />
+                </Form.Group>
+                <CustomButton disabled={loading} type="submit" buttonStyle="outline" buttonDetail="default-size">Log In</CustomButton>  
+            </Form>
         </div>
     );
 }

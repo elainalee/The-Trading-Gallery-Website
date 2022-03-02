@@ -1,0 +1,30 @@
+.logInPage {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.logInForm {
+    width: 90%;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+
+    margin-bottom: 50px;
+}
+
+.signUpForm {
+    width: 90%;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+
+    margin-bottom: 50px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .logInForm {
+        padding-bottom: 50px;
+        border-bottom: 1px solid var(--primary-light);
+    }
+}

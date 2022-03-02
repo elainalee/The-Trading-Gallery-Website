@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { SellerPanelPageRoute, LogInRoute, ProfileRoute, SellerProfileRoute, MyAccountRoute } from '../../utils/routes';
+import { SellerPanelPageRoute, LogInRoute, SellerProfileRoute, MyAccountRoute } from '../../utils/routes';
 import { IconButton } from './IconButton';
 
 export default function UserButton(props) {
@@ -13,7 +13,9 @@ export default function UserButton(props) {
     const history = useHistory();
 
     function goToLogIn() {
-        history.push(LogInRoute);
+        //history.push(LogInRoute);
+
+        window.location.href = LogInRoute;
     }
 
     function goToUserProfile() {
@@ -23,7 +25,9 @@ export default function UserButton(props) {
 
     function goToSellerProfile() {
         props.setMenuClicked(false);
-        history.push(SellerProfileRoute);
+        //history.push(SellerProfileRoute);
+
+        window.location.href = SellerProfileRoute;
     }
 
     return (

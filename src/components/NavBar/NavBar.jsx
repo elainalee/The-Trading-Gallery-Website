@@ -26,6 +26,16 @@ function NavBar() {
     
     const [menuClicked, setMenuClicked] = useState(false);
 
+    const [isMobile, setIsMobile] = useState(window?.innerWidth <= 767);
+
+    const handleResize = () => {
+        setIsMobile(window?.innerWidth <= 992);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+    });
+
     const handleMenuClick = () => {
         setMenuClicked(!menuClicked);
     }
@@ -52,7 +62,7 @@ function NavBar() {
 
     return (
         <div className="navBar">
-            <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={menuClicked} onHide={() => setMenuClicked(false)}>
+            <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={isMobile && menuClicked} onHide={() => setMenuClicked(false)}>
                 <Modal.Header className="buttons-top">
                     <IconButton buttonIcon="cancel-btn" buttonSize="navbar" color="black" onClick={() => handleMenuClick(false)} />
                 </Modal.Header>
