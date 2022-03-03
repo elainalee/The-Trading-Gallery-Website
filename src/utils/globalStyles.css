@@ -18,7 +18,7 @@
     --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
 }
 
-.speicalFont {
+.specialFont * {
     font-family: 'Roboto Mono', 'Open Sans';
 }
 

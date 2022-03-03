@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Link, useHistory, withRouter } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
+import { MenuItems, ShopCategoryItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
@@ -15,6 +15,7 @@ import { Modal } from 'react-bootstrap';
 import './NavBarBottom.css';
 import './NavBarTop.css';
 import './NavBarModal.css';
+import './NavBarExpanded.css';
 
 
 function NavBar() {
@@ -27,6 +28,8 @@ function NavBar() {
     const [menuClicked, setMenuClicked] = useState(false);
 
     const [isMobile, setIsMobile] = useState(window?.innerWidth <= 767);
+    const [isMouseOnShop, setIsMouseOnShop] = useState(false);
+    const [isMouseOnNavExpand, setIsMouseOnNavExpand] = useState(false);
 
     const handleResize = () => {
         setIsMobile(window?.innerWidth <= 992);
@@ -54,6 +57,10 @@ function NavBar() {
         // history.push(SellerPanelPageRoute);
     }
 
+    const handleShowShop = (tabName) => {
+        setIsMouseOnShop(tabName === "Shop");
+    }
+
     function handleSectionClick(url) {
         window.location.href = url;
         window.scrollTo(0, 0);
@@ -76,7 +83,7 @@ function NavBar() {
                     </ul>
                 </Modal.Body>
                 <Modal.Footer className="buttons-bottom">
-                    <UserButton menuClicked={menuClicked} setMenuClicked={setMenuClicked}/> 
+                    <UserButton /> 
                     {currentSeller
                         ? <IconButton buttonIcon="listings-btn" buttonSize="navbar" color="black" onClick={handleListingsClick} />
                         : <IconButton buttonIcon="carts-btn" buttonSize="navbar" color="black" onClick={handleCartsClick} />}
@@ -98,8 +105,11 @@ function NavBar() {
                             ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
                             : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
                     </div>
+
+                    <div className="hide-mobile">
+                        <UserButton />
+                    </div>
                     
-                    <UserButton menuClicked={menuClicked} setMenuClicked={setMenuClicked}/>
                     <div className="menu-icon">
                         <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
                     </div>
@@ -108,13 +118,44 @@ function NavBar() {
 
             <nav className="NavBar-Bottom">
                 <ul className="nav-bottom-menu-items">
-                    {MenuItems.map((item) => (
-                        <li key={item.title}>
-                            <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
+                    {MenuItems.map((item, index) => (
+                        <li 
+                            key={index}
+                            onMouseEnter={() => handleShowShop(item.title)}
+                            onMouseLeave={() => setIsMouseOnShop(false)}>
+                            <Link 
+                                className={item.cName + " link"} 
+                                onClick={() => handleSectionClick(item.url)}>
+                                {item.title}
+                            </Link>
                         </li>
                     ))}
                 </ul>
             </nav>
+
+            {(isMouseOnShop || isMouseOnNavExpand) && (
+                <nav
+                    className="NavBar-Expanded specialFont" 
+                    onMouseEnter={() => setIsMouseOnNavExpand(true)}
+                    onMouseLeave={() => setIsMouseOnNavExpand(false)}>
+                        {ShopCategoryItems.map((categoryItems, index) => (
+                            <ul key={index} className="nav-expanded-menu-items">
+                                {categoryItems.map((item, index) => (
+                                    <li 
+                                        key={index}
+                                        onMouseEnter={() => handleShowShop(item.title)}
+                                        onMouseLeave={() => setIsMouseOnShop(false)}>
+                                        <Link 
+                                            className={`${item.cName} ${index == 0 && "title"} link`} 
+                                            onClick={() => handleSectionClick(item.url)}>
+                                            {item.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        ))}
+                </nav>
+            )}
 
             <div className="hide-full">
                 <Marquee/>

@@ -19,19 +19,19 @@ export default function UserButton(props) {
     }
 
     function goToUserProfile() {
-        props.setMenuClicked(false);
+        // props.setMenuClicked(false);
         window.location.href = MyAccountRoute;
     }
 
     function goToSellerProfile() {
-        props.setMenuClicked(false);
+        // props.setMenuClicked(false);
         //history.push(SellerProfileRoute);
 
         window.location.href = SellerProfileRoute;
     }
 
     return (
-        <div className={props.menuClicked ? "" : " hide"}>
+        <div>
             {loggedIn
                 ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
                 : <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={goToLogIn} />
