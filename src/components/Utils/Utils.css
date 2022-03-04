@@ -168,6 +168,11 @@
     text-align: center;
 }
 
+/* loadingBox */
+.loadingBox .fa {
+    font-family: 'Font Awesome 5 Free';
+}
+
 
 /* Cart Pop up */
 .cartPopup {

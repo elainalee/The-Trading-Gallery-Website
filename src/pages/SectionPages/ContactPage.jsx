@@ -14,6 +14,7 @@ import { TTG_EMAIL } from '../../utils/contents';
 
 import "../../utils/globalStyles.css";
 import "./SectionPages.css";
+import LoadingBox from '../../components/Utils/LoadingBox';
 
 
 export default function ContactPage() {
@@ -62,7 +63,7 @@ export default function ContactPage() {
                     ? (
                         <div>
                             <div className="title">Your information has been received.</div>
-                            <div className="body">We will contact you as soon as possible. To submit another response, click <Link className="underline link" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</div>
+                            <div className="body">We will contact you as soon as possible. To submit another response, click <Link className="emphasis-links" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</div>
                         </div>)
                     : (
                         <div className="submitForm">
@@ -78,7 +79,7 @@ export default function ContactPage() {
                                     If you have questions don't hesitate to reach out to us at:
                                     </div>
                                     <div className="sub-body">
-                                    Email: {TTG_EMAIL}
+                                        Email: <a href={"mailto:" + TTG_EMAIL} className="link">{TTG_EMAIL}</a>
                                     </div>
                                     <div className="sub-body">
                                     Please allow 24-48 hours for us to get back to you. Thank you!
@@ -114,8 +115,12 @@ export default function ContactPage() {
                                             <Form.Label>Message *</Form.Label>
                                             <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
                                         </Form.Group>
-                                        
-                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom="20px">Send</CustomButton>
+
+                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom="20px">
+                                            <span id="button-text">
+                                                {loading ? <LoadingBox text="Sending..." /> : "Send"}
+                                            </span>
+                                        </CustomButton>
                                     </Form>
                                 </Col>
                             </Row>

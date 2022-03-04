@@ -21,9 +21,11 @@
 .contactPage .body {
     font-size: 16px;
     line-height: 35px;
-    margin-bottom: 30px;
+    margin-bottom: 30px;    
+}
 
-    width: 80%;
+.contactPage .submitForm .body {
+    width: 90%;
 }
 
 .contactPage .sub-body {
@@ -31,6 +33,10 @@
     line-height: 30px;
 
     width: 80%;
+}
+
+.contactPage #button-text {
+    font-family: 'Roboto', 'Open Sans';
 }
 
 
@@ -59,7 +65,9 @@
         font-size: 15px;
         /* line-height: 35px; */
         margin-top: 5px;
+    }
 
+    .contactPage .submitForm .body {
         width: 90%;
     }
 
