@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Col, Dropdown, DropdownButton, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../../components/Buttons/CustomButton';
-import { ADDRESS_GOOGLE_MAP, ADDRESS_PICKUP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP, PICKUP_SECTION, TGG_ADDRESS } from "../../../utils/contents";
+import { ADDRESS_GOOGLE_MAP, ADDRESS_PICKUP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP, PICKUP_SECTION, TTG_ADDRESS } from "../../../utils/contents";
 import { getTax } from '../../../utils/Helper';
 import { CANADA_PROVINCES } from '../../../utils/provinces';
 
@@ -126,7 +126,7 @@ export default function InformationForm(props) {
                             <div className="title">ADDRESS</div>
                             <div className="body">{ADDRESS_SECTION_1}</div>
                             <div className="body">{ADDRESS_SECTION_2}</div>
-                            <div className="title address"><a href={ADDRESS_GOOGLE_MAP} rel="noreferrer" target="_blank" className="underline link">{TGG_ADDRESS}</a></div>
+                            <div className="title address"><a href={ADDRESS_GOOGLE_MAP} rel="noreferrer" target="_blank" className="underline link">{TTG_ADDRESS}</a></div>
                         </div>
 
                         <div className="section">             

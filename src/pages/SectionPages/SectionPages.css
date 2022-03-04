@@ -1,25 +1,36 @@
 
 /* contactPage */
-
-.contactPage main * {
+.contactPage * {
     font-size: 16px;
     font-family: 'Roboto mono', 'Open Sans';
 }
 
-.contactPage main .title {
+.contactPage .title {
     font-weight: 500;
     font-size: 30px;
+    margin-bottom: 10px;
 }
 
-.contactPage main .subtitle {
-    margin-top: 25px;
-    margin-bottom: 30px;
+.contactPage .subtitle {
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.contactPage main .body {
-    margin-top: 5px;
+.contactPage .body {
+    font-size: 16px;
+    line-height: 35px;
+    margin-bottom: 30px;
+
+    width: 80%;
+}
+
+.contactPage .sub-body {
+    font-size: 14px;
+    line-height: 30px;
+
+    width: 80%;
 }
 
 
@@ -29,45 +40,63 @@
 }
 
 
-
 @media screen and (min-width: 768px) and (max-width: 992px) {
-    .contactPage main * {
+    .contactPage * {
         font-size: 15px;
     }
 
-    .contactPage main .title {
+    .contactPage .title {
         font-size: 27px;
+        /* margin-bottom: 10px; */
     }
 
-    .contactPage main .subtitle {
-        margin-top: 25px;
-        margin-bottom: 30px;
+    .contactPage .subtitle {
+        /* margin-bottom: 10px; */
         font-size: 20px;
     }
 
-    .contactPage main .body {
+    .contactPage .body {
+        font-size: 15px;
+        /* line-height: 35px; */
         margin-top: 5px;
+
+        width: 90%;
+    }
+
+    .contactPage .sub-body {
+        font-size: 13px;
+        /* line-height: 30px; */
+    
+        width: 90%;
     }
     
 }
 
 @media screen and (max-width: 767px) {
-    .contactPage main * {
+    .contactPage * {
         font-size: 15px;
     }
     
-    .contactPage main .title {
-        font-size: 20px;
+    .contactPage .title {
+        font-size: 22px;
+        margin-bottom: 18px;
     }
 
-    .contactPage main .subtitle {
-        margin-top: 15px;
-        margin-bottom: 30px;
+    .contactPage .subtitle {
+        margin-bottom: 10px;
         font-size: 1rem;
     }
 
-    .contactPage main .body {
-        margin-top: 5px;
+    .contactPage .body {
         font-size: 16px;
+        width: 100%;
+    }
+    
+    .contactPage .sub-body {
+        width: 100%;
+    }
+
+    .contactPage .form {
+        margin-top: 30px;
     }
 }

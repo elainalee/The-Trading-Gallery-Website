@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Alert, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../components/Buttons/CustomButton';
-import Footer from '../../components/Footer';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,10 +10,10 @@ import { useDispatch } from 'react-redux';
 import { submitFeedback } from '../../reducers/contentsReducer';
 import { SUCCESS } from '../../utils/constants';
 import { ContactPageRoute } from '../../utils/routes';
+import { TTG_EMAIL } from '../../utils/contents';
 
 import "../../utils/globalStyles.css";
 import "./SectionPages.css";
-import { TGG_EMAIL } from '../../utils/contents';
 
 
 export default function ContactPage() {
@@ -59,7 +58,6 @@ export default function ContactPage() {
     return (
         <div className="marginTop contactPage">
             <div className="marginHorizontal">
-            <main>
                 {submitted
                     ? (
                         <div>
@@ -67,15 +65,26 @@ export default function ContactPage() {
                             <div className="body">We will contact you as soon as possible. To submit another response, click <Link className="underline link" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</div>
                         </div>)
                     : (
-                        <div>
-                            <Row>
+                        <div className="submitForm">
+                            <Row >
                                 <Col md={6} className="mb-3">
-                                    <div className="title">We are here for you.</div>
-                                    <div className="body">How can we help? Send us a message!</div>
+                                    <div className="title">What's Up?</div>
+                                    <div className="subtitle">We’d love to hear from you,</div>
+                                    <div className="body">
+                                        We are always looking to grow and meet the standards of our clients. If you have any feedback, or need help, we encourage you to fill out the form.
+                                    </div>
 
-                                    <div className="subtitle">{TGG_EMAIL}</div>
+                                    <div className="sub-body">
+                                    If you have questions don't hesitate to reach out to us at:
+                                    </div>
+                                    <div className="sub-body">
+                                    Email: {TTG_EMAIL}
+                                    </div>
+                                    <div className="sub-body">
+                                    Please allow 24-48 hours for us to get back to you. Thank you!
+                                    </div>
                                 </Col>
-                                <Col md={6}>
+                                <Col md={6} className="form mb-3">
                                     {error && <Alert variant="danger">{error}</Alert>}
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group id="name" className="mb-3">
@@ -106,13 +115,12 @@ export default function ContactPage() {
                                             <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
                                         </Form.Group>
                                         
-                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px">Send</CustomButton>
+                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom="20px">Send</CustomButton>
                                     </Form>
                                 </Col>
                             </Row>
                         </div>
                     )}
-                </main>
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 /* Universal */
-export const TGG_ADDRESS = "200-13888 Wireless Way, Richmond, B.C, V6V 1X2";
-export const TGG_STREET_ADDRESS = "200-13888 Wireless Way";
-export const TGG_CITY_POSTAL = "Richmond, B.C, V6V 1X2";
-export const TGG_EMAIL = "hello@thetradinggallery.ca";
+export const TTG_ADDRESS = "200-13888 Wireless Way, Richmond, B.C, V6V 1X2";
+export const TTG_STREET_ADDRESS = "200-13888 Wireless Way";
+export const TTG_CITY_POSTAL = "Richmond, B.C, V6V 1X2";
+export const TTG_EMAIL = "hello@thetradinggallery.ca";
 
 /* More About Banner */
 export const BANNER_FIRST = "Our Goal";

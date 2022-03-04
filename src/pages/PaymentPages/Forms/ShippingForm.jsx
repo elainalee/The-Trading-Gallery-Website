@@ -5,7 +5,7 @@ import CustomButton from '../../../components/Buttons/CustomButton';
 import LoadingBox from '../../../components/Utils/LoadingBox';
 import { getPaymentIntent } from '../../../reducers/paymentReducer';
 import { ERROR, SUCCESS } from '../../../utils/constants';
-import { ADDRESS_GOOGLE_MAP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP_SECTION, TGG_ADDRESS } from '../../../utils/contents';
+import { ADDRESS_GOOGLE_MAP, ADDRESS_SECTION_1, ADDRESS_SECTION_2, IN_STORE_PICKUP_CONTENT_1, IN_STORE_PICKUP_CONTENT_2, PICKUP_SECTION, TTG_ADDRESS } from '../../../utils/contents';
 
 import './PaymentForms.css';
 
@@ -94,7 +94,7 @@ export default function ShippingForm(props) {
                                 <div className="title">ADDRESS</div>
                                 <div className="body">{ADDRESS_SECTION_1}</div>
                                 <div className="body">{ADDRESS_SECTION_2}</div>
-                                <div className="title address"><a href={ADDRESS_GOOGLE_MAP} rel="noreferrer" target="_blank" className="underline link">{TGG_ADDRESS}</a></div>
+                                <div className="title address"><a href={ADDRESS_GOOGLE_MAP} rel="noreferrer" target="_blank" className="underline link">{TTG_ADDRESS}</a></div>
                             </div>
 
                             <div className="section">             
