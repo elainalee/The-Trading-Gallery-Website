@@ -17,7 +17,7 @@ export default function LogInFirstRoute({ component: Component, redirectTo, ...r
             (state.auth.loggedInUser === false)
                 ? (<div className="marginTop paddingHorizontalSm cartsPage">
                     <div className="freeShipping">
-                        Please <Link to={LogInRoute} className="links underline">log in</Link> to review this section.
+                        Please <Link to={LogInRoute} className="emphasis-links">log in</Link> to review this section.
                     </div>
                 </div>)
                 : (state.auth.loggedInSeller)

@@ -140,9 +140,16 @@ export const signUp = (userInfo) => async (dispatch, getState) => {
             ...userInfo
         }
 
-        await AsyncStorage.setItem("email", userInfo.email);
-
         const res = await axios.post(url, payload);
+
+        console.log("--?");
+
+        const data = res.data;
+
+        await AsyncStorage.setItem("jwt", data.jwt);
+        dispatch({ type: "AUTH/LOGINUSER" });
+
+        await AsyncStorage.setItem("email", userInfo.email);
         
         return SUCCESS;
     } catch (err) {
