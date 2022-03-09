@@ -176,7 +176,7 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
 };
 
 
-export const addUpdateSellerProduct = (productId, title, brand, description, quantity, price, mainImage, bestSeller) => async (
+export const addUpdateSellerProduct = (productId, productInfo) => async (
   dispatch,
   getState
 ) => {
@@ -187,14 +187,8 @@ export const addUpdateSellerProduct = (productId, title, brand, description, qua
     const url = BASE_URL + "/sellers/addUpdateProduct/" + (productId ?? "");
 
     const payload = {
-      mainImage,
-      title,
-      brand,
-      quantity,
-      price,
-      description,
+      ...productInfo,
       sellerID: state.seller.seller._id,
-      bestSeller
     }
     console.log(payload);
 

@@ -21,17 +21,17 @@ export default function AddBlogPage(props) {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const alertUser = (e) => {     
-        e.preventDefault();
-        e.returnValue = "";
-    };
+    // const alertUser = (e) => {     
+    //     e.preventDefault();
+    //     e.returnValue = "";
+    // };
 
-    useEffect(() => {
-        window.addEventListener("beforeunload", alertUser);
-        return () => {
-          window.removeEventListener("beforeunload", alertUser);
-        };
-    }, []);
+    // useEffect(() => {
+    //     window.addEventListener("beforeunload", alertUser);
+    //     return () => {
+    //       window.removeEventListener("beforeunload", alertUser);
+    //     };
+    // }, []);
 
     useEffect(() => {
         dispatch(getBlogDetail(blogId)).then((res) => setBlogDetail(res));

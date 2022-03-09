@@ -129,9 +129,11 @@ function NavPages(props) {
         {/* Blog Pages */}
         <Route path={"/blog/:blogId"} component={BlogDetailPage} />
         
-          
         {/* Trading Gallery Pages */}
         <Route exact path={ShopPageRoute} component={ShopPage} />
+        <Route exact path={"/shop/:mainCategory"} component={ShopPage} />
+        <Route exact path={"/shop/:mainCategory/:subCategory"} component={ShopPage} />
+
         <Route exact path={BlogsPageRoute} component={BlogsPage} />
         <Route exact path={AboutPageRoute} component={AboutPage} />
         <Route exact path={ContactPageRoute} component={ContactPage} />

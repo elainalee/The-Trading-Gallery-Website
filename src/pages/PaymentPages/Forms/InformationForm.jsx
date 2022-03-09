@@ -100,10 +100,10 @@ export default function InformationForm(props) {
                             <Form.Group id="state" as={Col}>
                                 <Form.Label>
                                     Province *
-                                    <select className="form-control" id="state" value={paymentInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setPaymentInfo({...paymentInfo, state: e.target.value})}>
+                                    <Form.Select className="form-control" id="state" value={paymentInfo?.state || CANADA_PROVINCES[0] || ""} onChange={e => setPaymentInfo({...paymentInfo, state: e.target.value})}>
                                         {CANADA_PROVINCES.map((state, index) => 
                                             <option key={index} value={state.id}>{state.name}</option>)}
-                                    </select>
+                                    </Form.Select>
                                 </Form.Label>
                             </Form.Group>
 

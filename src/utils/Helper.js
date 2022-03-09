@@ -29,3 +29,9 @@ export const formatAddress = (addressObject) => {
     return (addressObject?.line2 ? addressObject?.line2 + " " : "") + addressObject?.line1 + " " + addressObject?.city
         + " " + addressObject?.state + " " + addressObject?.postal_code + ", " + addressObject?.country;
 }
+
+export const doLinksMatch = (url, mainDes, subDes) => {
+    const urlList = url.split("/");
+
+    return  (urlList[1] === mainDes) && (urlList[2] === subDes);
+}

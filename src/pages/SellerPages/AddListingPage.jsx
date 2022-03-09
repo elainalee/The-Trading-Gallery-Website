@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../components/Buttons/CustomButton';
+import { ShopCategoryItems } from '../../components/NavBar/MenuItems';
 import LoadingBox from '../../components/Utils/LoadingBox';
 import { getProductInfo } from '../../reducers/productsReducer';
 import { addSellerProduct, addUpdateSellerProduct } from '../../reducers/sellerReducer';
@@ -21,17 +22,17 @@ export default function AddListingPage(props) {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, [productId]);
 
-    const alertUser = (e) => {     
-        e.preventDefault();
-        e.returnValue = "";
-    };
+    // const alertUser = (e) => {     
+    //     e.preventDefault();
+    //     e.returnValue = "";
+    // };
 
-    useEffect(() => {
-        window.addEventListener("beforeunload", alertUser);
-        return () => {
-          window.removeEventListener("beforeunload", alertUser);
-        };
-    }, []);
+    // useEffect(() => {
+    //     window.addEventListener("beforeunload", alertUser);
+    //     return () => {
+    //       window.removeEventListener("beforeunload", alertUser);
+    //     };
+    // }, []);
 
     const dispatch = useDispatch();
 
@@ -45,13 +46,7 @@ export default function AddListingPage(props) {
         setLoading(true);
         dispatch(addUpdateSellerProduct(
             productId,
-            productInfo?.title, 
-            productInfo?.brand, 
-            productInfo?.description,
-            productInfo?.quantity,
-            productInfo?.price,
-            productInfo?.mainImage,
-            productInfo?.bestSeller
+            productInfo
             ))
             .then((res) => {
             if (res === SUCCESS) {
@@ -90,6 +85,18 @@ export default function AddListingPage(props) {
                                 </div>
                             </Col>
                             <Col md={6}>
+
+                                <Form.Group id="category" className="mb-3">
+                                    <Form.Label>Category *</Form.Label>
+                                    <Form.Select className="form-control" id="category" value={productInfo?.categoryID ||""} onChange={e => setProductInfo({...productInfo, categoryID: e.target.value})}>
+                                        {ShopCategoryItems.map((category, index) => {
+                                            return category.map((subcategory, ind) => {
+                                                return <option key={ind} value={subcategory.id}>{"(" + category[0].title + ") " + subcategory.title}</option>
+                                            })
+                                        })}
+                                    </Form.Select>
+                                </Form.Group>
+
                                 <Form.Group id="title" className="mb-3">
                                     <Form.Label>Product Name *</Form.Label>                        
                                     <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />

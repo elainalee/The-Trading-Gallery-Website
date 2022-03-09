@@ -6,7 +6,7 @@ import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
 import logoName from '../../assets/TTG-logo-w-text.png';
 
-import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute } from '../../utils/routes';
+import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
 import Marquee from '../Utils/Marquee';
 import CartPopUp from '../Utils/CartPopUp';
@@ -78,7 +78,7 @@ function NavBar() {
                     <ul className="nav-menu-items">
                         {MenuItems.map((item) => (
                             <li key={item.title}>
-                                <Link className={item.cName + " link"} onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
+                                <Link className={item.cName + " link"} to="#" onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
                             </li>))}
                     </ul>
                 </Modal.Body>
@@ -125,6 +125,7 @@ function NavBar() {
                             onMouseLeave={() => setIsMouseOnShop(false)}>
                             <Link 
                                 className={item.cName + " link"} 
+                                to="#"
                                 onClick={() => handleSectionClick(item.url)}>
                                 {item.title}
                             </Link>
@@ -147,7 +148,10 @@ function NavBar() {
                                         onMouseLeave={() => setIsMouseOnShop(false)}>
                                         <Link 
                                             className={`${item.cName} ${index == 0 && "title"} link`} 
-                                            onClick={() => handleSectionClick(item.url)}>
+                                            // to={ShopPageRoute + item.url}
+                                            to="#"
+                                            onClick={() => handleSectionClick(ShopPageRoute + item.url)}
+                                            >
                                             {item.title}
                                         </Link>
                                     </li>

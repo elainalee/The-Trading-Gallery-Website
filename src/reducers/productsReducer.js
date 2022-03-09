@@ -5,6 +5,7 @@ import { SUCCESS } from "../utils/constants"
 
 const initialState = {
   items: undefined,
+  categoryItems: undefined,
   bestSellers: undefined,
 }
 
@@ -16,7 +17,13 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 items: action.payload.items,
             }
-        
+
+        case "PRODUCTS/SETCATEGORYITEMS":
+          return {
+              ...state,
+              categoryItems: action.payload.items,
+          }
+    
         case "PRODUCTS/SETBESTSELLERS":
           return {
               ...state,
@@ -51,6 +58,36 @@ export const getProducts = () => async (
       console.log("getProducts err :>> ", err.message);
       return err.message;
     }
+};
+
+export const getCategoryProducts = (categoryID) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const url = BASE_URL + "/products/getItems/" + categoryID ;
+
+    console.log("url is : ", url);
+
+    const res = await axios.get(url);
+    const data = res.data;
+
+
+    dispatch({
+      type: "PRODUCTS/SETCATEGORYITEMS",
+      payload: {
+        items: data,
+      },
+    });
+
+    return SUCCESS;
+
+    // return data;
+
+  } catch (err) {
+    console.log("getCategoryProducts err :>> ", err.message);
+    return err.message;
+  }
 };
 
 export const getBestSellers = () => async (
