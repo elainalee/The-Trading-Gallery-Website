@@ -237,6 +237,8 @@
     display: flex;
     justify-content: center;
 
+    /* height: 50px; */
+
     width: 300px;
 
     padding-right: 10%;
@@ -308,5 +310,41 @@
     /* ChooseQuantity Box */
     .chooseQuantity {
         margin-top: 15px;
+    }
+
+    /* Search Bar */
+    .searchBar {
+        
+        width: 100vw;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        padding-right: 0%;
+    }
+
+    .searchBar #search-form {
+        height: 50px;
+        
+        width: 100%;
+
+        justify-content: space-between;
+
+        padding-right: 0%;
+    }
+
+    .searchBar #search-form .search-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .searchBar #search-form .search-bar #cancelText {
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    .searchBar #search-form #search-bar {
+
+        padding-right: 0%;
     }
 }

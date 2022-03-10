@@ -36,7 +36,7 @@
     text-decoration: underline;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 767px) {
     .NavBar-Expanded {
         display: none;
     }

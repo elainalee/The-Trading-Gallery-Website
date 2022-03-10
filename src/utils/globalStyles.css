@@ -107,6 +107,10 @@ h2 {
     /* margin-top: 35px; */
 }
 
+.hide-mobile {
+    display: flex;
+}
+
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
     .marginLeft {
@@ -121,6 +125,10 @@ h2 {
 }
 
 @media screen and (max-width: 767px) {
+    .hide-mobile {
+        display: none;
+    }
+
     .marginLeft {
         margin-left: 45px;
     }

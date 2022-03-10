@@ -33,7 +33,7 @@ function NavBar() {
     const [isMouseOnNavExpand, setIsMouseOnNavExpand] = useState(false);
 
     const handleResize = () => {
-        setIsMobile(window?.innerWidth <= 992);
+        setIsMobile(window?.innerWidth <= 767);
     }
 
     useEffect(() => {
@@ -72,14 +72,14 @@ function NavBar() {
         <div className="navBar">
             <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={isMobile && menuClicked} onHide={() => setMenuClicked(false)}>
                 <Modal.Header className="buttons-top">
-                    <IconButton buttonIcon="cancel-btn" buttonSize="navbar" color="black" onClick={() => handleMenuClick(false)} />
+                    <SearchBar showOnClick handleMenuClick={handleMenuClick} />
                 </Modal.Header>
 
                 <Modal.Body className="body">
                     <ul className="nav-menu-items">
                         {MenuItems.map((item) => (
                             <li key={item.title}>
-                                <Link className={item.cName + " link"} to="#" onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
+                                <Link className={item.cName + " links"} to="#" onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
                             </li>))}
                     </ul>
                 </Modal.Body>
