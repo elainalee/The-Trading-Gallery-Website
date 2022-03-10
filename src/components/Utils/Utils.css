@@ -232,7 +232,15 @@
     font-size: 13px;
 }
 
+/* Search Bar */
+.searchBar #search-form {
+    display: flex;
+    justify-content: center;
 
+    width: 300px;
+
+    padding-right: 10%;
+}
 
 
 @media screen and (min-width: 768px) and (max-width: 992px) {

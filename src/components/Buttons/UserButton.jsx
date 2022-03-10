@@ -31,12 +31,9 @@ export default function UserButton(props) {
     }
 
     return (
-        <div>
-            {loggedIn
-                ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
-                : <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={goToLogIn} />
-                // : <CustomButton buttonStyle="outline" buttonDetail="navbar-size" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>
-            }
-        </div>
-    );
+        loggedIn
+            ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" color="black" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
+            : <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={goToLogIn} />
+            // : <CustomButton buttonStyle="outline" buttonDetail="navbar-size" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>
+);
 }

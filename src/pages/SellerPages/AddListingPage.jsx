@@ -124,7 +124,10 @@ export default function AddListingPage(props) {
 
                                 {/* <Form.Group id="tag">
                                     <Form.Label>Tag (Make it searchable!)</Form.Label>
-                                    <Form.Control type="text" ref={tagRef} required />
+                                    {productInfo?.tag && (
+                                        <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />    
+                                    )}
+                                    <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />
                                 </Form.Group> */}
                                 
                                 <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>

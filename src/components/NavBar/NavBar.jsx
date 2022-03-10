@@ -16,6 +16,7 @@ import './NavBarBottom.css';
 import './NavBarTop.css';
 import './NavBarModal.css';
 import './NavBarExpanded.css';
+import SearchBar from '../Utils/SearchBar';
 
 
 function NavBar() {
@@ -101,12 +102,12 @@ function NavBar() {
 
                 <div className="nav-top-menu-items">
                     <div className="hide-mobile">
+                        <SearchBar />
+
                         {currentSeller
                             ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
                             : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
-                    </div>
 
-                    <div className="hide-mobile">
                         <UserButton />
                     </div>
                     

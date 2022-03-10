@@ -134,6 +134,8 @@ function NavPages(props) {
         <Route exact path={"/shop/:mainCategory"} component={ShopPage} />
         <Route exact path={"/shop/:mainCategory/:subCategory"} component={ShopPage} />
 
+        <Route exact path={"/search/:keyword"} component={ShopPage} />
+
         <Route exact path={BlogsPageRoute} component={BlogsPage} />
         <Route exact path={AboutPageRoute} component={AboutPage} />
         <Route exact path={ContactPageRoute} component={ContactPage} />

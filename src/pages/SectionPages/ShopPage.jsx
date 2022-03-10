@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCategoryProducts, getProducts } from '../../reducers/productsReducer';
+import { getCategoryProducts, getProducts, searchProducts } from '../../reducers/productsReducer';
 import ProductsRow from '../../components/Rows/ProductsRow';
 import { ShopCategoryItems } from '../../components/NavBar/MenuItems';
 
@@ -9,6 +9,11 @@ import { doLinksMatch } from '../../utils/Helper';
 
 export default function ShopPage(props) {
     const dispatch = useDispatch();
+
+    // if from search
+    const keyword = props?.match?.params?.keyword;
+
+    // if from categories
     const mainCategory = props?.match?.params?.mainCategory;
     const subCategory = props?.match?.params?.subCategory;
     const { products } = useSelector((state) => state);
@@ -31,12 +36,17 @@ export default function ShopPage(props) {
         dispatch(getCategoryProducts(categoryID));
     }, [categoryID]);
 
+    useEffect(() => {
+        dispatch(searchProducts(keyword));
+    }, [keyword]);
 
     return (
         <div className="marginHorizontal">
-            {mainCategory
-                ? <ProductsRow products={products.categoryItems} title="ITEMS" placeholderNumbers={8} enableCarousel={false}/>
-                : <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8} enableCarousel={false}/>}
+            {keyword
+                ?  <ProductsRow products={products.searchItems} title={"SEARCH FOR " + keyword} placeholderNumbers={8} enableCarousel={false}/>
+                : mainCategory
+                    ? <ProductsRow products={products.categoryItems} title="ITEMS" placeholderNumbers={8} enableCarousel={false}/>
+                    : <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8} enableCarousel={false}/>}
         </div>
 );
 }

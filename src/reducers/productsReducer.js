@@ -7,6 +7,7 @@ const initialState = {
   items: undefined,
   categoryItems: undefined,
   bestSellers: undefined,
+  searchItems: [],
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const productsReducer = (state = initialState, action) => {
               bestSellers: action.payload.bestSellers,
           }
 
+        case "PRODUCTS/SETSEARCHITEMS":
+          return {
+              ...state,
+              searchItems: action.payload.searchItems,
+          }
 
         default:
             return state;
@@ -58,6 +64,30 @@ export const getProducts = () => async (
       console.log("getProducts err :>> ", err.message);
       return err.message;
     }
+};
+
+export const searchProducts = (keyword) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    const url = BASE_URL + "/products/search/" + keyword;
+    const res = await axios.get(url);
+    const data = res.data;
+
+    dispatch({
+      type: "PRODUCTS/SETSEARCHITEMS",
+      payload: {
+        searchItems: data,
+      },
+    });
+
+    return SUCCESS;
+
+  } catch (err) {
+    console.log("searchProducts err :>> ", err.message);
+    return err.message;
+  }
 };
 
 export const getCategoryProducts = (categoryID) => async (
