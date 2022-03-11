@@ -32,7 +32,7 @@ export default function ShippingForm(props) {
     }
     
     return (
-        <div className="marginTop paymentForms shippingForm">
+        <div className="vertical-md paymentForms shippingForm">
             <Form onSubmit={handleSubmit}>
                 <span className="titleText">CONTACT INFORMATION</span>
                 <div className="section">

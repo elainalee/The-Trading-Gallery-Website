@@ -15,14 +15,14 @@ export default function LogInFirstRoute({ component: Component, redirectTo, ...r
           {...rest}
           render={(props) => (
             (state.auth.loggedInUser === false)
-                ? (<div className="marginTop paddingHorizontalSm cartsPage">
+                ? (<div className="vertical-md horizontal-sm cartsPage">
                     <div className="freeShipping">
                         Please <Link to={LogInRoute} className="emphasis-links">log in</Link> to review this section.
                     </div>
                 </div>)
                 : (state.auth.loggedInSeller)
                     ? (
-                        <div className="marginTop paddingHorizontal cartsPage">
+                        <div className="vertical-md horizontal-md cartsPage">
                             <div className="freeShipping">
                                 <text>{LOGIN_AS_USER_FOR_ACCESS}</text>
                             </div>

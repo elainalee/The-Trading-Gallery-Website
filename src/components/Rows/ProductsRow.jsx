@@ -46,14 +46,13 @@ export default function ProductsRow(props) {
 
     return (
         <div className="productsRow">
-            <div className="title">
+            <div className="">
                 {props.title && (
-                    <p className="titleText">
-                        {props.title}
-                        {currentSeller && (
-                            <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
-                        )}
-                    </p>
+                    <h2 className="uppercase bold">{props.title}</h2>
+                )}
+
+                {currentSeller && (
+                    <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
                 )}
                 
                 <div className={enableCarousel ? "selection" : "selection hide"}>

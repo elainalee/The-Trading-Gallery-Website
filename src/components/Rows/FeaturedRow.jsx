@@ -14,8 +14,8 @@ export default function FeaturedRow(props) {
     const productsToDisplay = props.products ?? [...Array(props.placeholderNumbers)];
 
     return (
-        <div className="featuredRow marginTop paddingHorizontalSm">
-            <div className="title paddingHorizontalSm mb-3">
+        <div className="featuredRow vertical-md horizontal-sm">
+            <div className="title horizontal-sm mb-3">
                 <div className="titleText">{props.title}</div>
                 <div className="selection">
                     <i className={"fas fa-angle-left " + (rowPage === 0 && "disable")} onClick={() => { if (rowPage > 0) setRowPage(rowPage - 1) }}/>
@@ -23,7 +23,7 @@ export default function FeaturedRow(props) {
                 </div>
             </div>
 
-            <Row xs={1} md={2} lg={3} className="marginTop paddingHorizontalSm">
+            <Row xs={1} md={2} lg={3} className="vertical-md horizontal-sm">
                 {productsToDisplay?.map((product, index) => ( 
                     <Col key={index} className={"cardMargin" + ((index !== rowPage && index !== rowPage +1 && index !== rowPage +2 && index !== rowPage +3) ? " hide-some" : "")}>
                         <FeaturedCard sm product={product} />

@@ -49,7 +49,7 @@ export default function MainPage() {
             
             <Banner />
 
-            <div className="bestSeller paddingHorizontal">
+            <div className="bestSeller horizontal-md">
                 <ProductsRow title="Shop Our Best Sellers" products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
             </div>
         </div>

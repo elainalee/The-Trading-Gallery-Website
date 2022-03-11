@@ -26,10 +26,10 @@ export default function BlogsRow(props) {
     return (
         <div className="blogsRow">
             {props.title && currentSeller && (
-                <p className="titleText">
-                    {props.title}
+                <div>
+                    <h2 className="uppercase bold">{props.title}</h2>
                     <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
-                </p>
+                </div>
             )}
 
             <Row xs={1} md={2} lg={4} className="g-4">

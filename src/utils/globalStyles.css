@@ -22,6 +22,7 @@
     font-family: 'Roboto Mono', 'Open Sans';
 }
 
+
 .underline {
     text-decoration: underline;
 }
@@ -46,8 +47,7 @@
 }
 
 
-
-/* NEW SET OF MARGIN & PADDING = eventaully replace all */
+/* NEW SET OF MARGIN & PADDING */
 .horizontal-sm {
     width: 100%;
     padding-left: 30px;
@@ -87,6 +87,77 @@
     margin-bottom: 50px;
 }
 
+/* TITLES & BODY TEXTS TO SHARE */
+
+#button-text {
+    font-family: 'Roboto', 'Open Sans';
+}
+
+.body-xs * {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.body-sm * {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.body-md * {
+    font-size: 18px;
+}
+
+.body-lg * {
+    font-size: 20px;
+}
+
+
+.text-xs {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.text-sm {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.text-md {
+    font-size: 18px;
+}
+
+.text-lg {
+    font-size: 20px;
+}
+
+
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 25px!important;
+    font-weight: 500;
+    padding-bottom: 1%;
+}
+
+h2.sm {
+    font-size: 23px!important;
+}
+
+h3 {
+    font-size: 20px!important;
+    font-weight: 500;
+    padding-bottom: 1%;
+}
+
+
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
     /* NEW SET OF MARGIN & PADDING = eventaully replace all */
     .horizontal-sm {
@@ -124,6 +195,37 @@
         margin-bottom: 40px;
     }
 
+    /* TITLES & BODY TEXTS TO SHARE */
+    h2 {
+        font-size: 22px!important;
+    }
+
+    h2.sm {
+        font-size: 20px!important;
+    }
+
+    h3 {
+        font-size: 19px!important;
+    }
+
+    .body-xs * {
+        font-size: 15px;
+        /* line-height: 30px; */
+    }
+    
+    .body-sm * {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .body-md * {
+        font-size: 20px;
+    }
+    
+    .body-lg * {
+        font-size: 20px;
+    }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -144,8 +246,13 @@
     }
 
     .horizontal-xl {
-        padding-left: 20%;
-        padding-right: 20%; 
+        padding-left: 12%;
+        padding-right: 12%; 
+    }
+
+    .vertical-xs {
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 
     .vertical-sm {
@@ -161,6 +268,37 @@
     .vertical-lg {
         margin-top: 35px;
         margin-bottom: 35px;
+    }
+
+    /* TITLES & BODY TEXTS TO SHARE */
+    h2 {
+        font-size: 20px!important;
+    }
+
+    h2.sm {
+        font-size: 18px!important;
+    }
+
+    h3 {
+        font-size: 17px!important;
+    }
+
+    .body-xs * {
+        font-size: 14px;
+        line-height: 30px;
+    }
+    
+    .body-sm * {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .body-md * {
+        font-size: 18px;
+    }
+    
+    .body-lg * {
+        font-size: 20px;
     }
 }
 
@@ -192,6 +330,7 @@
 
 
 /* BORDERS */
+
 .grayBorderRight {
     border-right: 1px solid var(--primary-light);
 }

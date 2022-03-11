@@ -115,7 +115,7 @@ export default function PaymentForm(props) {
     };
 
     return (
-        <div className="marginTop paymentForms paymentForm">
+        <div className="vertical-md paymentForms paymentForm">
             <span className="titleText">CONTACT INFORMATION</span>
             <div className="section">
               <div className="shipMethodSelect full-width" >

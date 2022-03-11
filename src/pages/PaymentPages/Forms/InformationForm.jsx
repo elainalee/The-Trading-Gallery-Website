@@ -28,7 +28,7 @@ export default function InformationForm(props) {
 
     
     return (
-        <div className="marginTop paymentForms">
+        <div className="vertical-md paymentForms">
 
             <Form onSubmit={handleSubmit}>
                 <span className="titleText">CONTACT INFORMATION</span>

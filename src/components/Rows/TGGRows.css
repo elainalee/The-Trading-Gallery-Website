@@ -11,17 +11,6 @@
     display: none;
 }
 
-.productsRow .title {
-    /* padding-top: 3%; */
-    padding-bottom: 1%;
-}
-
-.productsRow .titleText {
-    font-size: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
 .productsRow .fa-angle-left {
     display: none;
 }
@@ -38,12 +27,6 @@
 
 .featuredRow .fas {
     display: none;
-}
-
-/* blogsRow section */
-.blogsRow .titleText {
-    font-size: 25px;
-    font-weight: bold;
 }
 
 
@@ -69,21 +52,6 @@
 
     .productsRow .hide {
         display: none;
-    }
-
-    .productsRow .title {
-        width: 100%;
-        /* padding-top: 3%; */
-        padding-bottom: 1%;
-
-        display: flex;
-        flex-direction: row;
-    }
-
-    .productsRow .titleText {
-        font-size: 22px;
-
-        flex: 1;
     }
 
     .productsRow .selection {

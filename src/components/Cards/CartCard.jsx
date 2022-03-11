@@ -6,11 +6,10 @@ import { Link } from "react-router-dom";
 
 import { removeItem, updateItem } from "../../reducers/cartReducer";
 import { getProductInfo } from "../../reducers/productsReducer";
-
-import "../../utils/globalStyles.css";
 import ChooseQuantityBox from "../Utils/ChooseQuantityBox";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
+import "../../utils/globalStyles.css";
 import "./CartCard.css";
 
 export default function CartCard(props) {
