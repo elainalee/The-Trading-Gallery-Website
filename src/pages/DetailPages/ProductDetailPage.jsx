@@ -48,12 +48,12 @@ export default function ProductDetailPage(props) {
     }
 
     return (
-        <div className="vertical-lg productDetailPage" >
+        <div className="vertical-lg horizontal-md productDetailPage" >
             {!updating && (
                 <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
             )}
 
-            <div className="productShowing marginHorizontal">
+            <div className="productShowing">
                 <Row xs={1} md={2}>
                     <Col className="image-section">
                         {productInfo?.mainImage
