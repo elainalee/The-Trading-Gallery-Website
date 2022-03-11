@@ -37,11 +37,35 @@
     width: 100%;
 }
 
-.NavBar-Modal .nav-menu-item {
+.NavBar-Modal .nav-menu-items .section-title {
+    cursor: pointer;
+}
+
+.NavBar-Modal .nav-menu-items .section-body {
+    margin-top: 10px;
+}
+
+
+.NavBar-Modal .nav-menu-items .fas {
+    margin-left: 100px;
+}
+
+.NavBar-Modal .nav-menu-items .nav-menu-item {
     text-align: start;
     width: 100%;
 }
 
+.NavBar-Modal .nav-menu-items .nav-menu-sub-item {
+    margin-left: 20px;
+    text-align: start;
+    width: 100%;
+    font-size: 17px;
+}
+
+.NavBar-Modal .nav-menu-items .title {
+    margin-left: 10px;
+    font-weight: 500;
+}
 
 
 

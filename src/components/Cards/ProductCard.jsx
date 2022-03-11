@@ -41,14 +41,11 @@ export default function ProductCard({ product }) {
           ? <Card.Text className="cardBody">{"$" + product?.price}</Card.Text>
           : <PlaceholderBox page={false} size="body" />}
         </div>
-        {product && (
-          currentSeller
-            ? <div>
-                {"quantity: " + product.quantity}
-                {product.bestSeller ? <i className="fa-solid fa-thumbs-up" /> : ""}
-              </div>
-            : <h2 className="addButton link">ADD TO CART</h2>
-        )}
+        {product && currentSeller && (
+          <div>
+            {"quantity: " + product.quantity}
+            {product.bestSeller ? <i className="fa-solid fa-thumbs-up" /> : ""}
+          </div>)}
         </Card.Body>
         
     </Link>

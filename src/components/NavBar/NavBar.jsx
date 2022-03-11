@@ -22,15 +22,18 @@ import SearchBar from '../Utils/SearchBar';
 function NavBar() {
 
     const state = useSelector((state) => state);
-    const history = useHistory();
 
     const currentSeller = state.seller.seller;
     
     const [menuClicked, setMenuClicked] = useState(false);
 
     const [isMobile, setIsMobile] = useState(window?.innerWidth <= 767);
+
+    // For Desktop version
     const [isMouseOnShop, setIsMouseOnShop] = useState(false);
     const [isMouseOnNavExpand, setIsMouseOnNavExpand] = useState(false);
+    // For Mobile version
+    const [showShopCategory, setShowShopCategory] = useState(false);
 
     const handleResize = () => {
         setIsMobile(window?.innerWidth <= 767);
@@ -50,12 +53,10 @@ function NavBar() {
 
     const handleCartsClick = () => {
         window.location.href = CartsPageRoute;
-        // history.push(CartsPageRoute);
     }
 
     const handleListingsClick = () => {
         window.location.href = SellerPanelPageRoute;
-        // history.push(SellerPanelPageRoute);
     }
 
     const handleShowShop = (tabName) => {
@@ -77,10 +78,42 @@ function NavBar() {
 
                 <Modal.Body className="body">
                     <ul className="nav-menu-items">
-                        {MenuItems.map((item) => (
-                            <li key={item.title}>
-                                <Link className={item.cName + " links"} to="#" onClick={() => handleSectionClick(item.url)}>{item.title}</Link>
-                            </li>))}
+                        {MenuItems.map((item, index) => (
+                            <div key={item.title}>
+                                <div className="section-title" onClick={() => (index === 0) ? setShowShopCategory(!showShopCategory) : handleSectionClick(item.url)}>
+                                    <Link className="nav-menu-item links" to="#" >{item.title}</Link>
+                                    {(index === 0) && <i className={"fas " + (showShopCategory ? "fa-angle-up" : "")}></i>}
+                                </div>
+                                
+                                {(index === 0) && showShopCategory && (
+                                    <div className="section-body">
+                                        <Link 
+                                            className={`nav-menu-sub-item ${index == 0 && "title"} links`} 
+                                            to="#"
+                                            onClick={() => handleSectionClick(ShopPageRoute)}
+                                            >
+                                            {"SHOP ALL"}
+                                        </Link>
+                                    
+                                        {ShopCategoryItems.map((categoryItems, index) => (
+                                            <div className="section-body" key={index}>
+                                                {categoryItems.map((item, index) => (
+                                                    <li key={index}>
+                                                        <Link 
+                                                            className={`nav-menu-sub-item ${index == 0 && "title"} links`} 
+                                                            to="#"
+                                                            onClick={() => handleSectionClick(ShopPageRoute + item.url)}
+                                                            >
+                                                            {item.title}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </ul>
                 </Modal.Body>
                 <Modal.Footer className="buttons-bottom">
