@@ -47,7 +47,7 @@ export default function CheckoutPage() {
     };
 
     return (
-        <div className="marginTop paddingHorizontal checkoutPage">
+        <div className="vertical-md horizontal-md checkoutPage">
             <Prompt
                 when={paymentInfo !== undefined}
                 message={"Changes you made may not be saved."}

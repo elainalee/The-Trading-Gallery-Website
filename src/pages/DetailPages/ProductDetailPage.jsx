@@ -6,7 +6,6 @@ import { getProductInfo } from '../../reducers/productsReducer';
 
 import PlaceholderBox from "../../components/Utils/PlaceholderBox";
 import LoadingBox from "../../components/Utils/LoadingBox";
-import "./DetailPages.css";
 import { Col, Row } from 'react-bootstrap';
 import ChooseQuantityBox from '../../components/Utils/ChooseQuantityBox';
 import { addItem } from '../../reducers/cartReducer';
@@ -14,6 +13,7 @@ import CartPopUp from '../../components/Utils/CartPopUp';
 import { SUCCESS } from '../../utils/constants';
 import { showCartPopUpTimeOut } from '../../utils/Helper';
         
+import "./DetailPages.css";
 
 export default function ProductDetailPage(props) {
     const dispatch = useDispatch();
@@ -48,55 +48,53 @@ export default function ProductDetailPage(props) {
     }
 
     return (
-        <div className="marginTop productDetailPage" >
-            <main>
-                {!updating && (
-                    <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
-                )}
+        <div className="vertical-lg productDetailPage" >
+            {!updating && (
+                <CartPopUp show={showCartPopup} product={productInfo} quantity={quantity} error={addToCartErr}/>
+            )}
 
-                <div className="productShowing marginHorizontal">
-                    <Row xs={1} md={2}>
-                        <Col className="image-section">
-                            {productInfo?.mainImage
-                                ? <img className="image" alt="product-image" src={productInfo.mainImage} />
-                                : <div className="placeholder" />}
-                        </Col>
-                        <Col>
-                            {productInfo?.brand
-                                ? <div className="brand">{productInfo?.brand}</div>
-                                : <PlaceholderBox page={true} size="subtitle" />}
+            <div className="productShowing marginHorizontal">
+                <Row xs={1} md={2}>
+                    <Col className="image-section">
+                        {productInfo?.mainImage
+                            ? <img className="image" alt="product-image" src={productInfo.mainImage} />
+                            : <div className="placeholder" />}
+                    </Col>
+                    <Col>
+                        {productInfo?.brand
+                            ? <div className="brand">{productInfo?.brand}</div>
+                            : <PlaceholderBox page={true} size="subtitle" />}
 
-                            {productInfo?.title
-                                ? <div className="title">{productInfo?.title}</div>
-                                : <PlaceholderBox page={true} size="title" />}
+                        {productInfo?.title
+                            ? <div className="title">{productInfo?.title}</div>
+                            : <PlaceholderBox page={true} size="title" />}
 
-                            {productInfo?.price
-                                ? <div className="price">{"$" + productInfo?.price}</div>
-                                : <PlaceholderBox page={true} size="body" />}
+                        {productInfo?.price
+                            ? <div className="price">{"$" + productInfo?.price}</div>
+                            : <PlaceholderBox page={true} size="body" />}
 
-                            {productInfo?.description
-                                ? <div className="description">{productInfo?.description}</div>
-                                : <PlaceholderBox page={true} size="body-lg" />}
+                        {productInfo?.description
+                            ? <div className="description">{productInfo?.description}</div>
+                            : <PlaceholderBox page={true} size="body-lg" />}
 
-                            <div className="quantity">
-                                <ChooseQuantityBox 
-                                    quantity={quantity} 
-                                    maxQuantity={productInfo?.quantity}
-                                    setQuantity={setQuantity}
-                                    seperateButton={true}
-                                />
+                        <div className="quantity">
+                            <ChooseQuantityBox 
+                                quantity={quantity} 
+                                maxQuantity={productInfo?.quantity}
+                                setQuantity={setQuantity}
+                                seperateButton={true}
+                            />
 
-                                <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={(productInfo?.quantity == 0) || updating}>
-                                    <span id="button-text">
-                                        {(productInfo?.quantity == 0)  ? "OUT OF STOCK" : updating ? <LoadingBox text="Adding" /> : "Add To Cart"}
-                                    </span>
-                                </CustomButton>
-                            </div>
+                            <CustomButton marginTop="15px" buttonDetail="default-size" onClick={handleAddCart} disabled={(productInfo?.quantity == 0) || updating}>
+                                <span id="button-text">
+                                    {(productInfo?.quantity == 0)  ? "OUT OF STOCK" : updating ? <LoadingBox text="Adding" /> : "Add To Cart"}
+                                </span>
+                            </CustomButton>
+                        </div>
 
-                        </Col>
-                    </Row>
-                </div>
-            </main>
+                    </Col>
+                </Row>
+            </div>
         </div>
     );
 }

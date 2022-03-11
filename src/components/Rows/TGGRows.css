@@ -12,7 +12,7 @@
 }
 
 .productsRow .title {
-    padding-top: 3%;
+    /* padding-top: 3%; */
     padding-bottom: 1%;
 }
 
@@ -73,7 +73,7 @@
 
     .productsRow .title {
         width: 100%;
-        padding-top: 3%;
+        /* padding-top: 3%; */
         padding-bottom: 1%;
 
         display: flex;

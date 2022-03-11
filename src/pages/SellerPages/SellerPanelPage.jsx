@@ -39,7 +39,7 @@ export default function SellerPanelPage() {
 
     return (
         <div className="marginTop sellerPanelPage">
-            <div className="marginHorizontal">
+            <div className="horizontal-md">
                 <div className="section">
                     <h2 className="title" onClick={() => setShowProducts(!showProducts)}>
                         My Products

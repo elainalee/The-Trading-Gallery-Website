@@ -4,7 +4,7 @@ import { Card, Container, Alert, Row, Col } from 'react-bootstrap';
 
 import UpdateProfile from './UpdateProfile';
 import RecentOrders from './RecentOrders';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { AccountInfoSubRoute, MyAccountRoute, RecentOrdersSubRoute } from '../../utils/routes';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,9 +19,9 @@ export default function MyAccountPage(props) {
     const selections = [{ route: AccountInfoSubRoute, name: "Account Information" }, { route: RecentOrdersSubRoute, name: "Recent Orders" }];
 
     return (
-        <div className="marginTop">
-            <Row className="myAccount">
-                <Col md={3} className="selection">
+        <div className="vertical-md myAccount">
+            <Row className="w-100">
+                <Col md={3} className="selection grayBorderRight">
                     {selections.map((selection, index) => (
                         <div key={index} className="title links" onClick={() => { history.push(MyAccountRoute + selection.route); }}>
                             {selection.name}

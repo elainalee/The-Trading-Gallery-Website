@@ -9,7 +9,7 @@ import { signUp } from '../../reducers/authReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import '../../utils/globalStyles.css';
-import { MyAccountRoute } from '../../utils/routes';
+import { MainPageRoute, MyAccountRoute } from '../../utils/routes';
 import LoadingBox from '../../components/Utils/LoadingBox';
 
 export default function SignUpForm() {
@@ -41,9 +41,7 @@ export default function SignUpForm() {
 
         dispatch(signUp(userInfo)).then((res) => {
             if (res === SUCCESS) {
-                // console.log("registered user");
-                // history.push(MyAccountRoute);
-                window.location.href = MyAccountRoute;
+                window.location.href = MainPageRoute;
             } else {
                 setError(res);
                 console.log("error signing up.")

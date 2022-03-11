@@ -30,7 +30,7 @@ export default function PasswordResetPage() {
     }
 
     return (
-        <div className="marginTop">
+        <div className="vertical-md">
           <Card>
               <Card.Body>
                   <h2 className="text-center mb-4">Password Reset</h2>

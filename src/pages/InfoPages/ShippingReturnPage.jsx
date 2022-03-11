@@ -6,52 +6,49 @@ import "./InfoPages.css";
 
 export default function ShippingReturnPage() {
     return (
-        <div className="marginTop infoPages">
-            <main>
-                <div className="section">             
-                    <div className="title">{SHIPPING_POLICY}</div>
-                    <div className="body">{SHIPPING_POLICY_CONTENT}</div>
-                    <div className="emphasis">{SHIPPING_POLICY_EMPHASIS}</div>
-                </div>
-                
-                <div className="section">
-                    <div className="title">{DOMESTIC_SHIPPING_RATES}</div>
-                    <div className="body">
-                        <div className="emphasis">{DOMESTIC_SHIPPING_CONTENT_EMPHASIS}</div> {DOMESTIC_SHIPPING_RATES_CONTENT}</div>
-                    <div className="emphasis">{DOMESTIC_SHIPPING_EMPHASIS}</div>
-                </div>
-                
-                <div className="section">
-                    <div className="title">{LOCAL_DELIVERY}</div>
-                    <div className="body">{LOCAL_DELIVERY_CONTENT}</div>
-                </div>
+        <div className="vertical-sm horizontal-lg infoPages">
+            <div className="vertical-sm section">             
+                <div className="title">{SHIPPING_POLICY}</div>
+                <div className="body">{SHIPPING_POLICY_CONTENT}</div>
+                <div className="emphasis">{SHIPPING_POLICY_EMPHASIS}</div>
+            </div>
+            
+            <div className="vertical-sm  section">
+                <div className="title">{DOMESTIC_SHIPPING_RATES}</div>
+                <div className="body">
+                    <div className="emphasis">{DOMESTIC_SHIPPING_CONTENT_EMPHASIS}</div> {DOMESTIC_SHIPPING_RATES_CONTENT}</div>
+                <div className="emphasis">{DOMESTIC_SHIPPING_EMPHASIS}</div>
+            </div>
+            
+            <div className="vertical-sm  section">
+                <div className="title">{LOCAL_DELIVERY}</div>
+                <div className="body">{LOCAL_DELIVERY_CONTENT}</div>
+            </div>
 
-                <div className="section">
-                    <div className="title">{IN_STORE_PICKUP}</div>
-                    <div className="body">{IN_STORE_PICKUP_CONTENT_1}</div>
-                    <div className="body">{IN_STORE_PICKUP_CONTENT_2}</div>
-                </div>
+            <div className="vertical-sm  section">
+                <div className="title">{IN_STORE_PICKUP}</div>
+                <div className="body">{IN_STORE_PICKUP_CONTENT_1}</div>
+                <div className="body">{IN_STORE_PICKUP_CONTENT_2}</div>
+            </div>
 
-                <div className="section">
-                    <div className="title">{INTERNATIONAL_SHIPPING}</div>
-                    <div className="body">{INTERNATIONAL_SHIPPING_CONTENT_1}</div>
-                    <div className="body">{INTERNATIONAL_SHIPPING_CONTENT_2}</div>
-                </div>
-                
-                <div className="section">
-                    <div className="title">{CHECK_STATUS_OF_ORDER}</div>
-                    <div className="body">{CHECK_STATUS_OF_ORDER_CONTENT_1}</div>
-                    <div className="body">{CHECK_STATUS_OF_ORDER_CONTENT_2}</div>
-                </div>
+            <div className="vertical-sm  section">
+                <div className="title">{INTERNATIONAL_SHIPPING}</div>
+                <div className="body">{INTERNATIONAL_SHIPPING_CONTENT_1}</div>
+                <div className="body">{INTERNATIONAL_SHIPPING_CONTENT_2}</div>
+            </div>
+            
+            <div className="vertical-sm  section">
+                <div className="title">{CHECK_STATUS_OF_ORDER}</div>
+                <div className="body">{CHECK_STATUS_OF_ORDER_CONTENT_1}</div>
+                <div className="body">{CHECK_STATUS_OF_ORDER_CONTENT_2}</div>
+            </div>
 
-                <div className="section">
-                    <div className="title">{REFUNDS_RETURNS_EXCHANGES}</div>
-                    <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_1}</div>
-                    <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_2}</div>
-                    <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_3}</div>
-                </div>
-
-            </main>
+            <div className="vertical-sm section">
+                <div className="title">{REFUNDS_RETURNS_EXCHANGES}</div>
+                <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_1}</div>
+                <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_2}</div>
+                <div className="body">{REFUNDS_RETURNS_EXCHANGES_CONTENT_3}</div>
+            </div>
         </div>
     );
 }

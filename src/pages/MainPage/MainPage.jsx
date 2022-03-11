@@ -28,8 +28,8 @@ export default function MainPage() {
 
 
     return (
-        <div className="mainPage marginTop">
-            <Row className="paddingHorizontalSm blogSection">
+        <div className="vertical-md mainPage">
+            <Row className="horizontal-sm blogSection">
                 <Col md={3} className="grayBorderRight">
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 1]} />
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 2]} />

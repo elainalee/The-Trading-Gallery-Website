@@ -18,16 +18,14 @@ export default function BlogDetailPage(props) {
     }, [blogId]);
 
     return (
-        <div className="marginTop blogDetailPage" >
-            <main>
-                <div className="title">{blogDetail?.title}</div>
+        <div className="vertical-lg horizontal-lg blogDetailPage" >
+            <div className="title">{blogDetail?.title}</div>
 
-                {blogDetail?.mainImage  
-                    ? (<img className="image" src={blogDetail.mainImage} />)
-                    : (<div className="placeholder" />)}
+            {blogDetail?.mainImage  
+                ? (<img className="image" src={blogDetail.mainImage} />)
+                : (<div className="placeholder" />)}
 
-                <div className="body">{blogDetail?.body}</div>
-            </main>            
+            <div className="body">{blogDetail?.body}</div>         
         </div>
     );
 }

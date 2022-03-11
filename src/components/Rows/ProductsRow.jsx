@@ -6,12 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
-import '../../utils/globalStyles.css';
-import "./TGGRows.css";
 import { IconButton } from '../Buttons/IconButton';
 import { useSelector } from 'react-redux';
 import { AddListingPageRoute } from '../../utils/routes';
 import { useHistory } from 'react-router-dom';
+
+import '../../utils/globalStyles.css';
+import "./TGGRows.css";
 
 export default function ProductsRow(props) {
     const history = useHistory();

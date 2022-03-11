@@ -41,7 +41,7 @@ export default function ShopPage(props) {
     }, [keyword]);
 
     return (
-        <div className="marginHorizontal">
+        <div className="vertical-md horizontal-md">
             {keyword
                 ?  <ProductsRow products={products.searchItems} title={"SEARCH FOR " + keyword} placeholderNumbers={8} enableCarousel={false}/>
                 : mainCategory

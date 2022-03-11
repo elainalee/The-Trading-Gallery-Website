@@ -1,84 +1,84 @@
 /* All InfoPages */
-.infoPages main * {
+.infoPages * {
     font-size: 20px;
     font-family: 'Roboto mono', 'Open Sans';
 }
 
-.termsOfUse main * {
+.termsOfUse * {
     font-size: 15px;
 }
 
-.infoPages main {
-    padding-left: 20%;
-    padding-right: 20%;
+.infoPages {
+    /* padding-left: 20%;
+    padding-right: 20%; */
 
     margin-bottom: 85px;
 }
 
-.infoPages main .section {
-    margin-top: 50px;
+.infoPages .section {
+    /* margin-top: 50px; */
     line-height: 30px;
 }
 
-.termsOfUse main .section {
+.termsOfUse .section {
     margin-top: 30px;
 }
 
-.infoPages main .title {
+.infoPages .title {
     font-weight: 500;
     font-size: 23px;
 }
 
-.termsOfUse main .title {
+.termsOfUse .title {
     font-size: 20px;
 }
 
-.infoPages main .body {
-    margin-top: 15px;
+.infoPages .body {
+    /* margin-top: 15px; */
     font-size: 16px;
 }
 
-.termsOfUse main .body {
+.termsOfUse .body {
     margin-top: 5px;
     font-size: 14px;
 }
 
-.infoPages main .emphasis {
+.infoPages .emphasis {
     margin-top: 10px;
     font-weight: bold;
     font-style: italic;
     font-size: 16px;
 }
 
-.infoPages main .italized {
+.infoPages .italized {
     font-style: italic;
 }
 
-.infoPages main .body .subtitle {
+.infoPages .body .subtitle {
     font-weight: bold;
     font-size: 16px;
     display: inline;
 }
 
-.termsAndPolicy main .body .subtitle {
+.termsAndPolicy .body .subtitle {
     font-size: 14px;
 }
 
-.infoPages main .body .emphasis {
+.infoPages .body .emphasis {
     font-size: 16px;
     display: inline;
 }
 
-.termsAndPolicy main .body .emphasis {
+.termsAndPolicy .body .emphasis {
     font-size: 14px;
 }
 
-.termsAndPolicy main ul {
+.termsAndPolicy ul {
     margin-left: 30px;
     list-style-position: outside;
 }
 
-.infoPages main .noBullet {
+.infoPages .noBullet {
     list-style-type: none;
 }
 
@@ -94,152 +94,150 @@
     width: 50%;
 }
 
-.contactPage main {
+.contactPage {
     height: 800px;
 }
 
 
 
-
-
 @media screen and (min-width: 768px) and (max-width: 992px) {
-    .infoPages main * {
+    .infoPages * {
         font-size: 20px;
     }
     
-    .infoPages main {
-        padding-left: 15%;
-        padding-right: 15%;
+    .infoPages {
+        /* padding-left: 15%;
+        padding-right: 15%; */
     
         margin-bottom: 85px;
     }
     
-    .infoPages main .section {
-        margin-top: 40px;
+    .infoPages .section {
+        /* margin-top: 40px; */
         line-height: 30px;
     }
 
-    .termsAndPolicy main .section {
+    .termsAndPolicy .section {
         margin-top: 25px;
     }
     
-    .infoPages main .title {
+    .infoPages .title {
         font-size: 20px;
     }
 
-    .termsAndPolicy main .title {
+    .termsAndPolicy .title {
         font-size: 18px;
     }
     
-    .infoPages main .body {
+    .infoPages .body {
         font-size: 16px;
     }
 
-    .termsAndPolicy main .body {
+    .termsAndPolicy .body {
         font-size: 14px;
     }
     
-    .infoPages main .emphasis {
+    .infoPages .emphasis {
         font-size: 16px;
     }
 
-    .termsAndPolicy main .emphasis {
+    .termsAndPolicy .emphasis {
         font-size: 14px;
     }
     
-    .infoPages main .body .subtitle {
+    .infoPages .body .subtitle {
         font-size: 16px;
     }
 
-    .termsAndPolicy main .body .subtitle {
+    .termsAndPolicy .body .subtitle {
         font-size: 14px;
     }
     
-    .infoPages main .body .emphasis {
+    .infoPages .body .emphasis {
         margin-top: 5px;
         font-size: 16px;
     }
 
-    .termsAndPolicy main .body .emphasis {
+    .termsAndPolicy .body .emphasis {
         font-size: 14px;
     }
     
-    .termsAndPolicy main ul {
+    .termsAndPolicy ul {
         margin-left: 20px;
     }
     
 }
 
 @media screen and (max-width: 767px) {
-    .infoPages main * {
+    .infoPages * {
         font-size: 18px;
     }
 
-    .termsAndPolicy main * {
+    .termsAndPolicy * {
         font-size: 13px;
     }
     
-    .infoPages main {
+    .infoPages {
         padding-left: 10%;
         padding-right: 10%;
     
         margin-bottom: 85px;
     }
     
-    .infoPages main .section {
-        margin-top: 30px;
+    .infoPages .section {
+        /* margin-top: 30px; */
         line-height: 30px;
     }
 
-    .termsAndPolicy main .section {
+    .termsAndPolicy .section {
         margin-top: 20px;
     }
     
-    .infoPages main .title {
+    .infoPages .title {
         font-size: 18px;
     }
     
-    .termsAndPolicy main .title {
+    .termsAndPolicy .title {
         font-size: 16px;
     }
     
-    .infoPages main .body {
-        margin-top: 15px;
+    .infoPages .body {
+        /* margin-top: 15px; */
         font-size: 14px;
     }
 
-    .termsAndPolicy main .body {
+    .termsAndPolicy .body {
         margin-top: 1px;
         font-size: 13px;
     }
     
-    .infoPages main .emphasis {
+    .infoPages .emphasis {
         font-size: 14px;
     }
 
-    .termsAndPolicy main .emphasis {
+    .termsAndPolicy .emphasis {
         font-size: 13px;
     }
 
-    .infoPages main .body .subtitle {
+    .infoPages .body .subtitle {
         font-size: 14px;
     }
 
-    .termsAndPolicy main .body .subtitle {
+    .termsAndPolicy .body .subtitle {
         font-size: 13px;
     }
     
-    .infoPages main .body .emphasis {
+    .infoPages .body .emphasis {
         margin-top: 1px;
         font-size: 14px;
     }
 
-    .termsAndPolicy main .body .emphasis {
+    .termsAndPolicy .body .emphasis {
         margin-top: 1px;
         font-size: 13px;
     }
 
-    .termsAndPolicy main ul {
+    .termsAndPolicy ul {
         margin-left: 18px;
     }
 }

@@ -1,9 +1,4 @@
 /* Product Detail Page */
-
-.productDetailPage main {
-    margin-bottom: 150px;
-}
-
 .productDetailPage .image-section .image {   
     background-color: var(--primary-light);
     width: 90%;
@@ -48,40 +43,29 @@
 
 
 /* Blog Detail Page */
-.blogDetailPage main * {
+.blogDetailPage * {
     font-size: 20px;
     font-family: 'Roboto mono', 'Open Sans';
 }
 
-.blogDetailPage main {
-    margin-bottom: 150px;
-}
-
-.blogDetailPage main {
-    padding-left: 15%;
-    padding-right: 15%;
-
-    margin-bottom: 150px;
-}
-
-.blogDetailPage main .title {
+.blogDetailPage .title {
     font-weight: 500;
     font-size: 25px;
 }
 
-.blogDetailPage main .image {
+.blogDetailPage .image {
     width: 90%;
     margin-top: 2%;
 }
 
-.blogDetailPage main .body {
+.blogDetailPage .body {
     margin-top: 3%;
     font-size: 15px;
 
     white-space: break-spaces;
 }
 
-.blogDetailPage main .placeholder {
+.blogDetailPage .placeholder {
     margin-top: 5%;
     font-size: 22px;
 
@@ -92,40 +76,30 @@
 }
 
 
-
-
-
 @media screen and (min-width: 768px) and (max-width: 992px) {
     /* Blog Detail Page */
-    .blogDetailPage main * {
+    .blogDetailPage * {
         font-size: 20px;
     }
 
-    .blogDetailPage main {
-        padding-left: 12%;
-        padding-right: 12%;
-    
-        margin-bottom: 85px;
-    }
-
-    .blogDetailPage main .title {
+    .blogDetailPage .title {
         font-size: 22px;
     }
 
-    .blogDetailPage main .image {
+    .blogDetailPage .image {
         width: 100%;
     }
 
-    .blogDetailPage main .body {
+    .blogDetailPage .body {
         font-size: 17px;
     }
 
-    .blogDetailPage main .placeholder {
+    .blogDetailPage .placeholder {
         font-size: 18px;
     }
 
     /* Product Detail Page */
-    .productDetailPage main {
+    .productDetailPage {
         margin-bottom: 130px;
     }
     
@@ -164,35 +138,28 @@
 
 @media screen and (max-width: 767px) {
     /* Blog Detail Page */
-    .blogDetailPage main * {
+    .blogDetailPage * {
         font-size: 18px;
     }
 
-    .blogDetailPage main {
-        padding-left: 10%;
-        padding-right: 10%;
-    
-        margin-bottom: 85px;
-    }
-
-    .blogDetailPage main .title {
+    .blogDetailPage .title {
         font-size: 16px;
     }
 
-    .blogDetailPage main .image {
+    .blogDetailPage .image {
         width: 100%;
     }
 
-    .blogDetailPage main .body {
+    .blogDetailPage .body {
         font-size: 14px;
     }
 
-    .blogDetailPage main .placeholder {
+    .blogDetailPage .placeholder {
         font-size: 18px;
     }
 
     /* Product Detail Page */
-    .productDetailPage main {
+    .productDetailPage {
         margin-bottom: 130px;
     }
     
