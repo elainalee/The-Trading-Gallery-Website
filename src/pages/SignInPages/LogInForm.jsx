@@ -82,11 +82,10 @@ export default function LogInForm() {
                 </CustomButton>
 
             </Form>
-            <div className="w-100 text-center mt-4">
-              {/* Forgot password? */}
+            {/* <div className="w-100 text-center mt-4">
               {' '}
               <Link to={PasswordResetRoute} className="emphasis-links">Forgot your Password?</Link>
-          </div>
+          </div> */}
         </div>
     );
 }
