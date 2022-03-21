@@ -28,8 +28,8 @@ export default function MainPage() {
 
 
     return (
-        <div className="vertical-md mainPage">
-            <Row className="horizontal-sm blogSection">
+        <div className="page-md mainPage">
+            <Row className="vertical-section horizontal-sm">
                 <Col md={3} className="grayBorderRight">
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 1]} />
                     <BlogCard sm blog={recentBlogs?.[recentBlogs.length - 2]} />
@@ -45,11 +45,15 @@ export default function MainPage() {
                 </Col>
             </Row>
 
-            <FeaturedRow title="Featured" products={products.items} placeholderNumbers={4} />
-            
-            <Banner />
+            <div className="vertical-section">
+                <FeaturedRow title="Featured" products={products.items} placeholderNumbers={4} />
+            </div>
 
-            <div className="bestSeller horizontal-md">
+            <div className="vertical-section">
+                <Banner />
+            </div>
+
+            <div className="horizontal-md">
                 <ProductsRow title="Shop Our Best Sellers" products={bestSellers} placeholderNumbers={4} enableCarousel={true}/>
             </div>
         </div>

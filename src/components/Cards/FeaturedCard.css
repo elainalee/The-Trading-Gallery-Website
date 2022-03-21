@@ -3,7 +3,6 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction:row;
-    /* border-bottom: 1px solid var(--primary-light); */
 }
 
 .featuredCard .image-section .image {
@@ -30,14 +29,12 @@
 }
 
 .featuredCard .title {
-    color: black;
     font-weight: 500;
     font-size: 15px;
     padding-left: 10px;
 }
 
 .featuredCard .subtitle {
-    color: black;
     /* font-weight: bold; */
     font-size: 13px;
     padding-left: 10px;
@@ -52,5 +49,4 @@
 
 .featuredCard .cardDescription {
     /* height: 130px; */
-    color: black;
 }

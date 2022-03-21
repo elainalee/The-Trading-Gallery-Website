@@ -56,7 +56,7 @@ export default function ContactPage() {
     }
 
     return (
-        <div className="vertical-md horizontal-md specialFont body-sm">
+        <div className="page-md horizontal-md specialFont body-sm">
             {submitted
                 ? (<div>
                         <h2>Your information has been received.</h2>

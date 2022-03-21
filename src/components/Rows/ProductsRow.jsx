@@ -46,20 +46,16 @@ export default function ProductsRow(props) {
 
     return (
         <div className="productsRow">
-            <div className="">
-                {props.title && (
-                    <h2 className="uppercase bold">{props.title}</h2>
-                )}
-
+            <h2 className="vertical-sm">
+                {props.title}
                 {currentSeller && (
                     <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
                 )}
-                
                 <div className={enableCarousel ? "selection" : "selection hide"}>
                     <i className={"fas fa-angle-left " + (rowPage === 0 && "disable")} onClick={() => { if (rowPage > 0) setRowPage(rowPage - 1) }}/>
                     <i className={"fas fa-angle-right " + (rowPage === 2 && "disable")} onClick={() => { if (rowPage < 2) setRowPage(rowPage + 1) }}/>
                 </div>
-            </div>
+            </h2>
 
             <Swiper
                 className={enableCarousel ? "carousel" : "carousel hide"}

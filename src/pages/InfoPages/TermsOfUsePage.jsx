@@ -5,7 +5,7 @@ import "./InfoPages.css";
 
 export default function TermsOfUsePage() {
     return (
-       <div className="vertical-sm horizontal-sm specialFont body-xs termsOfUse">
+       <div className="page-sm horizontal-sm specialFont body-xs termsOfUse">
            <div className="vertical-sm">
                 <h3>{TERMS_OF_USE}</h3>
                 <p><em>{TERMS_OF_USE_VER_NUM}</em></p>

@@ -41,9 +41,9 @@ export default function ShopPage(props) {
     }, [keyword]);
 
     return (
-        <div className="vertical-md horizontal-md">
+        <div className="page-md horizontal-md">
             {keyword
-                ?  <ProductsRow products={products.searchItems} title={"SEARCH FOR " + keyword} placeholderNumbers={8} enableCarousel={false}/>
+                ?  <ProductsRow products={products.searchItems} title={"Search For \"" + keyword + "\""} placeholderNumbers={8} enableCarousel={false}/>
                 : mainCategory
                     ? <ProductsRow products={products.categoryItems} title="ITEMS" placeholderNumbers={8} enableCarousel={false}/>
                     : <ProductsRow products={items} title="FEATURED PRODUCTS" placeholderNumbers={8} enableCarousel={false}/>}

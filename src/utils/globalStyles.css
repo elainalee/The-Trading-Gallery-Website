@@ -78,17 +78,37 @@
 
 .vertical-sm {
     margin-top: 30px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .vertical-md {
     margin-top: 30px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .vertical-lg {
     margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+}
+
+/* These are for pages - contains padding-bottom */
+.page-sm {
+    margin-top: 30px;
+    padding-bottom: 70px;
+}
+
+.page-md {
+    margin-top: 30px;
+    padding-bottom: 70px;
+}
+
+.page-lg {
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+
+.vertical-section {
+    margin-bottom: 7%;
 }
 
 /* TITLES & BODY TEXTS TO SHARE */
@@ -135,7 +155,6 @@
 }
 
 
-
 .uppercase {
     text-transform: uppercase;
 }
@@ -147,7 +166,7 @@
 h2 {
     font-size: 25px!important;
     font-weight: 500;
-    padding-bottom: 1%;
+    /* padding-bottom: 1%; */
 }
 
 h2.sm {
@@ -306,33 +325,6 @@ h3 {
     }
 }
 
-
-/* =======below margin & padding will be deleted */
-
-/* MARGIN & PADDING */
-
-/* FOR SECTIONS */
-.marginTop-section {
-    margin-top: 40px;
-}
-
-.marginBottom-section {
-    margin-bottom: 40px;
-}
-
-/* FOR BODY */
-.marginTop-body {
-    margin-top: 15px;
-}
-
-.marginBottom-body {
-    margin-bottom: 15px;
-}
-
-/* =============== */
-
-
-
 /* BORDERS */
 
 .grayBorderRight {
@@ -370,6 +362,10 @@ h2 {
 
 .disabledCursor { 
     cursor: default;
+}
+
+.disable {
+    color: gray;
 }
 
 

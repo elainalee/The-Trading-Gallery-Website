@@ -6,7 +6,7 @@ import "./InfoPages.css";
 
 export default function ShippingReturnPage() {
     return (
-        <div className="vertical-md horizontal-lg specialFont body-sm">
+        <div className="page-md horizontal-lg specialFont body-sm">
             <div className="vertical-sm">
                 <h2 className="sm">{SHIPPING_POLICY}</h2>
                 <p>{SHIPPING_POLICY_CONTENT}</p>

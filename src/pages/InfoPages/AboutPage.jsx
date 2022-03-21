@@ -8,7 +8,7 @@ import "./InfoPages.css";
 export default function AboutPage() {
 
     return (
-        <div className="vertical-lg horizontal-xl specialFont body-sm">
+        <div className="page-lg horizontal-xl specialFont body-sm">
             <div className="vertical-md">
                 <h2 className="sm">{THE_TRADING_GALLERY}</h2>
                 <h2 className="sm">{ABOUT_US}</h2>

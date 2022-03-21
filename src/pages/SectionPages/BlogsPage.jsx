@@ -16,7 +16,7 @@ export default function BlogsPage() {
     }, []);
 
     return (
-        <div className="vertical-md horizontal-md">
+        <div className="page-md horizontal-md">
             <BlogsRow blogs={allBlogs} title="THE TRADING GALLERY BLOGS" placeholderNumbers={8}/>
         </div>        
     );

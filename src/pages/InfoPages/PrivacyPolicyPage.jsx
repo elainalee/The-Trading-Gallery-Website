@@ -5,7 +5,7 @@ import "./InfoPages.css";
 
 export default function PrivacyPolicyPage() {
     return (
-        <div className="vertical-sm horizontal-sm specialFont body-xs termsOfUse">
+        <div className="page-sm horizontal-sm specialFont body-xs termsOfUse">
 
             <div className="vertical-sm">
                 <h3>{PRIVACY_POLICY}</h3>

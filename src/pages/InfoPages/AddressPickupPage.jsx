@@ -6,7 +6,7 @@ import { ADDRESS_GOOGLE_MAP, ADDRESS_PICKUP, ADDRESS_SECTION_1, ADDRESS_SECTION_
 export default function AddressPickupPage() {
 
     return (
-        <div className="vertical-lg horizontal-lg specialFont body-sm">
+        <div className="page-lg horizontal-lg specialFont body-sm">
             <div className="vertical-sm">
                 <h2 className="sm">{ADDRESS_PICKUP}</h2>
                 <p>{ADDRESS_SECTION_1}</p>
