@@ -11,17 +11,6 @@
     display: none;
 }
 
-.productsRow .title {
-    padding-top: 3%;
-    padding-bottom: 1%;
-}
-
-.productsRow .titleText {
-    font-size: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
 .productsRow .fa-angle-left {
     display: none;
 }
@@ -31,19 +20,8 @@
 }
 
 /* FeaturedRow section */
-.featuredRow .titleText {
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .featuredRow .fas {
     display: none;
-}
-
-/* blogsRow section */
-.blogsRow .titleText {
-    font-size: 25px;
-    font-weight: bold;
 }
 
 
@@ -71,20 +49,6 @@
         display: none;
     }
 
-    .productsRow .title {
-        width: 100%;
-        padding-top: 3%;
-        padding-bottom: 1%;
-
-        display: flex;
-        flex-direction: row;
-    }
-
-    .productsRow .titleText {
-        font-size: 22px;
-
-        flex: 1;
-    }
 
     .productsRow .selection {
         float: right;
@@ -97,10 +61,6 @@
         font-size: 30px;
     }
 
-    .featuredRow .disable {
-        color: gray;
-    }
-
     .featuredRow .hide-some {
         display: none;
     }
@@ -109,17 +69,7 @@
         margin-right: 50px;
     }
 
-    .featuredRow .title {
-        width: 100%;
-        padding-top: 3%;
-        padding-bottom: 1%;
-
-        display: flex;
-        flex-direction: row;
-    }
-
-    .featuredRow .titleText {
-        /* font-size: 20px; */
+    .featuredRow h3 {
         flex: 1;
     }
 
@@ -146,23 +96,12 @@
     .productsRow .hide {
         display: none;
     }
-
-    .productsRow .title {
-        font-size: 22px;
-        width: 100%;
-        padding-top: 3%;
-        padding-bottom: 2%;
-    }
     
     /* FeaturedRow section */
     .featuredRow .fas {
         display: inline;
         font-family: 'Font Awesome 5 Free';
         font-size: 30px;
-    }
-
-    .featuredRow .disable {
-        color: gray;
     }
 
     .featuredRow .hide-some {
@@ -173,17 +112,8 @@
         margin-right: 50px;
     }
 
-    .featuredRow .title {
-        width: 100%;
-        padding-top: 3%;
-        padding-bottom: 1%;
 
-        display: flex;
-        flex-direction: row;
-    }
-
-    .featuredRow .titleText {
-        /* font-size: 20px; */
+    .featuredRow h3 {
         flex: 1;
     }
 

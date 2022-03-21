@@ -6,12 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
-import '../../utils/globalStyles.css';
-import "./TGGRows.css";
 import { IconButton } from '../Buttons/IconButton';
 import { useSelector } from 'react-redux';
-import { AddListingPageRoute } from '../../utils/routes';
+import { AddListingPageRoute, ShopPageRoute } from '../../utils/routes';
 import { useHistory } from 'react-router-dom';
+
+import '../../utils/globalStyles.css';
+import "./TGGRows.css";
 
 export default function ProductsRow(props) {
     const history = useHistory();
@@ -30,6 +31,10 @@ export default function ProductsRow(props) {
         setIsMobile(window?.innerWidth <= 767);
     }
 
+    const handleTitleOnClick = () => {
+        window.location.href = ShopPageRoute;
+    }
+
     const handleAddClick = () => {
         history.push(AddListingPageRoute);
     }
@@ -45,26 +50,21 @@ export default function ProductsRow(props) {
 
     return (
         <div className="productsRow">
-            <div className="title">
-                {props.title && (
-                    <p className="titleText">
-                        {props.title}
-                        {currentSeller && (
-                            <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
-                        )}
-                    </p>
+            <h2 className="vertical-sm">
+                {props.title}
+                {currentSeller && (
+                    <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
                 )}
-                
                 <div className={enableCarousel ? "selection" : "selection hide"}>
                     <i className={"fas fa-angle-left " + (rowPage === 0 && "disable")} onClick={() => { if (rowPage > 0) setRowPage(rowPage - 1) }}/>
                     <i className={"fas fa-angle-right " + (rowPage === 2 && "disable")} onClick={() => { if (rowPage < 2) setRowPage(rowPage + 1) }}/>
                 </div>
-            </div>
+            </h2>
 
             <Swiper
                 className={enableCarousel ? "carousel" : "carousel hide"}
                 spaceBetween={50}
-                slidesPerView={isMobile ? 1 : 2}
+                slidesPerView={isMobile ? 1 : 3}
                 // centeredSlide={isMobile}
                 ref={rowPageRef}
                 onSlideChange={(info) => setRowPage(info.activeIndex)}
@@ -73,8 +73,9 @@ export default function ProductsRow(props) {
                         <SwiperSlide key={index}><ProductCard product={product} /></SwiperSlide>
                     ))}
             </Swiper>
+
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
-                <Row xs={1} md={2} lg={5} >
+                <Row xs={1} md={3} lg={5} >
                     {productsToDisplay.map((product, index) => ( 
                         <Col key={index}>
                             <ProductCard product={product} />

@@ -1,15 +1,7 @@
 /* Carts Page */
-
-.cartsPage {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
 .cartsPage .title {
     font-size: 16px;
 }
-
 
 .cartsPage .freeShipping * {
     font-family: 'Roboto mono', 'Open Sans';
@@ -57,16 +49,7 @@
 }
 
 /* Profile Page */
-.myAccount {
-    width: 100%;
-}
-
-.myAccount .row {
-    width: 100%;
-}
-
 .myAccount .selection {
-    border-right: 1px solid var(--primary-light);
     height: 100%;
 }
 
@@ -106,15 +89,11 @@
         display: none;
     }
 
-    .cartsPage .freeShipping{
+    .cartsPage .freeShipping {
         margin-bottom: 30px;
     }
 
     /* Profile Page */
-    .myAccount .selection {
-        border-right: none;
-    }
-
     .myAccount .selection .title {
         text-align: start;
 

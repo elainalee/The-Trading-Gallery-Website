@@ -30,7 +30,8 @@ export default function ProductCard({ product }) {
       <Card.Body className="productCard">
         <div className="cardDescription">
         {product?.title
-          ? <Card.Title className="cardTitle">{product?.title}</Card.Title>
+          // ? <Card.Title className="cardTitle">{product?.title}</Card.Title>
+          ? <Card.Title className="cardTitle"><h6>{product?.title}</h6></Card.Title>
           : <PlaceholderBox page={false} size="title" />}
 
         {product?.brand

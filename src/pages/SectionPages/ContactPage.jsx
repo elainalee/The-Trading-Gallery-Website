@@ -11,11 +11,10 @@ import { submitFeedback } from '../../reducers/contentsReducer';
 import { SUCCESS } from '../../utils/constants';
 import { ContactPageRoute } from '../../utils/routes';
 import { TTG_EMAIL } from '../../utils/contents';
+import LoadingBox from '../../components/Utils/LoadingBox';
 
 import "../../utils/globalStyles.css";
 import "./SectionPages.css";
-import LoadingBox from '../../components/Utils/LoadingBox';
-
 
 export default function ContactPage() {
     const dispatch = useDispatch();
@@ -57,76 +56,70 @@ export default function ContactPage() {
     }
 
     return (
-        <div className="marginTop contactPage">
-            <div className="marginHorizontal">
-                {submitted
-                    ? (
-                        <div>
-                            <div className="title">Your information has been received.</div>
-                            <div className="body">We will contact you as soon as possible. To submit another response, click <Link className="emphasis-links" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</div>
-                        </div>)
-                    : (
-                        <div className="submitForm">
-                            <Row >
-                                <Col md={6} className="mb-3">
-                                    <div className="title">What's Up?</div>
-                                    <div className="subtitle">We’d love to hear from you,</div>
-                                    <div className="body">
-                                        We are always looking to grow and meet the standards of our clients. If you have any feedback, or need help, we encourage you to fill out the form.
-                                    </div>
+        <div className="page-md horizontal-md specialFont body-sm">
+            {submitted
+                ? (<div>
+                        <h2>Your information has been received.</h2>
+                        <p>We will contact you as soon as possible. To submit another response, click <Link className="emphasis-links" onClick={handleAnotherSubmitClick} to={ContactPageRoute}>here</Link>.</p>
+                    </div>)
+                : (<Row>
+                        <Col md={6} className="mb-3">
+                            <h2>What's Up?</h2>
+                            <h3>We’d love to hear from you.</h3>
+                            <p>
+                                We are always looking to grow and meet the standards of our clients. If you have any feedback, or need help, we encourage you to fill out the form.
+                            </p>
 
-                                    <div className="sub-body">
-                                    If you have questions don't hesitate to reach out to us at:
-                                    </div>
-                                    <div className="sub-body">
-                                        Email: <a href={"mailto:" + TTG_EMAIL} className="link">{TTG_EMAIL}</a>
-                                    </div>
-                                    <div className="sub-body">
-                                    Please allow 24-48 hours for us to get back to you. Thank you!
-                                    </div>
-                                </Col>
-                                <Col md={6} className="form mb-3">
-                                    {error && <Alert variant="danger">{error}</Alert>}
-                                    <Form onSubmit={handleSubmit}>
-                                        <Form.Group id="name" className="mb-3">
-                                            <Row className="g-2">
-                                                <Col>
-                                                    <Form.Label>First Name *</Form.Label>
-                                                    <Form.Control type="text" ref={firstNameRef} required />
-                                                </Col>
-                                                <Col>
-                                                    <Form.Label>Last Name *</Form.Label>                        
-                                                    <Form.Control type="text" ref={lastNameRef} required />
-                                                </Col>
-                                            </Row>
-                                        </Form.Group>
+                            <div className="text-xs">
+                                If you have questions don't hesitate to reach out to us at:
+                            </div>
+                            <div className="text-xs">
+                                Email: <a href={"mailto:" + TTG_EMAIL} className="link">{TTG_EMAIL}</a>
+                            </div>
+                            <div className="text-xs">
+                            Please allow 24-48 hours for us to get back to you. Thank you!
+                            </div>
+                        </Col>                        
+                        <Col md={6} className="form">
+                            {error && <Alert variant="danger">{error}</Alert>}
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group id="name" className="mb-3">
+                                    <Row className="g-2">
+                                        <Col>
+                                            <Form.Label>First Name *</Form.Label>
+                                            <Form.Control type="text" ref={firstNameRef} required />
+                                        </Col>
+                                        <Col>
+                                            <Form.Label>Last Name *</Form.Label>                        
+                                            <Form.Control type="text" ref={lastNameRef} required />
+                                        </Col>
+                                    </Row>
+                                </Form.Group>
 
-                                        <Form.Group id="email" className="mb-3">
-                                            <Form.Label>Email *</Form.Label>
-                                            <Form.Control type="email" ref={emailRef} required />
-                                        </Form.Group>
+                                <Form.Group id="email" className="mb-3">
+                                    <Form.Label>Email *</Form.Label>
+                                    <Form.Control type="email" ref={emailRef} required />
+                                </Form.Group>
 
-                                        <Form.Group id="subject" className="mb-3">
-                                            <Form.Label>Subject *</Form.Label>
-                                            <Form.Control type="text" ref={subjectRef} required />
-                                        </Form.Group>
+                                <Form.Group id="subject" className="mb-3">
+                                    <Form.Label>Subject *</Form.Label>
+                                    <Form.Control type="text" ref={subjectRef} required />
+                                </Form.Group>
 
-                                        <Form.Group id="message" className="mb-3">
-                                            <Form.Label>Message *</Form.Label>
-                                            <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
-                                        </Form.Group>
+                                <Form.Group id="message" className="mb-3">
+                                    <Form.Label>Message *</Form.Label>
+                                    <Form.Control as="textarea" type="text" style={{ height: '100px' }} ref={messageRef} required />
+                                </Form.Group>
 
-                                        <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom="20px">
-                                            <span id="button-text">
-                                                {loading ? <LoadingBox text="Sending..." /> : "Send"}
-                                            </span>
-                                        </CustomButton>
-                                    </Form>
-                                </Col>
-                            </Row>
-                        </div>
-                    )}
-            </div>
+                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom="20px">
+                                    <span id="button-text">
+                                        {loading ? <LoadingBox text="Sending..." /> : "Send"}
+                                    </span>
+                                </CustomButton>
+                            </Form>
+                        </Col>
+                    </Row>
+                )}
         </div>
     );
 }

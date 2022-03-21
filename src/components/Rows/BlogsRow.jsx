@@ -1,16 +1,16 @@
 import React from 'react';
-import ProductCard from '../../components/Cards/ProductCard';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import '../../utils/globalStyles.css';
-import "./TGGRows.css";
 import BlogCard from '../Cards/BlogCard';
 import { AddBlogPageRoute } from '../../utils/routes';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { IconButton } from '../Buttons/IconButton';
+
+import '../../utils/globalStyles.css';
+import "./TGGRows.css";
 
 export default function BlogsRow(props) {
     const history = useHistory();
@@ -26,19 +26,19 @@ export default function BlogsRow(props) {
     return (
         <div className="blogsRow">
             {props.title && currentSeller && (
-                <p className="titleText">
-                    {props.title}
+                <div>
+                    <h2 className="uppercase bold">{props.title}</h2>
                     <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
-                </p>
+                </div>
             )}
 
             <Row xs={1} md={2} lg={4} className="g-4">
-            {blogsToDisplay.map((blog, index) => ( 
-                <Col key={index} className="cardMargin">
-                    <BlogCard md blog={blog} />
-                </Col>
-            ))}
-        </Row>
+                {blogsToDisplay.map((blog, index) => ( 
+                    <Col key={index} className="cardMargin">
+                        <BlogCard md blog={blog} />
+                    </Col>
+                ))}
+            </Row>
         </div>
         
     );

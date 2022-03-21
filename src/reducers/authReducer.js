@@ -70,6 +70,74 @@ export const checkJWT = () => async (dispatch, getState) => {
     }
 }
 
+export const requestForResetCode = (email) => async (dispatch, getState) => {
+    try {
+        const url = BASE_URL + "/home/generate-reset-code";
+
+        const payload = {
+            email,
+        };
+
+        const res = await axios.post(url, payload);
+
+        const data = res.data;
+
+        console.log("--",data);
+
+        return SUCCESS;
+
+    } catch (err) {
+        console.log("requestForResetCode err :>> ", err?.response?.data?.error);
+        return err?.response?.data?.error;
+    }
+}
+
+export const checkResetCode = (email, resetCode) => async (dispatch, getState) => {
+    try {
+        const url = BASE_URL + "/home/check-reset-code";
+
+        const payload = {
+            email,
+            resetCode
+        };
+
+        const res = await axios.post(url, payload);
+
+        const data = res.data;
+
+        console.log("--",data);
+
+        return SUCCESS;
+
+    } catch (err) {
+        console.log("checkResetCode err :>> ", err?.response?.data?.error);
+        return err?.response?.data?.error;
+    }
+}
+
+export const resetPassword = (email, resetCode, resetPassword) => async (dispatch, getState) => {
+    try {
+        const url = BASE_URL + "/home/reset-password";
+
+        const payload = {
+            email,
+            resetCode,
+            resetPassword
+        };
+
+        const res = await axios.post(url, payload);
+
+        const data = res.data;
+
+        return SUCCESS;
+
+    } catch (err) {
+        console.log("resetPassword err :>> ", err?.response?.data?.error);
+        return err?.response?.data?.error;
+    }
+}
+
+
 export const logInUser = (email, password) => async (dispatch, getState) => {
     try {
         const url = BASE_URL + "/home/login";

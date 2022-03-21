@@ -6,6 +6,7 @@ import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
 import './Utils.css';
+import { AboutPageRoute, ShopPageRoute } from '../../utils/routes';
 
 export default function Banner() {
 
@@ -17,6 +18,10 @@ export default function Banner() {
         setIsMobile(window?.innerWidth <= 767);
     }
 
+    const handleOnClick = () => {
+        window.location.href = AboutPageRoute;
+    }
+
     useEffect(() => {
         window.addEventListener('resize', handleResize);
     });
@@ -26,8 +31,7 @@ export default function Banner() {
       }, [sectionNum]);
 
     return (
-        <div className="banner grayBorderTop grayBorderBottom">
-
+        <div className="banner grayBorderTop grayBorderBottom" onClick={handleOnClick}>
             <div className="title">A Little About Our Company </div>
 
             <Swiper

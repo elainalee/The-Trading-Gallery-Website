@@ -61,85 +61,83 @@ export default function AddListingPage(props) {
     }
 
     return (
-        <div className="marginTop addPostPages addListingPage">
-            <main>
-                <div className="productShowing marginHorizontal">
-                {error && <div className="failedMsg">{error + ". Please try again."}</div>}
+        <div className="vertical-md horizontal-md addPostPages addListingPage">
+            <div className="productShowing">
+            {error && <div className="failedMsg">{error + ". Please try again."}</div>}
 
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id="titles" className="mb-3">
-                            <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
-                        </Form.Group>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group id="titles" className="mb-3">
+                        <Form.Check type="checkbox" checked={productInfo?.bestSeller} onChange={() => {setProductInfo({...productInfo, bestSeller: !productInfo.bestSeller})}} label="Do you want this to be best seller?" />
+                    </Form.Group>
 
-                        <Row>
-                            <Col md={6} className="mb-5">
-                                <Form.Group id="mainImage" className="mb-3">
-                                    <Form.Label>Main Image URL *</Form.Label>
-                                    <Form.Control type="text" value={productInfo?.mainImage || ""} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
-                                </Form.Group>
+                    <Row>
+                        <Col md={6} className="mb-5">
+                            <Form.Group id="mainImage" className="mb-3">
+                                <Form.Label>Main Image URL *</Form.Label>
+                                <Form.Control type="text" value={productInfo?.mainImage || ""} onChange={e => setProductInfo({...productInfo, mainImage: e.target.value})} required />
+                            </Form.Group>
 
-                                <div className="imgPlaceholder">
-                                    {productInfo?.mainImage && (
-                                        <img className="image" src={productInfo?.mainImage} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
-                                    )}
-                                </div>
-                            </Col>
-                            <Col md={6}>
+                            <div className="imgPlaceholder">
+                                {productInfo?.mainImage && (
+                                    <img className="image" src={productInfo?.mainImage} alt={"Rendering image failed. Please double check your url. (TIP: when you paste the link to your tab, only the image should show up.)"} />
+                                )}
+                            </div>
+                        </Col>
+                        <Col md={6}>
 
-                                <Form.Group id="category" className="mb-3">
-                                    <Form.Label>Category *</Form.Label>
-                                    <Form.Select className="form-control" id="category" value={productInfo?.categoryID ||""} onChange={e => setProductInfo({...productInfo, categoryID: e.target.value})}>
-                                        {ShopCategoryItems.map((category, index) => {
-                                            return category.map((subcategory, ind) => {
-                                                return <option key={ind} value={subcategory.id}>{"(" + category[0].title + ") " + subcategory.title}</option>
-                                            })
-                                        })}
-                                    </Form.Select>
-                                </Form.Group>
+                            <Form.Group id="category" className="mb-3">
+                                <Form.Label>Category *</Form.Label>
+                                <Form.Select className="form-control" id="category" value={productInfo?.categoryID ||""} onChange={e => setProductInfo({...productInfo, categoryID: e.target.value})}>
+                                    {ShopCategoryItems.map((category, index) => {
+                                        return category.map((subcategory, ind) => {
+                                            return <option key={ind} value={subcategory.id}>{"(" + category[0].title + ") " + subcategory.title}</option>
+                                        })
+                                    })}
+                                </Form.Select>
+                            </Form.Group>
 
-                                <Form.Group id="title" className="mb-3">
-                                    <Form.Label>Product Name *</Form.Label>                        
-                                    <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
-                                </Form.Group>
+                            <Form.Group id="title" className="mb-3">
+                                <Form.Label>Product Name *</Form.Label>                        
+                                <Form.Control type="text" value={productInfo?.title || ""} onChange={e => setProductInfo({...productInfo, title: e.target.value})} required />
+                            </Form.Group>
 
-                                <Form.Group id="brand" className="mb-3">
-                                    <Form.Label>Brand *</Form.Label>
-                                    <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
-                                </Form.Group>
+                            <Form.Group id="brand" className="mb-3">
+                                <Form.Label>Brand *</Form.Label>
+                                <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} required />
+                            </Form.Group>
 
-                                <Form.Group id="title" className="mb-3">
-                                    <Form.Label>Total Quantity *</Form.Label>                        
-                                    <Form.Control type="number" min={0} value={productInfo?.quantity} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
-                                </Form.Group>
+                            <Form.Group id="title" className="mb-3">
+                                <Form.Label>Total Quantity *</Form.Label>                        
+                                <Form.Control type="number" min={0} value={productInfo?.quantity} onChange={e => setProductInfo({...productInfo, quantity: e.target.value})} required />
+                            </Form.Group>
 
-                                <Form.Group id="price" className="mb-3">
-                                    <Form.Label>Price *</Form.Label>
-                                    <Form.Control type="number" min="0" value={productInfo?.price || ""} onChange={e => setProductInfo({...productInfo, price: e.target.value})} required />
-                                </Form.Group>
+                            <Form.Group id="price" className="mb-3">
+                                <Form.Label>Price *</Form.Label>
+                                <Form.Control type="number" min="0" value={productInfo?.price || ""} onChange={e => setProductInfo({...productInfo, price: e.target.value})} required />
+                            </Form.Group>
 
-                                <Form.Group id="description" className="mb-3">
-                                    <Form.Label>Description *</Form.Label>
-                                    <Form.Control as="textarea" type="text" style={{ height: '400px' }} value={productInfo?.description || ""} onChange={e => setProductInfo({...productInfo, description: e.target.value})} required />
-                                </Form.Group>
+                            <Form.Group id="description" className="mb-3">
+                                <Form.Label>Description *</Form.Label>
+                                <Form.Control as="textarea" type="text" style={{ height: '400px' }} value={productInfo?.description || ""} onChange={e => setProductInfo({...productInfo, description: e.target.value})} required />
+                            </Form.Group>
 
-                                {/* <Form.Group id="tag">
-                                    <Form.Label>Tag (Make it searchable!)</Form.Label>
-                                    {productInfo?.tag && (
-                                        <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />    
-                                    )}
-                                    <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />
-                                </Form.Group> */}
-                                
-                                <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>
-                                    <span id="button-text">
-                                        {loading ? <LoadingBox text="Uploading" /> : "Upload"}
-                                    </span>
-                                </CustomButton>
-                            </Col>
-                        </Row>
-                    </Form>
-                </div>
-            </main>
+                            {/* <Form.Group id="tag">
+                                <Form.Label>Tag (Make it searchable!)</Form.Label>
+                                {productInfo?.tag && (
+                                    <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />    
+                                )}
+                                <Form.Control type="text" value={productInfo?.brand || ""} onChange={e => setProductInfo({...productInfo, brand: e.target.value})} />
+                            </Form.Group> */}
+                            
+                            <CustomButton disabled={loading} type="submit" buttonStyle="primary" buttonDetail="default-size" marginTop="20px" marginBottom={"30px"}>
+                                <span id="button-text">
+                                    {loading ? <LoadingBox text="Uploading" /> : "Upload"}
+                                </span>
+                            </CustomButton>
+                        </Col>
+                    </Row>
+                </Form>
+            </div>
         </div>
         
     );

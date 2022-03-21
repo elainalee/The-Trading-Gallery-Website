@@ -4,7 +4,6 @@
 
     --primary-red: red;
 
-
     --primary-yellow: #E8DE2A;
 
     --primary-color: #5c5959;
@@ -18,18 +17,11 @@
     --primary_gradient_background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-purple) 100%);
 }
 
+/* FONTS & TEXTS */
 .specialFont * {
     font-family: 'Roboto Mono', 'Open Sans';
 }
 
-.failedMsg {
-    color: var(--primary-red);
-    font-size: 15px;
-}
-
-h2 {
-    padding-bottom: 10px;
-}
 
 .underline {
     text-decoration: underline;
@@ -45,6 +37,10 @@ h2 {
     color: var(--primary-color);
 }
 
+.no-underline {
+    text-decoration: none!important;
+}
+
 .emphasis_links {
     color: var(--primary-blue);
     text-decoration: underline;
@@ -54,41 +50,282 @@ h2 {
     color: var(--primary-color);
 }
 
-.disabledCursor { 
-    cursor: default;
+
+/* NEW SET OF MARGIN & PADDING */
+.horizontal-sm {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-.marginLeft {
-    margin-left: 80px;
+.horizontal-md {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-/* avoid use => breaks mobile */
-.marginHorizontal {
-    margin-left: 80px;
-    margin-right: 80px;
+.horizontal-lg {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.paddingHorizontal {
-    padding-left: 80px;
-    padding-right: 80px;
+.horizontal-xl {
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
-.paddingHorizontalSm {
-    padding-left: 40px;
-    padding-right: 40px;
-}
-
-.marginTop {
+.vertical-sm {
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.marginTopExLg {
-    margin-top: 150px;
+.vertical-md {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.marginBottom {
-    margin-bottom: 35px;
+.vertical-lg {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
+/* These are for pages - contains padding-bottom */
+.page-sm {
+    margin-top: 30px;
+    padding-bottom: 70px;
+}
+
+.page-md {
+    margin-top: 30px;
+    padding-bottom: 70px;
+}
+
+.page-lg {
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+
+.vertical-section {
+    margin-bottom: 7%;
+}
+
+/* TITLES & BODY TEXTS TO SHARE */
+
+#button-text {
+    font-family: 'Roboto', 'Open Sans';
+}
+
+.body-xs * {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.body-sm * {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.body-md * {
+    font-size: 18px;
+}
+
+.body-lg * {
+    font-size: 20px;
+}
+
+
+.text-xs {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.text-sm {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.text-md {
+    font-size: 18px;
+}
+
+.text-lg {
+    font-size: 20px;
+}
+
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 25px!important;
+    font-weight: 500;
+    /* padding-bottom: 1%; */
+}
+
+h2.sm {
+    font-size: 23px!important;
+}
+
+h3 {
+    font-size: 20px!important;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    /* NEW SET OF MARGIN & PADDING = eventaully replace all */
+    .horizontal-sm {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .horizontal-md {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .horizontal-lg {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+
+    .horizontal-xl {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .vertical-sm {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .vertical-md {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .vertical-lg {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    /* TITLES & BODY TEXTS TO SHARE */
+    h2 {
+        font-size: 22px!important;
+    }
+
+    h2.sm {
+        font-size: 20px!important;
+    }
+
+    h3 {
+        font-size: 19px!important;
+    }
+
+    .body-xs * {
+        font-size: 15px;
+        /* line-height: 30px; */
+    }
+    
+    .body-sm * {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .body-md * {
+        font-size: 20px;
+    }
+    
+    .body-lg * {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+/* NEW SET OF MARGIN & PADDING = eventaully replace all */
+    .horizontal-sm {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .horizontal-md {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .horizontal-lg {
+        padding-left: 8%;
+        padding-right: 8%; 
+    }
+
+    .horizontal-xl {
+        padding-left: 12%;
+        padding-right: 12%; 
+    }
+
+    .vertical-xs {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .vertical-sm {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .vertical-md {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .vertical-lg {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    /* TITLES & BODY TEXTS TO SHARE */
+    h2 {
+        font-size: 20px!important;
+    }
+
+    h2.sm {
+        font-size: 18px!important;
+    }
+
+    h3 {
+        font-size: 17px!important;
+    }
+
+    .body-xs * {
+        font-size: 14px;
+        line-height: 30px;
+    }
+    
+    .body-sm * {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .body-md * {
+        font-size: 18px;
+    }
+    
+    .body-lg * {
+        font-size: 20px;
+    }
+}
+
+/* BORDERS */
 
 .grayBorderRight {
     border-right: 1px solid var(--primary-light);
@@ -102,53 +339,42 @@ h2 {
     border-top: 1px solid var(--primary-light);
 }
 
-.userPages {
-    min-height: '100vh';
-    /* margin-top: 35px; */
-}
 
+/* HIDE & SHOW */
 .hide-mobile {
     display: flex;
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
-    .marginLeft {
-        margin-left: 60px;
-    }
-
-    .marginHorizontal {
-        margin-left: 60px;
-        margin-right: 60px;
-    }
-    
+/* MISC */
+.failedMsg {
+    color: var(--primary-red);
+    font-size: 15px;
 }
+
+.userPages {
+    min-height: '100vh';
+}
+
+/* h2 {
+    padding-bottom: 10px;
+} */
+
+.disabledCursor { 
+    cursor: default;
+}
+
+.disable {
+    color: gray;
+}
+
 
 @media screen and (max-width: 767px) {
     .hide-mobile {
         display: none;
     }
 
-    .marginLeft {
-        margin-left: 45px;
-    }
-
-    .marginHorizontal {
-        margin-left: 45px;
-        margin-right: 45px;
-    }
-
     .grayBorderRight {
         border-right: 0px;
-    }
-
-    .paddingHorizontal {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-
-    .paddingHorizontalSm {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+    } 
 }

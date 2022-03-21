@@ -22,7 +22,7 @@ export default function ReceiptPage(props) {
     }, [receiptId]);
 
     return (
-        <div className="marginTop receiptPage">
+        <div className="vertical-md horizontal-lg receiptPage">
             <div className="main-title">Order Details</div>
 
             <Row className="section">
