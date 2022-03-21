@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.d97b8d6a.chunk.css",
-    "main.js": "/static/js/main.110b6ab8.chunk.js",
-    "main.js.map": "/static/js/main.110b6ab8.chunk.js.map",
+    "main.css": "/static/css/main.60ae851b.chunk.css",
+    "main.js": "/static/js/main.02149e13.chunk.js",
+    "main.js.map": "/static/js/main.02149e13.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.03175967.js",
     "runtime-main.js.map": "/static/js/runtime-main.03175967.js.map",
     "static/css/2.1a105242.chunk.css": "/static/css/2.1a105242.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.c7db2c8e.chunk.js.map": "/static/js/2.c7db2c8e.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.1a105242.chunk.css.map": "/static/css/2.1a105242.chunk.css.map",
-    "static/css/main.d97b8d6a.chunk.css.map": "/static/css/main.d97b8d6a.chunk.css.map",
+    "static/css/main.60ae851b.chunk.css.map": "/static/css/main.60ae851b.chunk.css.map",
     "static/js/2.c7db2c8e.chunk.js.LICENSE.txt": "/static/js/2.c7db2c8e.chunk.js.LICENSE.txt",
     "static/media/TTG-logo-w-text.d3eba1a8.png": "/static/media/TTG-logo-w-text.d3eba1a8.png"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.03175967.js",
     "static/css/2.1a105242.chunk.css",
     "static/js/2.c7db2c8e.chunk.js",
-    "static/css/main.d97b8d6a.chunk.css",
-    "static/js/main.110b6ab8.chunk.js"
+    "static/css/main.60ae851b.chunk.css",
+    "static/js/main.02149e13.chunk.js"
   ]
 }
