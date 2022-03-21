@@ -37,6 +37,10 @@
     color: var(--primary-color);
 }
 
+.no-underline {
+    text-decoration: none!important;
+}
+
 .emphasis_links {
     color: var(--primary-blue);
     text-decoration: underline;
