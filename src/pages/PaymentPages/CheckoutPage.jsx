@@ -100,6 +100,7 @@ export default function CheckoutPage() {
                                 setCheckedTerms={setCheckedTerms}
                                 />}
                 </Col>
+                
                 <Col md={4} className="carts">
                     <div className="items">
                         {cart?.items?.map((product, index) => (
@@ -109,19 +110,19 @@ export default function CheckoutPage() {
                     </div>
                     <div className="prices">
                         <div className="subpriceText">{"Subtotal"} </div>
-                        <div className="subpriceText">{"$" + (stage === 2 ? payments?.subtotalAmount : cart?.total)}</div>
+                        <div className="subpriceText">{"$" + (stage === 2 ? payments?.subtotalAmount ?? "" : cart?.total ?? "")}</div>
                     </div>
                     {shipOrder && (
                         <div className="prices">
                             <div className="subpriceText">{"Shipping"} </div>
                             <div className="subpriceText">
                                 {stage === 2
-                                    ? "$" + payments?.shippingAmount
+                                    ? "$" + (payments?.shippingAmount ?? "")
                                     : deliveryChoice === undefined 
                                         ? "TBD"
                                         : payments?.shippingOptions?.[deliveryChoice]?.rate === 0
                                             ? "FREE"
-                                            : "$" + payments?.shippingOptions?.[deliveryChoice]?.rate}
+                                            : "$" + (payments?.shippingOptions?.[deliveryChoice]?.rate ?? "")}
                             </div>
                         </div>
                     )}
@@ -140,8 +141,8 @@ export default function CheckoutPage() {
                         <div className="totalPriceText">{"Total"} </div>
                         <div className="totalPriceText">{"CAD $" + 
                             (stage === 2
-                                ? payments?.totalAmount
-                                : cart?.total + (estTax ?? 0) + (shipOrder ? payments?.shippingOptions?.[deliveryChoice]?.rate : 0))?.toFixed(2)}
+                                ? payments?.totalAmount ?? ""
+                                : (cart?.total ?? 0) + (estTax ?? 0) + (shipOrder ? (payments?.shippingOptions?.[deliveryChoice]?.rate ?? 0) : 0))?.toFixed(2)}
                         </div>
                     </div>
                 </Col>

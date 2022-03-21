@@ -18,7 +18,8 @@ export default function CartsPage() {
     const cartTotal = cart?.total;
 
     const handleCheckout = () => {
-        if (cartItems > 0 && cartTotal > 0) {
+        // TODO: Call API to check if all the items are purchasable here.
+        if (cartItems?.length > 0 && cartTotal > 0) {
             history.push(CheckoutPageRoute);
         }
     }
@@ -27,9 +28,11 @@ export default function CartsPage() {
         history.push(ShopPageRoute);
     }
 
+    console.log("cartItems ", cartItems);
+
     return (
         <div className="vertical-md horizontal-md cartsPage">
-            {(cartItems > 0) && (
+            {(cartItems?.length > 0) && (
                 (cartTotal < 150)
                     ? (<div className="freeShipping">
                         Add  <strong> ${150 - cartTotal}</strong> more for free shipping!
@@ -41,13 +44,14 @@ export default function CartsPage() {
             <Row>
             
             <Col md={9}>
-            {cartItems > 0 
+            {(cartItems) && (cartItems?.length > 0 
                 ? (<div>
                     <div className="cart-title"><CartCard title={true} /></div>
                     {cart?.items?.map((product, index) => ( 
                         <CartCard key={index} product={product} last={index == cartItems?.length - 1}/>))}
                     </div>)
-                : (<div className="freeShipping"><strong>Add <Link to={ShopPageRoute} className="emphasis-links">more items</Link> to check out!</strong></div>)}
+                : (<div className="freeShipping"><strong>Add <Link to={ShopPageRoute} className="emphasis-links">more items</Link> to check out!</strong></div>
+                ))}
             </Col>
         
             <Col md={3} className="checkoutBox">
