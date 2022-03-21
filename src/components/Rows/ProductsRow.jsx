@@ -8,7 +8,7 @@ import 'swiper/swiper.min.css';
 
 import { IconButton } from '../Buttons/IconButton';
 import { useSelector } from 'react-redux';
-import { AddListingPageRoute } from '../../utils/routes';
+import { AddListingPageRoute, ShopPageRoute } from '../../utils/routes';
 import { useHistory } from 'react-router-dom';
 
 import '../../utils/globalStyles.css';
@@ -29,6 +29,10 @@ export default function ProductsRow(props) {
 
     const handleResize = () => {
         setIsMobile(window?.innerWidth <= 767);
+    }
+
+    const handleTitleOnClick = () => {
+        window.location.href = ShopPageRoute;
     }
 
     const handleAddClick = () => {
@@ -60,7 +64,7 @@ export default function ProductsRow(props) {
             <Swiper
                 className={enableCarousel ? "carousel" : "carousel hide"}
                 spaceBetween={50}
-                slidesPerView={isMobile ? 1 : 2}
+                slidesPerView={isMobile ? 1 : 3}
                 // centeredSlide={isMobile}
                 ref={rowPageRef}
                 onSlideChange={(info) => setRowPage(info.activeIndex)}
@@ -69,8 +73,9 @@ export default function ProductsRow(props) {
                         <SwiperSlide key={index}><ProductCard product={product} /></SwiperSlide>
                     ))}
             </Swiper>
+
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
-                <Row xs={1} md={2} lg={5} >
+                <Row xs={1} md={3} lg={5} >
                     {productsToDisplay.map((product, index) => ( 
                         <Col key={index}>
                             <ProductCard product={product} />

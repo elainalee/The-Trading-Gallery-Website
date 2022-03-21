@@ -12,13 +12,13 @@
     flex: 1;
     margin-bottom: 0px;
     margin-left: 0px;
-    cursor: pointer;
 }
 
 .navBar-logo-symbol {
     height: 70px;
     justify-self: start;
     margin-bottom: 3px;
+    cursor: pointer;
 }
 
 .fa-react {

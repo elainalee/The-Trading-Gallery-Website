@@ -129,8 +129,8 @@ function NavBar() {
             </div>
             
             <nav className="NavBar-Top">
-                <div className="navBar-logo" onClick={handleLogoClick}>
-                    <img src={logoName} className="navBar-logo-symbol" alt="logo-name" />
+                <div className="navBar-logo">
+                    <img src={logoName} className="navBar-logo-symbol" alt="logo-name" onClick={handleLogoClick} />
                 </div>
 
                 <div className="nav-top-menu-items">
