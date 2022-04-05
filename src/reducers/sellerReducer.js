@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getSellerID, setSellerInfo } from "../Axios/asyncStorage";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 import { SUCCESS } from "../utils/constants";
@@ -47,12 +48,15 @@ export const getSeller = () => async (
     try {
       const url = BASE_URL + "/sellers/getSeller";
       const res = await client.get(url);
-      const data = res.data;
+      const seller = res.data;
+
+      console.log("seller : ", seller);
+      await setSellerInfo(seller);
   
       dispatch({
         type: "SELLER/SETSELLER",
         payload: {
-            seller: data,
+            seller: seller,
         },
       });
 
@@ -69,10 +73,12 @@ export const getSellerBlogs = () => async (
   getState
 ) => {
   try {
-    const state = getState();
-    console.log(state);
+    // const state = getState();
+    // console.log(state);
 
-    const url = BASE_URL + "/blogs/getSellerBlogs/" + state.seller.seller._id;
+    const sellerID = await getSellerID();
+
+    const url = BASE_URL + "/blogs/getSellerBlogs/" + sellerID;
 
     const res = await axios.get(url);
     const data = res.data;
@@ -97,12 +103,16 @@ export const getSellerProducts = () => async (
   getState
 ) => {
   try {
-    const state = getState();
+    // const state = getState();
 
-    const url = BASE_URL + "/products/getSellerItems/" + state.seller.seller._id;
+    const sellerID = await getSellerID();
+
+    const url = BASE_URL + "/products/getSellerItems/" + sellerID;
 
     const res = await axios.get(url);
     const data = res.data;
+
+    console.log("sellerProducts : ", data);
 
     dispatch({
       type: "SELLER/SETPRODUCTS",
@@ -124,7 +134,8 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
   getState
 ) => {
   try {
-    const state = getState();
+    // const state = getState();
+    const sellerID = await getSellerID();
 
     const url = BASE_URL + "/sellers/addProduct";
 
@@ -134,7 +145,7 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
       brand,
       price,
       description,
-      sellerID: state.seller.seller._id
+      sellerID: sellerID
     }
 
     const res = await client.post(url, payload);
@@ -162,14 +173,15 @@ export const addUpdateSellerProduct = (productId, productInfo) => async (
   getState
 ) => {
   try {
-    const state = getState();
-    console.log(state);
+    // const state = getState();
+    // console.log(state);
+    const sellerID = await getSellerID();
 
     const url = BASE_URL + "/sellers/addUpdateProduct/" + (productId ?? "");
 
     const payload = {
       ...productInfo,
-      sellerID: state.seller.seller._id,
+      sellerID: sellerID,
     }
     console.log(payload);
 
@@ -200,8 +212,9 @@ export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlo
   getState
 ) => {
   try {
-    const state = getState();
-    console.log(state);
+    // const state = getState();
+    // console.log(state);
+    // const sellerID = await getSellerID();
 
     const url = BASE_URL + "/sellers/addUpdateBlog/" + (productId ?? "");
 
@@ -237,9 +250,6 @@ export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async 
   getState
 ) => {
   try {
-    const state = getState();
-    console.log(state);
-
     const url = BASE_URL + "/sellers/addBlog";
 
     const payload = {

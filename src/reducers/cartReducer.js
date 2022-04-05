@@ -37,20 +37,22 @@ export const getCart = () => async (
     try {
       const cartID = await getCartID();
 
-      const url = BASE_URL + "/carts/getCart/" + cartID;
-      console.log(url);
-      const res = await client.get(url);
-      const data = res.data;
-
-      console.log("data ", data);
-
+      if (cartID) {
+        const url = BASE_URL + "/carts/getCart/" + cartID;
+        console.log(url);
+        const res = await client.get(url);
+        const data = res.data;
   
-      dispatch({
-        type: "CART/SETCART",
-        payload: {
-          items: data.products,
-        },
-      });
+        console.log("data ", data);
+  
+    
+        dispatch({
+          type: "CART/SETCART",
+          payload: {
+            items: data.products,
+          },
+        });
+      }
 
       return SUCCESS;
   
@@ -65,24 +67,23 @@ export const getCartTotal = () => async (
   getState
 ) => {
   try {
-    const state = getState();
-    // const cartID = state.user.user.cartID;
     const cartID = await getCartID();
 
-    const url = BASE_URL + "/carts/getTotal/" + cartID;
-    console.log(url);
-    const res = await client.get(url);
-    const data = res.data;
-
-    console.log("data ", data);
-
-
-    dispatch({
-      type: "CART/SETTOTAL",
-      payload: {
-        total: data.totalAmount,
-      },
-    });
+    if (cartID) {
+      const url = BASE_URL + "/carts/getTotal/" + cartID;
+      const res = await client.get(url);
+      const data = res.data;
+  
+      console.log("data ", data);
+  
+  
+      dispatch({
+        type: "CART/SETTOTAL",
+        payload: {
+          total: data.totalAmount,
+        },
+      });
+    }
 
     return SUCCESS;
 

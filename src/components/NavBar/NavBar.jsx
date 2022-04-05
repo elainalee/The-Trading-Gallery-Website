@@ -17,9 +17,17 @@ import './NavBarTop.css';
 import './NavBarModal.css';
 import './NavBarExpanded.css';
 import SearchBar from '../Utils/SearchBar';
+import { getStatus } from '../../Axios/asyncStorage';
 
 
 function NavBar() {
+
+    const [status, setStatus] = useState(undefined);
+
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+    }, []);
 
     const state = useSelector((state) => state);
 
@@ -118,9 +126,12 @@ function NavBar() {
                 </Modal.Body>
                 <Modal.Footer className="buttons-bottom">
                     <UserButton /> 
-                    {currentSeller
-                        ? <IconButton buttonIcon="listings-btn" buttonSize="navbar" color="black" onClick={handleListingsClick} />
-                        : <IconButton buttonIcon="carts-btn" buttonSize="navbar" color="black" onClick={handleCartsClick} />}
+
+                    {(status === "user" || status === null)
+                        ? <IconButton buttonIcon="carts-btn" buttonSize="navbar" color="black" onClick={handleCartsClick} />
+                        : (status === "seller")
+                            ? <IconButton buttonIcon="listings-btn" buttonSize="navbar" color="black" onClick={handleListingsClick} /> 
+                            : <div></div>}
                 </Modal.Footer>
             </Modal>
 

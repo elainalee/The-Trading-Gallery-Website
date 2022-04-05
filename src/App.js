@@ -61,7 +61,7 @@ function App() {
 
 
 function NavPages(props) {
-  const { cart, auth } = useSelector((state) => state);
+  const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -78,13 +78,9 @@ function NavPages(props) {
   }, []);
 
   useEffect(() => {
-    console.log("--logged In : fetching user cart again");
     dispatch(getCart());
-  }, []);
-
-  useEffect(() => {
     dispatch(getCartTotal());
-  }, [cart?.items]);
+  }, []);
 
   
 

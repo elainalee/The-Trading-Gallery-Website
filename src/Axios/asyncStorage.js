@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // All constant variables stored in AsyncStorage
 const STATUS = "status";
 const USERID = "userID";
+const SELLERID = "sellerID";
 const CARTID = "cartID";
 const JWT = "jwt";
 const EMAIL = "email";
@@ -16,6 +17,11 @@ export const getStatus = async () => {
 
 export const getUserID = async () => {
     const userID = await AsyncStorage.getItem(USERID);
+    return userID;
+}
+
+export const getSellerID = async () => {
+    const userID = await AsyncStorage.getItem(SELLERID);
     return userID;
 }
 
@@ -51,6 +57,10 @@ export const setJWT = async (jwt) => {
 export const setUserInfo = async (user) => {
     await AsyncStorage.setItem(USERID, user?._id);
     await AsyncStorage.setItem(CARTID, user?.cartID);
+}
+
+export const setSellerInfo = async (seller) => {
+    await AsyncStorage.setItem(SELLERID, seller?._id);
 }
 
 export const removeAll = async () => {

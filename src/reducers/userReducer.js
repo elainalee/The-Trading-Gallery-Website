@@ -1,4 +1,3 @@
-import axios from "axios";
 import { setUserInfo } from "../Axios/asyncStorage";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
