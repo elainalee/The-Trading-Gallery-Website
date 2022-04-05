@@ -3,7 +3,6 @@ import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 import { SUCCESS } from "../utils/constants";
 
-
 const initialState = {
     seller: undefined,
     products: undefined,
@@ -75,12 +74,8 @@ export const getSellerBlogs = () => async (
 
     const url = BASE_URL + "/blogs/getSellerBlogs/" + state.seller.seller._id;
 
-    console.log("getSellerBlogs url : ", url);
-
     const res = await axios.get(url);
     const data = res.data;
-
-    console.log("data", data);
 
     dispatch({
       type: "SELLER/SETBLOGS",
@@ -103,11 +98,8 @@ export const getSellerProducts = () => async (
 ) => {
   try {
     const state = getState();
-    console.log(state);
 
     const url = BASE_URL + "/products/getSellerItems/" + state.seller.seller._id;
-
-    console.log("getSellerProducts url : ", url);
 
     const res = await axios.get(url);
     const data = res.data;
@@ -127,14 +119,12 @@ export const getSellerProducts = () => async (
   }
 };
 
-//TODO: not done
 export const addSellerProduct = (title, brand, description, price, mainImageLink) => async (
   dispatch,
   getState
 ) => {
   try {
     const state = getState();
-    console.log(state);
 
     const url = BASE_URL + "/sellers/addProduct";
 
@@ -146,11 +136,6 @@ export const addSellerProduct = (title, brand, description, price, mainImageLink
       description,
       sellerID: state.seller.seller._id
     }
-    console.log(payload);
-
-
-    console.log("addSellerProduct url : ", url);
-    // console.log("payload is: ", payload);
 
     const res = await client.post(url, payload);
     const data = res.data;

@@ -22,10 +22,7 @@ const userReducer = (state = initialState, action) => {
     }
 }
 
-export const getUser = () => async (
-    dispatch,
-    getState
-  ) => {
+export const getUser = () => async (dispatch, getState) => {
     try {
       const url = BASE_URL + "/users/getUser";
 
@@ -49,23 +46,16 @@ export const getUser = () => async (
     }
 };
 
-export const updateUser = (userInfo) => async (
-  dispatch,
-  getState
-) => {
+export const updateUser = (userInfo) => async (dispatch, getState) => {
   try {
-    console.log("==== in updateUser");
     const url = BASE_URL + "/users/updateUser";
 
     const payload = {
       ...userInfo
     };
 
-    console.log("payload ", payload);
-
     const res = await client.post(url, payload);
     const data = res.data;
-
 
     dispatch({
       type: "USER/SETUSER",
