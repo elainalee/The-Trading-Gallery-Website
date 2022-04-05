@@ -148,9 +148,11 @@ function NavBar() {
                     <div className="hide-mobile">
                         <SearchBar />
 
-                        {currentSeller
-                            ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} />
-                            : <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />}
+                        {(status === "user" || status === null)
+                            ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />
+                            : (status === "seller")
+                                ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} /> 
+                                : <div></div>}
 
                         <UserButton />
                     </div>

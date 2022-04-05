@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // All constant variables stored in AsyncStorage
-const STATUS = "status";
+const STATUS = "status";    // "user" or "seller"
 const USERID = "userID";
 const SELLERID = "sellerID";
 const CARTID = "cartID";
