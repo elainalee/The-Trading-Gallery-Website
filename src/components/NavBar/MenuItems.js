@@ -25,12 +25,12 @@ export const MenuItems = [
 
 export const SellerMenuItems = [
     {
-        title: 'Shop',
+        title: 'Listings',
         url: ShopPageRoute,
         cName: 'nav-menu-item',
     },
     {
-        title: 'Blog',
+        title: 'Blogs',
         url: BlogsPageRoute,
         cName: 'nav-menu-item',
     },

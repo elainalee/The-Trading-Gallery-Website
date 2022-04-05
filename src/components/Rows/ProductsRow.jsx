@@ -7,18 +7,22 @@ import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
 import { IconButton } from '../Buttons/IconButton';
-import { useSelector } from 'react-redux';
 import { AddListingPageRoute, ShopPageRoute } from '../../utils/routes';
 import { useHistory } from 'react-router-dom';
+import { getStatus } from '../../Axios/asyncStorage';
 
 import '../../utils/globalStyles.css';
 import "./TGGRows.css";
 
 export default function ProductsRow(props) {
+    const [status, setStatus] = useState(undefined);
+
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+    }, []);
+
     const history = useHistory();
-    
-    const { seller } = useSelector((state) => state);
-    const currentSeller = seller?.seller;
 
     const rowPageRef = useRef();
     const [rowPage, setRowPage] = useState(0);
@@ -51,8 +55,8 @@ export default function ProductsRow(props) {
     return (
         <div className="productsRow">
             <h2 className="vertical-sm">
-                {props.title}
-                {currentSeller && (
+                {(status === "seller") ? "MY LISTINGS" : props.title}
+                {(status === "seller") && (
                     <IconButton buttonIcon="add-btn" onClick={handleAddClick}/>
                 )}
                 <div className={enableCarousel ? "selection" : "selection hide"}>
