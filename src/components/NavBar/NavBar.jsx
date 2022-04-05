@@ -1,37 +1,33 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory, withRouter } from 'react-router-dom';
-import { MenuItems, ShopCategoryItems } from './MenuItems';
+import { AdminMenuItems, MenuItems, SellerMenuItems, ShopCategoryItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
-import CustomButton from '../Buttons/CustomButton';
 import { IconButton } from '../Buttons/IconButton';
 import logoName from '../../assets/TTG-logo-w-text.png';
 
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
 import { useSelector } from 'react-redux';
 import Marquee from '../Utils/Marquee';
-import CartPopUp from '../Utils/CartPopUp';
 import { Modal } from 'react-bootstrap';
+import SearchBar from '../Utils/SearchBar';
+import { getIsAdmin, getStatus } from '../../Axios/asyncStorage';
 
 import './NavBarBottom.css';
 import './NavBarTop.css';
 import './NavBarModal.css';
 import './NavBarExpanded.css';
-import SearchBar from '../Utils/SearchBar';
-import { getStatus } from '../../Axios/asyncStorage';
 
 
 function NavBar() {
-
     const [status, setStatus] = useState(undefined);
+    const [isAdmin, setIsAdmin] = useState(undefined);
 
     useEffect(async () => {
         let curStatus = await getStatus();
         setStatus(curStatus);
+        let isCurAdmin = await getIsAdmin();
+        setIsAdmin(isCurAdmin);
     }, []);
-
-    const state = useSelector((state) => state);
-
-    const currentSeller = state.seller.seller;
     
     const [menuClicked, setMenuClicked] = useState(false);
 
@@ -165,7 +161,7 @@ function NavBar() {
 
             <nav className="NavBar-Bottom">
                 <ul className="nav-bottom-menu-items">
-                    {MenuItems.map((item, index) => (
+                    {((status === "seller" ? isAdmin ? AdminMenuItems : SellerMenuItems : MenuItems).map((item, index) => (
                         <li 
                             key={index}
                             onMouseEnter={() => handleShowShop(item.title)}
@@ -177,7 +173,7 @@ function NavBar() {
                                 {item.title}
                             </Link>
                         </li>
-                    ))}
+                    )))}
                 </ul>
             </nav>
 

@@ -31,7 +31,7 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute, FeedbackPageRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -45,6 +45,8 @@ import { getCart, getCartTotal } from './reducers/cartReducer';
 import MyAccountPage from './pages/UserPages/MyAccount';
 import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
 import { checkJWT } from './reducers/authReducer';
+import FeedbackPage from './pages/SellerPages/FeedbackPage';
+import { removeAll } from './Axios/asyncStorage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -61,7 +63,6 @@ function App() {
 
 
 function NavPages(props) {
-  const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -81,8 +82,6 @@ function NavPages(props) {
     dispatch(getCart());
     dispatch(getCartTotal());
   }, []);
-
-  
 
   return (
     <div>
@@ -144,6 +143,9 @@ function NavPages(props) {
         {/* Payment Pages */}
         <EnsureUserRoute exact path={"/receipt/:receiptId"} component={ReceiptPage} />
         <EnsureUserRoute exact path={CheckoutPageRoute} component={CheckoutPage} />
+
+        {/* Seller Pages */}
+        <EnsureSellerRoute exact path={FeedbackPageRoute} component={FeedbackPage} />
 
       </div>
       <Footer />

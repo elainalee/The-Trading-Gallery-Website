@@ -1,4 +1,4 @@
-import { AboutPageRoute, BlogsPageRoute, ContactPageRoute, ShopPageRoute } from "../../utils/routes";
+import { AboutPageRoute, BlogsPageRoute, ContactPageRoute, FeedbackPageRoute, ShopPageRoute } from "../../utils/routes";
 
 export const MenuItems = [
     {
@@ -22,6 +22,29 @@ export const MenuItems = [
         cName: 'nav-menu-item',
     },
 ];
+
+export const SellerMenuItems = [
+    {
+        title: 'Shop',
+        url: ShopPageRoute,
+        cName: 'nav-menu-item',
+    },
+    {
+        title: 'Blog',
+        url: BlogsPageRoute,
+        cName: 'nav-menu-item',
+    },
+];
+
+
+export const AdminMenuItems = SellerMenuItems.concat([
+    {
+        title: 'Feedbacks',
+        url: FeedbackPageRoute,
+        cName: 'nav-menu-item',
+    }
+]);
+
 
 export const ShopCategoryItems = [
     [

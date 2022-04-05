@@ -22,7 +22,7 @@ export default function SellerPanelPage() {
 
 
     return (
-        <div className="marginTop sellerPanelPage">
+        <div className="vertical-md sellerPanelPage">
             <div className="horizontal-md">
                 <div className="section">
                     <ProductsRow 

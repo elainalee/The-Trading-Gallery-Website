@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getSellerID, setSellerInfo } from "../Axios/asyncStorage";
+import { getSellerID, setAdmin, setAdminInfo, setSellerInfo, setStatus } from "../Axios/asyncStorage";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 import { SUCCESS } from "../utils/constants";
@@ -51,6 +51,11 @@ export const getSeller = () => async (
       const seller = res.data;
 
       console.log("seller : ", seller);
+
+      if (seller.admin) {
+        await setAdmin();
+      }
+
       await setSellerInfo(seller);
   
       dispatch({

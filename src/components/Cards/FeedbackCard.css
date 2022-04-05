@@ -1,0 +1,18 @@
+/* FeedbackCard */
+.feedbackCard {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.feedbackCard .modalBody {
+    white-space: pre-line;
+}
+
+.feedbackCard .cardSubtitle {
+    margin-bottom: 7px;
+}
+
+.feedback-modal {
+    width: 90vw!important;   /* Occupy the 90% of the screen width */
+    max-width: 90vw!important;
+} 

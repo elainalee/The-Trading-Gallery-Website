@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getReceiptDetail } from "../../reducers/paymentReducer";
@@ -10,7 +8,7 @@ import { PICKED_UP, PROCESSING, READY_FOR_PICKUP, RECEIVED, SHIPPED } from "../.
 
 import "../../utils/globalStyles.css";
 import { formatDateToClient } from "../../utils/Helper";
-import { AddBlogPageRoute, ReceiptPageRoute } from "../../utils/routes";
+import { ReceiptPageRoute } from "../../utils/routes";
 import PlaceholderBox from "../Utils/PlaceholderBox";
 
 import './ReceiptCard.css';
@@ -26,7 +24,6 @@ export default function ReceiptCard(props) {
     }, [receiptID]);
 
 
-    
     return (
         <Link to={`${ReceiptPageRoute}/${receiptID}`} className={"links"} style={{ textDecoration: "none" }}>
             <Card className="receiptCard">

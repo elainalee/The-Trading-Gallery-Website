@@ -24,11 +24,14 @@ export const AddBlogPageRoute = "/add-blog";
 export const ProductDetailPageGeneralRoute = "/product";
 export const ProductDetailPageRoute = ProductDetailPageGeneralRoute + "/:productId";
 
-// Trading Gallery PagesProfileRoute
+// Trading Gallery Pages
 export const ShopPageRoute = "/shop";
 export const BlogsPageRoute = "/blog";
 export const AboutPageRoute = "/about";
 export const ContactPageRoute = "/contact";
+
+// Trading Gallery Seller Pages
+export const FeedbackPageRoute = "/feedbacks";
 
 // Info Pages
 export const ShippingReturnPageRoute = "/shippingReturn";

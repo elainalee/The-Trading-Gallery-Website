@@ -1,0 +1,25 @@
+.text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text .numberOfLines1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    
+    -webkit-line-clamp: 1;
+}
+
+.text .numberOfLines2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 2;
+}
+
+.text .numberOfLines3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 3;
+}
