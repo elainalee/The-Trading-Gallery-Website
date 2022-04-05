@@ -1,39 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { SellerPanelPageRoute, LogInRoute, SellerProfileRoute, MyAccountRoute } from '../../utils/routes';
+import React, { useEffect, useState } from 'react';
+import { getStatus } from '../../Axios/asyncStorage';
+import { LogInRoute, SellerProfileRoute, MyAccountRoute } from '../../utils/routes';
 import { IconButton } from './IconButton';
 
 export default function UserButton(props) {
-    const state = useSelector((state) => state);
-    const currentUser = state.user.user;
+    const [status, setStatus] = useState(undefined);
 
-    const loggedIn = state.auth.loggedInUser;
-
-    const history = useHistory();
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+    }, []);
 
     function goToLogIn() {
-        //history.push(LogInRoute);
-
         window.location.href = LogInRoute;
     }
 
     function goToUserProfile() {
-        // props.setMenuClicked(false);
         window.location.href = MyAccountRoute;
     }
 
     function goToSellerProfile() {
-        // props.setMenuClicked(false);
-        //history.push(SellerProfileRoute);
-
         window.location.href = SellerProfileRoute;
     }
 
     return (
-        loggedIn
-            ? <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" color="black" onClick={currentUser ? goToUserProfile : goToSellerProfile} />
-            : <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" onClick={goToLogIn} />
-            // : <CustomButton buttonStyle="outline" buttonDetail="navbar-size" marginLeft="1rem" onClick={goToLogIn}>Sign In</CustomButton>
+        <IconButton buttonIcon="user-profile-btn" buttonSize="navbar" color="black" 
+            onClick={status === "user" ? goToUserProfile : status === "seller" ? goToSellerProfile : status === null ? goToLogIn : () => {}} />
 );
 }

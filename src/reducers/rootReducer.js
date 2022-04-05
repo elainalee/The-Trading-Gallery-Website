@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import authReducer from "./authReducer";
 import blogsReducer from "./blogsReducer";
 import cartReducer from "./cartReducer";
 import contentsReducer from "./contentsReducer";
@@ -9,7 +8,6 @@ import sellerReducer from "./sellerReducer";
 import userReducer from "./userReducer";
 
 const appReducer = combineReducers({
-    auth: authReducer,
     user: userReducer,
     cart: cartReducer,
     seller: sellerReducer,
@@ -21,7 +19,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
     if (action.type === "HOME/LOGOUT") {
-        state.auth = undefined;
         state.user = undefined;
         state.cart = undefined;
         state.seller = undefined;

@@ -74,20 +74,8 @@ function NavPages(props) {
   }, []);
 
   useEffect(() => {
-    dispatch(checkJWT()).then(() => {
-      dispatch(getCart());
-    });
+    dispatch(checkJWT());
   }, []);
-
-  // useEffect(() => {
-  //   console.log("--page reloaded : fetching user info again");
-  //   dispatch(getUser());
-  // }, [auth.loggedInUser]);
-
-  // useEffect(() => {
-  //   console.log("--page reloaded : fetching seller info again");
-  //   dispatch(getSeller());
-  // }, [auth.loggedInSeller]);
 
   useEffect(() => {
     console.log("--logged In : fetching user cart again");

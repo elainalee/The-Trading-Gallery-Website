@@ -57,18 +57,14 @@ export const getSeller = () => async (
         },
       });
 
-      dispatch({ type: "AUTH/LOGINSELLER" });
-
       return SUCCESS;
   
     } catch (err) {
-      dispatch({ type: "AUTH/SELLER_NOT_LOGGED_IN" });
       console.log("getSeller err :>> ", err?.response?.data?.error);
       return err?.response?.data?.error;
     }
 };
 
-//TODO: seller blogs call not ready yet
 export const getSellerBlogs = () => async (
   dispatch,
   getState

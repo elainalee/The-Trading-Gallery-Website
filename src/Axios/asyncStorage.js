@@ -5,6 +5,7 @@ const STATUS = "status";
 const USERID = "userID";
 const CARTID = "cartID";
 const JWT = "jwt";
+const EMAIL = "email";
 
 
 // Getters
@@ -23,6 +24,11 @@ export const getCartID = async () => {
     return cartID;
 }
 
+export const getEmail = async () => {
+    const email = await AsyncStorage.getItem(EMAIL);
+    return email;
+}
+
 export const getJWT = async () => {
     const jwt = await AsyncStorage.getItem(JWT);
     return jwt;
@@ -32,6 +38,10 @@ export const getJWT = async () => {
 // Setters
 export const setStatus = async (newStatus) => {
     await AsyncStorage.setItem(STATUS, newStatus);
+}
+
+export const setEmail = async (email) => {
+    await AsyncStorage.setItem(EMAIL, email);
 }
 
 export const setJWT = async (jwt) => {

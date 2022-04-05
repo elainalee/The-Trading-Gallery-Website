@@ -1,74 +1,19 @@
 import axios from "axios";
 import BASE_URL from "../Axios/BASE_URL";
 
-import client from "../Axios/auth";
-
 import { AUTH_INVALID, ERROR, SUCCESS } from "../utils/constants";
 import { getUser } from "./userReducer";
 import { getSeller } from "./sellerReducer";
-import { getStatus, removeAll, setJWT, setStatus } from "../Axios/asyncStorage";
-
-
-const initialState = {
-    loggedInUser: undefined,
-    loggedInSeller: undefined,
-}
-
-const authReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "AUTH/LOGINUSER":
-            return {
-                ...state,
-                loggedInUser: true,
-                loggedInSeller: false,
-        }
-
-        case "AUTH/LOGINSELLER":
-            return {
-                ...state,
-                loggedInUser: false,
-                loggedInSeller: true,
-        }
-
-        case "AUTH/LOGOUT":
-            return {
-                ...state,
-                loggedInUser: false,
-                loggedInSeller: false,
-        }
-
-        case "AUTH/USER_NOT_LOGGED_IN":
-            return {
-                ...state,
-                loggedInUser: false,
-        }
-
-        case "AUTH/SELLER_NOT_LOGGED_IN":
-            return {
-                ...state,
-                loggedInSeller: false,
-        }
-
-        default:
-            return state;
-    }
-}
+import { getStatus, removeAll, setEmail, setJWT, setStatus } from "../Axios/asyncStorage";
 
 
 export const checkJWT = () => async (dispatch, getState) => {
     try {
-        console.log("----1: in checkjwt");
         const status = await getStatus();
 
-        console.log("----2: got status. ", status);
-
         if (status === "user") {
-            console.log("checkJWT: case of a !user!");
-            dispatch({ type: "AUTH/LOGINUSER" });
             dispatch(getUser());
         } else if (status === "seller") {
-            console.log("checkJWT: case of a !seller!");
-            dispatch({ type: "AUTH/LOGINSELLER" });
             dispatch(getSeller());
         }
 
@@ -76,7 +21,6 @@ export const checkJWT = () => async (dispatch, getState) => {
 
     } catch (err) {
         if (err.message !== AUTH_INVALID) {
-            console.log("-----invalid!!!!");
             return ERROR;
         }
     }
@@ -93,8 +37,6 @@ export const requestForResetCode = (email) => async (dispatch, getState) => {
         const res = await axios.post(url, payload);
 
         const data = res.data;
-
-        console.log("--",data);
 
         return SUCCESS;
 
@@ -163,14 +105,9 @@ export const logInUser = (email, password) => async (dispatch, getState) => {
 
         const data = res.data;
 
-        // await AsyncStorage.setItem("jwt", data.jwt);
         await setJWT(data.jwt);
         await setStatus("user");
-        // await AsyncStorage.setItem("email", email);
-
-        // await AsyncStorage.setItem("status", "user");
-
-        dispatch({ type: "AUTH/LOGINUSER" });
+        await setEmail(email);
         
         return SUCCESS;
 
@@ -195,13 +132,7 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
 
         await setJWT(data.jwt);
         await setStatus("seller");
-
-        // await AsyncStorage.setItem("jwt", data.jwt);
-        // await AsyncStorage.setItem("email", email);
-
-        // await AsyncStorage.setItem("status", "seller");
-
-        dispatch({ type: "AUTH/LOGINSELLER" });
+        await setEmail(email);
         
         return SUCCESS;
 
@@ -214,13 +145,6 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
 export const logOut = () => async (dispatch, getState) => {
     await removeAll();
     dispatch({ type: "HOME/LOGOUT" });
-    dispatch({ type: "AUTH/LOGOUT" });
-    // AsyncStorage.removeItem("jwt")
-    //     .then((status) => {
-    //         AsyncStorage.removeItem("status");
-    //         dispatch({ type: "HOME/LOGOUT" });
-    //         dispatch({ type: "AUTH/LOGOUT" });
-    //     });
     
     return SUCCESS;
 }
@@ -239,21 +163,14 @@ export const signUp = (userInfo) => async (dispatch, getState) => {
 
         const data = res.data;
 
-        // await AsyncStorage.setItem("jwt", data.jwt);
         await setJWT(data.jwt);
-
-        dispatch({ type: "AUTH/LOGINUSER" });
-
-        // await AsyncStorage.setItem("email", userInfo.email);
+        await setStatus("user");
+        await setEmail(userInfo.email);
         
         return SUCCESS;
     } catch (err) {
         console.log("signUp err :>> ", err?.response?.data?.error);
-        // return ERROR;
         return err?.response?.data?.error;
     }
     
 }
-
-
-export default authReducer;

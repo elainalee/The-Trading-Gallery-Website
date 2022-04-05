@@ -33,8 +33,6 @@ export const getUser = () => async (
       const user = res.data;
 
       await setUserInfo(user);
-  
-      dispatch({ type: "AUTH/LOGINUSER" });
 
       dispatch({
         type: "USER/SETUSER",
@@ -46,7 +44,6 @@ export const getUser = () => async (
       return SUCCESS;
   
     } catch (err) {
-      dispatch({ type: "AUTH/USER_NOT_LOGGED_IN" });
       console.log("getUser err :>> ", err?.response?.data?.error);
       return err?.response?.data?.error;
     }
@@ -69,7 +66,6 @@ export const updateUser = (userInfo) => async (
     const res = await client.post(url, payload);
     const data = res.data;
 
-    console.log("==== in updateUser, data is: ", data);
 
     dispatch({
       type: "USER/SETUSER",
