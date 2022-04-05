@@ -25,7 +25,6 @@ import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
 
 import ProductDetailPage from './pages/DetailPages/ProductDetailPage';
 import { getSeller } from './reducers/sellerReducer';
-import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
 import AddListingPage from './pages/SellerPages/AddListingPage';
 import AddBlogPage from './pages/SellerPages/AddBlogPage';
 import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
@@ -39,11 +38,13 @@ import "./utils/globalStyles.css";
 import SellerPanelPage from './pages/SellerPages/SellerPanelPage';
 import ReceiptPage from './pages/PaymentPages/ReceiptPage';
 import CheckoutPage from './pages/PaymentPages/CheckoutPage';
-import LogInFirstRoute from './RoutesManager/LogInFirstRoute';
+import EnsureUserRoute from './RoutesManager/EnsureUserRoute';
 import { getBestSellers, getProducts } from './reducers/productsReducer';
 import { getBlogs } from './reducers/blogsReducer';
 import { getCart, getCartTotal } from './reducers/cartReducer';
 import MyAccountPage from './pages/UserPages/MyAccount';
+import EnsureSellerRoute from './RoutesManager/EnsureSellerRoute';
+import { checkJWT } from './reducers/authReducer';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -73,19 +74,25 @@ function NavPages(props) {
   }, []);
 
   useEffect(() => {
-    console.log("--page reloaded : fetching user info again");
-    dispatch(getUser());
-  }, [auth.loggedInUser]);
+    dispatch(checkJWT()).then(() => {
+      dispatch(getCart());
+    });
+  }, []);
 
-  useEffect(() => {
-    console.log("--page reloaded : fetching seller info again");
-    dispatch(getSeller());
-  }, [auth.loggedInSeller]);
+  // useEffect(() => {
+  //   console.log("--page reloaded : fetching user info again");
+  //   dispatch(getUser());
+  // }, [auth.loggedInUser]);
+
+  // useEffect(() => {
+  //   console.log("--page reloaded : fetching seller info again");
+  //   dispatch(getSeller());
+  // }, [auth.loggedInSeller]);
 
   useEffect(() => {
     console.log("--logged In : fetching user cart again");
     dispatch(getCart());
-  }, [auth.loggedInUser]);
+  }, []);
 
   useEffect(() => {
     dispatch(getCartTotal());
@@ -103,9 +110,13 @@ function NavPages(props) {
         <EnsureLogOutRoute exact path={LogInRoute} component={LogInPage} />
 
         {/* User Pages */}
-        <LogInFirstRoute path={MyAccountRoute} redirectTo={"/my-account/account-info"} component={MyAccountPage} />
-        <LogInFirstRoute path={"/my-account/:type"} component={MyAccountPage} />
-        <LogInFirstRoute exact path={CartsPageRoute} component={CartsPage} />
+        <EnsureUserRoute path={MyAccountRoute} redirectTo={"/my-account/account-info"} component={MyAccountPage} />
+        <EnsureUserRoute path={"/my-account/:type"} component={MyAccountPage} />
+        <EnsureUserRoute exact path={CartsPageRoute} component={CartsPage} />
+
+        {/* Seller Pages */}
+        <EnsureSellerRoute path={"/my-seller-account/:type"} component={MyAccountPage} />
+
 
         <Container className="d-flex justify-content-center" /*style={{ minHeight: '100vh' }} */>
           <div className="w-100" style={{ maxWidth: '400px' }}>
@@ -147,8 +158,8 @@ function NavPages(props) {
         <Route exact path={PrivacyPolicyPageRoute} component={PrivacyPolicyPage} />
 
         {/* Payment Pages */}
-        <LogInFirstRoute exact path={"/receipt/:receiptId"} component={ReceiptPage} />
-        <LogInFirstRoute exact path={CheckoutPageRoute} component={CheckoutPage} />
+        <EnsureUserRoute exact path={"/receipt/:receiptId"} component={ReceiptPage} />
+        <EnsureUserRoute exact path={CheckoutPageRoute} component={CheckoutPage} />
 
       </div>
       <Footer />

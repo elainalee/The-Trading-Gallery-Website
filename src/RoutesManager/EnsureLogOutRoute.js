@@ -1,20 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { MyAccountRoute, SellerProfileRoute } from '../utils/routes';
 
-export default function EnsureLogOutRoute({ component: Component, ...rest }) {
+import { getStatus } from '../Axios/asyncStorage';
 
-    const state = useSelector((state) => state);
-    const currentUser = state.user.user;
-    const currentSeller = state.seller.seller;
+export default function EnsureLogOutRoute({ component: Component, ...rest }) {
+    const [status, setStatus] = useState(undefined);
+
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+    }, []);
 
     return (
         <Route
+          exact
           {...rest}
-          render={(props) => ((!currentUser && !currentSeller)
-                ? <Component {...props} />
-                : <Redirect to={currentUser ? MyAccountRoute : SellerProfileRoute}/>)}
+          render={(props) => (
+            status === "user"
+                ? <Redirect to={MyAccountRoute}/>
+                : status === "seller"
+                    ? <Redirect to={SellerProfileRoute}/>
+                    : status === null
+                        ? <Component {...props} />
+                        : <div></div>
+            )}
         />
     );
 }

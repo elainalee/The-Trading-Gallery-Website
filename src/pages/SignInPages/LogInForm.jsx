@@ -33,27 +33,25 @@ export default function LogInForm() {
         setError('');
         setLoading(true);
         if (isSellerEmail(emailRef.current.value)) {
-            dispatch(logInSeller(emailRef.current.value, passwordRef.current.value))
-            .then((res) => {
-            if (res === SUCCESS) {
-                window.location.href = '/';
-            } else {
-                setError(res);
-                console.log("error logging in.")
-            }
-            setLoading(false);
+            dispatch(logInSeller(emailRef.current.value, passwordRef.current.value)).then((res) => {
+                if (res === SUCCESS) {
+                    window.location.href = '/';
+                } else {
+                    setError(res);
+                    console.log("error logging in.")
+                }
+                setLoading(false);
             });
         } else {
-            dispatch(logInUser(emailRef.current.value, passwordRef.current.value))
-            .then((res) => {
-            if (res === SUCCESS) {
-                console.log("signed in");
-                window.location.href = '/';
-            } else {
-                setError(res);
-                console.log("error logging in.")
-            }
-            setLoading(false);
+            dispatch(logInUser(emailRef.current.value, passwordRef.current.value)).then((res) => {
+                if (res === SUCCESS) {
+                    console.log("signed in");
+                    window.location.href = '/';
+                } else {
+                    setError(res);
+                    console.log("error logging in.")
+                }
+                setLoading(false);
             });
         }
     }

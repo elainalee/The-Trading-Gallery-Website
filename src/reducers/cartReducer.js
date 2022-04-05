@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { getCartID } from "../Axios/asyncStorage";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 
@@ -34,8 +35,7 @@ export const getCart = () => async (
     getState
   ) => {
     try {
-      const state = getState();
-      const cartID = state.user.user.cartID;
+      const cartID = await getCartID();
 
       const url = BASE_URL + "/carts/getCart/" + cartID;
       console.log(url);
@@ -66,7 +66,8 @@ export const getCartTotal = () => async (
 ) => {
   try {
     const state = getState();
-    const cartID = state.user.user.cartID;
+    // const cartID = state.user.user.cartID;
+    const cartID = await getCartID();
 
     const url = BASE_URL + "/carts/getTotal/" + cartID;
     console.log(url);

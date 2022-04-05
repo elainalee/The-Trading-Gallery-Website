@@ -1,15 +1,14 @@
 import axios from "axios";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AUTH_INVALID } from "../utils/constants";
+import { getJWT, removeAll } from "./asyncStorage";
+
 
 const client = axios.create();
 
 client.interceptors.request.use(
     async (config) => {
-        const jwt = await AsyncStorage.getItem("jwt");
-
-        console.log("in auth: jwt ", jwt);
+        const jwt = await getJWT();
 
         if (jwt) {
             config.headers["Authorization"] = "Bearer " + jwt;
@@ -25,7 +24,7 @@ client.interceptors.response.use(
     (res) => res,
     async (err) => {
         if (err.response && err.response.status === 401) {
-            await AsyncStorage.removeItem("jwt");
+            await removeAll();
             throw new Error(AUTH_INVALID);
         } else {
             throw err;

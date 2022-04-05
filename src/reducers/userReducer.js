@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setUserInfo } from "../Axios/asyncStorage";
 import client from "../Axios/auth";
 import BASE_URL from "../Axios/BASE_URL";
 
@@ -27,15 +28,18 @@ export const getUser = () => async (
   ) => {
     try {
       const url = BASE_URL + "/users/getUser";
+
       const res = await client.get(url);
-      const data = res.data;
+      const user = res.data;
+
+      await setUserInfo(user);
   
       dispatch({ type: "AUTH/LOGINUSER" });
 
       dispatch({
         type: "USER/SETUSER",
         payload: {
-          user: data,
+          user: user,
         },
       });
 
@@ -81,32 +85,6 @@ export const updateUser = (userInfo) => async (
     return err?.response?.data?.error;
   }
 };
-
-
-
-// export const getUser = () => async (
-//     dispatch,
-//     getState
-//   ) => {
-//     try {
-//       const url = BASE_URL + "/users/getUser";
-//       const res = await client.get(url);
-//       const data = res.data;
-  
-//       dispatch({
-//         type: "USER/SETUSER",
-//         payload: {
-//           user: data,
-//         },
-//       });
-
-//       return SUCCESS;
-  
-//     } catch (err) {
-//       console.log("getUser err :>> ", err.message);
-//       return err.message;
-//     }
-//   };
 
 
 export default userReducer;

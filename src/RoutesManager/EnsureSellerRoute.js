@@ -1,20 +1,35 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
-import { getUser } from '../reducers/userReducer';
+import React, { useEffect, useState } from 'react';
+import { Route, Redirect, Link } from 'react-router-dom';
 import { LogInRoute } from '../utils/routes';
 
-export default function EnsureSellerRoute({ component: Component, ...rest }) {
-    const state = useSelector((state) => state);
-    const currentSeller = state.seller.seller;
-    
+import { getStatus } from '../Axios/asyncStorage';
+
+export default function EnsureSellerRoute({ component: Component, redirectTo, ...rest }) {
+    const [status, setStatus] = useState(undefined);
+
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+      }, []);
+
 
     return (
         <Route
+          exact
           {...rest}
-          render={(props) => (currentSeller
-                ? <Component {...props} />
-                : <Redirect to={LogInRoute} />)}
+          render={(props) => (
+            status === "seller"
+                ? redirectTo
+                    ? <Redirect to={redirectTo} />
+                    : <Component {...props} />
+                : status === "user" || status === null
+                    ? <div className="vertical-md horizontal-sm cartsPage">
+                            <div className="freeShipping">
+                                Sorry, not permitted. <Link to={LogInRoute} className="emphasis-links">log in as seller</Link>.
+                            </div>
+                        </div>
+                    : <div></div>
+            )}
         />
     );
 }

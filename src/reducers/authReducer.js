@@ -3,8 +3,10 @@ import BASE_URL from "../Axios/BASE_URL";
 
 import client from "../Axios/auth";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AUTH_INVALID, ERROR, SUCCESS } from "../utils/constants";
+import { getUser } from "./userReducer";
+import { getSeller } from "./sellerReducer";
+import { getStatus, removeAll, setJWT, setStatus } from "../Axios/asyncStorage";
 
 
 const initialState = {
@@ -18,11 +20,13 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggedInUser: true,
+                loggedInSeller: false,
         }
 
         case "AUTH/LOGINSELLER":
             return {
                 ...state,
+                loggedInUser: false,
                 loggedInSeller: true,
         }
 
@@ -53,18 +57,26 @@ const authReducer = (state = initialState, action) => {
 
 export const checkJWT = () => async (dispatch, getState) => {
     try {
-        const url = BASE_URL + "/token";
-        const res = await client.post(url);
+        console.log("----1: in checkjwt");
+        const status = await getStatus();
 
-        const data = res.data;
+        console.log("----2: got status. ", status);
 
-        await AsyncStorage.setItem("jwt", data.jwt);
+        if (status === "user") {
+            console.log("checkJWT: case of a !user!");
+            dispatch({ type: "AUTH/LOGINUSER" });
+            dispatch(getUser());
+        } else if (status === "seller") {
+            console.log("checkJWT: case of a !seller!");
+            dispatch({ type: "AUTH/LOGINSELLER" });
+            dispatch(getSeller());
+        }
 
-        // dispatch({ type: "AUTH/LOGIN" });
         return SUCCESS;
 
     } catch (err) {
         if (err.message !== AUTH_INVALID) {
+            console.log("-----invalid!!!!");
             return ERROR;
         }
     }
@@ -151,8 +163,12 @@ export const logInUser = (email, password) => async (dispatch, getState) => {
 
         const data = res.data;
 
-        await AsyncStorage.setItem("jwt", data.jwt);
-        await AsyncStorage.setItem("email", email);
+        // await AsyncStorage.setItem("jwt", data.jwt);
+        await setJWT(data.jwt);
+        await setStatus("user");
+        // await AsyncStorage.setItem("email", email);
+
+        // await AsyncStorage.setItem("status", "user");
 
         dispatch({ type: "AUTH/LOGINUSER" });
         
@@ -177,8 +193,13 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
 
         const data = res.data;
 
-        await AsyncStorage.setItem("jwt", data.jwt);
-        await AsyncStorage.setItem("email", email);
+        await setJWT(data.jwt);
+        await setStatus("seller");
+
+        // await AsyncStorage.setItem("jwt", data.jwt);
+        // await AsyncStorage.setItem("email", email);
+
+        // await AsyncStorage.setItem("status", "seller");
 
         dispatch({ type: "AUTH/LOGINSELLER" });
         
@@ -191,11 +212,15 @@ export const logInSeller = (email, password) => async (dispatch, getState) => {
 }
 
 export const logOut = () => async (dispatch, getState) => {
-    AsyncStorage.removeItem("jwt")
-        .then((status) => {
-            dispatch({ type: "HOME/LOGOUT" });
-            dispatch({ type: "AUTH/LOGOUT" });
-        });
+    await removeAll();
+    dispatch({ type: "HOME/LOGOUT" });
+    dispatch({ type: "AUTH/LOGOUT" });
+    // AsyncStorage.removeItem("jwt")
+    //     .then((status) => {
+    //         AsyncStorage.removeItem("status");
+    //         dispatch({ type: "HOME/LOGOUT" });
+    //         dispatch({ type: "AUTH/LOGOUT" });
+    //     });
     
     return SUCCESS;
 }
@@ -214,10 +239,12 @@ export const signUp = (userInfo) => async (dispatch, getState) => {
 
         const data = res.data;
 
-        await AsyncStorage.setItem("jwt", data.jwt);
+        // await AsyncStorage.setItem("jwt", data.jwt);
+        await setJWT(data.jwt);
+
         dispatch({ type: "AUTH/LOGINUSER" });
 
-        await AsyncStorage.setItem("email", userInfo.email);
+        // await AsyncStorage.setItem("email", userInfo.email);
         
         return SUCCESS;
     } catch (err) {
