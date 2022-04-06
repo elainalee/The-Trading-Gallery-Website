@@ -20,7 +20,7 @@ export default function FeedbackPage() {
         <div className="vertical-md horizontal-md feedbackPage">
 
             <h2 className="vertical-sm">
-                USER FEEDBACKS
+                User Feedbacks
             </h2>
 
             {admin?.feedbacks?.map((feedback, index) => (

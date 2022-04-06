@@ -5,7 +5,7 @@ import CustomButton from '../../components/Buttons/CustomButton';
 import { ShopCategoryItems } from '../../components/NavBar/MenuItems';
 import LoadingBox from '../../components/Utils/LoadingBox';
 import { getProductInfo } from '../../reducers/productsReducer';
-import { addSellerProduct, addUpdateSellerProduct } from '../../reducers/sellerReducer';
+import { addUpdateSellerProduct } from '../../reducers/sellerReducer';
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";

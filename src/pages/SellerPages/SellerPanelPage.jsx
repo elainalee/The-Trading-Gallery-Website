@@ -24,7 +24,8 @@ export default function SellerPanelPage() {
     return (
         <div className="vertical-md sellerPanelPage">
             <div className="horizontal-md">
-                <div className="section">
+                TO BE COME
+                {/* <div className="section">
                     <ProductsRow 
                         title="My Products"
                         products={sellerProducts} 
@@ -38,7 +39,7 @@ export default function SellerPanelPage() {
                         blogs={sellerBlogs} 
                         placeholderNumbers={8}
                     />
-                </div>
+                </div> */}
 
                 
             </div>

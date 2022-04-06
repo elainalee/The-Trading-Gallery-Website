@@ -132,45 +132,6 @@ export const getSellerProducts = () => async (
   }
 };
 
-export const addSellerProduct = (title, brand, description, price, mainImageLink) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    // const state = getState();
-    const sellerID = await getSellerID();
-
-    const url = BASE_URL + "/sellers/addProduct";
-
-    const payload = {
-      mainImage: mainImageLink,
-      title,
-      brand,
-      price,
-      description,
-      sellerID: sellerID
-    }
-
-    const res = await client.post(url, payload);
-    const data = res.data;
-
-    // TODO: change. fix.
-    dispatch({
-      type: "SELLER/ADDPRODUCT",
-      payload: {
-        blogs: data,
-      },
-    });
-
-    return SUCCESS;
-
-  } catch (err) {
-    console.log("addSellerProduct err :>> ", err?.response?.data?.error);
-    return err?.response?.data?.error;
-  }
-};
-
-
 export const addUpdateSellerProduct = (productId, productInfo) => async (
   dispatch,
   getState
@@ -194,9 +155,9 @@ export const addUpdateSellerProduct = (productId, productInfo) => async (
     const data = res.data;
 
     dispatch({
-      type: "SELLER/SETPRODUCTS",
+      type: "PRODUCTS/SETITEMS",
       payload: {
-        products: data,
+        items: data,
       },
     });
 
@@ -209,16 +170,12 @@ export const addUpdateSellerProduct = (productId, productInfo) => async (
   }
 };
 
-export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlog, isSubBlog) => async (
+export const addUpdateSellerBlog = (blogId, title, mainImage, body, isMainBlog, isSubBlog) => async (
   dispatch,
   getState
 ) => {
   try {
-    // const state = getState();
-    // console.log(state);
-    // const sellerID = await getSellerID();
-
-    const url = BASE_URL + "/sellers/addUpdateBlog/" + (productId ?? "");
+    const url = BASE_URL + "/sellers/addUpdateBlog/" + (blogId ?? "");
 
     const payload = {
       title,
@@ -228,11 +185,13 @@ export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlo
       subBlog: isSubBlog
     };
 
+    console.log(payload);
+
     const res = await client.post(url, payload);
     const data = res.data;
 
     dispatch({
-      type: "SELLER/SETBLOGS",
+      type: "BLOGS/SETBLOGS",
       payload: {
         blogs: data,
       },
@@ -242,40 +201,6 @@ export const addUpdateSellerBlog = (productId, title, mainImage, body, isMainBlo
 
   } catch (err) {
     console.log("addUpdateSellerBlog err :>> ", err?.response?.data?.error);
-    return err?.response?.data?.error;
-  }
-};
-
-
-export const addBlog = (title, mainImage, body, isMainBlog, isSubBlog) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    const url = BASE_URL + "/sellers/addBlog";
-
-    const payload = {
-      title,
-      mainImage,
-      body,
-      mainBlog: isMainBlog,
-      subBlog: isSubBlog
-    };
-
-    const res = await client.post(url, payload);
-    const data = res.data;
-
-    dispatch({
-      type: "BLOGS/ADDBLOG",
-      payload: {
-        blog: data,
-      },
-    });
-
-    return SUCCESS;
-
-  } catch (err) {
-    console.log("addBlog err :>> ", err?.response?.data?.error);
     return err?.response?.data?.error;
   }
 };

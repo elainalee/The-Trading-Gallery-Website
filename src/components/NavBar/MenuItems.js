@@ -1,4 +1,4 @@
-import { AboutPageRoute, BlogsPageRoute, ContactPageRoute, FeedbackPageRoute, ManageListingsPageRoute, ShopPageRoute } from "../../utils/routes";
+import { AboutPageRoute, BlogsPageRoute, ContactPageRoute, FeedbackPageRoute, ManageBlogsPageRoute, ManageListingsPageRoute, ShopPageRoute } from "../../utils/routes";
 
 export const MenuItems = [
     {
@@ -31,7 +31,7 @@ export const SellerMenuItems = [
     },
     {
         title: 'Blogs',
-        url: BlogsPageRoute,
+        url: ManageBlogsPageRoute,
         cName: 'nav-menu-item',
     },
 ];

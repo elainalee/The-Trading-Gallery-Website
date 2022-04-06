@@ -31,7 +31,7 @@ import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute, FeedbackPageRoute, ManageListingsPageRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute, FeedbackPageRoute, ManageListingsPageRoute, ManageBlogsPageRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -48,6 +48,7 @@ import { checkJWT } from './reducers/authReducer';
 import FeedbackPage from './pages/SellerPages/FeedbackPage';
 import { removeAll } from './Axios/asyncStorage';
 import ManageListingsPage from './pages/SellerPages/ManageListingsPage';
+import ManageBlogsPage from './pages/SellerPages/ManageBlogsPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -100,6 +101,8 @@ function NavPages(props) {
 
         {/* Seller Pages */}
         <EnsureSellerRoute path={ManageListingsPageRoute} component={ManageListingsPage} />
+        <EnsureSellerRoute path={ManageBlogsPageRoute} component={ManageBlogsPage} />
+
         {/* <EnsureSellerRoute path={"/my-seller-account/:type"} component={MyAccountPage} /> */}
 
 
