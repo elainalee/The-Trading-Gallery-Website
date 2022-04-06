@@ -1,12 +1,11 @@
 import React from "react";
 
 import "../../utils/globalStyles.css";
-import './Text.css'
+import './OverflowText.css'
 
-export default function Text({numberOfLines, children}) {
-    console.log(`text numberOfLines${numberOfLines}`);
+export default function OverflowText({numberOfLines, children}) {
     return (
-        <div className="text">
+        <div className="overflowText">
             <div className={`numberOfLines${numberOfLines}`}>
                 {children}
             </div>

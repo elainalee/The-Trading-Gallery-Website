@@ -108,8 +108,6 @@ export const getSellerProducts = () => async (
   getState
 ) => {
   try {
-    // const state = getState();
-
     const sellerID = await getSellerID();
 
     const url = BASE_URL + "/products/getSellerItems/" + sellerID;
@@ -178,8 +176,6 @@ export const addUpdateSellerProduct = (productId, productInfo) => async (
   getState
 ) => {
   try {
-    // const state = getState();
-    // console.log(state);
     const sellerID = await getSellerID();
 
     const url = BASE_URL + "/sellers/addUpdateProduct/" + (productId ?? "");
@@ -204,6 +200,7 @@ export const addUpdateSellerProduct = (productId, productInfo) => async (
       },
     });
 
+    // return data;
     return SUCCESS;
 
   } catch (err) {

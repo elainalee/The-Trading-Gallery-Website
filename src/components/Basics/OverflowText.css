@@ -1,23 +1,23 @@
-.text {
+.overflowText {
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.text .numberOfLines1 {
+.overflowText .numberOfLines1 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     
     -webkit-line-clamp: 1;
 }
 
-.text .numberOfLines2 {
+.overflowText .numberOfLines2 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
     -webkit-line-clamp: 2;
 }
 
-.text .numberOfLines3 {
+.overflowText .numberOfLines3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 

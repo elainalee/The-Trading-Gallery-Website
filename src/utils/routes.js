@@ -31,6 +31,7 @@ export const AboutPageRoute = "/about";
 export const ContactPageRoute = "/contact";
 
 // Trading Gallery Seller Pages
+export const ManageListingsPageRoute = "/manage-my-listings";
 export const FeedbackPageRoute = "/feedbacks";
 
 // Info Pages

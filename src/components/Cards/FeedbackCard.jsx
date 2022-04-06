@@ -7,7 +7,7 @@ import PlaceholderBox from "../Utils/PlaceholderBox";
 import "../../utils/globalStyles.css";
 import './FeedbackCard.css';
 import { Modal } from "react-bootstrap";
-import Text from "../Basics/Text";
+import OverflowText from "../Basics/OverflowText";
 
 export function ModalBody(props) {
     const feedback = props.feedback;
@@ -70,9 +70,9 @@ export default function FeedbackCard(props) {
                     </Card.Subtitle>
                     : <PlaceholderBox page={false} size="subtitle" />}
                 
-                <Text numberOfLines={1}>
+                <OverflowText numberOfLines={1}>
                     {feedback?.message}
-                </Text>
+                </OverflowText>
 
             </Card.Body>
         </Card>

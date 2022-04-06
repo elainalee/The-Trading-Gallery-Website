@@ -365,7 +365,7 @@ h3 {
 }
 
 .disable {
-    color: gray;
+    color: var(--primary-color);
 }
 
 

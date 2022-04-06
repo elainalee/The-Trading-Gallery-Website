@@ -42,3 +42,10 @@
     width: 90%;
     /* height: 300px; */
 }
+
+
+@media screen and (max-width: 767px) {
+    .manageListingsPage .product-title {
+        display: none;
+    }
+}

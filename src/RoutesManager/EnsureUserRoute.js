@@ -26,7 +26,7 @@ export default function EnsureUserRoute({ component: Component, redirectTo, ...r
                 : status === "seller"
                     ? <div className="vertical-md horizontal-md cartsPage">
                             <div className="freeShipping">
-                                <text>{LOGIN_AS_USER_FOR_ACCESS}</text>
+                                {LOGIN_AS_USER_FOR_ACCESS}
                             </div>
                         </div>
                     : status === null

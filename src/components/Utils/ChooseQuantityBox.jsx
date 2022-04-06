@@ -1,11 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getStatus } from '../../Axios/asyncStorage';
 import "./Utils.css";
 
 export default function ChooseQuantityBox(props) {
+    const [status, setStatus] = useState(undefined);
+
+    useEffect(async () => {
+        let curStatus = await getStatus();
+        setStatus(curStatus);
+    }, []);
+
     const quantity = props.quantity;
 
     const minQuantity = 1;
-    const maxQuantity = props.maxQuantity;
+    const maxQuantity = props.maxQuantity ?? 10000;
 
     const handleMinusQuantity = () => {
         if (quantity > minQuantity) {
@@ -28,7 +36,7 @@ export default function ChooseQuantityBox(props) {
     }
 
     return (
-        <div className="chooseQuantity">
+        <div className={`chooseQuantity ${status === "seller" ? " noRemoveButton" : ""}`}>
             <div className={props.seperateButton ? "setHeight" : ""}>
                 <div className="box">
                     <div className="quantity-section">
@@ -43,7 +51,7 @@ export default function ChooseQuantityBox(props) {
                         </div>
                     </div>
                 </div>
-                {!props.seperateButton && (
+                {(status !== "seller" && !props.seperateButton) && (
                     <div className="removeText links" onClick={props.handleRemoveButton}>Remove</div>
                 )}
             </div>

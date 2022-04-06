@@ -4,15 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Card, Container, Alert } from 'react-bootstrap';
 
-import { useHistory } from 'react-router-dom';
 import CustomButton from '../../components/Buttons/CustomButton';
-import Footer from '../../components/Footer';
 import { logOut } from '../../reducers/authReducer';
-import { LogInRoute } from '../../utils/routes';
 
 export default function SellerProfilePage() {
     const dispatch = useDispatch();
-    const history = useHistory();
     
     const state = useSelector((state) => state);
     const currentSeller = state.seller.seller;
@@ -20,7 +16,7 @@ export default function SellerProfilePage() {
     async function handleLogOut() {
 
         dispatch(logOut()).then((res) => {
-            history.push(LogInRoute);
+            window.location.href = '/';
         })
     }
 

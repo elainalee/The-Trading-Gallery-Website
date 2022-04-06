@@ -77,12 +77,14 @@ function NavBar() {
         <div className="navBar">
             <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={isMobile && menuClicked} onHide={() => setMenuClicked(false)}>
                 <Modal.Header className="buttons-top">
-                    <SearchBar showOnClick handleMenuClick={handleMenuClick} />
+                    {(status === "seller")
+                        ? <IconButton buttonIcon="cancel-btn" buttonSize="navbar" color="black" onClick={() => handleMenuClick(false)} />
+                        : <SearchBar showOnClick handleMenuClick={handleMenuClick} />}
                 </Modal.Header>
 
                 <Modal.Body className="body">
                     <ul className="nav-menu-items">
-                        {MenuItems.map((item, index) => (
+                        {(status === "seller" ? isAdmin ? AdminMenuItems : SellerMenuItems : MenuItems).map((item, index) => (
                             <div key={item.title}>
                                 <div className="section-title" onClick={() => (index === 0) ? setShowShopCategory(!showShopCategory) : handleSectionClick(item.url)}>
                                     <Link className="nav-menu-item links" to="#" >{item.title}</Link>
@@ -122,7 +124,6 @@ function NavBar() {
                 </Modal.Body>
                 <Modal.Footer className="buttons-bottom">
                     <UserButton /> 
-
                     {(status === "user" || status === null)
                         ? <IconButton buttonIcon="carts-btn" buttonSize="navbar" color="black" onClick={handleCartsClick} />
                         : (status === "seller")
@@ -142,7 +143,10 @@ function NavBar() {
 
                 <div className="nav-top-menu-items">
                     <div className="hide-mobile">
-                        <SearchBar />
+                        {(status === "seller")
+                            ? <div />
+                            : <SearchBar />}
+                        
 
                         {(status === "user" || status === null)
                             ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />

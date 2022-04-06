@@ -9,7 +9,6 @@ import { addSellerProduct, addUpdateSellerProduct } from '../../reducers/sellerR
 import { SUCCESS } from '../../utils/constants';
 
 import "../../utils/globalStyles.css";
-import { formatGoogleDriveLink } from '../../utils/Helper';
 import { ShopPageRoute } from '../../utils/routes';
 import "./SellerPages.css";
 
@@ -22,17 +21,6 @@ export default function AddListingPage(props) {
         dispatch(getProductInfo(productId)).then((res) => setProductInfo(res));
     }, [productId]);
 
-    // const alertUser = (e) => {     
-    //     e.preventDefault();
-    //     e.returnValue = "";
-    // };
-
-    // useEffect(() => {
-    //     window.addEventListener("beforeunload", alertUser);
-    //     return () => {
-    //       window.removeEventListener("beforeunload", alertUser);
-    //     };
-    // }, []);
 
     const dispatch = useDispatch();
 
@@ -49,7 +37,7 @@ export default function AddListingPage(props) {
             productInfo
             ))
             .then((res) => {
-            if (res === SUCCESS) {
+            if (SUCCESS) {
                 // console.log("product added");
                 window.location.href = ShopPageRoute;
             } else {
