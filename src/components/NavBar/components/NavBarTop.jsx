@@ -1,34 +1,16 @@
 import React from 'react';
-import UserButton from '../Buttons/UserButton';
-import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../assets/TTG-logo-w-text.png';
+import UserButton from '../../Buttons/UserButton';
+import { IconButton } from '../../Buttons/IconButton';
+import logoName from '../../../assets/TTG-logo-w-text.png';
 
-import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
-import SearchBar from '../Utils/SearchBar';
+import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../../utils/routes';
+import SearchBar from '../../Utils/SearchBar';
 
 import './NavBarTop.css';
 
-export default function NavBarTop(props) {
-    const status = props.status;
-    const menuClicked = props.menuClicked;
-    const setMenuClicked = props.setMenuClicked;
-
-    const handleMenuClick = () => {
-        setMenuClicked(!menuClicked);
-    }
-
-    const handleLogoClick = () => {
-        window.location.href = MainPageRoute;
-    }
-
-    const handleCartsClick = () => {
-        window.location.href = CartsPageRoute;
-    }
-
-    const handleListingsClick = () => {
-        window.location.href = SellerPanelPageRoute;
-    }
-
+export default function NavBarTop({
+    status, menuClicked, handleMenuClick, handleCartsClick, handleListingsClick, handleLogoClick
+}) {
 
     return (
         <nav className="NavBar-Top">

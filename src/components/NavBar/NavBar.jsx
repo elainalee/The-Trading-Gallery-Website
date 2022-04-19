@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory, withRouter } from 'react-router-dom';
-import { AdminMenuItems, MenuItems, SellerMenuItems, ShopCategoryItems } from './MenuItems';
-import UserButton from '../Buttons/UserButton';
-import { IconButton } from '../Buttons/IconButton';
-import logoName from '../../assets/TTG-logo-w-text.png';
 
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
 import Marquee from '../Utils/Marquee';
-import SearchBar from '../Utils/SearchBar';
 import { getIsAdmin, getStatus } from '../../Axios/asyncStorage';
-import NavBarModal from './NavBarModal';
 
-import './NavBarBottom.css';
-import './NavBarTop.css';
-import './NavBarExpanded.css';
-import NavBarTop from './NavBarTop';
+import NavBarModal from './components/NavBarModal';
+import NavBarTop from './components/NavBarTop';
+import NavBarBottom from './components/NavBarBottom';
+
 
 
 function NavBar() {
@@ -31,10 +24,6 @@ function NavBar() {
     const [menuClicked, setMenuClicked] = useState(false);
 
     const [isMobile, setIsMobile] = useState(window?.innerWidth <= 767);
-
-    // For Desktop version
-    const [isMouseOnShop, setIsMouseOnShop] = useState(false);
-    const [isMouseOnNavExpand, setIsMouseOnNavExpand] = useState(false);
 
     const handleResize = () => {
         setIsMobile(window?.innerWidth <= 767);
@@ -60,9 +49,6 @@ function NavBar() {
         window.location.href = SellerPanelPageRoute;
     }
 
-    const handleShowShop = (tabName) => {
-        setIsMouseOnShop(tabName === "Shop");
-    }
 
     function handleSectionClick(url) {
         window.location.href = url;
@@ -73,70 +59,40 @@ function NavBar() {
     return (
         <div className="navBar">
 
-            <NavBarModal 
+            <NavBarModal
                 status={status}
                 isAdmin={isAdmin}
                 menuClicked={menuClicked}
                 setMenuClicked={setMenuClicked}
                 isMobile={isMobile}
+
+                handleMenuClick={handleMenuClick}
+                handleCartsClick={handleCartsClick}
+                handleListingsClick={handleListingsClick}
+                handleSectionClick={handleSectionClick}
             />
 
             <div className="hide-mobile">
                 <Marquee/>
             </div>
             
-            <NavBarTop 
+            <NavBarTop
                 status={status}
-                isAdmin={isAdmin}
                 menuClicked={menuClicked}
-                setMenuClicked={setMenuClicked}
-                isMobile={isMobile}
+
+                handleMenuClick={handleMenuClick}
+                handleCartsClick={handleCartsClick}
+                handleListingsClick={handleListingsClick}
+                handleLogoClick={handleLogoClick}
             />
 
-            <nav className="NavBar-Bottom">
-                <ul className="nav-bottom-menu-items">
-                    {((status === "seller" ? isAdmin ? AdminMenuItems : SellerMenuItems : MenuItems).map((item, index) => (
-                        <li 
-                            key={index}
-                            onMouseEnter={() => handleShowShop(item.title)}
-                            onMouseLeave={() => setIsMouseOnShop(false)}>
-                            <Link 
-                                className={item.cName + " link"} 
-                                to="#"
-                                onClick={() => handleSectionClick(item.url)}>
-                                {item.title}
-                            </Link>
-                        </li>
-                    )))}
-                </ul>
-            </nav>
+            <NavBarBottom
+                status={status}
+                isAdmin={isAdmin}
+                isMobile={isMobile}
 
-            {(isMouseOnShop || isMouseOnNavExpand) && (
-                <nav
-                    className="NavBar-Expanded specialFont" 
-                    onMouseEnter={() => setIsMouseOnNavExpand(true)}
-                    onMouseLeave={() => setIsMouseOnNavExpand(false)}>
-                        {ShopCategoryItems.map((categoryItems, index) => (
-                            <ul key={index} className="nav-expanded-menu-items">
-                                {categoryItems.map((item, index) => (
-                                    <li 
-                                        key={index}
-                                        onMouseEnter={() => handleShowShop(item.title)}
-                                        onMouseLeave={() => setIsMouseOnShop(false)}>
-                                        <Link 
-                                            className={`${item.cName} ${index == 0 && "title"} link`} 
-                                            // to={ShopPageRoute + item.url}
-                                            to="#"
-                                            onClick={() => handleSectionClick(ShopPageRoute + item.url)}
-                                            >
-                                            {item.title}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        ))}
-                </nav>
-            )}
+                handleSectionClick={handleSectionClick}
+            />
 
             <div className="hide-full">
                 <Marquee/>

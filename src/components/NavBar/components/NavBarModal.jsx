@@ -1,41 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AdminMenuItems, MenuItems, SellerMenuItems, ShopCategoryItems } from './MenuItems';
-import UserButton from '../Buttons/UserButton';
-import { IconButton } from '../Buttons/IconButton';
-import { CartsPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
+import { AdminMenuItems, MenuItems, SellerMenuItems, ShopCategoryItems } from '..//MenuItems';
+import UserButton from '../../Buttons/UserButton';
+import { IconButton } from '../../Buttons/IconButton';
+import { CartsPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../../utils/routes';
 import { Modal } from 'react-bootstrap';
-import SearchBar from '../Utils/SearchBar';
+import SearchBar from '../../Utils/SearchBar';
 
 import './NavBarModal.css';
 
-export default function NavBarModal(props) {
-    const status = props.status;
-    const isAdmin = props.isAdmin;
-    const menuClicked = props.menuClicked;
-    const setMenuClicked = props.setMenuClicked;
-    const isMobile = props.isMobile;
-
+export default function NavBarModal({
+    status, isAdmin, menuClicked, setMenuClicked, isMobile,
+    handleMenuClick, handleCartsClick, handleListingsClick, handleSectionClick
+}) {
     // For Mobile version
     const [showShopCategory, setShowShopCategory] = useState(false);
 
-    const handleMenuClick = () => {
-        setMenuClicked(!menuClicked);
-    }
-
-    const handleCartsClick = () => {
-        window.location.href = CartsPageRoute;
-    }
-
-    const handleListingsClick = () => {
-        window.location.href = SellerPanelPageRoute;
-    }
-
-    function handleSectionClick(url) {
-        window.location.href = url;
-        window.scrollTo(0, 0);
-        setMenuClicked(false);
-    }
 
     return (
         <Modal className="NavBar-Modal" animation={true} fullscreen={true} show={isMobile && menuClicked} onHide={() => setMenuClicked(false)}>
