@@ -7,14 +7,14 @@ import logoName from '../../assets/TTG-logo-w-text.png';
 
 import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
 import Marquee from '../Utils/Marquee';
-import { Modal } from 'react-bootstrap';
 import SearchBar from '../Utils/SearchBar';
 import { getIsAdmin, getStatus } from '../../Axios/asyncStorage';
+import NavBarModal from './NavBarModal';
 
 import './NavBarBottom.css';
 import './NavBarTop.css';
 import './NavBarExpanded.css';
-import NavBarModal from './NavBarModal';
+import NavBarTop from './NavBarTop';
 
 
 function NavBar() {
@@ -35,8 +35,6 @@ function NavBar() {
     // For Desktop version
     const [isMouseOnShop, setIsMouseOnShop] = useState(false);
     const [isMouseOnNavExpand, setIsMouseOnNavExpand] = useState(false);
-    // For Mobile version
-    const [showShopCategory, setShowShopCategory] = useState(false);
 
     const handleResize = () => {
         setIsMobile(window?.innerWidth <= 767);
@@ -87,32 +85,13 @@ function NavBar() {
                 <Marquee/>
             </div>
             
-            <nav className="NavBar-Top">
-                <div className="navBar-logo">
-                    <img src={logoName} className="navBar-logo-symbol" alt="logo-name" onClick={handleLogoClick} />
-                </div>
-
-                <div className="nav-top-menu-items">
-                    <div className="hide-mobile">
-                        {(status === "seller")
-                            ? <div />
-                            : <SearchBar />}
-                        
-
-                        {(status === "user" || status === null)
-                            ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'carts-btn'} buttonSize="navbar" color="black" onClick={handleCartsClick} />
-                            : (status === "seller")
-                                ? <IconButton buttonIcon={menuClicked ? 'hidden' : 'listings-btn'} buttonSize="navbar" color="black" onClick={handleListingsClick} /> 
-                                : <div></div>}
-
-                        <UserButton />
-                    </div>
-                    
-                    <div className="menu-icon">
-                        <IconButton buttonIcon={menuClicked ? 'cancel-btn' : 'menu-btn'} buttonSize="navbar" color="black" onClick={handleMenuClick} />
-                    </div>
-                </div>
-            </nav>
+            <NavBarTop 
+                status={status}
+                isAdmin={isAdmin}
+                menuClicked={menuClicked}
+                setMenuClicked={setMenuClicked}
+                isMobile={isMobile}
+            />
 
             <nav className="NavBar-Bottom">
                 <ul className="nav-bottom-menu-items">
