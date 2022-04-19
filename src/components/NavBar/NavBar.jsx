@@ -122,6 +122,7 @@ function NavBar() {
                         ))}
                     </ul>
                 </Modal.Body>
+                
                 <Modal.Footer className="buttons-bottom">
                     <UserButton /> 
                     {(status === "user" || status === null)
@@ -215,4 +216,5 @@ function NavBar() {
     );
 }
 
-export default withRouter(NavBar);
+// export default withRouter(NavBar);
+export default NavBar;

@@ -49,6 +49,7 @@ import FeedbackPage from './pages/SellerPages/FeedbackPage';
 import { removeAll } from './Axios/asyncStorage';
 import ManageListingsPage from './pages/SellerPages/ManageListingsPage';
 import ManageBlogsPage from './pages/SellerPages/ManageBlogsPage';
+import StickyNavBar from './components/NavBar/StickyNavBar';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -87,7 +88,10 @@ function NavPages(props) {
 
   return (
     <div>
-      <NavBar />
+      
+      {/* <NavBar /> */}
+      <StickyNavBar />
+
       <div className="app-min-height">
         <Route exact path={MainPageRoute} component={MainPage} />
         
