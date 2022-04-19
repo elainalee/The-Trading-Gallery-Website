@@ -1,43 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AdminMenuItems, MenuItems, SellerMenuItems, ShopCategoryItems } from './MenuItems';
 import UserButton from '../Buttons/UserButton';
 import { IconButton } from '../Buttons/IconButton';
-
-import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
-
+import { CartsPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../utils/routes';
 import { Modal } from 'react-bootstrap';
 import SearchBar from '../Utils/SearchBar';
-import { getIsAdmin, getStatus } from '../../Axios/asyncStorage';
 
 import './NavBarModal.css';
 
-
-function NavBarModal() {
-    const [status, setStatus] = useState(undefined);
-    const [isAdmin, setIsAdmin] = useState(undefined);
-
-    useEffect(async () => {
-        let curStatus = await getStatus();
-        setStatus(curStatus);
-        let isCurAdmin = await getIsAdmin();
-        setIsAdmin(isCurAdmin);
-    }, []);
-    
-    const [menuClicked, setMenuClicked] = useState(false);
-
-    const [isMobile, setIsMobile] = useState(window?.innerWidth <= 767);
+export default function NavBarModal(props) {
+    const status = props.status;
+    const isAdmin = props.isAdmin;
+    const menuClicked = props.menuClicked;
+    const setMenuClicked = props.setMenuClicked;
+    const isMobile = props.isMobile;
 
     // For Mobile version
     const [showShopCategory, setShowShopCategory] = useState(false);
-
-    const handleResize = () => {
-        setIsMobile(window?.innerWidth <= 767);
-    }
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-    });
 
     const handleMenuClick = () => {
         setMenuClicked(!menuClicked);
@@ -117,6 +97,3 @@ function NavBarModal() {
         </Modal>
     );
 }
-
-// export default withRouter(NavBar);
-export default NavBarModal;
