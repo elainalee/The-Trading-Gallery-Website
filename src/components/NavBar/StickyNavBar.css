@@ -1,0 +1,30 @@
+.Header {
+  background-color: white;
+  width: 100%;
+}
+
+#sticky-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+
+/* @keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(0rem);
+  }
+} */
