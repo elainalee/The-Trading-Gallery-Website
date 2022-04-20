@@ -10,11 +10,7 @@
 }
 
 .featuredCard .image-section .placeholder {   
-    background-color: var(--primary-light);
-    /* height: 60px; */
-}
-
-.featuredCard .image-section .placeholder  {   
+    /* background-color: var(--primary-light); */
     height: 80px;
 }
 
