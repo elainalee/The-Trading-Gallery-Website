@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import NavBar from './NavBar';
 
+import './StickyNavBar.css';
+
 export function useScroll() {
 	// storing this to get the scroll direction
    const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -15,7 +17,7 @@ export function useScroll() {
 	// the horizontal direction
    const [scrollX, setScrollX] = useState(bodyOffset.left);
 	// scroll direction would be either up or down
-   const [scrollDirection, setScrollDirection] = useState();
+   const [scrollDirection, setScrollDirection] = useState("up");
  
    const listener = e => {
      setBodyOffset(document.body.getBoundingClientRect());
@@ -24,6 +26,9 @@ export function useScroll() {
      setScrollDirection(lastScrollTop > -bodyOffset.top ? "down" : "up");
      setLastScrollTop(-bodyOffset.top);
    };
+
+  //  console.log("bodyOffset.top ", bodyOffset.top);
+  //  console.log("scrollY ", scrollY);
  
    useEffect(() => {
      window.addEventListener("scroll", listener);
@@ -35,12 +40,13 @@ export function useScroll() {
    return {
      scrollY,
      scrollX,
-     scrollDirection
+     scrollDirection,
+     bodyOffset,
    };
  }
 
 function StickyNavBar() {
-  const { y, x, scrollDirection } = useScroll();  
+  const { scrollY, scrollX, scrollDirection, bodyOffset } = useScroll();
   const styles = {
     active: {
       visibility: "visible",
@@ -50,10 +56,21 @@ function StickyNavBar() {
       visibility: "hidden",
       transition: "all 0.5s",
       transform: "translateY(-100%)"
+    },
+    quietHidden: {
+      visibility: "hidden",
     }
   }
+
+  // console.log("bodyOffset.top ", bodyOffset.top);
+  //  console.log("scrollY ", scrollY);
+  console.log("scrollDirection ", scrollDirection);
+
     return (
-        <nav className="Header" style={scrollDirection === "down" ? styles.active: styles.hidden}   >
+        <nav 
+          className="Header" 
+          style={bodyOffset.top > -175 ? styles.active : bodyOffset.top == -175 ? styles.quietHidden : (scrollDirection === "down" ? styles.active: styles.hidden)}
+          id={bodyOffset.top >= -175 ? "fixed-nav" : "sticky-nav"}>
           <NavBar />
         </nav>
     )

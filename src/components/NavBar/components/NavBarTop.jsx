@@ -2,8 +2,6 @@ import React from 'react';
 import UserButton from '../../Buttons/UserButton';
 import { IconButton } from '../../Buttons/IconButton';
 import logoName from '../../../assets/TTG-logo-w-text.png';
-
-import { CartsPageRoute, MainPageRoute, SellerPanelPageRoute, ShopPageRoute } from '../../../utils/routes';
 import SearchBar from '../../Utils/SearchBar';
 
 import './NavBarTop.css';
