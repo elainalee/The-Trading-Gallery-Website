@@ -12,6 +12,7 @@
     /* height: 10%; */
     aspect-ratio: 5000 / 6000;
 
+    cursor: default;
     background-color: var(--primary-light);
 }
 

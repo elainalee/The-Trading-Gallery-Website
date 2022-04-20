@@ -11,11 +11,22 @@
 
 .blogCard .image-section .placeholder {   
     background-color: var(--primary-light);
-    /* height: 60px; */
 }
 
 .blogCard .image-section .image {
     height: 100%;
+}
+
+.blogCard .sm .image-section .image {
+    min-height: 50px;
+}
+
+.blogCard .md .image-section .image {
+    min-height: 100px;
+}
+
+.blogCard .lg .image-section .image {
+    min-height: 300px;
 }
 
 .blogCard .sm .image-section .placeholder  {   
@@ -60,9 +71,8 @@
 }
 
 .blogCard .placeholder {
-    /* height: 10%; */
-    /* aspect-ratio: 5000 / 6000; */
-
+    height: 600px;
+    cursor: default;
     background-color: var(--primary-light);
 }
 

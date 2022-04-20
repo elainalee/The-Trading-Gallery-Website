@@ -6,6 +6,7 @@
 
 .productDetailPage .image-section .placeholder {   
     background-color: var(--primary-light);
+    cursor: default;
     width: 90%;
     height: 450px;
 }
@@ -73,6 +74,7 @@
     height: 310px;
 
     background-color: var(--primary-light);
+    cursor: default;
 }
 
 

@@ -79,6 +79,11 @@
     background-color: var(--primary-light);
 }
 
+.placeholderBox {
+    cursor: default;
+    background-color: var(--primary-light);
+}
+
 .placeholderBox .pagebox {
     width: 400px;
 }

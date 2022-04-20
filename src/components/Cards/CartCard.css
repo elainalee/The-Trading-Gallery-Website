@@ -51,15 +51,10 @@
 }
 
 .cartCard .placeholder {   
-    background-color: var(--primary-light);
     width: 110px;
     height: 170px;
-}
 
-.cartCard .placeholder {
-    /* height: 10%; */
-    /* aspect-ratio: 5000 / 6000; */
-
+    cursor: default;
     background-color: var(--primary-light);
 }
 
