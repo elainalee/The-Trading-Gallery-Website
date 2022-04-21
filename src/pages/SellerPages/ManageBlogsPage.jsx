@@ -6,6 +6,7 @@ import { IconButton } from '../../components/Buttons/IconButton';
 import { AddBlogPageRoute, AddListingPageRoute } from '../../utils/routes';
 import ManageBlogCard from '../../components/Cards/ManageBlogCard';
 import { getBlogs } from '../../reducers/blogsReducer';
+import CustomPagination from '../../components/Utils/CustomPagination';
 
 export default function ManageBlogsPage(props) {
     const { blogs } = useSelector((state) => state);
@@ -34,9 +35,12 @@ export default function ManageBlogsPage(props) {
             <div className="vertical-sm">Note: <strong>only 1 main blog and 4 sub blog</strong> selected in order from the bottom</div>
             
             <div className="product-title"><ManageBlogCard title={true} /></div>
-            {allBlogs?.map((blog, index) => ( 
-                <ManageBlogCard key={index} index={index} blog={blog} last={index == allBlogs?.length - 1} />
-            ))}
+
+            <CustomPagination countPerPage={10}>
+                {allBlogs?.map((blog, index) => ( 
+                    <ManageBlogCard key={index} index={index} blog={blog} last={index == allBlogs?.length - 1} />
+                ))}
+            </CustomPagination>
         </div>
 );
 }

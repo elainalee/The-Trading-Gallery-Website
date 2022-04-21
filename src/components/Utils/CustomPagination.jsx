@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import CustomButton from '../Buttons/CustomButton';
+import LoadingBox from "./LoadingBox";
+
 import './CustomPagination.css';
 
 export default function CustomPagination({ countPerPage, children }) {
     const [curPageNum, setCurPageNum] = useState(0);
-    const totalPageNum = Math.ceil((children?.length ?? 1) / countPerPage);
+    const totalPageNum = Math.ceil((children?.length ?? 0) / countPerPage);
     const lastPageNum = totalPageNum - 1;
 
     const childrenToShow = children?.slice(curPageNum * countPerPage, curPageNum * countPerPage + countPerPage);
@@ -12,6 +14,11 @@ export default function CustomPagination({ countPerPage, children }) {
     const handleSetCurPageNum = (newPageNum) => {
         setCurPageNum(newPageNum);
         // window.location.reload(false);
+    }
+
+
+    if (!totalPageNum) {
+        return (<LoadingBox text="Retrieving Information..." />);
     }
 
     return (
