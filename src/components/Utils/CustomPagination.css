@@ -1,0 +1,24 @@
+.customPagination #pageNumbers {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.customPagination #dottedLine {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.customPagination #leftArrow {
+    margin-right: 15px;
+}
+
+.customPagination #rightArrow {
+    margin-left: 15px;
+}

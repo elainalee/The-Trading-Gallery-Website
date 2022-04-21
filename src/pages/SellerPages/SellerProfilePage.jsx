@@ -38,7 +38,7 @@ export default function SellerProfilePage() {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2 links">
-                <CustomButton buttonStyle="link" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
+                <CustomButton buttonStyle="outline" onClick={handleLogOut} marginTop="10px">Log Out</CustomButton>
             </div>
         </div>
     );

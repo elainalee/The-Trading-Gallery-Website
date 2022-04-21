@@ -24,14 +24,13 @@ import TermsOfUsePage from './pages/InfoPages/TermsOfUsePage';
 import PrivacyPolicyPage from './pages/InfoPages/PrivacyPolicyPage';
 
 import ProductDetailPage from './pages/DetailPages/ProductDetailPage';
-import { getSeller } from './reducers/sellerReducer';
 import AddListingPage from './pages/SellerPages/AddListingPage';
 import AddBlogPage from './pages/SellerPages/AddBlogPage';
 import AddressPickupPage from './pages/InfoPages/AddressPickupPage';
 import BlogDetailPage from './pages/DetailPages/BlogDetailPage';
 import Footer from './components/Footer';
 
-import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, ProductDetailPageGeneralRoute, ProductDetailPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute, FeedbackPageRoute, ManageListingsPageRoute, ManageBlogsPageRoute } from './utils/routes';
+import { AboutPageRoute, AddBlogPageRoute, AddListingPageRoute, AddressPickupRoute, BlogsPageRoute, CartsPageRoute, ContactPageRoute, LogInRoute, MainPageRoute, PasswordResetRoute, PrivacyPolicyPageRoute, SellerPanelPageRoute, SellerProfileRoute, ShippingReturnPageRoute, ShopPageRoute, TermsOfUsePageRoute, CheckoutPageRoute, ReceiptPageRoute, MyAccountRoute, FeedbackPageRoute, ManageListingsPageRoute, ManageBlogsPageRoute, ManageOrdersPageRoute } from './utils/routes';
 
 import './App.css';
 import "./utils/globalStyles.css";
@@ -50,6 +49,7 @@ import { removeAll } from './Axios/asyncStorage';
 import ManageListingsPage from './pages/SellerPages/ManageListingsPage';
 import ManageBlogsPage from './pages/SellerPages/ManageBlogsPage';
 import StickyNavBar from './components/NavBar/StickyNavBar';
+import ManageOrdersPage from './pages/SellerPages/ManageOrdersPage';
 
 function App() {
   const middleWare = applyMiddleware(thunkMiddleware);
@@ -106,6 +106,7 @@ function NavPages(props) {
         {/* Seller Pages */}
         <EnsureSellerRoute path={ManageListingsPageRoute} component={ManageListingsPage} />
         <EnsureSellerRoute path={ManageBlogsPageRoute} component={ManageBlogsPage} />
+        <EnsureSellerRoute path={ManageOrdersPageRoute} component={ManageOrdersPage} />
 
         {/* <EnsureSellerRoute path={"/my-seller-account/:type"} component={MyAccountPage} /> */}
 
