@@ -66,7 +66,7 @@
 
 /* Button Sizes */
 
-.sm {
+.customButton.sm {
     font-size: 15px;
     height: 30px;
 }

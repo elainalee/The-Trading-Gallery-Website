@@ -13,6 +13,7 @@ import { getStatus } from '../../Axios/asyncStorage';
 
 import '../../utils/globalStyles.css';
 import "./TGGRows.css";
+import CustomPagination from '../Utils/CustomPagination';
 
 export default function ProductsRow(props) {
     const [status, setStatus] = useState(undefined);
@@ -79,6 +80,16 @@ export default function ProductsRow(props) {
             </Swiper>
 
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
+
+            {/* <CustomPagination countPerPage={10}>
+                {productsToDisplay.map((product, index) => ( 
+                    <Col key={index}>
+                        <ProductCard product={product} />
+                    </Col>
+                ))}
+            </CustomPagination> */}
+
+
                 <Row xs={1} md={3} lg={5} >
                     {productsToDisplay.map((product, index) => ( 
                         <Col key={index}>
