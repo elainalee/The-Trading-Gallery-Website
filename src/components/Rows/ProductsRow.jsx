@@ -81,16 +81,9 @@ export default function ProductsRow(props) {
 
             <div className={enableCarousel ? "productCards hide" : "productCards"}>
 
-            {/* <CustomPagination countPerPage={10}>
-                {productsToDisplay.map((product, index) => ( 
-                    <Col key={index}>
-                        <ProductCard product={product} />
-                    </Col>
-                ))}
-            </CustomPagination> */}
 
 
-                <Row xs={1} md={3} lg={5} >
+                <Row xs={1} sm={2} md={4} lg={5} xl={7}>
                     {productsToDisplay.map((product, index) => ( 
                         <Col key={index}>
                             <ProductCard product={product} />

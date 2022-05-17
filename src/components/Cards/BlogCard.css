@@ -13,6 +13,10 @@
     background-color: var(--primary-light);
 }
 
+.blogCard .image-section {
+    height: 100%;
+}
+
 .blogCard .image-section .image {
     height: 100%;
 }
