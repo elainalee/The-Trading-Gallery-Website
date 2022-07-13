@@ -1,2 +1,2 @@
-Welcome.
-deployed @ thetrainggallery.ca
+Welcome.  
+deployed @ www.thetradinggallery.ca
